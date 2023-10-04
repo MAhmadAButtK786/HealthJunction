@@ -1,4 +1,8 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_import
+
 import 'package:flutter/material.dart';
+import 'package:healthjunction/src/utils/theme/theme.dart';
+import 'package:healthjunction/src/utils/theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Health Junction',
       debugShowCheckedModeBanner: false, //To remove Debug
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-      ),
+      theme: TAppTheme.lightTheme,
+      darkTheme: TAppTheme.darkTheme,
+      themeMode: ThemeMode.system,
       home: const MyHomePage(title: 'Health Junction'),
     );
   }
@@ -33,7 +37,33 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Health Junction'),
       ),
-      body: Center(),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ListView(
+          children: [
+            Text(
+              "Heading",
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Text(
+              "Sub-Heading",
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            const Text("Paragraph"),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text("Elevated Button"),
+            ),
+            OutlinedButton(
+              onPressed: () {},
+              child: const Text("Outlined Button"),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(20.0),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
