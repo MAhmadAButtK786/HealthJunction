@@ -34,36 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Health Junction'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: ListView(
-          children: [
-            Text(
-              "Heading",
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            Text(
-              "Sub-Heading",
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            const Text("Paragraph"),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("Elevated Button"),
-            ),
-            OutlinedButton(
-              onPressed: () {},
-              child: const Text("Outlined Button"),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-            )
-          ],
+        appBar: AppBar(
+          title: Text('Health Junction'),
         ),
-      ),
-    );
+        body: Center(
+          child: Text("Hello World"),
+        ));
   }
 }
