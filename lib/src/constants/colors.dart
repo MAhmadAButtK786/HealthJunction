@@ -5,3 +5,4 @@ import 'dart:ui';
 // List of Colors WE will Use in Flutter App
 const tWhiteColor = Color(0xffffffff);
 const tDarkColor = Color(0xff000000);
+const apptextColor = Color(0xFF104CE7);

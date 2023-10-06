@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_import
 
 import 'package:flutter/material.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/utils/theme/theme.dart';
 import 'package:healthjunction/src/utils/theme/theme.dart';
 
@@ -38,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text('Health Junction'),
         ),
         body: Center(
-          child: Text("Hello World"),
+          child: Image.asset(tSplashImage),
         ));
   }
 }
