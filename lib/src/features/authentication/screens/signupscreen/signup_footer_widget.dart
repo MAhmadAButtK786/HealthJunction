@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, unused_import
+// ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/colors.dart';
@@ -8,8 +8,8 @@ import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_form_widget.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_header_widget.dart';
 
-class LoginFooterWidget extends StatelessWidget {
-  const LoginFooterWidget({
+class SignupFooterWidget extends StatelessWidget {
+  const SignupFooterWidget({
     super.key,
   });
 
@@ -18,7 +18,10 @@ class LoginFooterWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text("OR"),
+        const Text(
+          "OR",
+          style: TextStyle(color: tWhiteColor),
+        ),
         const SizedBox(
           height: 10.0,
         ),
@@ -39,7 +42,7 @@ class LoginFooterWidget extends StatelessWidget {
           onPressed: () {},
           child: Text.rich(
             TextSpan(
-              text: tDonthaveaccount,
+              text: tAAccount,
               style: TextStyle(color: tDarkColor),
               children: [
                 TextSpan(

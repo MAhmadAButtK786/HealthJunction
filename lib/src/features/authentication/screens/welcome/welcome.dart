@@ -7,6 +7,7 @@ import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:get/get.dart';
+import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key});
@@ -63,7 +64,9 @@ class Welcome extends StatelessWidget {
                   SizedBox(width: 16.0),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => const SignupScreen());
+                      },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),

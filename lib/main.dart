@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
+import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
 import 'package:healthjunction/src/features/authentication/screens/welcome/welcome.dart';
 import 'package:healthjunction/src/utils/theme/theme.dart';
 import 'package:healthjunction/src/utils/theme/theme.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       getPages: [
         GetPage(name: '/login', page: () => LoginScreen()), // Login Screen
+        GetPage(name: '/signup', page: () => SignupScreen())
       ],
       title: 'Health Junction',
       debugShowCheckedModeBanner: false,

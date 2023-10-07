@@ -6,8 +6,8 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({
+class SignupForm extends StatelessWidget {
+  const SignupForm({
     super.key,
   });
 
@@ -21,8 +21,18 @@ class LoginForm extends StatelessWidget {
           TextFormField(
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.person_outline_outlined),
-              labelText: tUsernameEmail,
-              hintText: tLUsername,
+              labelText: tUsername,
+              hintText: tSUsername,
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.mail),
+              labelText: tEmail,
+              hintText: tSEmail,
             ),
           ),
           SizedBox(
@@ -41,19 +51,21 @@ class LoginForm extends StatelessWidget {
           SizedBox(
             height: 10.0,
           ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  tLForget,
-                  style: TextStyle(
-                      color: apptextColor,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold),
+          TextFormField(
+            decoration: InputDecoration(
+                prefixIcon: Icon(Icons.lock),
+                labelText: tCPassword,
+                hintText: tSConfirmPass,
+                suffixIcon: IconButton(
+                  onPressed: null,
+                  icon: Icon(Icons.remove_red_eye_sharp),
                 )),
           ),
           SizedBox(
+            height: 20.0,
+          ),
+          SizedBox(
+            width: 100,
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
@@ -64,7 +76,7 @@ class LoginForm extends StatelessWidget {
                 foregroundColor: tWhiteColor,
                 backgroundColor: apptextColor,
               ),
-              child: Text(tLogin.toUpperCase()),
+              child: Text(tSignup.toUpperCase()),
             ),
           )
         ],
