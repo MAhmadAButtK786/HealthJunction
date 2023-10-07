@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "293812165856",
+    "project_id": "health-junction-675ff",
+    "storage_bucket": "health-junction-675ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293812165856:android:136b98edb48489981bc485",
+        "android_client_info": {
+          "package_name": "com.example.healthjunction"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOHvvfOSZxqITqihWtD5ktgRVMkMmkkB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
