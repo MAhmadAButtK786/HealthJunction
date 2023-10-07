@@ -1,10 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_import
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_import, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:healthjunction/src/features/authentication/screens/welcome/welcome.dart';
 import 'package:healthjunction/src/utils/theme/theme.dart';
 import 'package:healthjunction/src/utils/theme/theme.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +14,15 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      getPages: [
+        GetPage(name: '/login', page: () => LoginScreen()), // Login Screen
+      ],
       title: 'Health Junction',
-      debugShowCheckedModeBanner: false, //To remove Debug
+      debugShowCheckedModeBanner: false,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
