@@ -1,3 +1,4 @@
+//Landing Page
 const String tWelcomeTitle = "Welcome to Health Junction";
 const String tDescriptionText =
     "Your ultimate destination for holistic well-being. At Health Junction, we prioritize your health and wellness journey.";
@@ -24,10 +25,18 @@ const String tAAccount = "Already have Account? ";
 const String tUsername = "Username";
 const String tCPassword = "Confirm Password";
 const String tEmail = "Email";
-
+const String tPhoneNo = "Phone Number";
+const String tSPhoneNo = "Enter Your Phone Number";
 //Forget Password
 const String tForgetPass = "Enter Your Email Address below to reset Password";
 const String tResetPassB = "Reset Password";
+const String tForgetSelection = "Make Selection";
+const String tSelectOption =
+    "Select one of the options from given below to reset your password";
+const String tResetVE = "Reset Via Email";
+const String tResetVP = "Reset Via Phone";
+const String tFForgetPassword = "Forget Password";
+const String tSendOTP = "Send OTP";
 //Home Screen
 
 

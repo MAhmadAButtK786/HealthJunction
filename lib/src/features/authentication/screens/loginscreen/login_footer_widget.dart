@@ -1,12 +1,14 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_form_widget.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_header_widget.dart';
+import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
 
 class LoginFooterWidget extends StatelessWidget {
   const LoginFooterWidget({
@@ -36,7 +38,9 @@ class LoginFooterWidget extends StatelessWidget {
           height: 10.0,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(() => const SignupScreen());
+          },
           child: Text.rich(
             TextSpan(
               text: tDonthaveaccount,

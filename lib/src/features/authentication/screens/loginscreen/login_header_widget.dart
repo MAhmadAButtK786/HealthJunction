@@ -33,15 +33,21 @@ class LoginHeaderWidget extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(
+          height: 10,
+        ),
         Text(
           tWelcomeB,
           style: TextStyle(
               color: apptextColor, fontSize: 30, fontWeight: FontWeight.bold),
         ),
+        SizedBox(
+          height: 7,
+        ),
         Text(
           tLogin,
           style: TextStyle(
-              color: apptextColor, fontSize: 25, fontWeight: FontWeight.bold),
+              color: apptextColor, fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ],
     );

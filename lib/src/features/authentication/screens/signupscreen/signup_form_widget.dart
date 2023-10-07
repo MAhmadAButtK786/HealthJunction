@@ -21,6 +21,7 @@ class SignupForm extends StatelessWidget {
           TextFormField(
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.person_outline_outlined),
+              border: OutlineInputBorder(),
               labelText: tUsername,
               hintText: tSUsername,
             ),
@@ -31,6 +32,7 @@ class SignupForm extends StatelessWidget {
           TextFormField(
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.mail),
+              border: OutlineInputBorder(),
               labelText: tEmail,
               hintText: tSEmail,
             ),
@@ -40,7 +42,19 @@ class SignupForm extends StatelessWidget {
           ),
           TextFormField(
             decoration: InputDecoration(
+              prefixIcon: Icon(Icons.phone),
+              border: OutlineInputBorder(),
+              labelText: tPhoneNo,
+              hintText: tSPhoneNo,
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          TextFormField(
+            decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
+                border: OutlineInputBorder(),
                 labelText: tPassword,
                 hintText: tLPassword,
                 suffixIcon: IconButton(
@@ -54,6 +68,7 @@ class SignupForm extends StatelessWidget {
           TextFormField(
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
+                border: OutlineInputBorder(),
                 labelText: tCPassword,
                 hintText: tSConfirmPass,
                 suffixIcon: IconButton(
