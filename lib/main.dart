@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_mail/forget_password_mail.dart';
+import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_phone/forget_password_phone.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
 import 'package:healthjunction/src/features/authentication/screens/welcome/welcome.dart';
@@ -21,7 +23,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       getPages: [
         GetPage(name: '/login', page: () => LoginScreen()), // Login Screen
-        GetPage(name: '/signup', page: () => SignupScreen())
+        GetPage(name: '/signup', page: () => SignupScreen()), //Sign-up Screen
+        GetPage(
+            name: '/Forget-Mail',
+            page: () => ForgetPasswordViaEmail()), // Mail OTP SEND
+        GetPage(
+            name: '/Forget-Phone',
+            page: () => ForgetPasswordViaPhone()), //Phone OTP SEND
       ],
       title: 'Health Junction',
       debugShowCheckedModeBanner: false,

@@ -37,6 +37,11 @@ const String tResetVE = "Reset Via Email";
 const String tResetVP = "Reset Via Phone";
 const String tFForgetPassword = "Forget Password";
 const String tSendOTP = "Send OTP";
+//OTP Screen
+const String tOTP = "CO\nDE";
+const String subTitleOTP = "Verification";
+const String toOtpMessage = "Enter the Verification Code Sent at";
+const String tNext = "Next";
 //Home Screen
 
 

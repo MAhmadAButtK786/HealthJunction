@@ -13,7 +13,9 @@ import 'package:healthjunction/src/features/authentication/screens/forget_passwo
 Future<dynamic> buildShowModelBottomSheet(BuildContext context) {
   return showModalBottomSheet(
       context: context,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0))),
       builder: (context) => Container(
             padding: const EdgeInsets.all(tDefaultSize),
             child:

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_otp/forget_otp.dart';
 
 class ForgetPasswordViaEmail extends StatelessWidget {
   const ForgetPasswordViaEmail({super.key});
@@ -51,9 +52,11 @@ class ForgetPasswordViaEmail extends StatelessWidget {
                         height: 20,
                       ),
                       SizedBox(
-                        width: 200,
+                        width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => ForgetOTP());
+                          },
                           child: Text(tSendOTP),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: tDarkColor,
