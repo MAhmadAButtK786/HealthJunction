@@ -18,19 +18,30 @@ class LoginHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image(
-          image: const AssetImage(tSplashImage),
+        Container(
           height: size.height * 0.2,
+          alignment: Alignment
+              .center, // Center the child widget (image) within the container
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10.0), // Set border radius here
+            child: Image(
+              image: AssetImage(tSplashImage),
+              fit: BoxFit
+                  .cover, // You can adjust the fit property based on your requirements
+            ),
+          ),
         ),
         Text(
           tWelcomeB,
-          style: TextStyle(color: apptextColor, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: apptextColor, fontSize: 30, fontWeight: FontWeight.bold),
         ),
         Text(
           tLogin,
-          style: TextStyle(color: apptextColor, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: apptextColor, fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ],
     );

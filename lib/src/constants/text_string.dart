@@ -10,7 +10,7 @@ const String tSignup = "SignUp";
 const String tLUsername = "Enter Your Username/Email";
 const String tLPassword = "Enter Your Password";
 const String tWelcomeB = "Welcome Back";
-const String tDonthaveaccount = "Don't have an Account";
+const String tDonthaveaccount = "Don't have an Account? ";
 //Sign Up
 const String tSEmail = "Enter Your Email";
 const String tSUsername = "Enter Your Username";

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
@@ -38,6 +40,7 @@ class LoginFooterWidget extends StatelessWidget {
           child: Text.rich(
             TextSpan(
               text: tDonthaveaccount,
+              style: TextStyle(color: tDarkColor),
               children: [
                 TextSpan(
                   text: tSignup,
