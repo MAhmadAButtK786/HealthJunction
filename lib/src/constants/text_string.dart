@@ -42,6 +42,8 @@ const String tOTP = "CO\nDE";
 const String subTitleOTP = "Verification";
 const String toOtpMessage = "Enter the Verification Code Sent at";
 const String tNext = "Next";
+const String tREmail = "Reset Via Email";
+const String tRPhone = "Reset Via Phone";
 //Home Screen
 
 

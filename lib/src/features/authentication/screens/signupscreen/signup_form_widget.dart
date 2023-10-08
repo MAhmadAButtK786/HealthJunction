@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_import
+// ignore_for_file: prefer_const_constructors, unused_import, avoid_print, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/colors.dart';
@@ -6,96 +6,250 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 
-class SignupForm extends StatelessWidget {
-  const SignupForm({
-    super.key,
-  });
+class SignupForm extends StatefulWidget {
+  @override
+  // ignore: library_private_types_in_public_api
+  _SignupFormState createState() => _SignupFormState();
+}
 
+class _SignupFormState extends State<SignupForm> {
+  final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
     return Form(
-        child: Container(
-      padding: EdgeInsets.symmetric(vertical: 20.0),
-      child: Column(
-        children: [
-          TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.person_outline_outlined),
-              border: OutlineInputBorder(),
-              labelText: tUsername,
-              hintText: tSUsername,
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.mail),
-              border: OutlineInputBorder(),
-              labelText: tEmail,
-              hintText: tSEmail,
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.phone),
-              border: OutlineInputBorder(),
-              labelText: tPhoneNo,
-              hintText: tSPhoneNo,
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock),
+      key: _formKey,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 20.0),
+        child: Column(
+          children: [
+            //Username
+            TextFormField(
+              controller: _usernameController,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.person_outline_outlined),
                 border: OutlineInputBorder(),
-                labelText: tPassword,
-                hintText: tLPassword,
-                suffixIcon: IconButton(
-                  onPressed: null,
-                  icon: Icon(Icons.remove_red_eye_sharp),
-                )),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock),
-                border: OutlineInputBorder(),
-                labelText: tCPassword,
-                hintText: tSConfirmPass,
-                suffixIcon: IconButton(
-                  onPressed: null,
-                  icon: Icon(Icons.remove_red_eye_sharp),
-                )),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          SizedBox(
-            width: 100,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: EdgeInsets.symmetric(vertical: tButtonHeight),
-                foregroundColor: tWhiteColor,
-                backgroundColor: apptextColor,
+                labelText: 'Username',
+                hintText: 'Enter your username',
               ),
-              child: Text(tSignup.toUpperCase()),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter your Username.';
+                }
+                if (value.length < 6) {
+                  return 'Username should contain atleast 8 letters';
+                }
+// Regular expression for validating a Username (alphanumeric characters only)
+                String usernameRegex = r'^[a-zA-Z0-9]';
+                RegExp usernameRegExp = RegExp(usernameRegex);
+
+                if (!usernameRegExp.hasMatch(value)) {
+                  return 'Enter a valid email address or username.';
+                }
+
+                return null; // Return null if the input is valid
+              },
             ),
-          )
-        ],
+            SizedBox(
+              height: 15.0,
+            ),
+            //Email
+            TextFormField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.mail),
+                border: OutlineInputBorder(),
+                labelText: 'Email',
+                hintText: 'Enter your email',
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter your email.';
+                }
+
+                // Regular expression for validating an Email
+                // You can use a more comprehensive regex for stricter validation
+                String emailRegex = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
+                RegExp emailRegExp = RegExp(emailRegex);
+                if (!emailRegExp.hasMatch(value)) {
+                  return 'Enter a valid email address or username.';
+                }
+
+                return null; // Return null if the input is valid
+              },
+            ),
+            SizedBox(
+              height: 15.0,
+            ),
+            //Phone
+            TextFormField(
+              controller: _phoneController,
+              keyboardType: TextInputType.phone,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.phone),
+                border: OutlineInputBorder(),
+                labelText: 'Phone Number',
+                hintText: 'Enter your phone number',
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please Enter Your Phone Number';
+                } else if (value.startsWith('+92') && value.length != 13) {
+                  return 'Invalid phone number. Pakistani numbers starting with +92 must have 13 digits.';
+                } else if (!value.startsWith('03') || value.length != 11) {
+                  return 'Invalid phone number. Pakistani mobile numbers must start with 03 and have 11 digits.';
+                }
+                return null; // Validation passed
+              },
+            ),
+            SizedBox(
+              height: 15.0,
+            ),
+            //Password
+            TextFormField(
+              controller: _passwordController,
+              obscureText: !_isPasswordVisible,
+              decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock),
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                  hintText: 'Enter your password',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible;
+                      });
+                    },
+                    icon: Icon(_isPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                  )),
+              //Password Validation Start
+              validator: (value) {
+                //Check is password is filled
+                if (value!.isEmpty) {
+                  return 'Please Enter your password.';
+                }
+                //Check Password Length
+                if (value.length < 8) {
+                  return 'Please Must be at least 8 Characters';
+                }
+                //Check Password has uppercase letter
+                if (!value.contains(RegExp(r'[A-Z]'))) {
+                  return 'Password must have at least one Uppercase letter';
+                }
+                //Check Password has Lowercase letter
+                if (!value.contains(RegExp(r'[a-z]'))) {
+                  return 'Password must have at least one Lowercase letter ';
+                }
+                //Check Password has Special Character
+                if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                  return 'Password must have at leat one Special Character';
+                }
+                //Check Password has numbers
+                if (!value.contains(RegExp(r'[0-9]'))) {
+                  return 'Password must have at least one number';
+                }
+                return null; // Return null if the input is valid
+              },
+            ),
+            SizedBox(
+              height: 15.0,
+            ),
+            //Confirm Password
+            TextFormField(
+              controller: _confirmPasswordController,
+              obscureText: !_isConfirmPasswordVisible,
+              decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock),
+                  border: OutlineInputBorder(),
+                  labelText: 'Confirm Password',
+                  hintText: 'Re-enter your password',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                      });
+                    },
+                    icon: Icon(_isConfirmPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                  )),
+              //Password Validation Start
+              validator: (value) {
+                //Check is password is filled
+                if (value!.isEmpty) {
+                  return 'Please Enter your password.';
+                }
+                //Check Password Length
+                if (value.length < 8) {
+                  return 'Please Must be at least 8 Characters';
+                }
+                //Check Password has uppercase letter
+                if (!value.contains(RegExp(r'[A-Z]'))) {
+                  return 'Password must have at least one Uppercase letter';
+                }
+                //Check Password has Lowercase letter
+                if (!value.contains(RegExp(r'[a-z]'))) {
+                  return 'Password must have at least one Lowercase letter ';
+                }
+                //Check Password has Special Character
+                if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                  return 'Password must have at leat one Special Character';
+                }
+                //Check Password has numbers
+                if (!value.contains(RegExp(r'[0-9]'))) {
+                  return 'Password must have at least one number';
+                }
+                if (value != _passwordController.text) {
+                  return 'Passwords do not match.';
+                }
+                return null; // Return null if the input is valid
+              },
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
+              width: 100,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Sign-up Successful')));
+                  } else {
+                    // Authentication failed, display an error message to the user
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Authentication Failed')));
+                  }
+                  // Form is valid, perform your action here
+                  // print('Username: ${_usernameController.text}');
+                  // print('Email: ${_emailController.text}');
+                  // print('Phone Number: ${_phoneController.text}');
+                  // print('Password: ${_passwordController.text}');
+                  // print('Confirm Password: ${_confirmPasswordController.text}');
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.blue,
+                ),
+                child: Text('Signup'.toUpperCase()),
+              ),
+            )
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

@@ -40,7 +40,7 @@ Future<dynamic> buildShowModelBottomSheet(BuildContext context) {
                 subTitle: tResetVE,
                 title: tEmail,
                 onTap: () {
-                  Get.to(() => const ForgetPasswordViaEmail());
+                  Get.to(() => ForgetPasswordViaEmail());
                 },
               ),
               SizedBox(
@@ -51,7 +51,7 @@ Future<dynamic> buildShowModelBottomSheet(BuildContext context) {
                 subTitle: tResetVP,
                 title: tPhoneNo,
                 onTap: () {
-                  Get.to(() => const ForgetPasswordViaPhone());
+                  Get.to(() => ForgetPasswordViaPhone());
                 },
               ),
             ]),
