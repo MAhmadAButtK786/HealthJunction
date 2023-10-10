@@ -1,10 +1,12 @@
 // ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, prefer_const_constructors
 
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:healthjunction/src/constants/colors.dart";
 import "package:healthjunction/src/constants/sizes.dart";
 import "package:healthjunction/src/constants/text_string.dart";
 import "package:healthjunction/src/features/authentication/screens/forget_password/forget_password_option/forget_password_model_bottom_sheet.dart";
+import "package:healthjunction/src/features/authentication/screens/home_screen/home_screen.dart";
 
 class LoginForm extends StatefulWidget {
   @override
@@ -131,6 +133,7 @@ class _LoginFormState extends State<LoginForm> {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Login Successful')));
+                    Get.to(() => const HomeScreen());
                   } else {
                     // Authentication failed, display an error message to the user
                     ScaffoldMessenger.of(context).showSnackBar(

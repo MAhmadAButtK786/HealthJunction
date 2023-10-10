@@ -45,6 +45,7 @@ const String tNext = "Next";
 const String tREmail = "Reset Via Email";
 const String tRPhone = "Reset Via Phone";
 //Home Screen
-
+const String services = "Services";
+const String tservices = "You get everything here you need ";
 
 //User Profile
