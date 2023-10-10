@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, duplicate_import, unused_import
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:healthjunction/firebase_options.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_mail/forget_password_mail.dart';
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_phone/forget_password_phone.dart';
@@ -11,12 +13,16 @@ import 'package:healthjunction/src/utils/theme/theme.dart';
 import 'package:healthjunction/src/utils/theme/theme.dart';
 import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'package:firebase_core/firebase_core.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(HealthJunction());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HealthJunction extends StatelessWidget {
+  const HealthJunction({super.key});
 
   @override
   Widget build(BuildContext context) {

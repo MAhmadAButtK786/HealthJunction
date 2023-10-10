@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, depend_on_referenced_packages
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, depend_on_referenced_packages, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/colors.dart';

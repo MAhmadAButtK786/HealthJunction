@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, use_full_hex_values_for_flutter_colors
 
 import 'dart:ui';
 

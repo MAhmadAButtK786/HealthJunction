@@ -1,10 +1,14 @@
-// ignore_for_file: prefer_const_constructors, unused_import, avoid_print, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, unused_import, avoid_print, use_key_in_widget_constructors, unused_local_variable, unused_element, unused_field
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/controllers/signup_controller.dart';
+import 'package:healthjunction/src/features/authentication/screens/home_screen/home_screen.dart';
 
 class SignupForm extends StatefulWidget {
   @override
@@ -19,9 +23,41 @@ class _SignupFormState extends State<SignupForm> {
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> _signUp() async {
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+
+      // User signed up successfully, you can do something here if needed
+      print('User signed up: ${userCredential.user!.uid}');
+
+      // Here, you can add additional logic after successful signup if needed
+      // For example, you can navigate to another screen or show a success message.
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        // You can display a message to the user about the weak password.
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        // You can display a message to the user that the email is already in use.
+      } else {
+        print('Failed to sign up: $e');
+        // Handle other errors here.
+        // You can display a generic error message to the user.
+      }
+    } catch (e) {
+      print('Error: $e');
+      // Handle other exceptions here.
+      // You can display a generic error message to the user.
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -222,19 +258,15 @@ class _SignupFormState extends State<SignupForm> {
               child: ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Sign-up Successful')));
+                    _signUp(); // Call the signup function here
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text('Signing up...')));
+                    Get.to(() => const HomeScreen());
                   } else {
                     // Authentication failed, display an error message to the user
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Authentication Failed')));
                   }
-                  // Form is valid, perform your action here
-                  // print('Username: ${_usernameController.text}');
-                  // print('Email: ${_emailController.text}');
-                  // print('Phone Number: ${_phoneController.text}');
-                  // print('Password: ${_passwordController.text}');
-                  // print('Confirm Password: ${_confirmPasswordController.text}');
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(

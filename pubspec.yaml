@@ -56,7 +56,7 @@ flutter_native_splash:
   color: "#FDFDFD"
   color_dark: "#FDFDFD"
   image: assets/images/Dark Blue and Turquoise Modern Gradient Pharmacy Health Logo.png
-  image_dark: assets/images/Dark Blue and Turquoise Modern Gradient Pharmacy Health Logo.png
+#   image_dark: assets/images/Dark Blue and Turquoise Modern Gradient Pharmacy Health Logo.png
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
