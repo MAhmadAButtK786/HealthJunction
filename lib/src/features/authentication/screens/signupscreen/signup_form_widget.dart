@@ -33,28 +33,17 @@ class _SignupFormState extends State<SignupForm> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-
-      // User signed up successfully, you can do something here if needed
       print('User signed up: ${userCredential.user!.uid}');
-
-      // Here, you can add additional logic after successful signup if needed
-      // For example, you can navigate to another screen or show a success message.
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
-        // You can display a message to the user about the weak password.
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
-        // You can display a message to the user that the email is already in use.
       } else {
         print('Failed to sign up: $e');
-        // Handle other errors here.
-        // You can display a generic error message to the user.
       }
     } catch (e) {
       print('Error: $e');
-      // Handle other exceptions here.
-      // You can display a generic error message to the user.
     }
   }
 
