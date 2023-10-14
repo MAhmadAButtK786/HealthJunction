@@ -56,6 +56,7 @@ class _SignupFormState extends State<SignupForm> {
         child: Column(
           children: [
             //Username
+
             TextFormField(
               controller: _usernameController,
               decoration: InputDecoration(
@@ -267,7 +268,7 @@ class _SignupFormState extends State<SignupForm> {
                 ),
                 child: Text('Signup'.toUpperCase()),
               ),
-            )
+            ),
           ],
         ),
       ),

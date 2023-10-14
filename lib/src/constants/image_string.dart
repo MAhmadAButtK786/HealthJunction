@@ -5,4 +5,5 @@ const String bloodBank = "assets/images/blood-bank.png";
 const String clinic = "assets/images/clinic.png";
 const String hospital = "assets/images/clinic.png";
 const String back = "assets/images/back.jpg";
-const String medicine = "assets/image/medicine.png";
+const String medicine = "assets/images/medicine.png";
+const String tProfileI = "assets/images/profileImage.jpg";

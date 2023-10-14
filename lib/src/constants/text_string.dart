@@ -47,5 +47,8 @@ const String tRPhone = "Reset Via Phone";
 //Home Screen
 const String services = "Services";
 const String tservices = "You get everything here you need ";
-
 //User Profile
+const String tProfile = "User Profile";
+const String tProfileName = "User Name";
+const String tUserEmail = "User Email";
+const String tEditProfileB = "Edit Profile";
