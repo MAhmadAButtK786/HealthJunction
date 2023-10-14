@@ -25,8 +25,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     var iconColor = isDarkMode ? Colors.white : apptextColor;
-    Color backgroundColor = isDarkMode ? Colors.black : Colors.white;
-    Color textColor = isDarkMode ? Colors.white : Colors.black;
+    Color backgroundColor = isDarkMode ? Colors.blue : Colors.blueAccent;
+    Color textColor = isDarkMode ? Colors.blue : Colors.black;
     Color buttonColor = isDarkMode ? Colors.blue : Colors.blue;
     Color iconBackgroundColor = isDarkMode
         ? tAccentColors.withOpacity(0.9)
