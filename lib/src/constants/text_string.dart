@@ -54,3 +54,4 @@ const String tUserEmail = "User Email";
 const String tEditProfileB = "Edit Profile";
 //Blood Bank
 const String tBloodBank = "Blood Bank";
+const String tRegASDonor = "Register as Donor";
