@@ -52,3 +52,5 @@ const String tProfile = "User Profile";
 const String tProfileName = "User Name";
 const String tUserEmail = "User Email";
 const String tEditProfileB = "Edit Profile";
+//Blood Bank
+const String tBloodBank = "Blood Bank";
