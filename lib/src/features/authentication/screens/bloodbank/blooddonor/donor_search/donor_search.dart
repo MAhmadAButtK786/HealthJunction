@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_list/donor_list.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -192,7 +193,7 @@ class _SearchDonorState extends State<SearchDonor> {
                     if (_formKey.currentState!.validate()) {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(SnackBar(content: Text('Searching')));
-                      Get.to(() => DonorForm());
+                      Get.to(() => DonorList());
                     } else {
                       // Authentication failed, display an error message to the user
                       ScaffoldMessenger.of(context).showSnackBar(
