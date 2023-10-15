@@ -23,6 +23,7 @@ class _DonorFormState extends State<DonorForm> {
   final _phoneController = TextEditingController();
   final _bloodTypeController = TextEditingController();
   final _ageController = TextEditingController();
+  final _citynameController = TextEditingController();
   String _selectedBloodGroup = 'A+'; // Initial selected value
 
   Gender _site = Gender.male;
@@ -89,6 +90,45 @@ class _DonorFormState extends State<DonorForm> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your Name.';
+                      }
+                      String usernameRegex = r'^[a-zA-Z]';
+                      RegExp usernameRegExp = RegExp(usernameRegex);
+                      if (!usernameRegExp.hasMatch(value)) {
+                        return 'Please Enter valid Name.';
+                      }
+                      if (value.length < 3) {
+                        return 'Username must be at least 3 characters';
+                      }
+                      if (value.length > 50) {
+                        return 'Username cannot be more than 50 characters';
+                      }
+
+                      return null; // Return null if the input is valid
+                    },
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  //City
+                  // Name Form
+                  TextFormField(
+                    controller: _citynameController,
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.person_outline_outlined,
+                          color: Colors.white,
+                        ),
+                        labelText: "City Name",
+                        hintText: "Enter The Name of Your City",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red, width: 2.0),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        labelStyle: TextStyle(color: Colors.black),
+                        hintStyle: TextStyle(color: Colors.black)),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your City';
                       }
                       String usernameRegex = r'^[a-zA-Z]';
                       RegExp usernameRegExp = RegExp(usernameRegex);
@@ -266,10 +306,8 @@ class _DonorFormState extends State<DonorForm> {
                       ),
                     ],
                   ),
-
                   //Blood Group
                   // Initial selected value
-
                   Row(
                     children: [
                       Text("Select Your Blood Group:",
