@@ -59,3 +59,4 @@ const String tRegASDonor = "Register as Donor";
 const String tDonorSearch = "Search for Donor";
 //Recipient Search
 const String tRecipientSearch = "Search for Recipient";
+const String tRegASRecipient = "Register as Recipient";
