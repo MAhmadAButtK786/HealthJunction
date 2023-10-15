@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, unused_local_variable, avoid_init_to_null, prefer_final_fields, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class DonorForm extends StatefulWidget {
@@ -49,6 +52,13 @@ class _DonorFormState extends State<DonorForm> {
           tBloodBank,
           style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.to(() => ProfileScreen());
+              },
+              icon: Icon(Icons.person))
+        ],
         backgroundColor: Colors.red,
         centerTitle: true,
       ),
@@ -109,13 +119,45 @@ class _DonorFormState extends State<DonorForm> {
                   SizedBox(
                     height: 15,
                   ),
+                  DropdownButtonFormField<String>(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.location_on,
+                        color: Colors.white,
+                      ),
+                      labelText: "Select Your Province",
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red, width: 2.0),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelStyle: TextStyle(color: Colors.black),
+                    ),
+                    items: <String>[
+                      'Punjab',
+                      'Sindh',
+                      'Khyber Pakhtunkhwa',
+                      'Balochistan',
+                      'Gilgit-Baltistan'
+                    ].map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      // Do something with the selected value
+                    },
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   //City
                   // Name Form
                   TextFormField(
                     controller: _citynameController,
                     decoration: InputDecoration(
                         prefixIcon: Icon(
-                          Icons.person_outline_outlined,
+                          Icons.location_city,
                           color: Colors.white,
                         ),
                         labelText: "City Name",

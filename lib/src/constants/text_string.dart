@@ -57,3 +57,5 @@ const String tBloodBank = "Blood Bank";
 const String tRegASDonor = "Register as Donor";
 //Donor Search
 const String tDonorSearch = "Search for Donor";
+//Recipient Search
+const String tRecipientSearch = "Search for Recipient";

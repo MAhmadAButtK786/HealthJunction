@@ -9,14 +9,15 @@ import 'package:healthjunction/src/features/authentication/screens/bloodbank/blo
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class SearchDonor extends StatefulWidget {
-  const SearchDonor({super.key});
+class SearchRecipient extends StatefulWidget {
+  const SearchRecipient({super.key});
 
   @override
-  State<SearchDonor> createState() => _SearchDonorState();
+  // ignore: no_logic_in_create_state
+  State<SearchRecipient> createState() => _SearchRecipientState();
 }
 
-class _SearchDonorState extends State<SearchDonor> {
+class _SearchRecipientState extends State<SearchRecipient> {
   final _formKey = GlobalKey<FormState>();
   String _selectedBloodGroup = 'A+';
   final _citynameController = TextEditingController();
@@ -61,7 +62,7 @@ class _SearchDonorState extends State<SearchDonor> {
           child: SingleChildScrollView(
             child: Column(children: [
               Text(
-                tRegASDonor,
+                tRecipientSearch,
                 style: GoogleFonts.inter(
                     fontSize: 27,
                     fontWeight: FontWeight.bold,
