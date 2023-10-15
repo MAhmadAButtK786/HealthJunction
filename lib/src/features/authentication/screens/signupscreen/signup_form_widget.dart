@@ -77,7 +77,7 @@ class _SignupFormState extends State<SignupForm> {
                 RegExp usernameRegExp = RegExp(usernameRegex);
 
                 if (!usernameRegExp.hasMatch(value)) {
-                  return 'Enter a valid email address or username.';
+                  return 'Enter a valid Username.';
                 }
 
                 return null; // Return null if the input is valid
