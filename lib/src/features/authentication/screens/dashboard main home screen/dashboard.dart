@@ -1,15 +1,19 @@
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/BloodBankHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/ClinicHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/HospitalHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
 
 class Dashboard extends StatelessWidget {
-  var height,width;
+  var height, width;
 
-  List imgData=[
-    "images/hospital.jpeg",
-    "images/clinic.jpeg",
-    "images/bloodbank.jpeg",
-    "images/medcine.jpeg",
-  ];
-  List titles=[
+  List imgData = [clinic, hospital, bloodBank, medicine];
+  List titles = [
     "Hospital",
     "Clinic",
     "Blood Bank",
@@ -17,24 +21,23 @@ class Dashboard extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    height=MediaQuery.of(context).size.height;
-    width=MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           color: Colors.indigo,
           child: Column(
-
             children: [
               Container(
                 decoration: BoxDecoration(
 
-                  /* borderRadius: BorderRadius.only(
+                    /* borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(50),
                     bottomRight: Radius.circular(50),
 
                   ),*/
-                ),
+                    ),
                 height: height * 0.25,
                 width: width,
                 child: Column(
@@ -50,7 +53,7 @@ class Dashboard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: (){},
+                            onTap: () {},
                             child: Icon(
                               Icons.sort,
                               color: Colors.white,
@@ -63,13 +66,11 @@ class Dashboard extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25),
                                 color: Colors.white,
-                                image: DecorationImage(image: AssetImage("images/women.png",))
-
-                            ),
-
-
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                  "images/women.png",
+                                ))),
                           ),
-
                         ],
                       ),
                     ),
@@ -90,7 +91,9 @@ class Dashboard extends StatelessWidget {
                               letterSpacing: 1,
                             ),
                           ),
-                          SizedBox(height: 5,),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
                             " Innovative App for Health Care",
                             style: TextStyle(
@@ -106,37 +109,44 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               Container(
-
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
-
                   ),
                 ),
                 height: height * 0.75,
                 width: width,
-
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 0.8,
                       mainAxisSpacing: 45,
-                      crossAxisSpacing: 20
-                  ),
+                      crossAxisSpacing: 20),
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: imgData.length,
-                  itemBuilder: (context,index){
+                  itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: (){},
+                      onTap: () {
+                        if (index == 0) {
+                          Get.to(() => Clinichome());
+                        } else if (index == 1) {
+                          Get.to(() => Hospitalhome());
+                        } else if (index == 2) {
+                          Get.to(() => BloodBankhome());
+                        } else if (index == 3) {
+                          Get.to(() => Medicinehome());
+                        }
+                      },
                       child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 8,horizontal: 20),
+                        margin:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
-                          boxShadow:[
+                          boxShadow: [
                             BoxShadow(
                               color: Colors.black26,
                               spreadRadius: 7,
@@ -147,16 +157,10 @@ class Dashboard extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Image.asset(imgData[index],
+                            Image.asset(
+                              imgData[index],
                               width: 100,
                             ),
-                            /*  Text(
-                              titles[index],
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),*/
                           ],
                         ),
                       ),
@@ -164,7 +168,6 @@ class Dashboard extends StatelessWidget {
                   },
                 ),
               ),
-
             ],
           ),
         ),

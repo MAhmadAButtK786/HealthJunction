@@ -8,7 +8,7 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/controllers/signup_controller.dart';
-import 'package:healthjunction/src/features/authentication/screens/home_screen/home_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
 
 class SignupForm extends StatefulWidget {
   @override
@@ -251,7 +251,7 @@ class _SignupFormState extends State<SignupForm> {
                     _signUp(); // Call the signup function here
                     ScaffoldMessenger.of(context)
                         .showSnackBar(SnackBar(content: Text('Signing up...')));
-                    Get.to(() => const HomeScreen());
+                    Get.to(() => Dashboard());
                   } else {
                     // Authentication failed, display an error message to the user
                     ScaffoldMessenger.of(context).showSnackBar(

@@ -7,7 +7,6 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
-import 'package:healthjunction/src/features/authentication/screens/home_screen/home_screen.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 // ... (imports and other code above)

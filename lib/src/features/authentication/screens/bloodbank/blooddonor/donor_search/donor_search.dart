@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, unused_field
+// ignore_for_file: prefer_const_constructors, unused_local_variable, unused_field, unused_import, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

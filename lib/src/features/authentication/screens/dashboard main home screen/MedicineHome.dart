@@ -1,42 +1,34 @@
+// ignore_for_file: file_names, use_key_in_widget_constructors, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
 
 class Medicinehome extends StatelessWidget {
-  var height,width;
+  var height, width;
 
-  List imgData=[
-    /* "images/hospital.jpeg",
-    "images/hospital.jpeg",
-    "images/clinic.jpeg",
-    "images/bloodbank.jpeg",
-    "images/bloodbank.jpeg",
-    "images/bloodbank.jpeg",*/
-    "images/medcine.jpeg",
-  ];
-  List titles=[
+  List imgData = [medicine];
+  List titles = [
     " Medicine Suppliers  ",
-
-
   ];
   @override
   Widget build(BuildContext context) {
-    height=MediaQuery.of(context).size.height;
-    width=MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           color: Colors.green,
           child: Column(
-
             children: [
               Container(
                 decoration: BoxDecoration(
 
-                  /* borderRadius: BorderRadius.only(
+                    /* borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(50),
                     bottomRight: Radius.circular(50),
 
                   ),*/
-                ),
+                    ),
                 height: height * 0.25,
                 width: width,
                 child: Column(
@@ -52,7 +44,7 @@ class Medicinehome extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: (){},
+                            onTap: () {},
                             child: Icon(
                               Icons.sort,
                               color: Colors.white,
@@ -65,13 +57,11 @@ class Medicinehome extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25),
                                 color: Colors.white,
-                                image: DecorationImage(image: AssetImage("images/women.png",))
-
-                            ),
-
-
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                  "images/women.png",
+                                ))),
                           ),
-
                         ],
                       ),
                     ),
@@ -92,7 +82,9 @@ class Medicinehome extends StatelessWidget {
                               letterSpacing: 1,
                             ),
                           ),
-                          SizedBox(height: 5,),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
                             "             Innovative App for Health Care",
                             style: TextStyle(
@@ -108,37 +100,34 @@ class Medicinehome extends StatelessWidget {
                 ),
               ),
               Container(
-
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
-
                   ),
                 ),
                 height: height * 0.75,
                 width: width,
-
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 1,
                       childAspectRatio: 1.8,
                       mainAxisSpacing: 45,
-                      crossAxisSpacing: 20
-                  ),
+                      crossAxisSpacing: 20),
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
                   itemCount: titles.length,
-                  itemBuilder: (context,index){
+                  itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: (){},
+                      onTap: () {},
                       child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 8,horizontal: 20),
+                        margin:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
-                          boxShadow:[
+                          boxShadow: [
                             BoxShadow(
                               color: Colors.black26,
                               spreadRadius: 7,
@@ -149,7 +138,8 @@ class Medicinehome extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Image.asset(imgData[index],
+                            Image.asset(
+                              imgData[index],
                               width: 100,
                             ),
                             Text(
@@ -166,7 +156,6 @@ class Medicinehome extends StatelessWidget {
                   },
                 ),
               ),
-
             ],
           ),
         ),
@@ -174,4 +163,3 @@ class Medicinehome extends StatelessWidget {
     );
   }
 }
-
