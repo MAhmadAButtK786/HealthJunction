@@ -1,23 +1,18 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_import
+// ignore_for_file: file_names, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/BloodBankHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/ClinicHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/HospitalHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_form.dart';
 
-class Dashboard extends StatelessWidget {
+class RegistrationHome extends StatelessWidget {
   var height, width;
 
-  List imgData = [clinic, hospital, bloodBank, medicine];
+  List imgData = [bloodBank, bloodBank];
   List titles = [
-    "Hospital",
-    "Clinic",
-    "Blood Bank",
-    "Medicine",
+    "Register as Donor",
+    "Register as Recipients",
   ];
   @override
   Widget build(BuildContext context) {
@@ -26,18 +21,11 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.indigo,
+          color: Colors.red,
           child: Column(
             children: [
               Container(
-                decoration: BoxDecoration(
-
-                    /* borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(50),
-                    bottomRight: Radius.circular(50),
-
-                  ),*/
-                    ),
+                decoration: BoxDecoration(),
                 height: height * 0.25,
                 width: width,
                 child: Column(
@@ -83,7 +71,7 @@ class Dashboard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            " Health Junction",
+                            "Blood Bank  ",
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
@@ -95,7 +83,7 @@ class Dashboard extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            " Innovative App for Health Care",
+                            "Innovative App for Health Care",
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.white54,
@@ -120,24 +108,20 @@ class Dashboard extends StatelessWidget {
                 width: width,
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.8,
+                      crossAxisCount: 1,
+                      childAspectRatio: 1.8,
                       mainAxisSpacing: 45,
                       crossAxisSpacing: 20),
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: imgData.length,
+                  physics: ScrollPhysics(),
+                  itemCount: titles.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
                         if (index == 0) {
-                          Get.to(() => Clinichome());
+                          Get.to(() => DonorForm());
                         } else if (index == 1) {
-                          Get.to(() => Hospitalhome());
-                        } else if (index == 2) {
-                          Get.to(() => BloodBankhome());
-                        } else if (index == 3) {
-                          Get.to(() => Medicinehome());
+                          Get.to(() => RecipientForm());
                         }
                       },
                       child: Container(
@@ -160,6 +144,13 @@ class Dashboard extends StatelessWidget {
                             Image.asset(
                               imgData[index],
                               width: 100,
+                            ),
+                            Text(
+                              titles[index],
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),

@@ -1,7 +1,11 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_import
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
 
 class Clinichome extends StatelessWidget {
   var height, width;
@@ -75,7 +79,7 @@ class Clinichome extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "               Clinic ",
+                            "Clinic",
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
@@ -87,7 +91,7 @@ class Clinichome extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            "             Innovative App for Health Care",
+                            "Innovative App for Health Care",
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.white54,
@@ -121,7 +125,14 @@ class Clinichome extends StatelessWidget {
                   itemCount: titles.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        if (index == 0) {
+                          Get.to(() => clinicpage1());
+                        }
+                        if (index == 1) {
+                          Get.to(() => clinicpage3());
+                        }
+                      },
                       child: Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 20),

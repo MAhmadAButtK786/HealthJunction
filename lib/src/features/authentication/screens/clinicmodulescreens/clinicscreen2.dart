@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables, camel_case_types, must_be_immutable, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class clinicpage2 extends StatelessWidget {
@@ -75,16 +77,19 @@ class clinicpage2 extends StatelessWidget {
                     topRight: Radius.circular(30),
                   ),
                 ),
-                height: height * 0.55,  // controls the heirht of all scrollabla containers for holding pictures
+                height: height *
+                    0.55, // controls the heirht of all scrollabla containers for holding pictures
                 width: width,
                 child: ListView(
-                  scrollDirection: Axis.horizontal, // Enable horizontal scrolling
+                  scrollDirection:
+                      Axis.horizontal, // Enable horizontal scrolling
                   children: [
                     // First horizontally scrollable container
                     Container(
                       width: width * 0.5, // Reduce width
                       height: height * 0.5, // Reduce height
-                      margin: EdgeInsets.all(10), // Add spacing between containers
+                      margin:
+                          EdgeInsets.all(10), // Add spacing between containers
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey, // Replace with your content
@@ -94,7 +99,8 @@ class clinicpage2 extends StatelessWidget {
                     Container(
                       width: width * 0.5, // Reduce width
                       height: height * 0.5, // Reduce height
-                      margin: EdgeInsets.all(10), // Add spacing between containers
+                      margin:
+                          EdgeInsets.all(10), // Add spacing between containers
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.blueGrey, // Replace with your content
@@ -104,7 +110,8 @@ class clinicpage2 extends StatelessWidget {
                     Container(
                       width: width * 0.5, // Reduce width
                       height: height * 0.5, // Reduce height
-                      margin: EdgeInsets.all(10), // Add spacing between containers
+                      margin:
+                          EdgeInsets.all(10), // Add spacing between containers
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey, // Replace with your content
@@ -138,40 +145,43 @@ class clinicpage2 extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   ElevatedButton(
                     onPressed: () {
                       // Handle button press
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20), // Adjust the value to control the roundness
+                        borderRadius: BorderRadius.circular(
+                            20), // Adjust the value to control the roundness
                       ),
-                      primary: Colors.white, // Set the button's background color
+                      backgroundColor:
+                          Colors.white, // Set the button's background color
                     ),
                     child: Text(
                       " More  ",
-                      style: TextStyle(color: Colors.black), // Set the text color
+                      style:
+                          TextStyle(color: Colors.black), // Set the text color
                     ),
                   ),
                   SizedBox(width: 16),
-
                   ElevatedButton(
                     onPressed: () {
                       // Handle button press
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20), // Adjust the value to control the roundness
+                        borderRadius: BorderRadius.circular(
+                            20), // Adjust the value to control the roundness
                       ),
-                      primary: Colors.white, // Set the button's background color
+                      backgroundColor:
+                          Colors.white, // Set the button's background color
                     ),
                     child: Text(
                       " Maps  ",
-                      style: TextStyle(color: Colors.black), // Set the text color
+                      style:
+                          TextStyle(color: Colors.black), // Set the text color
                     ),
                   )
-
                 ],
               ),
             ],

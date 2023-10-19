@@ -1,7 +1,12 @@
-// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, prefer_typing_uninitialized_variables, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, prefer_typing_uninitialized_variables, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, unnecessary_import
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hositalscreen3.dart';
+import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen1.dart';
+import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen2.dart';
 
 class Hospitalhome extends StatelessWidget {
   var height, width;
@@ -75,11 +80,11 @@ class Hospitalhome extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "             Hospitals ",
+                            "Hospitals ",
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                               letterSpacing: 1,
                             ),
                           ),
@@ -87,10 +92,10 @@ class Hospitalhome extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            "             Innovative App for Health Care",
+                            "Innovative App for Health Care",
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.white54,
+                              color: Colors.white,
                               letterSpacing: 1,
                             ),
                           )
@@ -121,7 +126,13 @@ class Hospitalhome extends StatelessWidget {
                   itemCount: titles.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        if (index == 0) {
+                          Get.to(() => hospitalpage1());
+                        } else if (index == 1) {
+                          Get.to(() => hospitalpage3());
+                        }
+                      },
                       child: Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 20),
