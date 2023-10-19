@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
 
 // ignore: use_key_in_widget_constructors
 class hospitalpage3 extends StatelessWidget {
@@ -36,7 +37,7 @@ class hospitalpage3 extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Icon(
-                              Icons.sort,
+                              Icons.menu,
                               color: Colors.white,
                               size: 40,
                             ),
@@ -48,7 +49,7 @@ class hospitalpage3 extends StatelessWidget {
                               borderRadius: BorderRadius.circular(25),
                               color: Colors.white,
                               image: DecorationImage(
-                                image: AssetImage("images/women.png"),
+                                image: AssetImage(tProfileI),
                               ),
                             ),
                           ),

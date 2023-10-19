@@ -1,191 +1,197 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, camel_case_types, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:healthjunction/src/constants/colors.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
+void main() => runApp(MaterialApp(home: hospitalpage2()));
+
+// ignore: camel_case_types
 class hospitalpage2 extends StatelessWidget {
-  var height, width;
-
   @override
   Widget build(BuildContext context) {
-    height = MediaQuery.of(context).size.height;
-    width = MediaQuery.of(context).size.width;
-
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          color: Colors.blue,
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(),
-                height: height * 0.17,
-                width: width,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 35,
-                        left: 20,
-                        right: 20,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.sort,
-                              color: Colors.white,
-                              size: 40,
-                            ),
-                          ),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage("images/women.png"),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 20,
-                        left: 30,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 5),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
-                ),
-                height: height *
-                    0.55, // controls the heirht of all scrollabla containers for holding pictures
-                width: width,
-                child: ListView(
-                  scrollDirection:
-                      Axis.horizontal, // Enable horizontal scrolling
-                  children: [
-                    // First horizontally scrollable container
-                    Container(
-                      width: width * 0.5, // Reduce width
-                      height: height * 0.5, // Reduce height
-                      margin:
-                          EdgeInsets.all(10), // Add spacing between containers
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey, // Replace with your content
-                      ),
-                    ),
-                    // Second horizontally scrollable container
-                    Container(
-                      width: width * 0.5, // Reduce width
-                      height: height * 0.5, // Reduce height
-                      margin:
-                          EdgeInsets.all(10), // Add spacing between containers
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.blueGrey, // Replace with your content
-                      ),
-                    ),
-                    // Third horizontally scrollable container
-                    Container(
-                      width: width * 0.5, // Reduce width
-                      height: height * 0.5, // Reduce height
-                      margin:
-                          EdgeInsets.all(10), // Add spacing between containers
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey, // Replace with your content
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // Text for hospital name
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  "Hospital Name",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              // Text for hospital address
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  "Hospital Address",
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              // Buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Handle button press
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            20), // Adjust the value to control the roundness
-                      ),
-                      backgroundColor:
-                          Colors.white, // Set the button's background color
-                    ),
-                    child: Text(
-                      " More  ",
-                      style:
-                          TextStyle(color: Colors.black), // Set the text color
-                    ),
-                  ),
-                  SizedBox(width: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Handle button press
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            20), // Adjust the value to control the roundness
-                      ),
-                      backgroundColor:
-                          Colors.white, // Set the button's background color
-                    ),
-                    child: Text(
-                      " Maps  ",
-                      style:
-                          TextStyle(color: Colors.black), // Set the text color
-                    ),
-                  )
-                ],
-              ),
-            ],
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(
+            LineAwesomeIcons.angle_left,
+            color: tWhiteColor,
           ),
+        ),
+        title: Text(
+          "Hospital",
+          style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.to(() => ProfileScreen());
+              },
+              icon: Icon(Icons.person))
+        ],
+        backgroundColor: Colors.blue,
+        centerTitle: true,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blue.shade800, Colors.blue.shade200],
+          ),
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  "Hospital Name",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  "Hospital Address",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white70,
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        // Handle More button press
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 12,
+                        ),
+                        child: Text(
+                          "More",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Handle Maps button press
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 12,
+                        ),
+                        child: Text(
+                          "Maps",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 50),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      HospitalCard(),
+                      HospitalCard(),
+                      HospitalCard(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class HospitalCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 250,
+      height: 350,
+      margin: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.local_hospital,
+              color: Colors.blue,
+              size: 60,
+            ),
+            SizedBox(height: 20),
+            Text(
+              "Department Name",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.grey,
+              ),
+            ),
+          ],
         ),
       ),
     );
