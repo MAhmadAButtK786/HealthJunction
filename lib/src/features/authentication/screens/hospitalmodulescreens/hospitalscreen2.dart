@@ -78,7 +78,7 @@ class hospitalpage2 extends StatelessWidget {
                         // Handle More button press
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
+                        backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -103,7 +103,7 @@ class hospitalpage2 extends StatelessWidget {
                         // Handle Maps button press
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
+                        backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),

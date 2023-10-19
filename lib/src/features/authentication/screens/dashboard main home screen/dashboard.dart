@@ -55,7 +55,7 @@ class Dashboard extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Icon(
-                              Icons.sort,
+                              Icons.menu,
                               color: Colors.white,
                               size: 40,
                             ),
@@ -68,7 +68,7 @@ class Dashboard extends StatelessWidget {
                                 color: Colors.white,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                  "images/women.png",
+                                  tProfileI,
                                 ))),
                           ),
                         ],
@@ -87,7 +87,7 @@ class Dashboard extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                               letterSpacing: 1,
                             ),
                           ),
@@ -98,7 +98,7 @@ class Dashboard extends StatelessWidget {
                             " Innovative App for Health Care",
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.white54,
+                              color: Colors.white,
                               letterSpacing: 1,
                             ),
                           )

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen2.dart';
 
 class clinicpage1 extends StatelessWidget {
@@ -18,7 +19,7 @@ class clinicpage1 extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.purple,
+          color: Colors.tealAccent.shade400,
           child: Column(
             children: [
               Container(
@@ -40,7 +41,7 @@ class clinicpage1 extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Icon(
-                              Icons.sort,
+                              Icons.menu,
                               color: Colors.white,
                               size: 40,
                             ),
@@ -52,7 +53,7 @@ class clinicpage1 extends StatelessWidget {
                               borderRadius: BorderRadius.circular(25),
                               color: Colors.white,
                               image: DecorationImage(
-                                image: AssetImage("images/women.png"),
+                                image: AssetImage(tProfileI),
                               ),
                             ),
                           ),

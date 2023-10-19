@@ -40,7 +40,7 @@ class hospitalpage1 extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Icon(
-                              Icons.sort,
+                              Icons.menu,
                               color: Colors.white,
                               size: 40,
                             ),

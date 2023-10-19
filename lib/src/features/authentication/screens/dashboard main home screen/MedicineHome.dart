@@ -1,7 +1,9 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/medicine%20suppliers%20module/Medicinesuppliersscreen.dart';
 
 class Medicinehome extends StatelessWidget {
   var height, width;
@@ -46,7 +48,7 @@ class Medicinehome extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Icon(
-                              Icons.sort,
+                              Icons.menu,
                               color: Colors.white,
                               size: 40,
                             ),
@@ -59,7 +61,7 @@ class Medicinehome extends StatelessWidget {
                                 color: Colors.white,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                  "images/women.png",
+                                  tProfileI,
                                 ))),
                           ),
                         ],
@@ -74,11 +76,11 @@ class Medicinehome extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "              Medicine  ",
+                            "Medicine  ",
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                               letterSpacing: 1,
                             ),
                           ),
@@ -86,10 +88,10 @@ class Medicinehome extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            "             Innovative App for Health Care",
+                            "Innovative App for Health Care",
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.white54,
+                              color: Colors.white,
                               letterSpacing: 1,
                             ),
                           )
@@ -120,7 +122,9 @@ class Medicinehome extends StatelessWidget {
                   itemCount: titles.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => Medicine2());
+                      },
                       child: Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 20),

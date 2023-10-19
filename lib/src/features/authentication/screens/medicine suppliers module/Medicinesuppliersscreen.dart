@@ -1,6 +1,10 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: file_names, use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 
 class Medicine2 extends StatelessWidget {
   var height, width;
@@ -43,7 +47,7 @@ class Medicine2 extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Icon(
-                              Icons.sort,
+                              Icons.menu,
                               color: Colors.white,
                               size: 40,
                             ),
@@ -55,7 +59,7 @@ class Medicine2 extends StatelessWidget {
                               borderRadius: BorderRadius.circular(25),
                               color: Colors.white,
                               image: DecorationImage(
-                                image: AssetImage("images/women.png"),
+                                image: AssetImage(tProfileI),
                               ),
                             ),
                           ),
@@ -71,7 +75,7 @@ class Medicine2 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "             Medicine  ",
+                            "Medicine  ",
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
@@ -80,7 +84,7 @@ class Medicine2 extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "             Suppliers  ",
+                            " Suppliers  ",
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
@@ -92,7 +96,7 @@ class Medicine2 extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            "             Innovative App for Health Care",
+                            "Innovative App for Health Care",
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.white54,

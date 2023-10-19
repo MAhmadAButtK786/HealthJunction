@@ -45,7 +45,7 @@ class BloodBankhome extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Icon(
-                              Icons.sort,
+                              Icons.menu,
                               color: Colors.white,
                               size: 40,
                             ),
@@ -58,7 +58,7 @@ class BloodBankhome extends StatelessWidget {
                                 color: Colors.white,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                  "images/women.png",
+                                  tProfileI,
                                 ))),
                           ),
                         ],
@@ -73,11 +73,11 @@ class BloodBankhome extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Blood Bank  ",
+                            "Blood Bank ",
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.bold,
                               letterSpacing: 1,
                             ),
                           ),
@@ -88,7 +88,7 @@ class BloodBankhome extends StatelessWidget {
                             "Innovative App for Health Care",
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.white54,
+                              color: Colors.white,
                               letterSpacing: 1,
                             ),
                           )

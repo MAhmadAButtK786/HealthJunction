@@ -52,7 +52,7 @@ class Hospitalhome extends StatelessWidget {
                           InkWell(
                             onTap: () {},
                             child: Icon(
-                              Icons.sort,
+                              Icons.menu,
                               color: Colors.white,
                               size: 40,
                             ),
@@ -65,7 +65,7 @@ class Hospitalhome extends StatelessWidget {
                                 color: Colors.white,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                  "images/women.png",
+                                  tProfileI,
                                 ))),
                           ),
                         ],
