@@ -47,7 +47,7 @@ class HealthJunction extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: RecipientForm(),
+      home: Welcome(),
     );
   }
 }
