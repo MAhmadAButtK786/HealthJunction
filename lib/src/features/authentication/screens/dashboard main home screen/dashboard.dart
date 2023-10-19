@@ -1,16 +1,18 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/BloodBankHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/ClinicHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/HospitalHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
 
 class Dashboard extends StatelessWidget {
   var height, width;
 
-  List imgData = [
-    "images/hospital.jpeg",
-    "images/clinic.jpeg",
-    "images/bloodbank.jpeg",
-    "images/medcine.jpeg",
-  ];
+  List imgData = [clinic, hospital, bloodBank, medicine];
   List titles = [
     "Hospital",
     "Clinic",
@@ -127,7 +129,17 @@ class Dashboard extends StatelessWidget {
                   itemCount: imgData.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        if (index == 0) {
+                          Get.to(() => Clinichome());
+                        } else if (index == 1) {
+                          Get.to(() => Hospitalhome());
+                        } else if (index == 2) {
+                          Get.to(() => BloodBankhome());
+                        } else if (index == 3) {
+                          Get.to(() => Medicinehome());
+                        }
+                      },
                       child: Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 20),
@@ -149,13 +161,6 @@ class Dashboard extends StatelessWidget {
                               imgData[index],
                               width: 100,
                             ),
-                            /*  Text(
-                              titles[index],
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),*/
                           ],
                         ),
                       ),
