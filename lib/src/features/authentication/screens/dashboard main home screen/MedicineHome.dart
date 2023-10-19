@@ -1,19 +1,12 @@
 // ignore_for_file: file_names, use_key_in_widget_constructors, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
 
 class Medicinehome extends StatelessWidget {
   var height, width;
 
-  List imgData = [
-    /* "images/hospital.jpeg",
-    "images/hospital.jpeg",
-    "images/clinic.jpeg",
-    "images/bloodbank.jpeg",
-    "images/bloodbank.jpeg",
-    "images/bloodbank.jpeg",*/
-    "images/medcine.jpeg",
-  ];
+  List imgData = [medicine];
   List titles = [
     " Medicine Suppliers  ",
   ];

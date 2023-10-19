@@ -1,18 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
 
 class Clinichome extends StatelessWidget {
   var height, width;
 
-  List imgData = [
-    /* "images/hospital.jpeg",
-    "images/hospital.jpeg",*/
-    "images/clinic.jpeg",
-    "images/clinic.jpeg",
-    /*"images/bloodbank.jpeg",
-    "images/medcine.jpeg",*/
-  ];
+  List imgData = [clinic, clinic];
   List titles = [
     "Check Availability /  Information ",
     "Appointment ",
