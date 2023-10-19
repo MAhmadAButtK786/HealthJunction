@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 
 class BloodBankhome extends StatelessWidget {
@@ -69,7 +70,7 @@ class BloodBankhome extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "          Blood Bank  ",
+                            "Blood Bank  ",
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
@@ -115,7 +116,11 @@ class BloodBankhome extends StatelessWidget {
                   itemCount: titles.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        // if(index==0){
+                        //   Get.to(()=> const )
+                        // }
+                      },
                       child: Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 20),
