@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, camel_case_types, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, camel_case_types, prefer_const_constructors, unnecessary_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
