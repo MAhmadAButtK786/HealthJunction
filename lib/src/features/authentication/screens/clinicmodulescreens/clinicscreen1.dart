@@ -1,6 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, camel_case_types, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen2.dart';
 
 class clinicpage1 extends StatelessWidget {
   var height, width;
@@ -138,7 +141,7 @@ class clinicpage1 extends StatelessWidget {
                       title: Text("Clinic Name $index"),
                       subtitle: Text("Address $index"),
                       onTap: () {
-                        // Handle item click
+                        Get.to(() => clinicpage2());
                       },
                     );
                   },
