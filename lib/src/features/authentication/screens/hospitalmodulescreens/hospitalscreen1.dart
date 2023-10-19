@@ -1,5 +1,8 @@
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class hospitalpage1 extends StatelessWidget {
   var height, width;
   TextEditingController searchController = TextEditingController();
@@ -72,7 +75,8 @@ class hospitalpage1 extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 10),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10),
                                     child: Row(
                                       children: [
                                         Icon(
