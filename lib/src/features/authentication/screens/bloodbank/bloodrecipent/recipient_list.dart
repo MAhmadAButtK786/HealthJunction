@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, unnecessary_import
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
