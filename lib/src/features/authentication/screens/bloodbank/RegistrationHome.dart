@@ -3,18 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
-import 'package:healthjunction/src/features/authentication/screens/bloodbank/RegistrationHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_search/donor_search.dart';
-import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/search_recipient.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_form.dart';
 
-class BloodBankhome extends StatelessWidget {
+class RegistrationHome extends StatelessWidget {
   var height, width;
 
-  List imgData = [bloodBank, bloodBank, bloodBank];
+  List imgData = [bloodBank, bloodBank];
   List titles = [
-    " Registration  ",
-    "  Donors  ",
-    "  Recipients ",
+    "Register as Donor",
+    "Register as Recipients",
   ];
   @override
   Widget build(BuildContext context) {
@@ -121,13 +119,9 @@ class BloodBankhome extends StatelessWidget {
                     return InkWell(
                       onTap: () {
                         if (index == 0) {
-                          Get.to(() => RegistrationHome());
-                        }
-                        if (index == 1) {
-                          Get.to(() => SearchDonor());
-                        }
-                        if (index == 2) {
-                          Get.to(() => SearchRecipient());
+                          Get.to(() => DonorForm());
+                        } else if (index == 1) {
+                          Get.to(() => RecipientForm());
                         }
                       },
                       child: Container(

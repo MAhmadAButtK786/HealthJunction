@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, unused_field, avoid_print
+// ignore_for_file: prefer_const_constructors, unused_local_variable, unused_field, avoid_print, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_list/donor_list.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_list.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -190,21 +192,13 @@ class _SearchRecipientState extends State<SearchRecipient> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text('Searching')));
-                      Get.to(() => DonorForm());
-                    } else {
-                      // Authentication failed, display an error message to the user
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Faild to Search')));
-                    }
+                    Get.to(() => RecipientList());
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: tWhiteColor,
                     backgroundColor: Colors.red,
                   ),
-                  child: Text(tDonorSearch.toUpperCase()),
+                  child: Text(tRecipientSearch.toUpperCase()),
                 ),
               ),
             ]),

@@ -62,7 +62,7 @@ class _SearchDonorState extends State<SearchDonor> {
           child: SingleChildScrollView(
             child: Column(children: [
               Text(
-                tRegASDonor,
+                "Search For Donor",
                 style: GoogleFonts.inter(
                     fontSize: 27,
                     fontWeight: FontWeight.bold,
@@ -190,15 +190,7 @@ class _SearchDonorState extends State<SearchDonor> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text('Searching')));
-                      Get.to(() => DonorList());
-                    } else {
-                      // Authentication failed, display an error message to the user
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Faild to Search')));
-                    }
+                    Get.to(() => DonorList());
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: tWhiteColor,
