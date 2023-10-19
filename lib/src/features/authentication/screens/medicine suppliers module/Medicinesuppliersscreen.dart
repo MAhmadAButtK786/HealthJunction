@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class Medicine2 extends StatelessWidget {
@@ -10,7 +12,6 @@ class Medicine2 extends StatelessWidget {
     " Medicine suppliers 3  and there data, links ",
     " Medicine suppliers 4  and there data, links ",
     " Medicine suppliers 5  and there data, links ",
-
   ];
 
   @override
@@ -87,7 +88,9 @@ class Medicine2 extends StatelessWidget {
                               letterSpacing: 1,
                             ),
                           ),
-                          SizedBox(height: 5,),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
                             "             Innovative App for Health Care",
                             style: TextStyle(
