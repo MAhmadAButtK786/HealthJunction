@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_import, avoid_print, use_key_in_widget_constructors, unused_local_variable, unused_element, unused_field
+// ignore_for_file: prefer_const_constructors, unused_import, avoid_print, use_key_in_widget_constructors, unused_local_variable, unused_element, unused_field, use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,37 +18,53 @@ class SignupForm extends StatefulWidget {
 
 class _SignupFormState extends State<SignupForm> {
   final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
+  // Firebase Authentication
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  Future<void> _signUp() async {
+  Future<void> _registerUserWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
     try {
       UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
+          await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
       );
-      print('User signed up: ${userCredential.user!.uid}');
+      Get.to(() => Dashboard());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      } else {
-        print('Failed to sign up: $e');
+      print('Failed to register user: ${e.message}');
+      String errorMessage;
+      switch (e.code) {
+        case 'email-already-in-use':
+          errorMessage =
+              'The email address is already in use. Please use a different one.';
+          break;
+        case 'phone-number-already-exists':
+          errorMessage =
+              'The phone number is already in use. Please use a different one.';
+          break;
+        case 'credential-already-in-use':
+          errorMessage =
+              'The email address or phone number is already in use. Please use a different one.';
+          break;
+        default:
+          errorMessage = e.message ?? 'An error occurred during registration.';
       }
-    } catch (e) {
-      print('Error: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(errorMessage),
+          duration: Duration(seconds: 3),
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
     return Form(
       key: _formKey,
       child: Container(
@@ -58,7 +74,7 @@ class _SignupFormState extends State<SignupForm> {
             //Username
 
             TextFormField(
-              controller: _usernameController,
+              controller: controller.usernameController,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.person_outline_outlined),
                 border: OutlineInputBorder(),
@@ -88,7 +104,7 @@ class _SignupFormState extends State<SignupForm> {
             ),
             //Email
             TextFormField(
-              controller: _emailController,
+              controller: controller.emailController,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.mail),
                 border: OutlineInputBorder(),
@@ -105,7 +121,7 @@ class _SignupFormState extends State<SignupForm> {
                 String emailRegex = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
                 RegExp emailRegExp = RegExp(emailRegex);
                 if (!emailRegExp.hasMatch(value)) {
-                  return 'Enter a valid email address or username.';
+                  return 'Enter a valid email address';
                 }
 
                 return null; // Return null if the input is valid
@@ -116,7 +132,7 @@ class _SignupFormState extends State<SignupForm> {
             ),
             //Phone
             TextFormField(
-              controller: _phoneController,
+              controller: controller.phoneController,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.phone),
@@ -140,7 +156,7 @@ class _SignupFormState extends State<SignupForm> {
             ),
             //Password
             TextFormField(
-              controller: _passwordController,
+              controller: controller.passwordController,
               obscureText: !_isPasswordVisible,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock),
@@ -191,7 +207,7 @@ class _SignupFormState extends State<SignupForm> {
             ),
             //Confirm Password
             TextFormField(
-              controller: _confirmPasswordController,
+              controller: controller.confirmPasswordController,
               obscureText: !_isConfirmPasswordVisible,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock),
@@ -234,7 +250,7 @@ class _SignupFormState extends State<SignupForm> {
                 if (!value.contains(RegExp(r'[0-9]'))) {
                   return 'Password must have at least one number';
                 }
-                if (value != _passwordController.text) {
+                if (value != controller.passwordController.text) {
                   return 'Passwords do not match.';
                 }
                 return null; // Return null if the input is valid
@@ -248,14 +264,9 @@ class _SignupFormState extends State<SignupForm> {
               child: ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    _signUp(); // Call the signup function here
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text('Signing up...')));
-                    Get.to(() => Dashboard());
-                  } else {
-                    // Authentication failed, display an error message to the user
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Authentication Failed')));
+                    _registerUserWithEmailAndPassword(
+                        controller.emailController.text.trim(),
+                        controller.confirmPasswordController.text.trim());
                   }
                 },
                 style: ElevatedButton.styleFrom(

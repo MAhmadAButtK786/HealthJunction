@@ -21,8 +21,9 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  WidgetsFlutterBinding.ensureInitialized(); // Initialize for the Firebase
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform); // add plateform
   runApp(HealthJunction());
 }
 
