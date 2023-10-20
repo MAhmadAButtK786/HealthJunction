@@ -72,7 +72,6 @@ class _SignupFormState extends State<SignupForm> {
         child: Column(
           children: [
             //Username
-
             TextFormField(
               controller: controller.usernameController,
               decoration: InputDecoration(
