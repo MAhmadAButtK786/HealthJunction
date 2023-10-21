@@ -44,8 +44,10 @@ dependencies:
   # Firebase
   firebase_core: ^2.17.0
   firebase_auth: ^4.10.1
-  # Firebase For Social
+  # Firebase For Social(Google)
   google_sign_in: ^6.1.5
+  # Firebase For Phone Number Authentication
+  firebase_phone_auth_handler: ^1.0.8
 
 dev_dependencies:
   flutter_test:

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,6 +46,16 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDElkWJzEFuz_N6tfXlL7WPv7sAWdwwcos',
+    appId: '1:293812165856:web:6e996622f7c46ba71bc485',
+    messagingSenderId: '293812165856',
+    projectId: 'health-junction-675ff',
+    authDomain: 'health-junction-675ff.firebaseapp.com',
+    storageBucket: 'health-junction-675ff.appspot.com',
+    measurementId: 'G-E2N4BKQWPK',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDOHvvfOSZxqITqihWtD5ktgRVMkMmkkB0',
     appId: '1:293812165856:android:136b98edb48489981bc485',
@@ -63,6 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '293812165856',
     projectId: 'health-junction-675ff',
     storageBucket: 'health-junction-675ff.appspot.com',
+    androidClientId: '293812165856-2uc2hrll5ho5fcppdi7fb2nl1634g118.apps.googleusercontent.com',
+    iosClientId: '293812165856-ka80elo93ebunbk6qf87o7p5q6fbpjjh.apps.googleusercontent.com',
     iosBundleId: 'com.example.healthjunction',
   );
 }

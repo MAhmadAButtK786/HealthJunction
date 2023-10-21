@@ -12,7 +12,20 @@
           "package_name": "com.example.healthjunction"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "293812165856-2uc2hrll5ho5fcppdi7fb2nl1634g118.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.healthjunction",
+            "certificate_hash": "48f05a61b2e21cab6c53e52c4f4e285f70fc7925"
+          }
+        },
+        {
+          "client_id": "293812165856-2kqi6i6lmvo29hbsphuckiisbun8mbaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDOHvvfOSZxqITqihWtD5ktgRVMkMmkkB0"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293812165856-2kqi6i6lmvo29hbsphuckiisbun8mbaq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "293812165856-ka80elo93ebunbk6qf87o7p5q6fbpjjh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.healthjunction"
+              }
+            }
+          ]
         }
       }
     }
