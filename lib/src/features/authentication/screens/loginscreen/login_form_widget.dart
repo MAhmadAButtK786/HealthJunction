@@ -52,7 +52,7 @@ class _LoginFormState extends State<LoginForm> {
           errorMessage = 'Failed to Login: Incorrect Password';
           break;
         default:
-          errorMessage = 'Authentication Failed';
+          errorMessage = 'Invalid Email/Password';
           break;
       }
 
