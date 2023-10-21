@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, prefer_const_constructors, sort_child_properties_last, prefer_const_constructors_in_immutables, library_private_types_in_public_api
+// ignore_for_file: unused_import, prefer_const_constructors, sort_child_properties_last, prefer_const_constructors_in_immutables, library_private_types_in_public_api, dead_code, unused_local_variable, avoid_print, prefer_final_fields
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,6 +7,8 @@ import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_mail/forget_password_mail.dart';
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_otp/forget_otp.dart';
+import 'package:firebase_phone_auth_handler/firebase_phone_auth_handler.dart';
+import 'package:healthjunction/src/features/authentication/controllers/signup_controller.dart';
 
 class ForgetPasswordViaPhone extends StatefulWidget {
   ForgetPasswordViaPhone({Key? key}) : super(key: key);
@@ -23,6 +25,25 @@ class _ForgetPasswordViaPhoneState extends State<ForgetPasswordViaPhone> {
   void initState() {
     super.initState();
     _phoneController = TextEditingController();
+  }
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> _sendOTP() async {
+    try {
+      await _auth.verifyPhoneNumber(
+        phoneNumber: '+92${_phoneController.text}',
+        verificationCompleted: (PhoneAuthCredential credential) {},
+        verificationFailed: (FirebaseAuthException e) {
+          print(e.message);
+        },
+        codeSent: (String verificationId, int? resendToken) async {
+          Get.to(() => ForgetOTP(verificationId: verificationId));
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {},
+      );
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   @override
@@ -88,11 +109,9 @@ class _ForgetPasswordViaPhoneState extends State<ForgetPasswordViaPhone> {
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                        content: Text('Login Successful')));
-                                Get.to(() => ForgetOTP());
+                                    SnackBar(content: Text('Sending OTP...')));
+                                _sendOTP();
                               } else {
-                                // Authentication failed, display an error message to the user
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(content: Text('Wrong Input')));
                               }
