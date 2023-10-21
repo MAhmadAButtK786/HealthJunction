@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, prefer_const_constructors, unused_local_variable, use_build_context_synchronously, avoid_print
+// ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, prefer_const_constructors, unused_local_variable, use_build_context_synchronously, avoid_print, non_constant_identifier_names
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
@@ -67,6 +67,10 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
+    return FormLoginpage(controller, context);
+  }
+
+  Form FormLoginpage(SignUpController controller, BuildContext context) {
     return Form(
       key: _formKey,
       child: Container(

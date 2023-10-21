@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_import, avoid_print, use_key_in_widget_constructors, unused_local_variable, unused_element, unused_field, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, unused_import, avoid_print, use_key_in_widget_constructors, unused_local_variable, unused_element, unused_field, use_build_context_synchronously, non_constant_identifier_names
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +65,10 @@ class _SignupFormState extends State<SignupForm> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
+    return FormSigningup(controller);
+  }
+
+  Form FormSigningup(SignUpController controller) {
     return Form(
       key: _formKey,
       child: Container(

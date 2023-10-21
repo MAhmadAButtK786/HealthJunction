@@ -1,21 +1,46 @@
-// ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, avoid_print, override_on_non_overriding_member, annotate_overrides
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_form_widget.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_header_widget.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignupFooterWidget extends StatelessWidget {
-  const SignupFooterWidget({
-    super.key,
-  });
+  const SignupFooterWidget({Key? key}) : super(key: key);
 
   @override
+  //Google Sign in Authentication
+  Future<UserCredential> signInWithGoogle() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    // Make sure to disconnect any previously signed in account
+    await googleSignIn.disconnect();
+
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +59,14 @@ class SignupFooterWidget extends StatelessWidget {
                 image: AssetImage(googleLogo),
                 width: 20.0,
               ),
-              onPressed: () {},
+              onPressed: () async {
+                UserCredential? userCredential = await signInWithGoogle();
+                if (userCredential != null) {
+                  // User signed in successfully, you can handle the user data here
+                  print('User signed in with Google: ${userCredential.user}');
+                  Get.to(() => Dashboard()); // Navigate to Dashboard
+                }
+              },
               label: Text(tSGoogle)),
         ),
         const SizedBox(
