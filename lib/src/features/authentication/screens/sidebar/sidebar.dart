@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last, use_key_in_widget_constructors, unused_import, unused_local_variable, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, use_key_in_widget_constructors, unused_import, unused_local_variable, prefer_const_constructors_in_immutables, unused_field, unused_element
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,14 +6,25 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/BloodBankHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
+import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:healthjunction/src/features/authentication/controllers/signup_controller.dart';
 
 class ReusableDrawerSideBar extends StatelessWidget {
   final Color color;
   final String headerText;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   ReusableDrawerSideBar({required this.color, required this.headerText});
+
+  Future<void> _signOut() async {
+    await _auth.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
     return Drawer(
       width: MediaQuery.of(context).size.width * 0.7,
       child: ListView(
@@ -90,9 +101,12 @@ class ReusableDrawerSideBar extends StatelessWidget {
               style:
                   GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.bold),
             ),
-            onTap: () {
-              Navigator.pop(context);
-              Get.to(() => ());
+            onTap: () async {
+              controller.emailController.clear();
+              controller.passwordController.clear();
+
+              await _signOut();
+              Get.to(() => LoginScreen());
             },
           ),
         ],

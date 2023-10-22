@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
@@ -16,20 +17,26 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(tDefaultSize),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              // Section 1
-              LoginHeaderWidget(size: size),
+      child: WillPopScope(
+        onWillPop: () async {
+          return false;
+        },
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(tDefaultSize),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Section 1
+                    LoginHeaderWidget(size: size),
 
-              //Section 2 Form
-              LoginForm(),
+                    //Section 2 Form
+                    LoginForm(),
 
-              LoginFooterWidget(),
-            ]),
+                    LoginFooterWidget(),
+                  ]),
+            ),
           ),
         ),
       ),
