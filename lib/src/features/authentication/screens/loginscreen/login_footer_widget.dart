@@ -20,17 +20,18 @@ class LoginFooterWidget extends StatelessWidget {
 
   @override
   Future<UserCredential?> signInWithGoogle() async {
-    try {
-      final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignIn googleSignIn = GoogleSignIn();
 
-      // Make sure to disconnect any previously signed in account
-      await googleSignIn.disconnect();
+    try {
+      // Sign out any previous user
+      await googleSignIn.signOut();
 
       // Trigger the authentication flow
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
+      // If the user cancels the sign-in process, return null
       if (googleUser == null) {
-        // User cancelled the sign-in process
+        print('User cancelled the sign-in process');
         return null;
       }
 
