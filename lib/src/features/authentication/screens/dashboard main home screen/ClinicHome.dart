@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Clinichome extends StatelessWidget {
   var height, width;
@@ -20,6 +21,10 @@ class Clinichome extends StatelessWidget {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
+      drawer: ReusableDrawerSideBar(
+        headerText: "Clinic",
+        color: Colors.tealAccent.shade400,
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.tealAccent.shade400,
@@ -48,14 +53,17 @@ class Clinichome extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.menu,
-                              color: Colors.white,
-                              size: 40,
-                            ),
-                          ),
+                          Builder(
+                              builder: (context) => InkWell(
+                                    onTap: () {
+                                      Scaffold.of(context).openDrawer();
+                                    },
+                                    child: Icon(
+                                      Icons.menu,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                  )),
                           Container(
                             height: 50,
                             width: 50,

@@ -6,6 +6,7 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/RegistrationHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_search/donor_search.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/search_recipient.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class BloodBankhome extends StatelessWidget {
   var height, width;
@@ -21,6 +22,10 @@ class BloodBankhome extends StatelessWidget {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
+      drawer: ReusableDrawerSideBar(
+        headerText: "Blood Bank",
+        color: Colors.red,
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.red,
@@ -42,14 +47,17 @@ class BloodBankhome extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.menu,
-                              color: Colors.white,
-                              size: 40,
-                            ),
-                          ),
+                          Builder(
+                              builder: (context) => InkWell(
+                                    onTap: () {
+                                      Scaffold.of(context).openDrawer();
+                                    },
+                                    child: Icon(
+                                      Icons.menu,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                  )),
                           Container(
                             height: 50,
                             width: 50,

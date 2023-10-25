@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/medicine%20suppliers%20module/Medicinesuppliersscreen.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Medicinehome extends StatelessWidget {
   var height, width;
@@ -17,6 +18,10 @@ class Medicinehome extends StatelessWidget {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
+      drawer: ReusableDrawerSideBar(
+        color: Colors.green,
+        headerText: "Medicine",
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.green,
@@ -45,14 +50,17 @@ class Medicinehome extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.menu,
-                              color: Colors.white,
-                              size: 40,
-                            ),
-                          ),
+                          Builder(
+                              builder: (context) => InkWell(
+                                    onTap: () {
+                                      Scaffold.of(context).openDrawer();
+                                    },
+                                    child: Icon(
+                                      Icons.menu,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                  )),
                           Container(
                             height: 50,
                             width: 50,
