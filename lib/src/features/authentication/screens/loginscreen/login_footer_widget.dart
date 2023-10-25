@@ -19,28 +19,38 @@ class LoginFooterWidget extends StatelessWidget {
   });
 
   @override
-  //Firebase Authentication
-  Future<UserCredential> signInWithGoogle() async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      final GoogleSignIn googleSignIn = GoogleSignIn();
 
-    // Make sure to disconnect any previously signed in account
-    await googleSignIn.disconnect();
+      // Make sure to disconnect any previously signed in account
+      await googleSignIn.disconnect();
 
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+      if (googleUser == null) {
+        // User cancelled the sign-in process
+        return null;
+      }
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Sign in with Firebase using the Google credentials
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
+      // Handle any errors that occur during the sign-in process
+      print('Error signing in with Google: $e');
+      return null;
+    }
   }
 
   Widget build(BuildContext context) {
@@ -72,7 +82,7 @@ class LoginFooterWidget extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            Get.to(() => const SignupScreen());
+            Get.to(() => SignupScreen());
           },
           child: Text.rich(
             TextSpan(

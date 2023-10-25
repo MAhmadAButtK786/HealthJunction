@@ -12,6 +12,7 @@ import 'package:healthjunction/src/features/authentication/screens/loginscreen/l
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_form_widget.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_header_widget.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
 
 class SignupFooterWidget extends StatelessWidget {
   const SignupFooterWidget({Key? key}) : super(key: key);
@@ -19,13 +20,8 @@ class SignupFooterWidget extends StatelessWidget {
   @override
   //Google Sign in Authentication
   Future<UserCredential> signInWithGoogle() async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-
-    // Make sure to disconnect any previously signed in account
-    await googleSignIn.disconnect();
-
     // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
