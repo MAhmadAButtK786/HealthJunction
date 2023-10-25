@@ -6,7 +6,9 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class RecipientForm extends StatefulWidget {
@@ -28,8 +30,12 @@ class _RecipientForm extends State<RecipientForm> {
   final _ageController = TextEditingController();
   final _citynameController = TextEditingController();
   String _selectedBloodGroup = 'A+'; // Initial selected value
-
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   Gender _site = Gender.male;
+  void _handleMenuPressed() {
+    scaffoldKey.currentState?.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     Color backgroundColor;
@@ -40,28 +46,14 @@ class _RecipientForm extends State<RecipientForm> {
     }
     String? selectedGender = null;
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            LineAwesomeIcons.angle_left,
-            color: tWhiteColor,
-          ),
-        ),
-        title: Text(
-          tBloodBank,
-          style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.to(() => ProfileScreen());
-              },
-              icon: Icon(Icons.person))
-        ],
-        backgroundColor: Colors.red,
-        centerTitle: true,
+      key: scaffoldKey,
+      appBar: Navbar(
+        color: Colors.red,
+        textNav: "Recipient Form",
+        onMenuPressed: _handleMenuPressed,
       ),
+      drawer: ReusableDrawerSideBar(
+          color: Colors.red, headerText: "Recipient Form"),
       body: Container(
         width: double.infinity,
         height: double.infinity,

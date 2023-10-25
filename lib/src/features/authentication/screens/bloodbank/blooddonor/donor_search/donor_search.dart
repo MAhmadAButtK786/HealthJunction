@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, unused_field, unused_import, avoid_print
+// ignore_for_file: prefer_const_constructors, unused_local_variable, unused_field, unused_import, avoid_print, unused_element
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +7,9 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_list/donor_list.dart';
+import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class SearchDonor extends StatefulWidget {
@@ -23,6 +25,12 @@ class _SearchDonorState extends State<SearchDonor> {
   final _citynameController = TextEditingController();
   final _provincenameController = TextEditingController();
   bool isDarkMode = false;
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _handleMenuPressed() {
+    scaffoldKey.currentState?.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     Color backgroundColor;
@@ -32,27 +40,15 @@ class _SearchDonorState extends State<SearchDonor> {
       backgroundColor = Colors.red.shade200;
     }
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              LineAwesomeIcons.angle_left,
-              color: tWhiteColor,
-            ),
-          ),
-          title: Text(
-            tBloodBank,
-            style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Get.to(() => ProfileScreen());
-                },
-                icon: Icon(Icons.person))
-          ],
-          backgroundColor: Colors.red,
-          centerTitle: true,
+        key: scaffoldKey,
+        appBar: Navbar(
+          color: Colors.red,
+          textNav: "Donor Search",
+          onMenuPressed: _handleMenuPressed,
+        ),
+        drawer: ReusableDrawerSideBar(
+          color: Colors.red,
+          headerText: "Donor Search",
         ),
         body: Container(
           width: double.infinity,

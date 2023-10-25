@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_form.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class RegistrationHome extends StatelessWidget {
   var height, width;
@@ -19,6 +20,10 @@ class RegistrationHome extends StatelessWidget {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
+      drawer: ReusableDrawerSideBar(
+        color: Colors.red,
+        headerText: "Blood Bank",
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.red,
@@ -40,14 +45,17 @@ class RegistrationHome extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.sort,
-                              color: Colors.white,
-                              size: 40,
-                            ),
-                          ),
+                          Builder(
+                              builder: (context) => InkWell(
+                                    onTap: () {
+                                      Scaffold.of(context).openDrawer();
+                                    },
+                                    child: Icon(
+                                      Icons.menu,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                  )),
                           Container(
                             height: 50,
                             width: 50,
@@ -56,7 +64,7 @@ class RegistrationHome extends StatelessWidget {
                                 color: Colors.white,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                  "images/women.png",
+                                  tProfileI,
                                 ))),
                           ),
                         ],
