@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, unused_local_variable, avoid_init_to_null, prefer_final_fields, avoid_print, unnecessary_import
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, unused_local_variable, avoid_init_to_null, prefer_final_fields, avoid_print, unnecessary_import, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
