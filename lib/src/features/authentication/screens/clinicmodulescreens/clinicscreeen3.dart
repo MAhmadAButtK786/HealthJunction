@@ -1,7 +1,10 @@
-// ignore_for_file: camel_case_types, use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: camel_case_types, use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class clinicpage3 extends StatelessWidget {
   var height, width;
@@ -12,6 +15,8 @@ class clinicpage3 extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      drawer: ReusableDrawerSideBar(
+          color: Colors.tealAccent.shade400, headerText: "Clinic"),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.tealAccent.shade400,
@@ -33,25 +38,27 @@ class clinicpage3 extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.menu,
+                          Builder(
+                              builder: (context) => InkWell(
+                                    onTap: () {
+                                      Scaffold.of(context).openDrawer();
+                                    },
+                                    child: Icon(
+                                      Icons.menu,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                  )),
+                          IconButton(
+                            onPressed: () {
+                              Get.to(() => ProfileScreen());
+                            },
+                            icon: Icon(
+                              Icons.person,
                               color: Colors.white,
                               size: 40,
                             ),
-                          ),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage(tProfileI),
-                              ),
-                            ),
-                          ),
+                          )
                         ],
                       ),
                     ),

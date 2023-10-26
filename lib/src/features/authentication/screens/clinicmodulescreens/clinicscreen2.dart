@@ -6,37 +6,30 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 void main() => runApp(MaterialApp(home: clinicpage2()));
+final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+void _handleMenuPressed() {
+  scaffoldKey.currentState?.openDrawer();
+}
 
 // ignore: camel_case_types
 class clinicpage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.menu,
-            color: tWhiteColor,
-          ),
-        ),
-        title: Text(
-          "Clinic",
-          style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.to(() => ProfileScreen());
-              },
-              icon: Icon(Icons.person))
-        ],
-        backgroundColor: Colors.tealAccent.shade400,
-        centerTitle: true,
+      key: scaffoldKey,
+      appBar: Navbar(
+          color: Colors.tealAccent.shade400,
+          textNav: "Clinic",
+          onMenuPressed: _handleMenuPressed),
+      drawer: ReusableDrawerSideBar(
+        color: Colors.tealAccent,
+        headerText: "Clinic",
       ),
       body: Container(
         decoration: BoxDecoration(
