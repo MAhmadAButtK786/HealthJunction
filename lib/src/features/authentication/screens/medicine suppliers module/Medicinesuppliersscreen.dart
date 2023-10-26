@@ -34,7 +34,7 @@ class Medicine2 extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(),
-                height: height * 0.25,
+                height: height * 0.28,
                 width: width,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
