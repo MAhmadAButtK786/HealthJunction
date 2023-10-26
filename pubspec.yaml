@@ -52,8 +52,7 @@ dependencies:
   random_string: ^2.2.0
   # add url launcher dependency
   url_launcher: ^6.2.0
-  #For Direct Call dependency
-  flutter_phone_direct_caller: ^2.1.1
+ 
 dev_dependencies:
   flutter_test:
     sdk: flutter
