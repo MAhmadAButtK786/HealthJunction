@@ -44,7 +44,7 @@ class hospitalpage3 extends StatelessWidget {
                             child: Icon(
                               Icons.menu,
                               color: Colors.white,
-                              size: 40,
+                              size: 30,
                             ),
                           ),
                           IconButton(
@@ -54,7 +54,7 @@ class hospitalpage3 extends StatelessWidget {
                             icon: Icon(
                               Icons.person,
                               color: Colors.white,
-                              size: 40,
+                              size: 30,
                             ),
                           )
                         ],

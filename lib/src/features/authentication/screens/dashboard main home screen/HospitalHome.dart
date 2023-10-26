@@ -7,6 +7,7 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hositalscreen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen1.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen2.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Hospitalhome extends StatelessWidget {
@@ -23,12 +24,12 @@ class Hospitalhome extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: ReusableDrawerSideBar(
-        color: Colors.lightBlueAccent,
+        color: Colors.blueAccent,
         headerText: "Hospital",
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.lightBlueAccent,
+          color: Colors.blueAccent,
           child: Column(
             children: [
               Container(
@@ -65,17 +66,16 @@ class Hospitalhome extends StatelessWidget {
                                       size: 40,
                                     ),
                                   )),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                  tProfileI,
-                                ))),
-                          ),
+                          IconButton(
+                            onPressed: () {
+                              Get.to(() => ProfileScreen());
+                            },
+                            icon: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          )
                         ],
                       ),
                     ),

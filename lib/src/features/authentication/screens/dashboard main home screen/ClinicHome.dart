@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Clinichome extends StatelessWidget {
@@ -61,20 +62,19 @@ class Clinichome extends StatelessWidget {
                                     child: Icon(
                                       Icons.menu,
                                       color: Colors.white,
-                                      size: 40,
+                                      size: 30,
                                     ),
                                   )),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                  tProfileI,
-                                ))),
-                          ),
+                          IconButton(
+                            onPressed: () {
+                              Get.to(() => ProfileScreen());
+                            },
+                            icon: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          )
                         ],
                       ),
                     ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/medicine%20suppliers%20module/Medicinesuppliersscreen.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Medicinehome extends StatelessWidget {
@@ -58,20 +59,19 @@ class Medicinehome extends StatelessWidget {
                                     child: Icon(
                                       Icons.menu,
                                       color: Colors.white,
-                                      size: 40,
+                                      size: 30,
                                     ),
                                   )),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                  tProfileI,
-                                ))),
-                          ),
+                          IconButton(
+                            onPressed: () {
+                              Get.to(() => ProfileScreen());
+                            },
+                            icon: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          )
                         ],
                       ),
                     ),

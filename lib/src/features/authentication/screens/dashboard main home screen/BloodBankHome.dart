@@ -7,6 +7,7 @@ import 'package:healthjunction/src/features/authentication/screens/dashboard%20m
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_search/donor_search.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/search_recipient.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 
 class BloodBankhome extends StatelessWidget {
   var height, width;
@@ -55,20 +56,19 @@ class BloodBankhome extends StatelessWidget {
                                     child: Icon(
                                       Icons.menu,
                                       color: Colors.white,
-                                      size: 40,
+                                      size: 30,
                                     ),
                                   )),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                  tProfileI,
-                                ))),
-                          ),
+                          IconButton(
+                            onPressed: () {
+                              Get.to(() => ProfileScreen());
+                            },
+                            icon: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          )
                         ],
                       ),
                     ),

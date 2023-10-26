@@ -9,6 +9,7 @@ import 'package:healthjunction/src/features/authentication/screens/dashboard%20m
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/ClinicHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/HospitalHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Dashboard extends StatelessWidget {
@@ -30,7 +31,7 @@ class Dashboard extends StatelessWidget {
       child: Scaffold(
         drawer: ReusableDrawerSideBar(
           headerText: 'Health Junction',
-          color: Colors.blue,
+          color: Colors.indigo,
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -38,14 +39,7 @@ class Dashboard extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  decoration: BoxDecoration(
-
-                      /* borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
-    
-                    ),*/
-                      ),
+                  decoration: BoxDecoration(),
                   height: height * 0.25,
                   width: width,
                   child: Column(
@@ -68,21 +62,20 @@ class Dashboard extends StatelessWidget {
                                 child: Icon(
                                   Icons.menu,
                                   color: Colors.white,
-                                  size: 40,
+                                  size: 30,
                                 ),
                               ),
                             ),
-                            Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25),
-                                  color: Colors.white,
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                    tProfileI,
-                                  ))),
-                            ),
+                            IconButton(
+                              onPressed: () {
+                                Get.to(() => ProfileScreen());
+                              },
+                              icon: Icon(
+                                Icons.person,
+                                color: Colors.white,
+                                size: 30,
+                              ),
+                            )
                           ],
                         ),
                       ),
