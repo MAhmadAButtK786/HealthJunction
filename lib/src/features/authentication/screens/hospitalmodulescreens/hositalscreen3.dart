@@ -25,7 +25,7 @@ class hospitalpage3 extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(),
-                height: height * 0.35,
+                height: height * 0.40,
                 width: width,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
