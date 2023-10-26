@@ -15,3 +15,6 @@ const String jdc = "assets/images/jdc.png";
 const String rescu1122 = "assets/images/1122.jpg";
 const String redcs = "assets/images/rdc.jpg";
 const String edhi = "assets/images/edhi.png";
+const String emergency = "assets/images/Emergency.jpg";
+const String police = "assets/images/police.png";
+const String firebrigade = "assets/images/fb.jpg";

@@ -19,22 +19,39 @@ class SignupFooterWidget extends StatelessWidget {
 
   @override
   //Google Sign in Authentication
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<UserCredential?> signInWithGoogle() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+    try {
+      // Sign out any previous user
+      await googleSignIn.signOut();
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+      // If the user cancels the sign-in process, return null
+      if (googleUser == null) {
+        print('User cancelled the sign-in process');
+        return null;
+      }
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Sign in with Firebase using the Google credentials
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
+      // Handle any errors that occur during the sign-in process
+      print('Error signing in with Google: $e');
+      return null;
+    }
   }
 
   Widget build(BuildContext context) {

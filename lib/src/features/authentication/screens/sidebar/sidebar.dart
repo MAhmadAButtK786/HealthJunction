@@ -7,6 +7,7 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/features/authentication/screens/ambullance/ambullance.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/BloodBankHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
+import 'package:healthjunction/src/features/authentication/screens/emergency/emergency.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -50,7 +51,7 @@ class ReusableDrawerSideBar extends StatelessWidget {
           ListTile(
             leading: Icon(
               LineAwesomeIcons.ambulance,
-              color: apptextColor,
+              color: color,
             ),
             title: Text(
               'Ambulance',
@@ -65,7 +66,7 @@ class ReusableDrawerSideBar extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.info,
-              color: apptextColor,
+              color: color,
             ),
             title: Text(
               'Information',
@@ -80,7 +81,7 @@ class ReusableDrawerSideBar extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.emergency,
-              color: apptextColor,
+              color: color,
             ),
             title: Text(
               'Emergency Contacts',
@@ -89,13 +90,13 @@ class ReusableDrawerSideBar extends StatelessWidget {
             ),
             onTap: () {
               Navigator.pop(context);
-              Get.to(() => ());
+              Get.to(() => Emergency());
             },
           ),
           ListTile(
             leading: Icon(
               Icons.logout,
-              color: apptextColor,
+              color: color,
             ),
             title: Text(
               'LogOut',

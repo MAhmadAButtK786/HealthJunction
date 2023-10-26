@@ -9,3 +9,4 @@ const apptextColor = Color(0xFF104CE7);
 const signupBackground = Color.fromRGBO(16, 76, 231, 0.90);
 const homecolors = Color(0x350079);
 const tAccentColors = Color(0xD3D3D3);
+const cEmergency = Color(0xFFC71F0A);

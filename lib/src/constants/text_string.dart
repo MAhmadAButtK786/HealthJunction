@@ -73,3 +73,24 @@ const String nRescu1122 = "1122";
 const String nAlKhidmatFoundation = "1023";
 const String nRedCresent = "1030";
 const String nJDC = "1024";
+const String infoEdhi =
+    'Edhi is the largest and most organized ambulance service provider in Pakistan.';
+const String infoCheepa =
+    'Cheepa provides a range of services including ambulance service, free dispensaries, and hospitals.';
+const String infoJDC =
+    'JDC Foundation provides a range of services including ambulance service, burial service, and health services.';
+const String infoalk =
+    'Al-Khidmat Foundation is a non-profit organization that provides multiple services including health services and ambulance services.';
+const String infordc =
+    'Red Crescent, part of the International Red Cross and Red Crescent Movement, provides ambulance service among other humanitarian services.';
+const String infoTR1122 =
+    'Rescue 1122 is an emergency service that serves Punjab Province in Pakistan.';
+//Emergency
+const String tPolice = "Police";
+const String tEdhiMCRoom = "Edhi";
+const String tFireBrigade = "Fire Brigrade";
+const String nFireBrigade = "16";
+const String nEdhiMCRoom = "115";
+const String nPolice = "15";
+const String infoPolice =
+    "Punjab Police is the dedicated law enforcement agency of the Punjab province in Pakistan. Committed to ensuring your safety and security, we uphold justice, maintain law and order, and work tirelessly for your protection.";

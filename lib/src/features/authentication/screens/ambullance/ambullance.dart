@@ -35,12 +35,12 @@ class Ambulance extends StatelessWidget {
   //Important Information About
   // Information about Ambulance Provider
   List organizationInfo = [
-    'Edhi is the largest and most organized ambulance service provider in Pakistan.',
-    'Cheepa provides a range of services including ambulance service, free dispensaries, and hospitals.',
-    'Red Crescent, part of the International Red Cross and Red Crescent Movement, provides ambulance service among other humanitarian services.',
-    'Al-Khidmat Foundation is a non-profit organization that provides multiple services including health services and ambulance services.',
-    'Rescue 1122 is an emergency service that serves Punjab Province in Pakistan.',
-    'JDC Foundation provides a range of services including ambulance service, burial service, and health services.'
+    infoEdhi,
+    infoCheepa,
+    infordc,
+    infoalk,
+    infoTR1122,
+    infoJDC
   ];
 
   //Image List
@@ -90,10 +90,7 @@ class Ambulance extends StatelessWidget {
                           color: Colors.grey[600],
                         ),
                       ),
-                      leading: SizedBox(
-                          width: 65,
-                          height: 65,
-                          child: Image.asset(imageList[index])),
+                      leading: SizedBox(child: Image.asset(imageList[index])),
                       trailing: IconButton(
                           icon: Icon(
                             Icons.phone,
