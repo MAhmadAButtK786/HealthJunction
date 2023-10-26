@@ -60,3 +60,16 @@ const String tDonorSearch = "Search for Donor";
 //Recipient Search
 const String tRecipientSearch = "Search for Recipient";
 const String tRegASRecipient = "Register as Recipient";
+//Ambulance
+const String tEdhi = "Edhi";
+const String tCheepa = "Cheepa";
+const String tRescu1122 = "Rescu 1122";
+const String tAlKhidmatFoundation = "Al Khidmat Foundation";
+const String tRedCresent = "Pakistan Red Cresent Sociaty";
+const String tJDC = "JDC ";
+const String nEdhi = "115";
+const String nCheepa = "1020";
+const String nRescu1122 = "1122";
+const String nAlKhidmatFoundation = "1023";
+const String nRedCresent = "1030";
+const String nJDC = "1024";

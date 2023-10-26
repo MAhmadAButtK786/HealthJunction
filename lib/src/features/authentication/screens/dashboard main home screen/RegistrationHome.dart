@@ -3,19 +3,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/RegistrationHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_search/donor_search.dart';
-import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/search_recipient.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_form.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
-class BloodBankhome extends StatelessWidget {
+class RegistrationHome extends StatelessWidget {
   var height, width;
 
-  List imgData = [bloodBank, bloodBank, bloodBank];
+  List imgData = [bloodBank, bloodBank];
   List titles = [
-    " Registration  ",
-    "  Donors  ",
-    "  Recipients ",
+    "Register as Donor",
+    "Register as Recipients",
   ];
   @override
   Widget build(BuildContext context) {
@@ -23,8 +21,8 @@ class BloodBankhome extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: ReusableDrawerSideBar(
-        headerText: "Blood Bank",
         color: Colors.red,
+        headerText: "Blood Bank",
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -81,11 +79,11 @@ class BloodBankhome extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Blood Bank ",
+                            "Blood Bank  ",
                             style: TextStyle(
                               fontSize: 30,
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w500,
                               letterSpacing: 1,
                             ),
                           ),
@@ -96,7 +94,7 @@ class BloodBankhome extends StatelessWidget {
                             "Innovative App for Health Care",
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.white,
+                              color: Colors.white54,
                               letterSpacing: 1,
                             ),
                           )
@@ -129,13 +127,9 @@ class BloodBankhome extends StatelessWidget {
                     return InkWell(
                       onTap: () {
                         if (index == 0) {
-                          Get.to(() => RegistrationHome());
-                        }
-                        if (index == 1) {
-                          Get.to(() => SearchDonor());
-                        }
-                        if (index == 2) {
-                          Get.to(() => SearchRecipient());
+                          Get.to(() => DonorForm());
+                        } else if (index == 1) {
+                          Get.to(() => RecipientForm());
                         }
                       },
                       child: Container(

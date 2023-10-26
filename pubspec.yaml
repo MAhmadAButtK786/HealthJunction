@@ -50,6 +50,8 @@ dependencies:
   firebase_phone_auth_handler: ^1.0.8
   #random Email OTP
   random_string: ^2.2.0
+  # add url launcher dependecy
+  url_launcher: ^6.2.0
 
 dev_dependencies:
   flutter_test:

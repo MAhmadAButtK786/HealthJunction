@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
+import 'package:healthjunction/src/features/authentication/screens/ambullance/ambullance.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/BloodBankHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
@@ -58,7 +59,7 @@ class ReusableDrawerSideBar extends StatelessWidget {
             ),
             onTap: () {
               Navigator.pop(context);
-              Get.to(() => ());
+              Get.to(() => Ambulance());
             },
           ),
           ListTile(
