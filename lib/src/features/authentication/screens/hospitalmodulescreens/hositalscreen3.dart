@@ -1,7 +1,11 @@
-// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_import, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 // ignore: use_key_in_widget_constructors
 class hospitalpage3 extends StatelessWidget {
@@ -13,6 +17,7 @@ class hospitalpage3 extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      drawer: ReusableDrawerSideBar(color: Colors.blue, headerText: "Hospital"),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.blue,
@@ -42,17 +47,16 @@ class hospitalpage3 extends StatelessWidget {
                               size: 40,
                             ),
                           ),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
+                          IconButton(
+                            onPressed: () {
+                              Get.to(() => ProfileScreen());
+                            },
+                            icon: Icon(
+                              Icons.person,
                               color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage(tProfileI),
-                              ),
+                              size: 40,
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),

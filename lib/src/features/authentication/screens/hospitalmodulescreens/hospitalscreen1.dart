@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen2.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 // ignore: camel_case_types
 class hospitalpage1 extends StatelessWidget {
@@ -16,6 +18,10 @@ class hospitalpage1 extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      drawer: ReusableDrawerSideBar(
+        color: Colors.blue,
+        headerText: "Hospital",
+      ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.blue,
@@ -37,25 +43,28 @@ class hospitalpage1 extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.menu,
+                          Builder(builder: (context) {
+                            return InkWell(
+                              onTap: () {
+                                Scaffold.of(context).openDrawer();
+                              },
+                              child: Icon(
+                                Icons.menu,
+                                color: Colors.white,
+                                size: 40,
+                              ),
+                            );
+                          }),
+                          IconButton(
+                            onPressed: () {
+                              Get.to(() => ProfileScreen());
+                            },
+                            icon: Icon(
+                              Icons.person,
                               color: Colors.white,
                               size: 40,
                             ),
-                          ),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage("images/women.png"),
-                              ),
-                            ),
-                          ),
+                          )
                         ],
                       ),
                     ),

@@ -1,11 +1,13 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, unused_import, override_on_non_overriding_member
 
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
+import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 void main() => runApp(MaterialApp(home: hospitalpage2()));
@@ -13,30 +15,20 @@ void main() => runApp(MaterialApp(home: hospitalpage2()));
 // ignore: camel_case_types
 class hospitalpage2 extends StatelessWidget {
   @override
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  void _handleMenuPressed() {
+    scaffoldKey.currentState?.openDrawer();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            LineAwesomeIcons.angle_left,
-            color: tWhiteColor,
-          ),
-        ),
-        title: Text(
-          "Hospital",
-          style: GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.to(() => ProfileScreen());
-              },
-              icon: Icon(Icons.person))
-        ],
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-      ),
+      key: scaffoldKey,
+      appBar: Navbar(
+          color: Colors.blue,
+          textNav: "Hospital",
+          onMenuPressed: _handleMenuPressed),
+      drawer: ReusableDrawerSideBar(color: Colors.blue, headerText: "Hospital"),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

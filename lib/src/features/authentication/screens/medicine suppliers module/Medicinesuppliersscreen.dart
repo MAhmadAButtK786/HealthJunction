@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen2.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Medicine2 extends StatelessWidget {
   var height, width;
@@ -23,6 +25,8 @@ class Medicine2 extends StatelessWidget {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
+      drawer:
+          ReusableDrawerSideBar(color: Colors.green, headerText: "Medicine"),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.green,
@@ -44,25 +48,28 @@ class Medicine2 extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Icon(
-                              Icons.menu,
+                          Builder(builder: (context) {
+                            return InkWell(
+                              onTap: () {
+                                Scaffold.of(context).openDrawer();
+                              },
+                              child: Icon(
+                                Icons.menu,
+                                color: Colors.white,
+                                size: 40,
+                              ),
+                            );
+                          }),
+                          IconButton(
+                            onPressed: () {
+                              Get.to(() => ProfileScreen());
+                            },
+                            icon: Icon(
+                              Icons.person,
                               color: Colors.white,
                               size: 40,
                             ),
-                          ),
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: AssetImage(tProfileI),
-                              ),
-                            ),
-                          ),
+                          )
                         ],
                       ),
                     ),
