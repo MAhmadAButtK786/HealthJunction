@@ -50,9 +50,9 @@ dependencies:
   firebase_phone_auth_handler: ^1.0.8
   #random Email OTP
   random_string: ^2.2.0
-  # add url launcher dependecy
+  # add url launcher dependency
   url_launcher: ^6.2.0
-  #For Direct Call
+  #For Direct Call dependency
   flutter_phone_direct_caller: ^2.1.1
 dev_dependencies:
   flutter_test:
