@@ -52,6 +52,8 @@ dependencies:
   random_string: ^2.2.0
   # add url launcher dependency
   url_launcher: ^6.2.0
+  # add Cloud FireStore in App
+  cloud_firestore: ^4.12.1
  
 dev_dependencies:
   flutter_test:
