@@ -1,137 +1,145 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:healthjunction/src/constants/image_string.dart';
-import 'package:healthjunction/src/constants/text_string.dart';
-import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen2.dart';
-import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Medicine2 extends StatelessWidget {
   var height, width;
-
-  // Mock data for the list
-  List<String> mockData = [
-    " Medicine suppliers 1  and there data, links ",
-    " Medicine suppliers 2  and there data, links ",
-    " Medicine suppliers 3  and there data, links ",
-    " Medicine suppliers 4  and there data, links ",
-    " Medicine suppliers 5  and there data, links ",
-  ];
 
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer:
-          ReusableDrawerSideBar(color: Colors.green, headerText: "Medicine"),
       body: SingleChildScrollView(
-        child: Container(
-          color: Colors.green,
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(),
-                height: height * 0.28,
-                width: width,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 35,
-                        left: 20,
-                        right: 20,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Builder(builder: (context) {
-                            return InkWell(
-                              onTap: () {
-                                Scaffold.of(context).openDrawer();
-                              },
-                              child: Icon(
-                                Icons.menu,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                            );
-                          }),
-                          IconButton(
-                            onPressed: () {
-                              Get.to(() => ProfileScreen());
-                            },
-                            icon: Icon(
-                              Icons.person,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          )
-                        ],
-                      ),
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+              height: height * 0.28,
+              width: width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 35,
+                      left: 20,
+                      right: 20,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 20,
-                        left: 30,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Medicine  ",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 1,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Icon(
+                            Icons.sort,
+                            color: Colors.white,
+                            size: 40,
+                          ),
+                        ),
+                        Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: Colors.white,
+                            image: DecorationImage(
+                              image: AssetImage("images/women.png"),
                             ),
                           ),
-                          Text(
-                            " Suppliers  ",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 1,
-                            ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 20,
+                      left: 30,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "             Medicine  ",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 1,
                           ),
-                          SizedBox(
-                            height: 5,
+                        ),
+                        Text(
+                          "             Suppliers  ",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 1,
                           ),
-                          Text(
-                            "Innovative App for Health Care",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white54,
-                              letterSpacing: 1,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                        ),
+                        SizedBox(height: 5,),
+                        Text(
+                          "             Innovative App for Health Care",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white54,
+                            letterSpacing: 1,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
               ),
-              // Add a list of mock data in the white part
-              Container(
-                color: Colors.white,
-                padding: EdgeInsets.all(16),
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: mockData.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(mockData[index]),
-                      // Add more styling or widgets as needed
-                    );
-                  },
-                ),
+            ),
+            // White part with hyperlinks
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  //_buildLink("Google", "https://www.google.com"),
+                  _buildLink("DVAGO", "https://www.dvago.pk"),
+                  _buildLink("dawaai", "https://dawaai.pk/"),
+                  _buildLink("medicalstore.com.pk", "https://medicalstore.com.pk"),
+                  _buildLink("Sehat.com.pk", "https://sehat.com.pk"),
+                  _buildLink("Medoline", "https://medonline.pk/"),
+                  _buildLink("Meri Pharmacy", "https://meripharmacy.pk"),
+                  _buildLink("DWatson", "https://dwatson.pk"),
+                  _buildLink("Ahmed Medico", "https://ahmedmedico.pk"),
+                  //_buildLink("Facebook", "https://www.facebook.com"),
+
+                ],
               ),
-            ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLink(String text, String url) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.green, width: 6),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: InkWell(
+        onTap: () {
+          // Open the URL when tapped
+          // You can use a package like url_launcher to open URLs
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.green,
+              //backgroundColor: Colors.green,
+            ),
           ),
         ),
       ),
