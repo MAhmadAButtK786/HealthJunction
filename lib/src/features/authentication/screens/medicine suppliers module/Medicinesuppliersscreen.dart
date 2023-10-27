@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, unused_import, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -78,7 +80,9 @@ class Medicine2 extends StatelessWidget {
                             letterSpacing: 1,
                           ),
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Text(
                           "             Innovative App for Health Care",
                           style: TextStyle(
@@ -102,14 +106,14 @@ class Medicine2 extends StatelessWidget {
                   //_buildLink("Google", "https://www.google.com"),
                   _buildLink("DVAGO", "https://www.dvago.pk"),
                   _buildLink("dawaai", "https://dawaai.pk/"),
-                  _buildLink("medicalstore.com.pk", "https://medicalstore.com.pk"),
+                  _buildLink(
+                      "medicalstore.com.pk", "https://medicalstore.com.pk"),
                   _buildLink("Sehat.com.pk", "https://sehat.com.pk"),
                   _buildLink("Medoline", "https://medonline.pk/"),
                   _buildLink("Meri Pharmacy", "https://meripharmacy.pk"),
                   _buildLink("DWatson", "https://dwatson.pk"),
                   _buildLink("Ahmed Medico", "https://ahmedmedico.pk"),
                   //_buildLink("Facebook", "https://www.facebook.com"),
-
                 ],
               ),
             ),
