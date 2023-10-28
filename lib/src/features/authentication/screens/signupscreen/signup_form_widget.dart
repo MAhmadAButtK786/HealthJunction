@@ -8,6 +8,8 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/controllers/signup_controller.dart';
+import 'package:healthjunction/src/features/authentication/models/user_model.dart';
+import 'package:healthjunction/src/features/authentication/repository/user_repository.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
 
 class SignupForm extends StatefulWidget {
@@ -26,6 +28,8 @@ class _SignupFormState extends State<SignupForm> {
   Future<void> _registerUserWithEmailAndPassword(
     String email,
     String password,
+    String fullName,
+    String phoneNumber,
   ) async {
     try {
       UserCredential userCredential =
@@ -33,6 +37,15 @@ class _SignupFormState extends State<SignupForm> {
         email: email,
         password: password,
       );
+      UserModel Users = UserModel(
+        id: userCredential.user?.uid,
+        fullName: fullName,
+        email: email,
+        phoneNumber: phoneNumber,
+        password: password,
+      );
+      // Call the createUser method from UserRepository to store user data in Firestore
+      await UserRepository.instance.createUser(Users);
       Get.to(() => Dashboard());
     } on FirebaseAuthException catch (e) {
       print('Failed to register user: ${e.message}');
@@ -268,8 +281,11 @@ class _SignupFormState extends State<SignupForm> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _registerUserWithEmailAndPassword(
-                        controller.emailController.text.trim(),
-                        controller.confirmPasswordController.text.trim());
+                      controller.emailController.text.trim(),
+                      controller.confirmPasswordController.text.trim(),
+                      controller.usernameController.text.trim(),
+                      controller.phoneController.text.trim(),
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(

@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:healthjunction/firebase_options.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/repository/user_repository.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_search/donor_search.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_form.dart';
@@ -24,6 +25,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Initialize for the Firebase
   await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform); // add plateform
+
+  // Add this line to put UserRepository instance to GetX
+  Get.put(UserRepository());
+
   runApp(HealthJunction());
 }
 
