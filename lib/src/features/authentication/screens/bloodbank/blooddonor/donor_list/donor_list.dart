@@ -58,6 +58,7 @@ class DonorList extends StatelessWidget {
                 String fullName = donor['FullName'] ?? 'No Name';
                 String email = donor['Email'] ?? 'No Email';
                 String bloodType = donor['BloodType'] ?? 'No Blood Type';
+                double age = donor['Age'] ?? 0.0;
                 String phoneNumber = donor['Phone'] ?? 'No Phone Number';
                 String city = donor['City'] ?? 'No City Added';
                 String province = donor['Province'] ?? 'No Province Added';
@@ -74,7 +75,7 @@ class DonorList extends StatelessWidget {
                         color: Colors.red),
                   ),
                   subtitle: Text(
-                    'Email: $email\nBlood Type: $bloodType\nPhone Number: $phoneNumber\nCity: $city\nProvince:$province',
+                    'Email: $email\nBlood Type: $bloodType\nAge: $age\nPhone Number: $phoneNumber\nCity: $city\nProvince:$province',
                     style: GoogleFonts.montserrat(
                       fontSize: 16,
                       fontWeight: FontWeight.normal,

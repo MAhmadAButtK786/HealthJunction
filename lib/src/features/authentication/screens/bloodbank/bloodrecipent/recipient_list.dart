@@ -63,6 +63,8 @@ class _RecipientListState extends State<RecipientList> {
                 String phoneNumber = donor['Phone'] ?? 'No Phone Number';
                 String city = donor['City'] ?? 'No City Added';
                 String province = donor['Province'] ?? 'No Province Added';
+                double age = donor['Age'] ?? 0.0;
+
                 return ListTile(
                   leading: Icon(
                     Icons.person,
@@ -76,7 +78,7 @@ class _RecipientListState extends State<RecipientList> {
                         color: Colors.red),
                   ),
                   subtitle: Text(
-                    'Email: $email\nBlood Type: $bloodType\nPhone Number:  $phoneNumber\nCity: $city\nProvince:$province',
+                    'Email: $email\nBlood Type: $bloodType\nAge: $age\nPhone Number: $phoneNumber\nCity: $city\nProvince:$province',
                     style: GoogleFonts.montserrat(
                       fontSize: 16,
                       fontWeight: FontWeight.normal,
