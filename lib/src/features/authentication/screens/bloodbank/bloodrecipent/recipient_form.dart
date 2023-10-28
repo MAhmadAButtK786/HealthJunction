@@ -41,6 +41,7 @@ class _RecipientForm extends State<RecipientForm> {
     scaffoldKey.currentState?.openDrawer();
   }
 
+  RecipientRepository _recipientRepository = RecipientRepository.instance;
   @override
   Widget build(BuildContext context) {
     Color backgroundColor;
@@ -50,7 +51,7 @@ class _RecipientForm extends State<RecipientForm> {
       backgroundColor = Colors.red.shade200;
     }
     String? selectedGender = null;
-    RecipientRepository _recipientRepository = RecipientRepository.instance;
+
     return Scaffold(
       key: scaffoldKey,
       appBar: Navbar(
@@ -127,6 +128,7 @@ class _RecipientForm extends State<RecipientForm> {
           SizedBox(
             height: 15,
           ),
+          //Province
           DropdownButtonFormField<String>(
             decoration: InputDecoration(
               prefixIcon: Icon(
@@ -393,6 +395,7 @@ class _RecipientForm extends State<RecipientForm> {
               ),
             ],
           ),
+          //Button
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
