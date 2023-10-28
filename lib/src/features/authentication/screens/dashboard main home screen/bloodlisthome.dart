@@ -3,18 +3,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_list/donor_list.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_list.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/RegistrationHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_search/donor_search.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/search_recipient.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodlisthome.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 
-class BloodBankhome extends StatelessWidget {
+class BloodBankListhome extends StatelessWidget {
   var height, width;
 
-  List imgData = [bloodBank, bloodBank, bloodBank, bloodBank];
-  List titles = [" Registration  ", "  Donors  ", "  Recipients ", " Lists "];
+  List imgData = [bloodBank, bloodBank];
+  List titles = [
+    "  Donors Lists ",
+    "  Recepients Lists",
+  ];
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
@@ -126,16 +130,10 @@ class BloodBankhome extends StatelessWidget {
                     return InkWell(
                       onTap: () {
                         if (index == 0) {
-                          Get.to(() => RegistrationHome());
+                          Get.to(() => DonorList());
                         }
                         if (index == 1) {
-                          Get.to(() => SearchDonor());
-                        }
-                        if (index == 2) {
-                          Get.to(() => SearchRecipient());
-                        }
-                        if (index == 3) {
-                          Get.to(() => BloodBankListhome());
+                          Get.to(() => RecipientList());
                         }
                       },
                       child: Container(
