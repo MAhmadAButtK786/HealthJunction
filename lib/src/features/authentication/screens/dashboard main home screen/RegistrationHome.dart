@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_form.dart';
-import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class RegistrationHome extends StatelessWidget {
@@ -54,19 +53,20 @@ class RegistrationHome extends StatelessWidget {
                                     child: Icon(
                                       Icons.menu,
                                       color: Colors.white,
-                                      size: 30,
+                                      size: 40,
                                     ),
                                   )),
-                          IconButton(
-                            onPressed: () {
-                              Get.to(() => ProfileScreen());
-                            },
-                            icon: Icon(
-                              Icons.person,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          )
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                                color: Colors.white,
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                  tProfileI,
+                                ))),
+                          ),
                         ],
                       ),
                     ),
