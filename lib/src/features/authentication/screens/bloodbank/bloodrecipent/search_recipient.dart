@@ -84,7 +84,8 @@ class _SearchRecipientState extends State<SearchRecipient> {
                   'Sindh',
                   'Khyber Pakhtunkhwa',
                   'Balochistan',
-                  'Gilgit-Baltistan'
+                  'Gilgit-Baltistan',
+                  'AJK'
                 ].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -93,6 +94,7 @@ class _SearchRecipientState extends State<SearchRecipient> {
                 }).toList(),
                 onChanged: (String? newValue) {
                   // Do something with the selected value
+                  _provincenameController.text = newValue ?? '';
                 },
               ),
               Form(

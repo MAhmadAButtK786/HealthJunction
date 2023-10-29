@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_import, unused_import, unnecessary_new, deprecated_member_use, avoid_print, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, unnecessary_import, unused_import, unnecessary_new, deprecated_member_use, avoid_print, use_build_context_synchronously, use_key_in_widget_constructors, non_constant_identifier_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/models/recipient_model.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
