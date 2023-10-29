@@ -159,9 +159,9 @@ class _SignupFormState extends State<SignupForm> {
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please Enter Your Phone Number';
-                } else if (value.startsWith('+92') || value.length != 13) {
+                } else if (value.startsWith('+92') && value.length != 13) {
                   return 'Invalid phone number. Pakistani numbers starting with +92 must have 13 digits.';
-                } else if (!value.startsWith('03') || value.length != 11) {
+                } else if (!value.startsWith('03') && value.length != 11) {
                   return 'Invalid phone number. Pakistani mobile numbers must start with 03 and have 11 digits.';
                 }
                 return null; // Validation passed

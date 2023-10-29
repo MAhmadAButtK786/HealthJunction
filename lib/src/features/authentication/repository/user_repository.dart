@@ -13,10 +13,38 @@ class UserRepository extends GetxController {
   final _db = FirebaseFirestore.instance;
 
   Future<void> createUser(UserModel user) async {
-    await _db
-        .collection("Users")
-        .doc(user.id) // Use the user's id as the document id
-        .set(user.toJson()) // Use toJson(), not toJason()
+    var users = _db.collection("Users");
+
+    // Check if the email or phone number already exists
+    var existingUsers = await users.where('email', isEqualTo: user.email).get();
+    if (existingUsers.docs.isNotEmpty) {
+      Get.snackbar(
+        "Error",
+        "Email already exists",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.redAccent,
+      );
+      return;
+    }
+
+    existingUsers =
+        await users.where('phone', isEqualTo: user.phoneNumber).get();
+    if (existingUsers.docs.isNotEmpty) {
+      Get.snackbar(
+        "Error",
+        "Phone number already exists",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.redAccent,
+      );
+      return;
+    }
+
+    // If not, create the user
+    await users
+        .doc(user.id)
+        .set(user.toJson())
         .then((value) => Get.snackbar(
               "Success",
               "Your Account has been created",

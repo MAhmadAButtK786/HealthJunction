@@ -9,8 +9,37 @@ class DonorRepository extends GetxController {
   static DonorRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
   Future<void> createUser(DonorModel donor) async {
-    _db
-        .collection("Donors")
+    var donors = _db.collection("Donors");
+
+    // Check if the email or phone number already exists
+    var existingUsers =
+        await donors.where('email', isEqualTo: donor.email).get();
+    if (existingUsers.docs.isNotEmpty) {
+      Get.snackbar(
+        "Error",
+        "Email already exists",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.redAccent,
+      );
+      return;
+    }
+
+    existingUsers =
+        await donors.where('phone', isEqualTo: donor.phoneNumber).get();
+    if (existingUsers.docs.isNotEmpty) {
+      Get.snackbar(
+        "Error",
+        "Phone number already exists",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent.withOpacity(0.1),
+        colorText: Colors.redAccent,
+      );
+      return;
+    }
+
+    // If not, create the user
+    await donors
         .add(donor.toJason())
         .then((value) => Get.snackbar(
               "Success",

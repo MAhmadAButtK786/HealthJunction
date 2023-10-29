@@ -9,6 +9,7 @@ import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/models/donor_model.dart';
 import 'package:healthjunction/src/features/authentication/repository/donor_repository.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_list/donor_list.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodlisthome.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
@@ -408,7 +409,7 @@ class _DonorFormState extends State<DonorForm> {
                       province: _provincenameController.text,
                     );
                     _donorRepository.createUser(donor);
-                    Get.to(() => DonorList());
+                    Get.to(() => BloodBankListhome());
                     _showResultDialog(context);
                   }
                 }

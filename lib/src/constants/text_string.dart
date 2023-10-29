@@ -94,3 +94,5 @@ const String nEdhiMCRoom = "115";
 const String nPolice = "15";
 const String infoPolice =
     "Punjab Police is the dedicated law enforcement agency of the Punjab province in Pakistan. Committed to ensuring your safety and security, we uphold justice, maintain law and order, and work tirelessly for your protection.";
+const String editRecipient = "Update Information";
+const String deleteRecipient = "Delete as Recipient";
