@@ -1,71 +1,221 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_import, unused_import, unnecessary_new, deprecated_member_use, avoid_print, use_build_context_synchronously, use_key_in_widget_constructors, non_constant_identifier_names
-
-import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors, use_build_context_synchronously, deprecated_member_use, duplicate_ignore, avoid_print
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthjunction/src/constants/colors.dart';
-import 'package:healthjunction/src/constants/text_string.dart';
-import 'package:healthjunction/src/features/authentication/models/recipient_model.dart';
-import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
-import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class RecipientList extends StatefulWidget {
-  const RecipientList({super.key});
+void main() => runApp(MaterialApp(home: RecipientList()));
 
+class RecipientList extends StatefulWidget {
   @override
-  State<RecipientList> createState() => _RecipientListState();
+  _RecipientListState createState() => _RecipientListState();
 }
 
 class _RecipientListState extends State<RecipientList> {
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  String? selectedProvince;
+  String? selectedBloodType;
+  String? selectedCity; // New variable for selected city
+  final cityController =
+      TextEditingController(); // Controller for city TextField
 
-  void _handleMenuPressed() {
-    scaffoldKey.currentState?.openDrawer();
+  @override
+  void initState() {
+    super.initState();
+    cityController.addListener(
+        _updateCity); // Add listener to update city when text changes
+  }
+
+  @override
+  void dispose() {
+    cityController
+        .dispose(); // Dispose controller when not needed to free up resources
+    super.dispose();
+  }
+
+  void _updateCity() {
+    setState(() {
+      selectedCity = cityController
+          .text; // Update selectedCity with current text in TextField
+    });
+  }
+
+  Future<List<QueryDocumentSnapshot>> fetchRecipientData(
+      String? selectedProvince,
+      String? selectedBloodType,
+      String? selectedCity) async {
+    Query<Map<String, dynamic>> query =
+        FirebaseFirestore.instance.collection('Recepients');
+
+    if (selectedProvince != null && selectedProvince.isNotEmpty) {
+      query = query.where('Province', isEqualTo: selectedProvince);
+    }
+    if (selectedBloodType != null && selectedBloodType.isNotEmpty) {
+      query = query.where('BloodType', isEqualTo: selectedBloodType);
+    }
+    if (selectedCity != null && selectedCity.isNotEmpty) {
+      query = query.where('City', isEqualTo: selectedCity);
+    }
+
+    QuerySnapshot<Map<String, dynamic>> recipientData = await query.get();
+    return recipientData.docs;
+  }
+
+  void _showFilterDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return AlertDialog(
+              title: Text('Filter Options'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  DropdownButton<String>(
+                    value: selectedProvince,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedProvince = value;
+                      });
+                      this.setState(() {}); // Add this line
+                    },
+                    hint: Text('Select Province'),
+                    items: <String>[
+                      'Punjab',
+                      'Sindh',
+                      'KPK',
+                      'Blochistan',
+                      'Islamabad',
+                      'Gilgit Baltistan',
+                      'AJK'
+                    ].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                  SizedBox(height: 10),
+                  DropdownButton<String>(
+                    value: selectedBloodType,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedBloodType = value;
+                      });
+                      this.setState(() {}); // Add this line
+                    },
+                    hint: Text('Select Blood Type'),
+                    items: <String>[
+                      'A-',
+                      'B-',
+                      'AB-',
+                      'O-',
+                      'A+',
+                      'B+',
+                      'AB+',
+                      'O+',
+                      'NI'
+                    ].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                  SizedBox(height: 10),
+                  TextField(
+                    controller: cityController,
+                    decoration: InputDecoration(
+                      hintText: 'Enter City',
+                    ),
+                  ),
+                ],
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: Text('Cancel Filters'),
+                  onPressed: () {
+                    setState(() {
+                      selectedProvince = null;
+                      selectedBloodType = null;
+                      cityController.clear();
+                    });
+                    this.setState(() {}); // Add this line
+                  },
+                ),
+                TextButton(
+                  child: Text('Apply Filters'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
-      appBar: Navbar(
+      drawer: ReusableDrawerSideBar(
         color: Colors.red,
-        textNav: "Recipient List",
-        onMenuPressed: _handleMenuPressed,
+        headerText: "Recipient List",
       ),
-      drawer:
-          ReusableDrawerSideBar(color: Colors.red, headerText: "RecipientList"),
-      body: FutureBuilder<List<DocumentSnapshot>>(
-        future: fetchDonorData(),
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          );
+        }),
+        title: Text(
+          "Recipient List",
+          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.filter_list_alt),
+            onPressed: () {
+              _showFilterDialog();
+            },
+          ),
+        ],
+        centerTitle: true,
+      ),
+      body: FutureBuilder<List<QueryDocumentSnapshot>>(
+        future: fetchRecipientData(
+            selectedProvince, selectedBloodType, selectedCity),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (snapshot.hasData && snapshot.data!.isEmpty) {
-            return Center(child: Text('No donor data available.'));
-          } else if (snapshot.hasData) {
-            List<DocumentSnapshot> donors = snapshot.data!;
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return Center(child: Text('No recipient data available.'));
+          } else {
+            List<QueryDocumentSnapshot> recipients = snapshot.data!;
             SizedBox(
-              height: 20,
+              height: 10,
             );
-            return ListView.separated(
-              itemCount: donors.length,
-              separatorBuilder: (BuildContext context, int index) => Divider(),
+            return ListView.builder(
+              itemCount: recipients.length,
               itemBuilder: (context, index) {
-                var donor = donors[index].data() as Map<String, dynamic>;
-                String fullName = donor['FullName'] ?? 'No Name';
-                String email = donor['Email'] ?? 'No Email';
-                String bloodType = donor['BloodType'] ?? 'No Blood Type';
-                String phoneNumber = donor['Phone'] ?? 'No Phone Number';
-                String city = donor['City'] ?? 'No City Added';
-                String province = donor['Province'] ?? 'No Province Added';
-                double age = donor['Age'] ?? 0.0;
-
+                var recipient =
+                    recipients[index].data() as Map<String, dynamic>;
+                String fullName = recipient['FullName'] ?? 'No Name';
+                String email = recipient['Email'] ?? 'No Email';
+                String bloodType = recipient['BloodType'] ?? 'No Blood Type';
+                double age = recipient['Age'] ?? 0.0;
+                String phoneNumber = recipient['Phone'] ?? 'No Phone Number';
+                String city = recipient['City'] ?? 'No City Added';
+                String province = recipient['Province'] ?? 'No Province Added';
                 return ListTile(
                   leading: Icon(
                     Icons.person,
@@ -93,6 +243,7 @@ class _RecipientListState extends State<RecipientList> {
                     String phone = phoneNumber;
                     String url = 'tel:$phone';
                     try {
+                      // ignore: deprecated_member_use
                       if (await canLaunch(url)) {
                         await launch(url);
                       } else {
@@ -108,24 +259,9 @@ class _RecipientListState extends State<RecipientList> {
                 );
               },
             );
-          } else {
-            return Center(child: Text('Unknown error occurred.'));
           }
         },
       ),
     );
-  }
-
-  Future<List<DocumentSnapshot>> fetchDonorData() async {
-    List<DocumentSnapshot> donors = [];
-    try {
-      QuerySnapshot<Map<String, dynamic>> donorData =
-          await FirebaseFirestore.instance.collection('Recepients').get();
-      donors = donorData.docs;
-    } catch (error) {
-      // Handle errors here
-      print('Error fetching donor data: $error');
-    }
-    return donors;
   }
 }
