@@ -42,7 +42,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: () {
-            Get.to(() => const ProfileScreen());
+            Get.to(() => ProfileScreen());
           },
           icon: const Icon(Icons.person),
         ),
