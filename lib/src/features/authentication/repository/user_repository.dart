@@ -46,10 +46,10 @@ class UserRepository extends GetxController {
     // Convert the document to a UserModel
     UserModel user = UserModel(
       id: userDoc.id,
-      fullName: userDoc['fullName'],
-      email: userDoc['email'],
-      phoneNumber: userDoc['phoneNumber'],
-      password: userDoc['password'],
+      fullName: userDoc['fullName'] ?? '',
+      email: userDoc['email'] ?? '',
+      phoneNumber: userDoc['phoneNumber'] ?? '',
+      password: userDoc['password'] ?? '',
     );
 
     return user;

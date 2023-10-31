@@ -1,5 +1,6 @@
-// ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, avoid_print, override_on_non_overriding_member, annotate_overrides
+// ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, avoid_print, override_on_non_overriding_member, annotate_overrides, duplicate_import
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,12 +14,14 @@ import 'package:healthjunction/src/features/authentication/screens/loginscreen/l
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_header_widget.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore package
 
 class SignupFooterWidget extends StatelessWidget {
   const SignupFooterWidget({Key? key}) : super(key: key);
 
   @override
   //Google Sign in Authentication
+
   Future<UserCredential?> signInWithGoogle() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -44,9 +47,27 @@ class SignupFooterWidget extends StatelessWidget {
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-
+      print("Sign in successful");
       // Sign in with Firebase using the Google credentials
-      return await FirebaseAuth.instance.signInWithCredential(credential);
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Access user details
+      String? email = userCredential.user!.email;
+      String id = userCredential.user!.uid;
+      String? fullName = userCredential.user!.displayName;
+      String? password = '';
+      String? phoneNumber = '';
+      // Store user data in Firestore
+      await FirebaseFirestore.instance.collection('Users').doc(id).set({
+        'id': id,
+        'fullName': fullName,
+        'email': email,
+        'phoneNumber': phoneNumber,
+        'password': password,
+      });
+
+      return userCredential;
     } catch (e) {
       // Handle any errors that occur during the sign-in process
       print('Error signing in with Google: $e');
