@@ -54,7 +54,10 @@ dependencies:
   url_launcher: ^6.2.0
   # add Cloud FireStore in App
   cloud_firestore: ^4.12.1
- 
+  # add Facebook Auth in App (for Social)
+  flutter_facebook_auth: ^6.0.2
+  # add X(Twitter) Auth in App (for Social)
+  firebase_ui_oauth_twitter: ^1.2.13
 dev_dependencies:
   flutter_test:
     sdk: flutter

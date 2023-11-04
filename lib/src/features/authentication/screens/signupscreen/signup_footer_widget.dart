@@ -84,8 +84,9 @@ class SignupFooterWidget extends StatelessWidget {
           style: TextStyle(color: apptextColor),
         ),
         const SizedBox(
-          height: 10.0,
+          height: 5.0,
         ),
+        //Google Button
         SizedBox(
           width: double.infinity,
           child: OutlinedButton.icon(
@@ -103,8 +104,47 @@ class SignupFooterWidget extends StatelessWidget {
               },
               label: Text(tSGoogle)),
         ),
+        //Facebook Button
         const SizedBox(
-          height: 10.0,
+          height: 5.0,
+        ),
+        SizedBox(
+          width: double.infinity,
+          child: OutlinedButton.icon(
+              icon: Image(
+                image: AssetImage(facbook),
+                width: 20.0,
+              ),
+              onPressed: () async {
+                UserCredential? userCredential = await signInWithGoogle();
+                if (userCredential != null) {
+                  // User signed in successfully, you can handle the user data here
+                  print('User signed in with Facebook: ${userCredential.user}');
+                  Get.to(() => Dashboard()); // Navigate to Dashboard
+                }
+              },
+              label: Text(tSFacebook)),
+        ),
+        //X(Twitter) Button
+        const SizedBox(
+          height: 5.0,
+        ),
+        SizedBox(
+          width: double.infinity,
+          child: OutlinedButton.icon(
+              icon: Image(
+                image: AssetImage(twitterX),
+                width: 20.0,
+              ),
+              onPressed: () async {
+                UserCredential? userCredential = await signInWithGoogle();
+                if (userCredential != null) {
+                  // User signed in successfully, you can handle the user data here
+                  print('User signed in with X: ${userCredential.user}');
+                  Get.to(() => Dashboard()); // Navigate to Dashboard
+                }
+              },
+              label: Text(tSX)),
         ),
         TextButton(
           onPressed: () {

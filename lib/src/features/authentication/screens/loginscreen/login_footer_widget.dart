@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
@@ -75,52 +76,106 @@ class LoginFooterWidget extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const Text("OR"),
-        const SizedBox(
-          height: 10.0,
-        ),
-        SizedBox(
-          width: double.infinity,
-          child: OutlinedButton.icon(
-              icon: Image(
-                image: AssetImage(googleLogo),
-                width: 20.0,
-              ),
-              onPressed: () async {
-                UserCredential? userCredential = await signInWithGoogle();
-                if (userCredential != null) {
-                  print("Sign In SuccessFul");
-                  Get.to(() => Dashboard());
-                }
-              },
-              label: Text(tSGoogle)),
-        ),
-        const SizedBox(
-          height: 10.0,
-        ),
-        TextButton(
-          onPressed: () {
-            Get.to(() => SignupScreen());
-          },
-          child: Text.rich(
-            TextSpan(
-              text: tDonthaveaccount,
-              style: TextStyle(color: tDarkColor),
-              children: [
-                TextSpan(
-                  text: tSignup,
-                  style: TextStyle(
-                    color: apptextColor,
+    return Align(
+      alignment: Alignment.center,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text("OR"),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "Sign Up with",
+            style: GoogleFonts.montserrat(
+                fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 7,
+          ),
+          SizedBox(
+            height: 50,
+            width: 150,
+            child: Align(
+              alignment: Alignment.center,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  //Google Button
+                  IconButton(
+                    icon: Image(
+                      image: AssetImage(googleLogo),
+                      width: 23.0,
+                    ),
+                    onPressed: () async {
+                      UserCredential? userCredential = await signInWithGoogle();
+                      if (userCredential != null) {
+                        // User signed in successfully, you can handle the user data here
+                        print(
+                            'User signed in with Google: ${userCredential.user}');
+                        Get.to(() => Dashboard()); // Navigate to Dashboard
+                      }
+                    },
                   ),
-                ),
-              ],
+
+                  //Facebook Button
+
+                  IconButton(
+                    icon: Image(
+                      image: AssetImage(facbook),
+                      width: 30.0,
+                    ),
+                    onPressed: () async {
+                      UserCredential? userCredential = await signInWithGoogle();
+                      if (userCredential != null) {
+                        // User signed in successfully, you can handle the user data here
+                        print(
+                            'User signed in with Facebook: ${userCredential.user}');
+                        Get.to(() => Dashboard()); // Navigate to Dashboard
+                      }
+                    },
+                  ),
+                  //X(Twitter) Button
+
+                  IconButton(
+                    icon: Image(
+                      image: AssetImage(twitterX),
+                      width: 30.0,
+                    ),
+                    onPressed: () async {
+                      UserCredential? userCredential = await signInWithGoogle();
+                      if (userCredential != null) {
+                        // User signed in successfully, you can handle the user data here
+                        print('User signed in with X: ${userCredential.user}');
+                        Get.to(() => Dashboard()); // Navigate to Dashboard
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
-        )
-      ],
+          TextButton(
+            onPressed: () {
+              Get.to(() => SignupScreen());
+            },
+            child: Text.rich(
+              TextSpan(
+                text: tDonthaveaccount,
+                style: TextStyle(color: tDarkColor),
+                children: [
+                  TextSpan(
+                    text: tSignup,
+                    style: TextStyle(
+                      color: apptextColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

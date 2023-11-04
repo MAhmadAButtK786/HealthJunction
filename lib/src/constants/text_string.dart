@@ -27,6 +27,8 @@ const String tCPassword = "Confirm Password";
 const String tEmail = "Email";
 const String tPhoneNo = "Phone Number";
 const String tSPhoneNo = "Enter Your Phone Number";
+const String tSFacebook = "Sign Up with Facebook";
+const String tSX = "Sign Up with X";
 //Forget Password
 const String tForgetPass = "Enter Your Email Address below to reset Password";
 const String tResetPassB = "Reset Password";
