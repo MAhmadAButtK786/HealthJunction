@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -48,12 +45,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyDElkWJzEFuz_N6tfXlL7WPv7sAWdwwcos',
-    appId: '1:293812165856:web:6e996622f7c46ba71bc485',
+    appId: '1:293812165856:web:719d1aff818b33381bc485',
     messagingSenderId: '293812165856',
     projectId: 'health-junction-675ff',
     authDomain: 'health-junction-675ff.firebaseapp.com',
     storageBucket: 'health-junction-675ff.appspot.com',
-    measurementId: 'G-E2N4BKQWPK',
+    measurementId: 'G-B37BJLDE6X',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -73,5 +70,16 @@ class DefaultFirebaseOptions {
     androidClientId: '293812165856-2uc2hrll5ho5fcppdi7fb2nl1634g118.apps.googleusercontent.com',
     iosClientId: '293812165856-ka80elo93ebunbk6qf87o7p5q6fbpjjh.apps.googleusercontent.com',
     iosBundleId: 'com.example.healthjunction',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBzJTHAdI3JDikY5vsAsS72iSSWY15bi2Q',
+    appId: '1:293812165856:ios:7e0483e1b8b28df21bc485',
+    messagingSenderId: '293812165856',
+    projectId: 'health-junction-675ff',
+    storageBucket: 'health-junction-675ff.appspot.com',
+    androidClientId: '293812165856-2uc2hrll5ho5fcppdi7fb2nl1634g118.apps.googleusercontent.com',
+    iosClientId: '293812165856-h2ubapqdkl1inrhuikdqr896hth9ujf7.apps.googleusercontent.com',
+    iosBundleId: 'com.example.healthjunction.RunnerTests',
   );
 }

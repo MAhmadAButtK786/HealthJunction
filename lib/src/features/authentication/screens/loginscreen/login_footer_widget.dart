@@ -12,13 +12,15 @@ import 'package:healthjunction/src/features/authentication/screens/dashboard%20m
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_form_widget.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_header_widget.dart';
 import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore package
 
 class LoginFooterWidget extends StatelessWidget {
   const LoginFooterWidget({
     super.key,
   });
 
-  @override
+  //Google Sign in Authentication
+
   Future<UserCredential?> signInWithGoogle() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -44,9 +46,27 @@ class LoginFooterWidget extends StatelessWidget {
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-
+      print("Sign in successful");
       // Sign in with Firebase using the Google credentials
-      return await FirebaseAuth.instance.signInWithCredential(credential);
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Access user details
+      String? email = userCredential.user!.email;
+      String id = userCredential.user!.uid;
+      String? fullName = userCredential.user!.displayName;
+      String? password = '';
+      String? phoneNumber = '';
+      // Store user data in Firestore
+      await FirebaseFirestore.instance.collection('Users').doc(id).set({
+        'id': id,
+        'fullName': fullName,
+        'email': email,
+        'phoneNumber': phoneNumber,
+        'password': password,
+      });
+
+      return userCredential;
     } catch (e) {
       // Handle any errors that occur during the sign-in process
       print('Error signing in with Google: $e');
