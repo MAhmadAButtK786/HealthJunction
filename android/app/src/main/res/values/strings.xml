@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">HealthJunction </string>
+<string name="facebook_app_id">377617114829307</string>
+<string name="fb_login_protocol_scheme">fb377617114829307</string>
+<string name="facebook_client_token">76a65d4b69ff960e757c129b566f44c3</string>
+
+
+</resources>

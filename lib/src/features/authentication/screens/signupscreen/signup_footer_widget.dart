@@ -15,6 +15,8 @@ import 'package:healthjunction/src/features/authentication/screens/loginscreen/l
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
 import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore package
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class SignupFooterWidget extends StatelessWidget {
   const SignupFooterWidget({Key? key}) : super(key: key);
@@ -75,97 +77,139 @@ class SignupFooterWidget extends StatelessWidget {
     }
   }
 
+// Facebook Authentication
+  Future<UserCredential?> _signInWithFacebook() async {
+    try {
+      await FacebookAuth.instance.logOut();
+
+      // Trigger the Facebook sign-in flow
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      // Create a Facebook auth credential from the access token
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+      // Sign in to Firebase with the Facebook auth credential
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithCredential(facebookAuthCredential);
+
+      // User is signed in. You can handle the signed-in user here.
+      print("User signed in: ${userCredential.user!.displayName}");
+
+      // Once signed in, return the UserCredential
+      return userCredential;
+    } catch (e) {
+      // Handle authentication errors
+      print("Error Signing In with Facebook: $e");
+      return null;
+    }
+  }
+
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const Text(
-          "OR",
-          style: TextStyle(color: apptextColor),
-        ),
-        const SizedBox(
-          height: 5.0,
-        ),
-        //Google Button
-        SizedBox(
-          width: double.infinity,
-          child: OutlinedButton.icon(
-              icon: Image(
-                image: AssetImage(googleLogo),
-                width: 20.0,
-              ),
-              onPressed: () async {
-                UserCredential? userCredential = await signInWithGoogle();
-                if (userCredential != null) {
-                  // User signed in successfully, you can handle the user data here
-                  print('User signed in with Google: ${userCredential.user}');
-                  Get.to(() => Dashboard()); // Navigate to Dashboard
-                }
-              },
-              label: Text(tSGoogle)),
-        ),
-        //Facebook Button
-        const SizedBox(
-          height: 5.0,
-        ),
-        SizedBox(
-          width: double.infinity,
-          child: OutlinedButton.icon(
-              icon: Image(
-                image: AssetImage(facbook),
-                width: 20.0,
-              ),
-              onPressed: () async {
-                UserCredential? userCredential = await signInWithGoogle();
-                if (userCredential != null) {
-                  // User signed in successfully, you can handle the user data here
-                  print('User signed in with Facebook: ${userCredential.user}');
-                  Get.to(() => Dashboard()); // Navigate to Dashboard
-                }
-              },
-              label: Text(tSFacebook)),
-        ),
-        //X(Twitter) Button
-        const SizedBox(
-          height: 5.0,
-        ),
-        SizedBox(
-          width: double.infinity,
-          child: OutlinedButton.icon(
-              icon: Image(
-                image: AssetImage(twitterX),
-                width: 20.0,
-              ),
-              onPressed: () async {
-                UserCredential? userCredential = await signInWithGoogle();
-                if (userCredential != null) {
-                  // User signed in successfully, you can handle the user data here
-                  print('User signed in with X: ${userCredential.user}');
-                  Get.to(() => Dashboard()); // Navigate to Dashboard
-                }
-              },
-              label: Text(tSX)),
-        ),
-        TextButton(
-          onPressed: () {
-            Get.to(() => const LoginScreen());
-          },
-          child: Text.rich(
-            TextSpan(
-              text: tAAccount,
-              style: TextStyle(color: tDarkColor),
-              children: [
-                TextSpan(
-                  text: tLogin,
-                  style: TextStyle(
-                    color: apptextColor,
+    return Align(
+      alignment: Alignment.center,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            "OR",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "Sign Up with",
+            style: GoogleFonts.montserrat(
+                fontSize: 16, fontWeight: FontWeight.bold, color: apptextColor),
+          ),
+          SizedBox(
+            height: 7,
+          ),
+          SizedBox(
+            height: 50,
+            width: 150,
+            child: Align(
+              alignment: Alignment.center,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  //Google Button
+                  IconButton(
+                    icon: Image(
+                      image: AssetImage(googleLogo),
+                      width: 23.0,
+                    ),
+                    onPressed: () async {
+                      UserCredential? userCredential = await signInWithGoogle();
+                      if (userCredential != null) {
+                        // User signed in successfully, you can handle the user data here
+                        print(
+                            'User signed in with Google: ${userCredential.user}');
+                        Get.to(() => Dashboard()); // Navigate to Dashboard
+                      }
+                    },
                   ),
-                ),
-              ],
+
+                  //Facebook Button
+
+                  IconButton(
+                    icon: Image(
+                      image: AssetImage(facbook),
+                      width: 35.0,
+                    ),
+                    onPressed: () async {
+                      UserCredential? userCredential =
+                          await _signInWithFacebook();
+                      if (userCredential != null) {
+                        // User signed in successfully, you can handle the user data here
+                        print(
+                            'User signed in with Facebook: ${userCredential.user}');
+                        Get.to(() => Dashboard()); // Navigate to Dashboard
+                      }
+                    },
+                  ),
+                  //X(Twitter) Button
+
+                  IconButton(
+                    icon: Image(
+                      image: AssetImage(twitterX),
+                      width: 30.0,
+                    ),
+                    onPressed: () async {
+                      UserCredential? userCredential = await signInWithGoogle();
+                      if (userCredential != null) {
+                        // User signed in successfully, you can handle the user data here
+                        print('User signed in with X: ${userCredential.user}');
+                        Get.to(() => Dashboard()); // Navigate to Dashboard
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
-        )
-      ],
+          TextButton(
+            onPressed: () {
+              Get.to(() => LoginScreen());
+            },
+            child: Text.rich(
+              TextSpan(
+                text: "Already have an Account? ",
+                style: TextStyle(color: tDarkColor),
+                children: [
+                  TextSpan(
+                    text: tLogin,
+                    style: TextStyle(
+                      color: apptextColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

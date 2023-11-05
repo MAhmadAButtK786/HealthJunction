@@ -14,6 +14,7 @@ import 'package:healthjunction/src/features/authentication/screens/loginscreen/l
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_header_widget.dart';
 import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
 import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore package
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class LoginFooterWidget extends StatelessWidget {
   const LoginFooterWidget({
@@ -75,20 +76,42 @@ class LoginFooterWidget extends StatelessWidget {
     }
   }
 
+  // Facebook Signin Authentication
+
+  Future<UserCredential?> signInWithFacebook() async {
+    // Trigger the sign-in flow
+    try {
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      // Create a credential from the access token
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+      // Once signed in, return the UserCredential
+      return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    } catch (e) {
+      print("Error Signing Up with Facebook: $e");
+      return null;
+    }
+  }
+
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("OR"),
+          Text(
+            "OR",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           SizedBox(
             height: 10,
           ),
           Text(
             "Sign Up with",
             style: GoogleFonts.montserrat(
-                fontSize: 16, fontWeight: FontWeight.bold),
+                fontSize: 16, fontWeight: FontWeight.bold, color: apptextColor),
           ),
           SizedBox(
             height: 7,
@@ -123,10 +146,11 @@ class LoginFooterWidget extends StatelessWidget {
                   IconButton(
                     icon: Image(
                       image: AssetImage(facbook),
-                      width: 30.0,
+                      width: 35.0,
                     ),
                     onPressed: () async {
-                      UserCredential? userCredential = await signInWithGoogle();
+                      UserCredential? userCredential =
+                          await signInWithFacebook();
                       if (userCredential != null) {
                         // User signed in successfully, you can handle the user data here
                         print(
