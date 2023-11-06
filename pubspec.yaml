@@ -61,6 +61,9 @@ dependencies:
   twitter_login: ^4.4.2
   # http help to get the user data
   http: ^1.1.0
+  # adding Dependencies to read data from CSV and adding it in Firebase FireStore
+  csv: ^5.1.1
+  excel: ^3.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
