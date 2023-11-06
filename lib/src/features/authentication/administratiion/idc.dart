@@ -5,14 +5,14 @@ import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class ChugtaiLabData extends StatefulWidget {
-  const ChugtaiLabData({super.key});
+class IDCLab extends StatefulWidget {
+  const IDCLab({super.key});
 
   @override
-  State<ChugtaiLabData> createState() => _ChugtaiLabDataState();
+  State<IDCLab> createState() => _IDCLabState();
 }
 
-class _ChugtaiLabDataState extends State<ChugtaiLabData> {
+class _IDCLabState extends State<IDCLab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +30,9 @@ class _ChugtaiLabDataState extends State<ChugtaiLabData> {
   Future<void> exportData() async {
     try {
       final CollectionReference alliedlab =
-          FirebaseFirestore.instance.collection("Chugtai Labs");
-      final alliedLabLhr =
-          await rootBundle.loadString('assets/dataSets/1-chugtai.csv');
+          FirebaseFirestore.instance.collection("IDC");
+      final alliedLabLhr = await rootBundle.loadString(
+          'assets/dataSets/2- islamabad diagnostic center (IDC).csv');
       List<List<dynamic>> csvdata = CsvToListConverter().convert(alliedLabLhr);
       List<List<dynamic>> data = csvdata;
       for (var i = 0; i < data.length; i++) {
