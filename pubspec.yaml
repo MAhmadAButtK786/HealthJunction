@@ -95,7 +95,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    
+    - assets/dataSets/blood bank private.csv
+    - assets/dataSets/blood banks public.csv
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
