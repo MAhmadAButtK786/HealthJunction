@@ -96,6 +96,7 @@ flutter:
     - assets/images/
     - assets/dataSets/blood bank private.csv
     - assets/dataSets/blood banks public.csv
+    - assets/dataSets/Basic health data.csv
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

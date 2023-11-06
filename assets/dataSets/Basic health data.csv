@@ -6,7 +6,7 @@ Heart Rate (Pulse),Resting heart rate for adults is typically between 60 and 100
 Body Mass Index (BMI),A BMI of 18.5 to 24.9 is considered a healthy weight. Below 18.5 is underweight. 25 to 29.9 is overweight. 30 or higher is considered obese.
 Cholesterol Levels,"Total Cholesterol: Desirable: Less than 200 mg/dL, Borderline High: 200-239 mg/dL, High: 240 mg/dL and above. LDL (Low-Density Lipoprotein) Cholesterol (often referred to as ""bad"" cholesterol): Optimal: Less than 100 mg/dL, Near Optimal/Above Optimal: 100-129 mg/dL, High: 130-159 mg/dL, Very High: 160 mg/dL and above. HDL (High-Density Lipoprotein) Cholesterol (often referred to as ""good"" cholesterol): Higher levels are better. For men, 40 mg/dL or lower is considered low. For women, 50 mg/dL or lower is considered low."
 Blood Sugar (Glucose) Levels,"Fasting Blood Sugar: Normal: Less than 100 mg/dL, Prediabetes: 100-125 mg/dL, Diabetes: 126 mg/dL or higher. Hemoglobin A1c (HbA1c): Normal: Less than 5.7%, Prediabetes: 5.7% to 6.4%, Diabetes: 6.5% or higher."
-Body Temperature,"Normal body temperature is around 98.6øF (37øC), but it can vary slightly between individuals."
+Body Temperature,"Normal body temperature is around 98.6ï¿½F (37ï¿½C), but it can vary slightly between individuals."
 Respiratory Rate,The normal respiratory rate for adults is typically 12-20 breaths per minute at rest.
 Oxygen Saturation (SpO2),Normal SpO2 levels are usually 95% or higher.
 Blood Sugar (Glucose) Levels,"Random Blood Sugar: Normal: Less than 200 mg/dL, Diabetes: 200 mg/dL or higher."
@@ -17,12 +17,12 @@ Creatinine,"Normal creatinine levels vary with age, gender, and muscle mass. For
 Sodium (Na),Normal sodium levels in the blood are generally between 135 to 145 mEq/L.
 Potassium (K),Normal potassium levels in the blood are typically between 3.5 to 5.0 mEq/L.
 Calcium (Ca),Normal calcium levels in the blood are usually between 8.5 to 10.5 mg/dL.
-White Blood Cell Count (WBC),"Normal WBC count is usually in the range of 4,000 to 11,000 cells per microliter (æL)."
-Red Blood Cell Count (RBC),Normal RBC count varies but is typically around 4.5 to 6.0 million cells/æL for men and 4.0 to 5.5 million cells/æL for women.
-Platelet Count,"Normal platelet count is generally between 150,000 to 450,000 platelets/æL."
+White Blood Cell Count (WBC),"Normal WBC count is usually in the range of 4,000 to 11,000 cells per microliter (ï¿½L)."
+Red Blood Cell Count (RBC),Normal RBC count varies but is typically around 4.5 to 6.0 million cells/ï¿½L for men and 4.0 to 5.5 million cells/ï¿½L for women.
+Platelet Count,"Normal platelet count is generally between 150,000 to 450,000 platelets/ï¿½L."
 Hemoglobin (Hb),"Normal hemoglobin levels vary with age and gender. For adult men, it's typically 13.8 to 17.2 grams/dL, and for adult women, it's usually 12.1 to 15.1 grams/dL."
 Hematocrit (Hct),"Normal hematocrit levels vary with age and gender. For adult men, it's often in the range of 38.3% to 48.6%, and for adult women, it's typically 35.5% to 44.9%."
-Body Temperature,"Normal body temperature is around 98.6øF (37øC). However, it can vary slightly between individuals, and normal body temperature can range from 97.8øF to 99.1øF (36.5øC to 37.3øC)."
+Body Temperature,"Normal body temperature is around 98.6ï¿½F (37ï¿½C). However, it can vary slightly between individuals, and normal body temperature can range from 97.8ï¿½F to 99.1ï¿½F (36.5ï¿½C to 37.3ï¿½C)."
 Blood Oxygen Saturation (SpO2),Normal SpO2 levels are usually 95% or higher. SpO2 measures the amount of oxygen carried by hemoglobin in the blood.
 C-Reactive Protein (CRP),CRP levels are a marker of inflammation in the body. Normal CRP levels are typically less than 1 mg/dL. Higher levels may indicate inflammation or infection.
 Prothrombin Time (PT) and INR,"PT is a measure of how long it takes for blood to clot, while INR is a standardized measurement of PT. The normal range for INR is generally around 0.8 to 1.2. It may be higher for individuals on anticoagulant therapy."
