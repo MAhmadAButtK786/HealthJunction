@@ -1,0 +1,54 @@
+Basic health data guidelines: ,
+"""Please keep in mind that these values can vary slightly depending on factors such as age, gender, and individual health conditions. It's essential to consult with a healthcare professional for personalized health assessments and recommendations. Additionally, please note that these values serve as general guidelines, and individual health parameters can differ. Regular check-ups with a healthcare provider are crucial for effective monitoring and management of your health.""",
+Name,Data
+Blood Pressure,Normal blood pressure is typically around 120/80 mm Hg. Hypertension (high blood pressure) is generally defined as having a blood pressure of 130/80 mm Hg or higher.
+Heart Rate (Pulse),Resting heart rate for adults is typically between 60 and 100 beats per minute.
+Body Mass Index (BMI),A BMI of 18.5 to 24.9 is considered a healthy weight. Below 18.5 is underweight. 25 to 29.9 is overweight. 30 or higher is considered obese.
+Cholesterol Levels,"Total Cholesterol: Desirable: Less than 200 mg/dL, Borderline High: 200-239 mg/dL, High: 240 mg/dL and above. LDL (Low-Density Lipoprotein) Cholesterol (often referred to as ""bad"" cholesterol): Optimal: Less than 100 mg/dL, Near Optimal/Above Optimal: 100-129 mg/dL, High: 130-159 mg/dL, Very High: 160 mg/dL and above. HDL (High-Density Lipoprotein) Cholesterol (often referred to as ""good"" cholesterol): Higher levels are better. For men, 40 mg/dL or lower is considered low. For women, 50 mg/dL or lower is considered low."
+Blood Sugar (Glucose) Levels,"Fasting Blood Sugar: Normal: Less than 100 mg/dL, Prediabetes: 100-125 mg/dL, Diabetes: 126 mg/dL or higher. Hemoglobin A1c (HbA1c): Normal: Less than 5.7%, Prediabetes: 5.7% to 6.4%, Diabetes: 6.5% or higher."
+Body Temperature,"Normal body temperature is around 98.6øF (37øC), but it can vary slightly between individuals."
+Respiratory Rate,The normal respiratory rate for adults is typically 12-20 breaths per minute at rest.
+Oxygen Saturation (SpO2),Normal SpO2 levels are usually 95% or higher.
+Blood Sugar (Glucose) Levels,"Random Blood Sugar: Normal: Less than 200 mg/dL, Diabetes: 200 mg/dL or higher."
+Hemoglobin A1c (HbA1c),"Normal: Less than 5.7%, Prediabetes: 5.7% to 6.4%, Diabetes: 6.5% or higher."
+Cholesterol Levels,"Triglycerides: Normal: Less than 150 mg/dL, Borderline High: 150-199 mg/dL, High: 200-499 mg/dL, Very High: 500 mg/dL or higher."
+Blood Urea Nitrogen (BUN),"Normal BUN levels typically range from 7 to 20 mg/dL, but the range can vary."
+Creatinine,"Normal creatinine levels vary with age, gender, and muscle mass. For adults, it's often in the range of 0.6 to 1.2 mg/dL."
+Sodium (Na),Normal sodium levels in the blood are generally between 135 to 145 mEq/L.
+Potassium (K),Normal potassium levels in the blood are typically between 3.5 to 5.0 mEq/L.
+Calcium (Ca),Normal calcium levels in the blood are usually between 8.5 to 10.5 mg/dL.
+White Blood Cell Count (WBC),"Normal WBC count is usually in the range of 4,000 to 11,000 cells per microliter (æL)."
+Red Blood Cell Count (RBC),Normal RBC count varies but is typically around 4.5 to 6.0 million cells/æL for men and 4.0 to 5.5 million cells/æL for women.
+Platelet Count,"Normal platelet count is generally between 150,000 to 450,000 platelets/æL."
+Hemoglobin (Hb),"Normal hemoglobin levels vary with age and gender. For adult men, it's typically 13.8 to 17.2 grams/dL, and for adult women, it's usually 12.1 to 15.1 grams/dL."
+Hematocrit (Hct),"Normal hematocrit levels vary with age and gender. For adult men, it's often in the range of 38.3% to 48.6%, and for adult women, it's typically 35.5% to 44.9%."
+Body Temperature,"Normal body temperature is around 98.6øF (37øC). However, it can vary slightly between individuals, and normal body temperature can range from 97.8øF to 99.1øF (36.5øC to 37.3øC)."
+Blood Oxygen Saturation (SpO2),Normal SpO2 levels are usually 95% or higher. SpO2 measures the amount of oxygen carried by hemoglobin in the blood.
+C-Reactive Protein (CRP),CRP levels are a marker of inflammation in the body. Normal CRP levels are typically less than 1 mg/dL. Higher levels may indicate inflammation or infection.
+Prothrombin Time (PT) and INR,"PT is a measure of how long it takes for blood to clot, while INR is a standardized measurement of PT. The normal range for INR is generally around 0.8 to 1.2. It may be higher for individuals on anticoagulant therapy."
+Activated Partial Thromboplastin Time (aPTT),aPTT measures the time it takes for blood to clot and is used to monitor the effectiveness of anticoagulant medications. Normal aPTT values typically range from 30 to 40 seconds.
+Urinalysis,"Various components are assessed in a urinalysis, including: Specific Gravity: Normal is typically 1.005 to 1.030. pH Level: Normal urine pH is usually around 4.5 to 8.0. Protein: Normally, there should be very little or no protein in the urine. Glucose: Normal urine should not contain glucose. Ketones: Normally, ketones should not be present in the urine."
+Thyroid Function Tests,"Thyroid-stimulating hormone (TSH): Normal TSH levels are generally around 0.4 to 4.0 mIU/L, but the range can vary. Free T4 (thyroxine): Normal free T4 levels usually fall between 0.8 and 1.8 ng/dL. Free T3 (triiodothyronine): Normal free T3 levels are typically between 2.3 and 4.2 pg/mL."
+Liver Function Tests,"These include tests like ALT (Alanine Aminotransferase), AST (Aspartate Aminotransferase), ALP (Alkaline Phosphatase), and Bilirubin. Normal values can vary depending on the specific test."
+Serum Iron Levels,Normal serum iron levels are generally around 60 to 170 micrograms per deciliter (mcg/dL) in men and 40 to 160 mcg/dL in women.
+Blood Coagulation Tests,These tests assess the blood's ability to clot properly. They include tests like: Fibrinogen: Normal levels are typically in the range of 200 to 400 milligrams per deciliter (mg/dL). D-dimer: Normal levels are often less than 250 nanograms per milliliter (ng/mL). Platelet Function Tests: These tests assess how well platelets function in blood clotting.
+Prostate-Specific Antigen (PSA),"PSA is a blood marker used for prostate health assessment. Normal PSA levels are generally below 4.0 nanograms per milliliter (ng/mL), but the interpretation may vary based on age and individual risk factors."
+GFR (Glomerular Filtration Rate),GFR measures kidney function. A GFR above 90 mL/min is considered normal.
+Bone Density (Bone Mineral Density or BMD),"Bone density is measured using T-scores and Z-scores. T-scores are used to assess bone density in comparison to a young, healthy population. A T-score of -1.0 or above is considered normal."
+Vitamin D Levels (25-Hydroxyvitamin D),"Normal vitamin D levels typically fall in the range of 30 to 50 nanograms per milliliter (ng/mL), but ideal levels may vary."
+Hemoglobin A1c (HbA1c),"Normal: Less than 5.7%, Prediabetes: 5.7% to 6.4%, Diabetes: 6.5% or higher."
+Thyroid Function Tests (cont'd),Reverse T3 (Reverse Triiodothyronine): Normal levels are typically around 9.2 to 24.1 ng/dL. Thyroglobulin (Tg): Normal levels vary but are generally less than 55 ng/mL.
+Electrolytes (cont'd),Chloride (Cl): Normal chloride levels in the blood are often between 95 to 105 mEq/L.
+Liver Function Tests (cont'd),Albumin: Normal albumin levels are typically in the range of 3.4 to 5.4 grams per deciliter (g/dL). Total Protein: Normal total protein levels are around 6.4 to 8.3 g/dL.
+Complete Blood Count (CBC),"Includes parameters like mean corpuscular volume (MCV), mean corpuscular hemoglobin (MCH), mean corpuscular hemoglobin concentration (MCHC), and red cell distribution width (RDW), which provide information about red blood cells."
+Electrocardiogram (ECG or EKG),An ECG records the electrical activity of the heart. It assesses the heart's rhythm and can detect irregularities like arrhythmias.
+Forced Vital Capacity (FVC) and Forced Expiratory Volume (FEV1),"These are lung function tests used to assess respiratory health. Normal values vary by age, gender, and height."
+Peak Expiratory Flow (PEF),PEF measures the maximum speed at which a person can exhale air. Normal values vary based on age and sex.
+Visual Acuity,"A measure of how well a person can see, typically tested using an eye chart. Normal visual acuity is 20/20, which means you can see at 20 feet what a person with normal vision can see at 20 feet."
+Urinary Sodium,Measures the amount of sodium in urine and can be used to assess sodium balance in the body. Normal levels vary depending on diet and health.
+PSA Density,This measure considers a person's PSA level in relation to their prostate volume. It's used in conjunction with the PSA test for prostate health assessment.
+Body Fat Percentage,Measures the proportion of body weight that is fat. Normal body fat percentages vary by age and gender.
+Forced Vital Capacity (FVC) and Forced Expiratory Volume (FEV1) Ratio,This ratio is used to diagnose and monitor lung diseases like COPD. A normal ratio is typically around 0.8 or higher.
+Renal Clearance Tests,"These tests, such as creatinine clearance and inulin clearance, assess kidney function by measuring how efficiently the kidneys remove substances from the blood."
+Serum Ferritin,Serum ferritin levels reflect the body's iron stores. Normal values vary by age and gender.
+Aminotransferases,"These include AST (Aspartate Aminotransferase) and ALT (Alanine Aminotransferase). Normal values for AST are typically 10 to 40 units per liter (U/L), and for ALT, they are usually 7 to 56 U/L. Elevated levels may indicate liver or muscle damage."
