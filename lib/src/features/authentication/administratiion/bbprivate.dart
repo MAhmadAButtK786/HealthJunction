@@ -32,24 +32,23 @@ class _PrivateBBDataState extends State<PrivateBBData> {
 
   Future<void> exportData() async {
     try {
+      // connect with Firestore Collection
       final CollectionReference privatebb =
           FirebaseFirestore.instance.collection("Private Blood Banks");
-
+      // load the file data  string
       final bbPrivateData =
           await rootBundle.loadString("assets/dataSets/blood bank private.csv");
+      // convert the loaded csv data into List
       List<List<dynamic>> csvTable =
           CsvToListConverter().convert(bbPrivateData);
       List<List<dynamic>> data = csvTable;
 
       for (var i = 1; i < data.length; i++) {
         var record = {
-          'Name': data[i][1], // Assuming Name is at index 0 in your CSV data
-          'Address': data[i]
-              [2], // Assuming Address is at index 1 in your CSV data
-          'License Number': data[i]
-              [3], // Assuming License Number is at index 2 in your CSV data
-          'Secter': data[i]
-              [4], // Assuming Secter is at index 3 in your CSV data
+          'Name': data[i][1],
+          'Address': data[i][2],
+          'License Number': data[i][3],
+          'Secter': data[i][4],
         };
         await privatebb.add(record);
       }

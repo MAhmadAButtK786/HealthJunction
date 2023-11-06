@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:healthjunction/firebase_options.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/bbprivate.dart';
+import 'package:healthjunction/src/features/authentication/administratiion/bbpublic.dart';
 import 'package:healthjunction/src/features/authentication/repository/donor_repository.dart';
 import 'package:healthjunction/src/features/authentication/repository/recipient_repository.dart';
 import 'package:healthjunction/src/features/authentication/repository/user_repository.dart';
@@ -57,7 +58,7 @@ class HealthJunction extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: PrivateBBData(),
+      home: BBPublicData(),
     );
   }
 }
