@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, avoid_print, override_on_non_overriding_member, annotate_overrides, duplicate_import
+// ignore_for_file: unused_import, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison, avoid_print, override_on_non_overriding_member, annotate_overrides, duplicate_import, depend_on_referenced_packages, unnecessary_new
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +17,7 @@ import 'package:healthjunction/src/features/authentication/screens/signupscreen/
 import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore package
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:twitter_login/twitter_login.dart';
 
 class SignupFooterWidget extends StatelessWidget {
   const SignupFooterWidget({Key? key}) : super(key: key);
@@ -77,14 +78,17 @@ class SignupFooterWidget extends StatelessWidget {
     }
   }
 
-// Facebook Authentication
+// Facebook
   Future<UserCredential?> _signInWithFacebook() async {
     try {
       await FacebookAuth.instance.logOut();
 
       // Trigger the Facebook sign-in flow
       final LoginResult loginResult = await FacebookAuth.instance.login();
-
+      if (loginResult == null) {
+        print('User cancelled the sign-in process');
+        return null;
+      }
       // Create a Facebook auth credential from the access token
       final OAuthCredential facebookAuthCredential =
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
@@ -96,11 +100,55 @@ class SignupFooterWidget extends StatelessWidget {
       // User is signed in. You can handle the signed-in user here.
       print("User signed in: ${userCredential.user!.displayName}");
 
-      // Once signed in, return the UserCredential
+      // Update user details in Firestore
+      String? email = userCredential.user!.email;
+      String id = userCredential.user!.uid;
+      String? fullName = userCredential.user!.displayName;
+      String? password = '';
+      String? phoneNumber = '';
+      // Store user data in Firestore
+      await FirebaseFirestore.instance.collection('Users').doc(id).set({
+        'id': id,
+        'fullName': fullName,
+        'email': email,
+        'phoneNumber': phoneNumber,
+        'password': password,
+      });
+
+      // Once signed in and profile is updated, return the UserCredential
       return userCredential;
     } catch (e) {
       // Handle authentication errors
       print("Error Signing In with Facebook: $e");
+      return null;
+    }
+  }
+
+  // Twitter(X) Authentication
+  Future<UserCredential?> signInWithTwitter() async {
+    // Create a TwitterLogin instance
+    final twitterLogin = new TwitterLogin(
+        apiKey: '0PGJRuluVJPiCJbbpTQsbsVvQ',
+        apiSecretKey: 'hrSawbTfy6kndShUMG89DLdk7DqYA4McmEOlZcFlWOH5pWm7Fx',
+        redirectURI:
+            'https://health-junction-675ff.firebaseapp.com/__/auth/handler');
+    try {
+      // Trigger the sign-in flow
+      final authResult = await twitterLogin.login();
+
+      // Create a credential from the access token
+      final twitterAuthCredential = TwitterAuthProvider.credential(
+        accessToken: authResult.authToken!,
+        secret: authResult.authTokenSecret!,
+      );
+
+      // Once signed in, return the UserCredential
+      return await FirebaseAuth.instance
+          .signInWithCredential(twitterAuthCredential);
+    } catch (e) {
+      print(
+        "Error Sigining In with X: $e",
+      );
       return null;
     }
   }
@@ -177,7 +225,8 @@ class SignupFooterWidget extends StatelessWidget {
                       width: 30.0,
                     ),
                     onPressed: () async {
-                      UserCredential? userCredential = await signInWithGoogle();
+                      UserCredential? userCredential =
+                          await signInWithTwitter();
                       if (userCredential != null) {
                         // User signed in successfully, you can handle the user data here
                         print('User signed in with X: ${userCredential.user}');
