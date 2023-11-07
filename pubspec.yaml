@@ -62,6 +62,7 @@ dependencies:
   http: ^1.1.0
   # adding Dependencies to read data from CSV and adding it in Firebase FireStore
   csv: ^5.1.1
+  
   excel: ^3.0.0
 dev_dependencies:
   flutter_test:
@@ -97,7 +98,7 @@ flutter:
     - assets/dataSets/blood bank private.csv
     - assets/dataSets/blood banks public.csv
     - assets/dataSets/Basic health data.csv
-    - assets/dataSets/charity engos information.csv
+    - assets/dataSets/charity engos information (2).csv
     - assets/dataSets/Allied Lahore Lab.csv
     - assets/dataSets/1- chugtai.csv
     - assets/dataSets/2- islamabad diagnostic center (IDC).csv

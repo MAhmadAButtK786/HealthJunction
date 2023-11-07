@@ -21,7 +21,7 @@ class _IDCLabState extends State<IDCLab> {
         width: 280,
         child: ElevatedButton(
           onPressed: exportData,
-          child: Text("Add Allied Lab Data in FireStore"),
+          child: Text("Add IDC Lab Data in FireStore"),
         ),
       )),
     );

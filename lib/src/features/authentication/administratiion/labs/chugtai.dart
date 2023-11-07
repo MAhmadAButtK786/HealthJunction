@@ -21,7 +21,7 @@ class _ChugtaiLabDataState extends State<ChugtaiLabData> {
         width: 280,
         child: ElevatedButton(
           onPressed: exportData,
-          child: Text("Add Allied Lab Data in FireStore"),
+          child: Text("Add Chugtai Lab Data in FireStore"),
         ),
       )),
     );
@@ -32,7 +32,7 @@ class _ChugtaiLabDataState extends State<ChugtaiLabData> {
       final CollectionReference chugtailab =
           FirebaseFirestore.instance.collection("Chugtai Labs");
       final chugtaiLab =
-          await rootBundle.loadString('assets/dataSets/1-chugtai.csv');
+          await rootBundle.loadString('assets/dataSets/1- chugtai.csv');
       List<List<dynamic>> csvdata = CsvToListConverter().convert(chugtaiLab);
       List<List<dynamic>> data = csvdata;
       for (var i = 0; i < data.length; i++) {

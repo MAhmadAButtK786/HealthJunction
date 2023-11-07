@@ -9,7 +9,11 @@ import 'package:healthjunction/src/features/authentication/administratiion/basic
 import 'package:healthjunction/src/features/authentication/administratiion/bloodbank/bbprivate.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/bloodbank/bbpublic.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/charity/charity.dart';
+import 'package:healthjunction/src/features/authentication/administratiion/labs/alnoor.dart';
+import 'package:healthjunction/src/features/authentication/administratiion/labs/chugtai.dart';
+import 'package:healthjunction/src/features/authentication/administratiion/labs/excel.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/labs/healthzone.dart';
+import 'package:healthjunction/src/features/authentication/administratiion/labs/idc.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/labs/indus.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/labs/lmldc.dart';
 import 'package:healthjunction/src/features/authentication/repository/donor_repository.dart';
@@ -64,7 +68,7 @@ class HealthJunction extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: Welcome(),
+      home: CharityNGOData(),
     );
   }
 }
