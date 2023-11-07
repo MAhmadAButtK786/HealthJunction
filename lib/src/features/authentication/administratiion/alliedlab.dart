@@ -35,7 +35,7 @@ class _AlliedLabState extends State<AlliedLab> {
           await rootBundle.loadString('assets/dataSets/Allied Lahore Lab.csv');
       List<List<dynamic>> csvdata = CsvToListConverter().convert(alliedLabLhr);
       List<List<dynamic>> data = csvdata;
-      for (var i = 0; i < data.length; i++) {
+      for (var i = 1; i < data.length; i++) {
         var record = {
           "Code": data[i][0],
           "Test Name": data[i][1],
