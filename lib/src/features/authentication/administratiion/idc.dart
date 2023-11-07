@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:csv/csv.dart';
@@ -29,18 +29,18 @@ class _IDCLabState extends State<IDCLab> {
 
   Future<void> exportData() async {
     try {
-      final CollectionReference alliedlab =
+      final CollectionReference idclab =
           FirebaseFirestore.instance.collection("IDC");
-      final alliedLabLhr = await rootBundle.loadString(
+      final idc = await rootBundle.loadString(
           'assets/dataSets/2- islamabad diagnostic center (IDC).csv');
-      List<List<dynamic>> csvdata = CsvToListConverter().convert(alliedLabLhr);
+      List<List<dynamic>> csvdata = CsvToListConverter().convert(idc);
       List<List<dynamic>> data = csvdata;
       for (var i = 0; i < data.length; i++) {
         var record = {
           "Test Name": data[i][0],
           "Price": data[i][1],
         };
-        await alliedlab.add(record);
+        await idclab.add(record);
       }
     } catch (e) {
       print("Error while adding Data $e");
