@@ -12,6 +12,7 @@ import 'package:healthjunction/src/features/authentication/administratiion/chari
 import 'package:healthjunction/src/features/authentication/administratiion/labs/alnoor.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/labs/chugtai.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/labs/excel.dart';
+import 'package:healthjunction/src/features/authentication/administratiion/labs/govtlabpunj.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/labs/healthzone.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/labs/idc.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/labs/indus.dart';
@@ -68,7 +69,7 @@ class HealthJunction extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: CharityNGOData(),
+      home: PunjabLabs(),
     );
   }
 }
