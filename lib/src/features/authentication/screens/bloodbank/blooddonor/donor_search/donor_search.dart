@@ -8,7 +8,7 @@ import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_list/donor_list.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
-import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 

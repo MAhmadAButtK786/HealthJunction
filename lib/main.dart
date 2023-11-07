@@ -22,7 +22,7 @@ import 'package:healthjunction/src/features/authentication/screens/bloodbank/blo
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_mail/forget_password_mail.dart';
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_phone/forget_password_phone.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
-import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
 import 'package:healthjunction/src/features/authentication/screens/welcome/welcome.dart';
 import 'package:healthjunction/src/utils/theme/theme.dart';
@@ -64,9 +64,7 @@ class HealthJunction extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      //home: Welcome(),
-      home: IMIDC(),
-      // home:
+      home: Welcome(),
     );
   }
 }

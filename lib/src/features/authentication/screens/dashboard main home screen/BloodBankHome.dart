@@ -8,7 +8,7 @@ import 'package:healthjunction/src/features/authentication/screens/bloodbank/blo
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/search_recipient.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodlisthome.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
-import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 
 class BloodBankhome extends StatelessWidget {
   var height, width;

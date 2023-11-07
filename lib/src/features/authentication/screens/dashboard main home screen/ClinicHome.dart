@@ -6,7 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
-import 'package:healthjunction/src/features/authentication/screens/profile_screen/profile_screen.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Clinichome extends StatelessWidget {
