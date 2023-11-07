@@ -9,6 +9,7 @@ import 'package:healthjunction/src/features/authentication/screens/dashboard%20m
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/ClinicHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/HospitalHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
@@ -68,7 +69,7 @@ class Dashboard extends StatelessWidget {
                             ),
                             IconButton(
                               onPressed: () {
-                                Get.to(() => ProfileScreen());
+                                Get.to(() => ProfileMainPage());
                               },
                               icon: Icon(
                                 Icons.person,
