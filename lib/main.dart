@@ -9,6 +9,7 @@ import 'package:healthjunction/src/features/authentication/administratiion/basic
 import 'package:healthjunction/src/features/authentication/administratiion/bbprivate.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/bbpublic.dart';
 import 'package:healthjunction/src/features/authentication/administratiion/charity.dart';
+import 'package:healthjunction/src/features/authentication/administratiion/indus.dart';
 import 'package:healthjunction/src/features/authentication/repository/donor_repository.dart';
 import 'package:healthjunction/src/features/authentication/repository/recipient_repository.dart';
 import 'package:healthjunction/src/features/authentication/repository/user_repository.dart';
@@ -62,7 +63,8 @@ class HealthJunction extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
       //home: Welcome(),
-      home: AlliedLab(),
+      home: IndusLab(),
+      // home:
     );
   }
 }

@@ -103,6 +103,7 @@ flutter:
     - assets/dataSets/2- islamabad diagnostic center (IDC).csv
     - assets/dataSets/3- excel labs.csv
     - assets/dataSets/4- Alnoor diagnostics center.csv
+    - assets/dataSets/Indus Clinical Laboratories.csv
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

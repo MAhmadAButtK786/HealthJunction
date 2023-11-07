@@ -1,0 +1,666 @@
+S.No,Code,Test Name,Sample Required,Reporting Time
+1,78946,17-Hydroxy ProgesterOne,3- 5cc Clotted Blood or Serum,After 7 Days
+2,2525,17-OH Progestron,3- 5cc Clotted Blood or Serum,After 7 Days
+3,2028,24 Hour Urinary Copper,24 Hrs Urine,After Two Days
+4,4142,24 Hrs Urinary Albumin,24 Hrs urine random spot,Daily
+5,4143,24 Hrs Urinary Chloride,24 Hrs Urine,Daily
+6,5050,25-Hydroxy Vitamin-D3,3- 5cc Clotted Blood or Serum,Same Day
+7,2352,5-HIAA,24 Hrs Urine or (Random/Spot) Urine,After Four Days
+8,4123,A C E,3- 5cc Clotted Blood or Serum,After Two Days
+9,1511,A/G Ratio,3- 5cc Clotted Blood or Serum,Same Day
+10,8125,Abdominal Fluid For C/E,Abdominal Fluid,Same Day
+11,8096,Abdominal Fluid For Cytology,Abdominal Fluid,Next Day
+12,8082,Abdominal Fluid For AFB C/S,Abdominal Fluid,After 6 Weeks
+13,8032,Abdominal Fluid For AFB Stain / ZN Stain,Abdominal Fluid,Next Day
+14,8081,Abdominal Fluid For C/S,Abdominal Fluid,After Three Days
+15,8057,Abdominal Fluid For Gram Stain,Abdominal Fluid,Same Day
+16,396,ABGS,2-3cc Heparnized Blood,Daily
+17,1254,Absolute Eosinophil Count,3 - 4cc EDTA Blood (CBC Vial),Next Day
+18,8093,Absolute Neutrophil Count,3 - 4cc EDTA Blood (CBC Vial),Next Day
+19,1360,Absolute Values/Cell Counts,3 - 4cc EDTA Blood (CBC Vial),Daily
+20,78945,ACE Level,3- 5cc Clotted Blood or Serum,After Two Days
+21,3601,Acid Phosphatase (Tl/Prostate),3- 5cc Clotted Blood or Serum,Next Day
+22,2705,Acid Phosphate,3- 5cc Clotted Blood or Serum,Next Day
+23,4119,ACTH,3 - 4cc EDTA Blood (CBC Vial),After Three Days
+24,7979,Adenosine Deaminase (ADA) Fluid,Fluid,After Three Days
+25,7981,Adenosine Deaminase (ADA) Serum,3- 5cc Clotted Blood or Serum,After Two Days
+26,8201,AFB C/S,All Type Specimen,After 6 Weeks
+27,5601,AFB Stain (3 Days Sputum),Sputum Of 3 Days,Next Day
+28,1508,Albumin (Serum),3- 5cc Clotted Blood or Serum,Same Day
+29,1512,Albumin (Spot Urine),Urine (Random/Spot),Same Day
+30,2353,Albumin / Creatinine Ratio.,24 Hrs Urine or (Random/Spot) Urine,Same Day
+31,2706,Aldolase (Serum),3- 5cc Clotted Blood or Serum,Next Day
+32,4171,Aldosterone,3- 5cc Clotted Blood or Serum,After Two Days
+33,9495,Aldosterone to Renin Activity Ratio,EDTA and Serum,After One Week
+34,1505,Alkaline Phosphatase,3- 5cc Clotted Blood or Serum,Same Day
+35,9092,Alpha 1 Anti Trypsin,3- 5cc Clotted Blood or Serum,After Three Days
+36,4810,Alpha 1-Anti Trypsin Level,3- 5cc Clotted Blood or Serum,After Three Days
+37,4300,Alpha Fetoprotein,3- 5cc Clotted Blood or Serum,Same Day
+38,1710,Ammonia,3 - 4cc EDTA Blood (CBC Vial),Same Day
+39,43,Amphetamine,Urine (Random/Spot),After Three Days
+40,44,Amylase (24Hrs Urine),24 Hrs Urine,Daily
+41,1103,Amylase (Fluid),Fluid,Daily
+42,2700,Amylase (Serum),3- 5cc Clotted Blood or Serum,Same Day
+43,45,Amylase (Spot Urine),Urine (Random/Spot),Daily
+44,3939,ANA (Latex Agg),3- 5cc Clotted Blood or Serum,Daily
+45,2701,ANA (ELISA),3- 5cc Clotted Blood or Serum,After Three Days
+46,4645,ANA / ENA Profile,3- 5cc Clotted Blood or Serum,After Three Days
+47,5017,ANCA - C,3- 5cc Clotted Blood or Serum,After Two Days
+48,5568,ANCA - P,3- 5cc Clotted Blood or Serum,After Two Days
+49,4150,Androstenidione Level,3- 5cc Clotted Blood or Serum,After One Week
+50,8601,ANF (Elisa),3- 5cc Clotted Blood or Serum,After Three Days
+51,4500,ANF (Latex Agg),3- 5cc Clotted Blood or Serum,Same Day
+52,71847,Angiotensin Converting Enzyme,3- 5cc Clotted Blood or Serum,After Three Days
+53,46,Anti Cardiolipin Ab,3- 5cc Clotted Blood or Serum,After Two Days
+54,4151,Anti Cardiolipin IgG,3- 5cc Clotted Blood or Serum,After Two Days
+55,4152,Anti Cardiolipin IgM,3- 5cc Clotted Blood or Serum,After Two Days
+56,101,Anti CCP,3- 5cc Clotted Blood or Serum,Same Day
+57,3102,Anti Centromers Anti Bodies,3- 5cc Clotted Blood or Serum,After 7 Days
+58,3356,Anti Cytoplasma Abs,3- 5cc Clotted Blood or Serum,After 7 Days
+59,3133,Anti Delta Virus,3- 5cc Clotted Blood or Serum,After 7 Days
+60,4805,Anti ds DNA,3- 5cc Clotted Blood or Serum,After One Week
+61,2354,"Anti Endomysial Abs (IgA, IgG)",3- 5cc Clotted Blood or Serum,After Two Days
+62,5000,Anti Endomysial IgA,3- 5cc Clotted Blood or Serum,After Two Days
+63,1622,Anti Endomysial IgG,3- 5cc Clotted Blood or Serum,After Two Days
+64,47,"Anti Gliadin Abs (IgA, IgG, IgM)",3- 5cc Clotted Blood or Serum,After Three Days
+65,5066,Anti Gliadin IgA,3- 5cc Clotted Blood or Serum,After Three Days
+66,5067,Anti Gliadin IgG,3- 5cc Clotted Blood or Serum,After Three Days
+67,2360,Anti Gliadin IgM,3- 5cc Clotted Blood or Serum,After Three Days
+68,3000,Anti H Pylori Antibodies (ICT),3- 5cc Clotted Blood or Serum,Same Day
+69,5590,Anti H Pylori IgA,3- 5cc Clotted Blood or Serum,After Two Days
+70,4628,Anti H Pylori IgG,3- 5cc Clotted Blood or Serum,After Two Days
+71,5563,Anti H Pylori IgM,3- 5cc Clotted Blood or Serum,After Two Days
+72,4204,Anti HBc (Total),3- 5cc Clotted Blood or Serum,After Two Days
+73,5019,Anti HBc IgG,3- 5cc Clotted Blood or Serum,After Two Days
+74,4205,Anti HBc IgM,3- 5cc Clotted Blood or Serum,After Two Days
+75,4207,Anti HBe,3- 5cc Clotted Blood or Serum,Same Day
+76,4203,Anti HBs,3- 5cc Clotted Blood or Serum,Next Day
+77,4208,Anti HCV,3- 5cc Clotted Blood or Serum,Same Day
+78,4511,Anti HCV (ICT),3- 5cc Clotted Blood or Serum,Same Day
+79,4209,Anti HDV,3- 5cc Clotted Blood or Serum,After Three Days
+80,4210,Anti HEV IgG,3- 5cc Clotted Blood or Serum,Next Day
+81,4214,Anti HEV IgM,3- 5cc Clotted Blood or Serum,Next Day
+82,4211,Anti HIV - (1&2),3- 5cc Clotted Blood or Serum,Same Day
+83,4219,Anti HIV (ICT),3- 5cc Clotted Blood or Serum,Same Day
+84,9091,Anti Liver Kidney Microsomal Ab (LKM),3- 5cc Clotted Blood or Serum,After 7 Days
+85,48,Anti Microsomal Ab,3- 5cc Clotted Blood or Serum,After Three Days
+86,4126,Anti Mitochondrial Antibody (AMA),3- 5cc Clotted Blood or Serum,After Four Days
+87,3351,Anti MTB Antibodies (Mycodot),3- 5cc Clotted Blood or Serum,Daily
+88,3813,Anti Mullerian Hormone (AMH),3 - 4cc EDTA Blood (CBC Vial),After Two Days
+89,5038,Anti Phospholipid IgG,3- 5cc Clotted Blood or Serum,After Three Days
+90,5039,Anti Phospholipid IgM,3- 5cc Clotted Blood or Serum,After Three Days
+91,4127,Anti Smooth Muscle Abs (ASMA),3- 5cc Clotted Blood or Serum,After 7 Days
+92,7443,Anti Sperm Antibodies,3- 5cc Clotted Blood or Serum,After 10 Days
+93,4623,Anti Thrombin III,Sodium Citrate Tube (PT Vial),After Two Days
+94,2142,Anti Thyroglobulin Antibodies,3-5cc EDTA Blood and Serum,After Two Days
+95,,Anti Thyroid Abs,3- 5cc Clotted Blood or Serum,After Two Days
+96,5557,Anti Transglutaminase IgA,3- 5cc Clotted Blood or Serum,After 7 Days
+97,5560,Anti Transglutaminase IgG,3- 5cc Clotted Blood or Serum,After 7 Days
+98,1306,APTT,Sodium Citrate Tube (PT Vial),Same Day
+99,138,Ascitic Fluid C/E,Ascitic Fluid,Same Day
+100,2207,Ascitic Fluid For Cytology,Ascitic Fluid,Next Day
+101,132,Ascitic Fluid For C/S,Ascitic Fluid,After Three Days
+102,8058,Ascitic Fluid For AFB C/S,Ascitic Fluid,After 6 Weeks
+103,8011,Ascitic Fluid For AFB Stain/ZN Stain,Ascitic Fluid,Next Day
+104,8035,Ascitic Fluid For Gram Stain,Ascitic Fluid,Same Day
+105,3405,ASO Titre,3- 5cc Clotted Blood or Serum,Same Day
+106,5091,Aspirate for C/E,Peritoneal Fluid,Next Day
+107,8103,Aspirate For C/S,Aspirate,After Three Days
+108,50,B2-Microglobulin,3- 5cc Clotted Blood or Serum,After Five Days
+109,51,Barbiturates ( BAR ) (Urine),Urine (Random/Spot),After Two Days
+110,1102,Bence Jones Protein (Urine),Urine (Random/Spot),Same Day
+111,52,Benzodiazepines (BZO) (Urine),Urine (Random/Spot),After Two Days
+112,4303,Beta HCG,3- 5cc Clotted Blood or Serum,Same Day
+113,3337,Beta Crosslaps,3- 5cc Clotted Blood or Serum,After Three Days
+114,8008,Bile Pigment,Urine (Random/Spot),Same Day
+115,8009,Bile Salt,Urine (Random/Spot),Same Day
+116,1502,Bilirubin Direct,3- 5cc Clotted Blood or Serum,Same Day
+117,1514,Bilirubin Indirect,3- 5cc Clotted Blood or Serum,Same Day
+118,1501,Bilirubin Total,3- 5cc Clotted Blood or Serum,Same Day
+119,3563,Biopsy (Large),Biopsy Tissue with History,After One Week
+120,3500,Biopsy (Medium),Biopsy Tissue with History,After One Week
+121,3560,Biopsy (Small),Biopsy Tissue with History,After One Week
+122,3562,Biopsy (Three Specimen),Biopsy Tissue with History,After One Week
+123,3561,Biopsy (Two Specimen),Biopsy Tissue with History,After One Week
+124,11,Biopsy 1-Block,Blocks & Slides,After 7 Days
+125,13,Biopsy 2-Block,Blocks & Slides,After 7 Days
+126,3541,Biopsy 3-Block,Biopsy Tissue with History,After 7 Days
+127,7273,Biopsy 5-Block,Biopsy Tissue with History,After Two Weeks
+128,3223,Biopsy 6-Block,Biopsy Tissue with History,After 7 Days
+129,8112,Biopsy Large 2,Biopsy Tissue with History,After One Week
+130,3527,Biopsy Large(Fibroid),Biopsy Tissue with History,After One Week
+131,3528,Biopsy Large(Intestine),Biopsy Tissue with History,After One Week
+132,3538,Biopsy Large(Lump Breast),Biopsy Tissue with History,After One Week
+133,3540,Biopsy Large(Prostate),Biopsy Tissue with History,After One Week
+134,3539,Biopsy Large(Uterus),Biopsy Tissue with History,After One Week
+135,8110,Biopsy Small 2,Biopsy Tissue with History,After One Week
+136,8111,Biopsy Small 3,Biopsy Tissue with History,After One Week
+137,1345,Bleeding Time,Contact Lab,Same Day
+138,1014,Block For Review (Per Block),Slides & Blocks,After Three Days
+139,7445,Block Return,Biopsy Tissue with History,After Six Days
+140,6566,Blood Bag With Set,N/A,Daily
+141,1300,Blood C/E with ESR,3 - 4cc EDTA Blood (CBC Vial),Same Day
+142,33333,Blood Cross Match,3-5cc EDTA Blood and Serum,Daily
+143,2801,Blood Cross Match With Elisa,3-5cc EDTA Blood and Serum,Same Day
+144,1624,Blood Cross Match With Screening,3-5cc EDTA Blood and Serum,Same Day
+145,3911,Blood for C/S (Final Report),None,After 7 Days
+146,8180,Blood For C/S (Left & Right),Blood (In Blood Culture Vail),After Five Days
+147,3910,Blood for C/S (Preliminary Report),Blood (In Blood Culture Vail),After Five Days
+148,2800,Blood Group & Rh Factor,3 - 4cc EDTA Blood (CBC Vial),Same Day
+149,3716,Blood Group With Cross Match,3- 5cc Clotted Blood or Serum,Daily
+150,4154,Blood Lead Level,8cc Lithium Heparinized Blood (Two Vials),After Two Weeks
+151,2809,Blood Screening (Elisa),3- 5cc Clotted Blood or Serum,Daily
+152,8012,Body Fluid For AFB Stain / ZN Stain,Body Fluid,Same Day
+153,8087,Body Fluid For C/S,Body Fluid,After Three Days
+154,8086,Body Fluid For AFB C/S,Body Fluid,After 6 Weeks
+155,8088,Body Fluid For Analysis,Body Fluid,Same Day
+156,8102,Body Fluid For Cytology,Body Fluid,Next Day
+157,8036,Body Fluid For Gram Stain,Body Fluid,Same Day
+158,3543,Bone Marrow (Slides for Review),SLIDES,Next Day
+159,3542,Bone Marrow Biopsy (Procedure),Contact Lab,Next Day
+160,8037,Bronchial Washing Fluid For Gram Stain,Bronchial Washing,Same Day
+161,8089,Bronchial Washing For Analysis,Bronchial Washing,Same Day
+162,8145,Bronchial Washing For AFB C/S,Bronchial Washing,After 6 Weeks
+163,8066,Bronchial Washing For C/S,Bronchial Washing,After Three Days
+164,2221,Bronchial Washing For Cytology.,Bronchial Washing,Next Day
+165,8014,Bronchial Wasing For AFB Stain / ZN Stain,Bronchial Washing,Same Day
+166,2602,Brucella IgG,3- 5cc Clotted Blood or Serum,After Two Days
+167,2601,Brucella IgM,3- 5cc Clotted Blood or Serum,After Two Days
+168,2600,Brucella Test,3- 5cc Clotted Blood or Serum,Same Day
+169,1602,BUN,3- 5cc Clotted Blood or Serum,Same Day
+170,1625,BUN / Creatinine Ratio,Urine (Random/Spot),Same Day
+171,2709,C Peptide Level,3- 5cc Clotted Blood or Serum,After Two Days
+172,3703,C Peptide Urine,Urine (Random/Spot),After Two Days
+173,4600,C3,3- 5cc Clotted Blood or Serum,After Three Days
+174,4601,C4,3- 5cc Clotted Blood or Serum,After Three Days
+175,4302,CA 125,3- 5cc Clotted Blood or Serum,Same Day
+176,8092,CA 15-3,3- 5cc Clotted Blood or Serum,After Two Days
+177,4306,CA-19-9,3- 5cc Clotted Blood or Serum,Next Day
+178,4136,Calcitonin,3- 5cc Clotted Blood or Serum,After 7 Days
+179,3508,Calcium (24 Hrs Urine),24 Hrs Urine,Daily
+180,1705,Calcium (Serum),3- 5cc Clotted Blood or Serum,Same Day
+181,3521,Calcium (Spot Urine),Spot Urine,Daily
+182,3529,Calcium/Creatinine Ratio,Urine (Random/Spot),Next Day
+183,3530,Cannabinoids (Urine),Urine (Random/Spot),After Two Days
+184,4401,Carbamazepine (Tegretol),3- 5cc Clotted Blood or Serum,After Three Days
+185,1800,Cardiac Enzymes,3- 5cc Clotted Blood or Serum,Same Day
+186,8106,Catheter Tip For C/S,Catheter Tip,After Three Days
+187,8117,Catheter Tip/Folley`s Tip For C/S,"Catheter Tip/Folley""s Tip",After Three Days
+188,3333,CBC (Dengue),3 - 4cc EDTA Blood (CBC Vial),Same Day
+189,7172,CBC Without ESR,3 - 4cc EDTA Blood (CBC Vial),Daily
+190,4301,CEA,3- 5cc Clotted Blood or Serum,Daily
+191,4139,Ceruloplasmin,3- 5cc Clotted Blood or Serum,After Three Days
+192,3336,Chicken Pox Abs,3- 5cc Clotted Blood or Serum,After Two Days
+193,1703,Chloride (Serum),3- 5cc Clotted Blood or Serum,Same Day
+194,1902,Cholesterol,3- 5cc Clotted Blood or Serum,Daily
+195,1802,CK MB,3- 5cc Clotted Blood or Serum,Same Day
+196,1346,Clotting Time,Contact Lab,Same Day
+197,3702,CMV by PCR (Q.N),10-12cc ETDA Blood,After 10 Days
+198,4705,CMV IgG,3- 5cc Clotted Blood or Serum,After 7 Days
+199,4706,CMV IgM,3- 5cc Clotted Blood or Serum,After 7 Days
+200,3545,Cocaine (COC) (Urine),Urine (Random/Spot),After Two Days
+201,3546,Cold Agglutination Test,3- 5cc Clotted Blood or Serum,Next Day
+202,3360,Conjunctival Swab Left C/S,Conjunctival Swab,After Three Days
+203,3361,Conjunctival Swab Right C/S,Conjunctival Swab,After Three Days
+204,1336,Coombs Test (Direct),3 - 4cc EDTA Blood (CBC Vial),Same Day
+205,1337,Coombs Test (Indirect),3- 5cc Clotted Blood or Serum,Same Day
+206,1709,Copper (Serum),3- 5cc Clotted Blood or Serum,After Two Days
+207,3565,Corneal Scraping C/S,Swab,After Three Days
+208,4112,Cortisol (AM),3- 5cc Clotted Blood or Serum,Daily
+209,4113,Cortisol (PM),3- 5cc Clotted Blood or Serum,Daily
+210,4130,Cortisol Urine 24 hrs,24 Hrs Urine,After Three Days
+211,1801,CPK,3- 5cc Clotted Blood or Serum,Same Day
+212,3511,Creatinine (24 Hrs Urine),24 Hrs Urine,Same Day
+213,1600,Creatinine (Fluid),Fluid,Daily
+214,1603,Creatinine (Serum),3- 5cc Clotted Blood or Serum,Same Day
+215,1607,Creatinine (Spot Urine),Urine (Random/Spot),Same Day
+216,3522,Creatinine Clearance (24 Hrs),Serum and 24Hrs Urine,Same Day
+217,3407,CRP,3- 5cc Clotted Blood or Serum,Same Day
+218,1352,Cryoglobulins,3- 5cc Clotted Blood or Serum,After Three Days
+219,8015,CSF For AFB Stain / ZN Stain,CSF,Daily
+220,8059,CSF For AFB C/S,CSF,After 6 Weeks
+221,128,CSF For C/E,CSF,Daily
+222,134,CSF For C/S,CSF,After Three Days
+223,2228,CSF For Cytology,CSF,After Three Days
+224,8038,CSF For Gram Stain,CSF,Daily
+225,2314,CSF For Measels IgG,CSF,After Two Days
+226,2313,CSF For Measels IgM,CSF,After Two Days
+227,,CSF Protein Electrophores,CSF,After 07 Days
+228,9697,CSF Sugar,CSF,Same Day
+229,2317,CVP Tip For C/S,CVP Tip,After Three Days
+230,4406,Cyclosporin Level,3 - 4cc EDTA Blood (CBC Vial),Next Day
+231,8021,Cystic Fluid For AFB Stain / ZN Stain,Cystic Fluid,Daily
+232,8070,Cystic Fluid For AFB C/S,Cystic Fluid,After 6 Weeks
+233,8190,Cystic Fluid For C/E,Cystic Fluid,Daily
+234,8071,Cystic Fluid For C/S,Cystic Fluid,After Three Days
+235,8099,Cystic Fluid For Cytology,Cystic Fluid,Next Day
+236,8045,Cystic Fluid For Gram Stain,Cystic Fluid,Daily
+237,3698,Cytology Report,All Type Specimen,Next Day
+238,1324,D Dimer,Sodium Citrate Tube (PT Vial),Daily
+239,3060,Dengue IgM & IgG (ICT),3- 5cc Clotted Blood or Serum,Daily
+240,5551,Dengue (IgG),3- 5cc Clotted Blood or Serum,Next Day
+241,5552,Dengue (IgM),3- 5cc Clotted Blood or Serum,Next Day
+242,4198,Dengue NS1 Antigen (ICT),3- 5cc Clotted Blood or Serum,Daily
+243,7446,Dengue NS1 Elisa,3- 5cc Clotted Blood or Serum,After Two Days
+244,,Dengue RNA PCR,2 EDTA Vials containing 3cc,After 03 Days
+245,4120,DHEA SO4,3- 5cc Clotted Blood or Serum,After Two Days
+246,3769,Dialysis Fluid For Analysis,Dialysis Fluid,Daily
+247,4400,Digoxin,3- 5cc Clotted Blood or Serum,After Two Days
+248,1303,DLC,3 - 4cc EDTA Blood (CBC Vial),Same Day
+249,8016,Ear Swab For Fungus Microscopy,Ear Swab,Next Day
+250,137,Ear Swab For C/S,Ear Swab,After Three Days
+251,8039,Ear Swab For Gram Stain,Ear Swab,Same Day
+252,1,Echinococcus Ab (IHA),3- 5cc Clotted Blood or Serum,After Three Days
+253,3876,Echinococcus Abs (IgG),3- 5cc Clotted Blood or Serum,After Three Days
+254,3338,Entamoeba Histolytica Ab.,3- 5cc Clotted Blood or Serum,After Three Days
+255,1255,Eosinophil Count,3 - 4cc EDTA Blood (CBC Vial),Same Day
+256,5561,ER/PR Receptor,"Block and Slides,Report and History",After Five Days
+257,2318,ER/PR Receptor & Her 2-Neu,"Block and Slides,Report and History",After Five Days
+258,5077,Erythropoietin,3- 5cc Clotted Blood or Serum,After 10 Days
+259,1304,ESR,3 - 4cc EDTA Blood (CBC Vial),Same Day
+260,4118,Estradiol,3- 5cc Clotted Blood or Serum,Same Day
+261,4133,Estriol,3- 5cc Clotted Blood or Serum,After 7 Days
+262,4131,Estriol Urine,Urine (Random/Spot),After 7 Days
+263,,Estrogen Receptor,Slides & Blocks,After 05 Days
+264,5090,Factor IX,Sodium Citrate Tube (PT Vial),After Three Days
+265,,Factor II Level,,
+266,4624,Factor V,Sodium Citrate Tube (PT Vial),After Three Days
+267,,Factor V Leiden,Sodium Citrate Vial,After 03 Days
+268,4447,Factor VII,Sodium Citrate Tube (PT Vial),After Four Days
+269,7001,Factor VIII Level,Sodium Citrate Tube (PT Vial),After Three Days
+270,,Factor X Level,Sodium Citrate Vial,After 03 Days
+271,7002,Factor XI Level,Sodium Citrate Tube (PT Vial),After Three Days
+272,789454,Factor XIII Level,Sodium Citrate Tube (PT Vial),After Three Days
+273,1309,FDPs,Sodium Citrate Tube (PT Vial),Daily
+274,4606,Ferritin,3- 5cc Clotted Blood or Serum,Same Day
+275,2802,FFPs,Contact Lab,Daily
+276,1308,Fibrinogen,Sodium Citrate Tube (PT Vial),Next Day
+277,2261,Fluid For Albumin,Fluid,Daily
+278,2236,Fluid For Analysis,Fluid,Same Day
+279,3817,Fluid for C/S,Fluid,After Three Days
+280,4650,FNA Procedure,Contact Lab,Daily
+281,3504,FNAC Slids for Review,Slides,Daily
+282,3812,Foleys Tip C/S,TIP,After Three Days
+283,4110,Folic Acid (Folate Level),3- 5cc Clotted Blood or Serum,Daily
+284,,Free Cortisol,24 Hours Urine,After 4 Days
+285,4109,Free T3,3- 5cc Clotted Blood or Serum,Same Day
+286,4106,Free T4,3- 5cc Clotted Blood or Serum,Same Day
+287,4128,Free Testosterone,3- 5cc Clotted Blood or Serum,After Three Days
+288,4105,FSH,3- 5cc Clotted Blood or Serum,Same Day
+289,3666,Fungal Culture,N/A,After 3 Weeks
+290,8155,Fungus C/S (Bronchial Washing),Bronchial Washing,Next Day
+291,37,Fungus C/S (Fluid),Fluid,Next Day
+292,8084,Fungus C/S (Hair),Hair,Next Day
+293,8250,Fungus C/S (Pus),Pus,Next Day
+294,8085,Fungus Microscopic Examination,All Type Specimen,Next Day
+295,1320,G6PD,3 - 4cc EDTA Blood (CBC Vial),After Two Days
+296,1506,Gamma GT,3- 5cc Clotted Blood or Serum,Same Day
+297,2319,Gastrin Level,3- 5cc Clotted Blood or Serum,After Five Days
+298,8210,Gauze Piece For C/S,3- 5cc Clotted Blood or Serum,After Three Days
+299,1404,GCT (Glucose Challange Test),1-2 Separate Plasma of Fluoride Vial,Same Day
+300,,Gentamicin,3 - 5cc Clotted Blood or Serum,After 01 Week
+301,3622,Giemsa Stain,All Type Specimen,Daily
+302,1510,Globulins,3- 5cc Clotted Blood or Serum,Same Day
+303,3951,Glomerular Filtration Rate (eGFR),3- 5cc Clotted Blood or Serum,Next Day
+304,10102,Gram Stain,All Type Specimen,Daily
+305,4115,Growth Hormone,3- 5cc Clotted Blood or Serum,After Three Days
+306,1403,GTT(Glucose Tolerance Test),Contact Lab,Same Day
+307,4148,Haptoglobin,3- 5cc Clotted Blood or Serum,After Three Days
+308,4213,HAV IgG,3- 5cc Clotted Blood or Serum,Next Day
+309,4202,HAV IgM,3- 5cc Clotted Blood or Serum,Next Day
+310,1301,HB (Hemoglobin),3 - 4cc EDTA Blood (CBC Vial),Daily
+311,5011,Hb Electrophoresis,3 - 4cc EDTA Blood (CBC Vial),After One Week
+312,4802,HbA1C,3 - 4cc EDTA Blood (CBC Vial),Same Day
+313,4206,HBeAg,3- 5cc Clotted Blood or Serum,Same Day
+314,3720,HBeAg (ICT),3- 5cc Clotted Blood or Serum,Daily
+315,4201,HBsAg,3- 5cc Clotted Blood or Serum,Same Day
+316,4510,HbsAg (ICT),3- 5cc Clotted Blood or Serum,Same Day
+317,5051,HBV DNA By Real-Time PCR (Qualitative),2 Vials of 3cc Clotted Blood or 2cc Serum,After 7 Days
+318,5052,HBV DNA By Real-Time PCR (Quantitative),2 Vials of 3cc Clotted Blood or 2cc Serum,After 7 Days
+319,1704,HCO3,3- 5cc Clotted Blood or Serum,Daily
+320,1321,HCT,3 - 4cc EDTA Blood (CBC Vial),Same Day
+321,4621,HCV Genotyping,3- 5cc Clotted Blood or Serum,After Four Days
+322,5053,HCV RNA By Real-Time PCR (Qualitative),2 Vials of 3cc Clotted Blood or 2cc Serum,After 7 Days
+323,5054,HCV RNA by Real-Time PCR (Quantitative),2 Vials of 3cc Clotted Blood or 2cc Serum,After 7 Days
+324,2218,HCV Serotyping,3- 5cc Clotted Blood or Serum,After 10 Days
+325,1904,HDL,3- 5cc Clotted Blood or Serum,Daily
+326,8,HDV RNA by PCR (Qualitative),3- 5cc Clotted Blood or Serum,After 7 Days
+327,102,HDV RNA by PCR (Quantitative),3- 5cc Clotted Blood or Serum,After 7 Days
+328,1203,Helicobacter Pylori Antigen (Stool),Stool,Next Day
+329,3340,Hemosiderin (Urine),Urine (Random/Spot),After Three Days
+330,3497,Her 2-Neu (Staining),"Block and Slides,Report and History",After Five Days
+331,8969,Herpes by PCR Qualitative,3 - 4cc EDTA Blood (CBC Vial),After One Week
+332,4707,Herpes IgG,3- 5cc Clotted Blood or Serum,After One Week
+333,4708,Herpes IgM,3- 5cc Clotted Blood or Serum,After 7 Days
+334,38,HLA-B27,3 - 4cc EDTA Blood (CBC Vial),After 10 Days
+335,4132,Homocysteine Level (Blood),3- 5cc Clotted Blood or Serum,After Three Days
+336,2355,Homocystine Level (Urine),Urine (Random/Spot),After Three Days
+337,3341,HSV IgG,3- 5cc Clotted Blood or Serum,After One Week
+338,3342,HSV IgM,3- 5cc Clotted Blood or Serum,After 7 Days
+339,8017,HVS For AFB Stain / ZN Stain,HVS Swab,Daily
+340,1228,HVS For C/S,HVS Swab,After Three Days
+341,8040,HVS for Gram Stain,HVS Swab,Same Day
+342,8022,Hydrocele Fluid For AFB Stain / ZN Stain,Hydrocele Fluid,Same Day
+343,8072,Hydrocele Fluid For AFB C/S,Hydrocele Fluid,After 6 Weeks
+344,8073,Hydrocele Fluid For C/S,Hydrocele Fluid,After Three Days
+345,8098,Hydrocele Fluid For Cytology,Fluid,Next Day
+346,8046,Hydrocele Fluid For Gram Stain,Hydrocele Fluid,Same Day
+347,1335,ICT Malaria,3 - 4cc EDTA Blood (CBC Vial),Same Day
+348,4602,IgA,3- 5cc Clotted Blood or Serum,After Three Days
+349,4605,IgE,3- 5cc Clotted Blood or Serum,Same Day
+350,4603,IgG,3- 5cc Clotted Blood or Serum,After Three Days
+351,4604,IgM,3- 5cc Clotted Blood or Serum,After Three Days
+352,,Immunofixation CSF,CSF,After 01 Week
+353,,Immunofixation Serum,3 - 5cc Clotted Blood or Serum,After 01 Week
+354,,Immunofixation Urine,Urine (Random / Spot),After 01 Week
+355,2322,"Immunogiobulin (IgA, IgG, IgM)",3- 5cc Clotted Blood or Serum,After Three Days
+356,3499,Immunostain(Histo),Slides & Blocks,After One Week
+357,8890,Insulin Growth Factor-1 (IGF-1),3- 5cc Clotted Blood or Serum,After Two Days
+358,4116,Insulin Level,3- 5cc Clotted Blood or Serum,After Three Days
+359,4166,Intact PTH,3 - 4cc EDTA Blood (CBC Vial),Daily
+360,5553,Ionized Calcium,3- 5cc Clotted Blood or Serum,Next Day
+361,2702,Iron,3- 5cc Clotted Blood or Serum,Same Day
+362,8041,Joint Fluid For Gram Stain,Joint Fluid,Same Day
+363,126,Joint Fluid C/E,Joint Fluid,Same Day
+364,8060,Joint Fluid For AFB C/S,Joint Fluid,After 6 Weeks
+365,8018,Joint Fluid For AFB Stain/ZN Stain,Joint Fluid,Same Day
+366,136,Joint Fluid For C/S,Joint Fluid,After Three Days
+367,3517,Ketones,Urine (Random/Spot) or EDTA Blood,Same Day
+368,3920,Ki-67,Slides & Blocks,After One Week
+369,8067,Knee Joint Fluid For AFB C/S,Knee Joint Fluid,After 6 Weeks
+370,8068,Knee Joint Fluid For C/S,Knee Joint Fluid,After Three Days
+371,8013,Knee Joint Fluid For AFB Stain / ZN Stain,Knee Joint Fluid,Same Day
+372,8090,Knee Joint Fluid For Analysis,Knee Joint Fluid,Same Day
+373,2247,Knee Joint Fluid For Cytology,Knee Joint Fluid,Next Day
+374,8042,Knee Joint Fluid For Gram Stain,Knee Joint Fluid,Same Day
+375,2325,Lactate Level,1-5 Separate Plasma of Fluoride Vial,After Two Days
+376,2323,LDH (CSF),CSF,Daily
+377,2324,LDH (Fluid),Fluid,Daily
+378,1803,LDH (Serum),3- 5cc Clotted Blood or Serum,Same Day
+379,1905,LDL,3-5cc EDTA Blood and Serum,Daily
+380,59,LE Cell,10.0cc Clotted Blood (Not Serum),Next Day
+381,5056,Legionella Antigen (Urine),Urine (Random/Spot),After Four Days
+382,3802,Leptospiral IgG Antibodies,3- 5cc Clotted Blood or Serum,After 7 Days
+383,3803,Leptospiral IgM Antibodies,3- 5cc Clotted Blood or Serum,After 7 Days
+384,1509,LFTs With Gamma GT,3- 5cc Clotted Blood or Serum,Daily
+385,4104,LH,3- 5cc Clotted Blood or Serum,Same Day
+386,2716,Lipase (Serum),3- 5cc Clotted Blood or Serum,Same Day
+387,1900,Lipid Profile,3- 5cc Clotted Blood or Serum,Daily
+388,1708,Lithium,3- 5cc Clotted Blood or Serum,Next Day
+389,3867,Liver Function Tests,3- 5cc Clotted Blood or Serum,Daily
+390,1500,Liver Function Tests with Gamma GT,3- 5cc Clotted Blood or Serum,Daily
+391,2327,Lupus Anticoagulant Abs,Sodium Citrate Tube (PT Vial),After One Week
+392,1707,Magnesium (Serum),3- 5cc Clotted Blood or Serum,Same Day
+393,1315,Malarial Parasite,3 - 4cc EDTA Blood (CBC Vial),Same Day
+394,4200,Mantoux,Contact Lab,After Three Days
+395,1328,MCH,3 - 4cc EDTA Blood (CBC Vial),Same Day
+396,1329,MCHC,3 - 4cc EDTA Blood (CBC Vial),Same Day
+397,1327,MCV,3 - 4cc EDTA Blood (CBC Vial),Same Day
+398,2330,Measels IgG,3- 5cc Clotted Blood or Serum,After Four Days
+399,2329,Measles IgM,3- 5cc Clotted Blood or Serum,After Four Days
+400,1715,Metabolic Profile,3cc Serum and Fluoride Sample,Next Day
+401,4804,Microalbuminuria (24 Hrs Urine),24 Hrs Urine,Same Day
+402,4813,Microalbuminuria (Spot Urine),Urine (Random/Spot),Same Day
+403,8069,Milk For C/S,Milk,After Three Days
+404,2240,Milk For Cytology,Milk,Next Day
+405,8043,Milk For Gram Stain,Milk,Same Day
+406,8141,Milk(Left) For C/S,Milk,After Three Days
+407,8140,Milk(Right) For C/S,Milk,After Three Days
+408,3408,Monospot,3- 5cc Clotted Blood or Serum,Next Day
+409,5583,Morphine Derivatives(Urine),Urine (Random/Spot),Next Day
+410,4608,MTB DNA by PCR,3 - 4cc EDTA Blood (CBC Vial),After 10 Days
+411,9001,Mycodot ICT,3- 5cc Clotted Blood or Serum,Same Day
+412,3301,Mycodot IgG,3-5cc EDTA Blood and Serum,After Two Days
+413,3300,Mycodot IgM,3- 5cc Clotted Blood or Serum,After Two Days
+414,8083,Nail for Fungus,Nail,Next Day
+415,2356,Nasal Screation C/S,Nasal Secration,After Three Days
+416,8031,Nasal Secretion For AFB Stain / ZN Stain,Nasal Secration,Same Day
+417,8061,Nasal Secretion For AFB C/S,Nasal Secration,After 6 Weeks
+418,8056,Nasal Secretion For Gram Stain,Nasal Secration,Same Day
+419,31,NT-pro BNP,EDTA and Serum,Next Day
+420,2337,Opiates (Urine),Urine (Random/Spot),Next Day
+421,3602,Osmolality (Serum),3- 5cc Clotted Blood or Serum,Next Day
+422,1104,Osmolality (Urine),Urine (Random/Spot),Next Day
+423,7500,OT-1 Open Air Plate Culture,Urine (Random/Spot),After Three Days
+424,7501,OT-1 Swab for Anesthesia Machine Culture,Urine (Random/Spot),After Three Days
+425,7504,OT-1 Swab for Instrument Trolley Culture,Urine (Random/Spot),After Three Days
+426,7505,OT-1 Swab for O.T. Light Culture,Urine (Random/Spot),After Three Days
+427,7503,OT-1 Swab for O.T. Table Culture,Urine (Random/Spot),After Three Days
+428,7506,OT-1 Swab for Sucker Machine Culture,Urine (Random/Spot),After Three Days
+429,7502,OT-1 Swab for Wall Culture,Urine (Random/Spot),After Three Days
+430,7507,OT-2 Open Air Plate Culture,Urine (Random/Spot),After Three Days
+431,7512,OT-2 Swab from Anesthesia Machine Culture,Urine (Random/Spot),After Three Days
+432,7509,OT-2 Swab from Instrument Trolley Culture,Urine (Random/Spot),After Three Days
+433,7508,OT-2 Swab from O.T. Light Culture,Urine (Random/Spot),After Three Days
+434,7510,OT-2 Swab from O.T. Table Culture,Urine (Random/Spot),After Three Days
+435,7511,OT-2 Swab from O.T. Wall Culture,Urine (Random/Spot),After Three Days
+436,7513,OT-2 Swab from Sucker Machine Culture,Urine (Random/Spot),After Three Days
+437,,Oxalate (Urine),Urine (Random / Spot),After 01 Week
+438,2803,Pack Cells,Contact Lab,Daily
+439,3503,Pap Smear,SLIDES,Next Day
+440,4125,Parathormone,3 - 4cc EDTA Blood (CBC Vial),Daily
+441,5574,Parathyroid Hormone,3-5cc EDTA Blood and Serum,Daily
+442,8028,Pericardial Fluid For AFB Stain / ZN Stain,Pericardial Fluid,Same Day
+443,8105,Pericardial Fluid For C/E,Pericardial Fluid,Same Day
+444,8076,Pericardial Fluid For C/S,Pericardial Fluid,After Three Days
+445,8075,Pericardial Fluid For AFB C/S,Pericardial Fluid,After 6 Weeks
+446,8097,Pericardial Fluid For Cytology,Fluid,Next Day
+447,8052,Pericardial Fluid For Gram Stain,Pericardial Fluid,Same Day
+448,1364,Peripheral Blood Smears,3 - 4cc EDTA Blood (CBC Vial),Same Day
+449,129,Peritoneal Fluid C/E,Peritoneal Fluid,Same Day
+450,8020,Peritoneal Fluid For AFB Stain / ZN Stain,Peritoneal Fluid,Same Day
+451,135,Peritoneal Fluid For C/S,Peritoneal Fluid,After Three Days
+452,8062,Peritoneal Fluid For AFB C/S,Peritoneal Fluid,After 6 Weeks
+453,2235,Peritoneal Fluid For Cytology,Fluid,Next Day
+454,8044,Peritoneal Fluid For Gram Stain,Peritoneal Fluid,Same Day
+455,1239,pH,Urine (Random/Spot) or Stool,Same Day
+456,,Phenobarbital,Urine (Random / Spot),After 04 Days
+457,2340,Phenytoin (Dilantin),3- 5cc Clotted Blood or Serum,After Three Days
+458,1513,Phosphate (24 Hrs Urine),24 Hrs Urine,Next Day
+459,1706,Phosphate (Serum),3- 5cc Clotted Blood or Serum,Next Day
+460,1111,Phosphate (Urine),urine,Next Day
+461,5041,Plasma Renin Level,3 - 4cc EDTA Blood (CBC Vial),After Three Days
+462,8591,Platelet Concentrate,3 - 4cc EDTA Blood (CBC Vial),Daily
+463,1311,Platelet Count,3 - 4cc EDTA Blood (CBC Vial),Same Day
+464,130,Pleural Fluid C/E,Pleural Fluid,Same Day
+465,8023,Pleural Fluid For AFB Stain / ZN Stain,Pleural Fluid,Same Day
+466,8063,Pleural Fluid For AFB C/S,Pleural Fluid,After 6 Weeks
+467,133,Pleural Fluid For C/S,Pleural Fluid,After Three Days
+468,2214,Pleural Fluid For Cytology,Pleural Fluid,After Three Days
+469,8047,Pleural Fluid For Gram Stain,Pleural Fluid,Same Day
+470,4849,Potassium ( 24 Urine ),24 Hrs Urine,Same Day
+471,1702,Potassium (Serum),3- 5cc Clotted Blood or Serum,Same Day
+472,1120,Potassium (Urine),Urine (Random/Spot),Daily
+473,3403,Pregnancy Test,Urine (Random/Spot),Same Day
+474,4108,Progesterone,3- 5cc Clotted Blood or Serum,Daily
+475,4107,Prolactin (Level),3- 5cc Clotted Blood or Serum,Same Day
+476,1113,Protein (24 Hrs Urine),24 Hrs Urine,Daily
+477,1606,Protein (Spot Urine),Urine (Random/Spot),Same Day
+478,,Protein Electrophoresis (CSF),CSF,"Perform Saturday,Report Monday"
+479,5010,Protein Electrophoresis (Serum),3- 5cc Clotted Blood or Serum,After 7 Days
+480,5015,Protein Electrophorsis (Urine),Urine (Random/Spot),After 7 Days
+481,2344,Protein(Serum),3- 5cc Clotted Blood or Serum,Same Day
+482,1621,Protein/Creatinine Ratio,Urine (Random/Spot),Next Day
+483,15,Protein-C,Sodium Citrate Tube (PT Vial),After 7 Days
+484,20,Protein-S,Sodium Citrate Tube (PT Vial),After 7 Days
+485,1305,Prothrombin Time (PT With INR),Sodium Citrate Tube (PT Vial),Same Day
+486,4307,PSA,3- 5cc Clotted Blood or Serum,Same Day
+487,8024,Pus For AFB Stain / ZN Stain,Pus,Same Day
+488,8065,Pus For AFB C/S,Pus,After 6 Weeks
+489,4620,Pus For C/S,Pus,After Three Days
+490,1221,Pus For Cytology,Pus,Next Day
+491,8048,Pus For Gram Stain,Pus,Same Day
+492,8027,Pus Swab For AFB Stain / ZN Stain,Pus Swab,Same Day
+493,8074,Pus Swab For C/S,Pus Swab,After Three Days
+494,8051,Pus Swab For Gram Stain,Pus Swab,Same Day
+495,9193,Quantiferon TB Gold Plus,2-3cc Heparnized Blood,After One Week
+496,3440,R A Factor,3- 5cc Clotted Blood or Serum,Same Day
+497,1310,RBC,3 - 4cc EDTA Blood (CBC Vial),Same Day
+498,1307,RBC Morphology,3 - 4cc EDTA Blood (CBC Vial),Same Day
+499,5558,RBC Osmotic Fragility,Hepernized and EDTA Blood,Next Day
+500,4402,Red Cell Folic Acid,3 - 4cc EDTA Blood (CBC Vial),After Two Days
+501,2338,Reducing Substance,Urine (Random/Spot) or Stool,Same Day
+502,1618,Renal Function Tests,3- 5cc Clotted Blood or Serum,Same Day
+503,1314,Reticulocytes Count,3 - 4cc EDTA Blood (CBC Vial),Same Day
+504,1347,RH Antibodies Titre,3- 5cc Clotted Blood or Serum,Same Day
+505,4545,Routine C/S,All Type Specimen,After Three Days
+506,3625,Routine Culture For Eye Swab,Eye Swab,After Three Days
+507,4701,Rubella IgG,3- 5cc Clotted Blood or Serum,Next Day
+508,4702,Rubella IgM,3- 5cc Clotted Blood or Serum,After 7 Days
+509,2143,Saturation of Transferrin,3- 5cc Clotted Blood or Serum,Daily
+510,8030,Semen For AFB Stain/ZN Stain,SEMEN,Same Day
+511,1207,Semen Analysis,SEMEN,Same Day
+512,1208,Semen For C/S,SEMEN,After Three Days
+513,8054,Semen For Gram Stain,SEMEN,Same Day
+514,1700,Serum Electrolytes,3- 5cc Clotted Blood or Serum,Same Day
+515,1504,SGOT,3- 5cc Clotted Blood or Serum,Same Day
+516,1503,SGPT,3- 5cc Clotted Blood or Serum,Same Day
+517,5027,Slide For Review Cytology,SLIDES,Next Day
+518,789451,Slide For Review Histopathology,SLIDES (Rate per Slide),After Four Days
+519,3506,Sodium (24 Urine),24 Hrs Urine,Same Day
+520,1701,Sodium (Serum),3- 5cc Clotted Blood or Serum,Same Day
+521,3507,Sodium (Urine),Urine (Random/Spot),After One DAY
+522,5570,Specific Gravity,Urine (Random/Spot),Same Day
+523,8010,Sputum For AFB Stain/ZN Stain,Sputum,Same Day
+524,8064,Sputum For AFB C/S,Sputum,After 6 Weeks
+525,4619,Sputum For C/S,Sputum,After Three Days
+526,1209,Sputum For Cytology,Sputum,Next Day
+527,8152,Sputum for Fungus (Microscopy),Sputum,Next Day
+528,8034,Sputum For Gram Stain,Sputum,Same Day
+529,2001,Stone For C/E,Stone,After Three Days
+530,3637,Stool Calprotectin Level,Stool,After Two Days
+531,1200,Stool For C/E,Stool,Same Day
+532,8091,Stool For C/S,Stool,After Three Days
+533,1205,Stool For Clostridium Difficile Toxin,Stool,After Three Days
+534,2312,Stool For Faecal Fat,Stool,Daily
+535,1204,Stool For Occult Blood,Stool,Same Day
+536,1202,Stool pH,Stool,Same Day
+537,1407,Sugar 1 1/2 Hrs,Separate Plasma of Fluoride Vial,Same Day
+538,1427,Sugar 1 1/2 Hrs. After 75 Grams Glucose,Separate Plasma of Fluoride Vial,Same Day
+539,5302,Sugar 1 1/2 Hrs ABF,Separate Plasma of Fluoride Vial,Same Day
+540,1420,Sugar 1 Hour After 50 Grams Glucose,Separate Plasma of Fluoride Vial,Same Day
+541,1419,Sugar 1 Hour After 75 Grams Glucose,Separate Plasma of Fluoride Vial,Same Day
+542,1406,Sugar 1 Hour PP,Separate Plasma of Fluoride Vial,Same Day
+543,5303,Sugar 1 Hrs. ABF,Separate Plasma of Fluoride Vial,Same Day
+544,1405,Sugar 1/2 Hour,Separate Plasma of Fluoride Vial,Same Day
+545,1421,Sugar 1/2 Hour ABF After 50 Grams Glucose,Separate Plasma of Fluoride Vial,Same Day
+546,1428,Sugar 1/2 Hour After 75 Grams Glucose,Separate Plasma of Fluoride Vial,Same Day
+547,1408,Sugar 2 1/2 Hrs,Separate Plasma of Fluoride Vial,Same Day
+548,5304,Sugar 2 1/2 Hrs ABF,Separate Plasma of Fluoride Vial,Same Day
+549,5301,Sugar 2 Hrs ABF,Separate Plasma of Fluoride Vial,Same Day
+550,1426,Sugar 2 Hrs After 50 Grams Glucose,Separate Plasma of Fluoride Vial,Same Day
+551,1423,Sugar 2 Hrs After 75 Grams Glucose,Separate Plasma of Fluoride Vial,Same Day
+552,1402,Sugar 2 Hrs. PP,Separate Plasma of Fluoride Vial,Same Day
+553,3519,Sugar 2 Hrs.(Urine),Urine (Random/Spot),Same Day
+554,5305,Sugar 3 Hrs ABF,Separate Plasma of Fluoride Vial,Same Day
+555,1409,Sugar 3 Hrs.,Separate Plasma of Fluoride Vial,Same Day
+556,1417,Sugar 4 Hrs,Separate Plasma of Fluoride Vial,Same Day
+557,1418,Sugar 5 Hrs,Separate Plasma of Fluoride Vial,Same Day
+558,1432,Sugar After 1 Hour,Separate Plasma of Fluoride Vial,Same Day
+559,1435,Sugar After 1 Hrs (Urine),Urine (Random/Spot),Same Day
+560,1123,Sugar After 1-1/2 Hrs (Urine),Urine (Random/Spot),Same Day
+561,1433,Sugar After 2 Hrs,Separate Plasma of Fluoride Vial,Same Day
+562,1434,Sugar After 3 Hrs,Separate Plasma of Fluoride Vial,Same Day
+563,1415,Sugar After Dinner,Separate Plasma of Fluoride Vial,Same Day
+564,1412,Sugar After Lunch,Separate Plasma of Fluoride Vial,Same Day
+565,1414,Sugar Before Dinner,Separate Plasma of Fluoride Vial,Same Day
+566,1411,Sugar Before Lunch,Separate Plasma of Fluoride Vial,Same Day
+567,1400,Sugar Fasting,Separate Plasma of Fluoride Vial,Same Day
+568,3518,Sugar Fasting (Urine),Urine (Random/Spot),Same Day
+569,1401,Sugar Random,Separate Plasma of Fluoride Vial,Same Day
+570,3520,Sugar Random (Urine),Urine (Random/Spot),Same Day
+571,1060,Swab 2 For C/S,Swab,After Three Days
+572,1061,Swab 3 For C/S,Swab,After Three Days
+573,1062,Swab 4 For C/S,Swab,After Three Days
+574,5100,Swab For C/S,Swab,After Three Days
+575,127,Synovial Fluid C/E,Synovial Fluid,Same Day
+576,8029,Synovial Fluid For AFB Stain / ZN Stain,Synovial Fluid,Same Day
+577,8078,Synovial Fluid For C/S,Synovial Fluid,After Three Days
+578,8077,Synovial Fluid For AFB C/S,Synovial Fluid,After 6 Weeks
+579,8101,Synovial Fluid For Cytology,Synovial Fluid,Next Day
+580,8053,Synovial Fluid For Gram Stain,Synovial Fluid,Same Day
+581,9192,"Syphilis Ab, (TPA)",3- 5cc Clotted Blood or Serum,After Four Days
+582,2703,T I B C,3- 5cc Clotted Blood or Serum,Same Day
+583,4101,T3,3- 5cc Clotted Blood or Serum,Same Day
+584,4102,T4,3- 5cc Clotted Blood or Serum,Same Day
+585,3339,Tacrolimus-Whole Blood,3- 5cc Clotted Blood or Serum,After 10 Days
+586,4124,Testosterone,3- 5cc Clotted Blood or Serum,Same Day
+587,8025,Throad Swab For AFB Stain/ZN Stain,Throat Swab,Same Day
+588,4618,Throat Swab For C/S,Throat Swab,After Three Days
+589,8049,Throat Swab For Gram Stain,Throat Swab,Same Day
+590,2141,Thyriod Peroxidase Antibodies (Anti TPO),3- 5cc Clotted Blood or Serum,After Four Days
+591,4100,Thyroid Profile,3- 5cc Clotted Blood or Serum,Same Day
+592,196,"Thyroid Profile (T3,T4,TSH)",3- 5cc Clotted Blood or Serum,Same Day
+593,8107,Tip For C/S,TIP,After Three Days
+594,8120,Tissue For AFB Stain / ZN Stain,Tissue,Daily
+595,8108,Tissue For C/S,Tissue,After Three Days
+596,4700,"Torch Profile IgG,IgM",3- 5cc Clotted Blood or Serum,After 7 Days
+597,4157,Torch Profile IgM,3- 5cc Clotted Blood or Serum,After 7 Days
+598,4613,Torch Profile(IgG),3- 5cc Clotted Blood or Serum,After 7 Days
+599,1507,Total Protein,3- 5cc Clotted Blood or Serum,Same Day
+600,4703,Toxoplasma IgG,3- 5cc Clotted Blood or Serum,After 7 Days
+601,4704,Toxoplasma IgM,3- 5cc Clotted Blood or Serum,After 7 Days
+602,4184,TPHA,3- 5cc Clotted Blood or Serum,Daily
+603,3810,Tracheal Tube Secretion C/S,TIP,After Three Days
+604,1903,Triglycerides,3- 5cc Clotted Blood or Serum,Same Day
+605,4146,Triple Test,3- 5cc Clotted Blood or Serum,After Two Weeks
+606,5065,Troponin-I (ICT),3-5cc EDTA Blood and Serum,Daily
+607,30,Troponin-I,3-5cc EDTA Blood and Serum,Same Day
+608,1807,Troponin-T,3 - 4cc EDTA Blood (CBC Vial),Same Day
+609,4103,TSH,3- 5cc Clotted Blood or Serum,Same Day
+610,8113,T-Spot TB Test,8cc Lithium Heparinized Blood (Two Vials),After Five Days
+611,5579,Typhidot IgG,3- 5cc Clotted Blood or Serum,Next Day
+612,5581,Typhidot IgM,3- 5cc Clotted Blood or Serum,Next Day
+613,1050,Urea (Fluid),Fluid,Daily
+614,3510,Urea (24 Hrs Urine),24 Hrs Urine,Same Day
+615,2346,Urea (Fluid),Fluid,Same Day
+616,1601,Urea (Serum),3- 5cc Clotted Blood or Serum,Same Day
+617,1614,Urea (Spot Urine),Urine (Random/Spot),Same Day
+618,8147,Urea / Creatinine Ratio,Urine (Random/Spot),Same Day
+619,8121,Uretheral Swab For C/S,Swab,After Three Days
+620,3512,Uric Acid (24 Hrs Urine),24 Hrs Urine,Same Day
+621,2348,Uric Acid (Fluid),Fluid,Same Day
+622,2704,Uric Acid (Serum),3- 5cc Clotted Blood or Serum,Same Day
+623,1612,Uric Acid (Spot Urine),Urine (Random/Spot),Same Day
+624,2349,Uric Acid / Creatinine Ratio,Urine (Random/Spot),Same Day
+625,,Urinary Copper (Spot),Urine (Random / Spot),After 05 Days
+626,,Urinary Cortisol (Spot),Urine (Random / Spot),After 02 Days
+627,8182,Urinary Hemoglobinuria,Urine (Random/Spot),Next Day
+628,3343,Urinary Microalbumin Quantitative,Urine (Random/Spot),Daily
+629,,Urinary Phenobaribital,Urine (Random / Spot),After 03 Days
+630,8095,Urine For Cytology,Urine (Random/Spot),Next Day
+631,1100,Urine C/E,Urine (Random/Spot),Same Day
+632,3785,Urine Electrolytes,Urine (Random/Spot),Daily
+633,8181,Urine For AFB Stain / ZN Stain,Urine (Random/Spot),Same Day
+634,8130,Urine For AFB C/S,Urine (Random/Spot),After 6 Weeks
+635,1101,Urine For C/S,Urine (Random/Spot),After Three Days
+636,1110,Urine For Myoglobin,Urine (Random/Spot),After Two Days
+637,3555,Urine For RBC Morphology,Urine (Random/Spot),Next Day
+638,7,Urine For Reducing Substance,Urine (Random/Spot),Same Day
+639,3509,Urine Sugar,Urine (Random/Spot),Same Day
+640,29,Valporic Acid (Epival),3- 5cc Clotted Blood or Serum,After Two Days
+641,4408,Vancomycin,3- 5cc Clotted Blood or Serum,After Two Days
+642,2808,VDRL/RPR,3- 5cc Clotted Blood or Serum,Daily
+643,397,Venous Blood Gases,Heparinized Venous Blood,Daily
+644,,Varicella IgG,3 - 5cc Clotted Blood or Serum,After 02 Days
+645,4111,Vitamin B12,3- 5cc Clotted Blood or Serum,Daily
+646,5001,Vitamin D3,3- 5cc Clotted Blood or Serum,Same Day
+647,8033,Vitreous For AFB Stain/ZN Stain,Vitreous Fluid,Same Day
+648,8079,Vitrous Fluid For C/S,Vitreous Fluid,After Three Days
+649,8080,Vitrous Fluid For AFB C/S,Vitreous Fluid,After 6 Weeks
+650,8055,Vitrous Fluid For Gram Stain,Vitreous Fluid,Same Day
+651,1907,VLDL,3-5cc EDTA Blood and Serum,Same Day
+652,1108,VMA (24 Hrs Urine),24 Hrs Urine,After Two Days
+653,28,Von Willebrand Factor,Sodium Citrate Tube (PT Vial),After Two Days
+654,2357,Water For C/S,WATER,After Five Days
+655,1302,WBC,3 - 4cc EDTA Blood (CBC Vial),Daily
+656,7982,WBC (Fluid),Fluid,Daily
+657,1317,WBCs Morphology,3 - 4cc EDTA Blood (CBC Vial),Same Day
+658,2500,Widal Test,3- 5cc Clotted Blood or Serum,Same Day
+659,8026,Wound Aspirate For AFB Stain / ZN Stain,Wound Swab,Same Day
+660,131,Wound Swab For C/S,Wound Swab,After Three Days
+661,8050,Wound Swab For Gram Stain,Wound Swab,Same Day
+662,2350,Zinc Level,3- 5cc Clotted Blood or Serum,After Two Days
+663,3624,ZN Stain For Eye Swab (Left),Eye Swab,After One DAY
+664,3623,ZN Stain For Eye Swab (Right),Eye Swab,After One DAY
+665,1231,ZN Staining,All Type Specimen,Daily
