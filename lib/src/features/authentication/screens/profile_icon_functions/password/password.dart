@@ -1,14 +1,16 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, use_build_context_synchronously, sort_child_properties_last, avoid_print
+// ignore_for_file: unused_element, use_build_context_synchronously, unused_field, unnecessary_import, prefer_const_constructors, avoid_print, sort_child_properties_last, unused_import
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_phone/forget_password_phone.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 
-class ForgetPasswordViaEmail extends StatelessWidget {
+class PasswordChange extends StatelessWidget {
+  PasswordChange({super.key});
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
 
@@ -43,13 +45,19 @@ class ForgetPasswordViaEmail extends StatelessWidget {
               children: [
                 SizedBox(height: 150),
                 Text(
-                  tFForgetPassword,
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  "Change Password",
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
                 ),
                 SizedBox(height: 20),
                 Text(
                   tResetVE,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
                 ),
                 SizedBox(height: 30),
                 Form(
@@ -59,7 +67,10 @@ class ForgetPasswordViaEmail extends StatelessWidget {
                       TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.mail_outline_rounded),
+                          prefixIcon: Icon(
+                            Icons.mail_outline_rounded,
+                            color: Colors.blue,
+                          ),
                           border: OutlineInputBorder(),
                           labelText: tSEmail,
                           hintText: tEmail,
@@ -95,24 +106,7 @@ class ForgetPasswordViaEmail extends StatelessWidget {
                           },
                           child: Text(tSendOTP),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: tDarkColor,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: OutlinedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ForgetPasswordViaPhone(),
-                              ),
-                            );
-                          },
-                          child: Text(tRPhone),
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: tDarkColor,
+                            backgroundColor: Colors.blue,
                           ),
                         ),
                       ),

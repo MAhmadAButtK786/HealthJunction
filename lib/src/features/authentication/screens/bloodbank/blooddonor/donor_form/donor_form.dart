@@ -146,7 +146,8 @@ class _DonorFormState extends State<DonorForm> {
               'Sindh',
               'Khyber Pakhtunkhwa',
               'Balochistan',
-              'Gilgit-Baltistan'
+              'Gilgit-Baltistan',
+              'Islamabad'
             ].map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,

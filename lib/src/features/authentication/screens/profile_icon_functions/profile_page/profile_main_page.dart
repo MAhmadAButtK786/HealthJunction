@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
+import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_mail/forget_password_mail.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/password/password.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 
 class ProfileMainPage extends StatelessWidget {
@@ -77,7 +79,9 @@ class ProfileMainPage extends StatelessWidget {
               SizedBox(
                 width: 270,
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => PasswordChange());
+                  },
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.fingerprint),
@@ -145,7 +149,7 @@ class ProfileMainPage extends StatelessWidget {
                         width: 30,
                       ),
                       Text(
-                        "Terms & Conditions",
+                        "Privacy Policy",
                         style: TextStyle(fontSize: 18, color: Colors.blue),
                       )
                     ],
