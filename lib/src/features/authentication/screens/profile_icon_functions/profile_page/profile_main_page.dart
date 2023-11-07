@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
+import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 
 class ProfileMainPage extends StatelessWidget {
@@ -11,6 +13,11 @@ class ProfileMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    Future<void> _signOut() async {
+      await _auth.signOut();
+    }
+
     return Scaffold(
       body: Center(
         child: Container(
@@ -157,7 +164,10 @@ class ProfileMainPage extends StatelessWidget {
               SizedBox(
                 width: 270,
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await _signOut();
+                    Get.to(() => LoginScreen());
+                  },
                   child: Row(
                     children: [
                       Icon(

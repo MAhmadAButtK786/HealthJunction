@@ -93,24 +93,24 @@ class ReusableDrawerSideBar extends StatelessWidget {
               Get.to(() => Emergency());
             },
           ),
-          ListTile(
-            leading: Icon(
-              Icons.logout,
-              color: color,
-            ),
-            title: Text(
-              'LogOut',
-              style:
-                  GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.bold),
-            ),
-            onTap: () async {
-              controller.emailController.clear();
-              controller.passwordController.clear();
+          // ListTile(
+          //   leading: Icon(
+          //     Icons.logout,
+          //     color: color,
+          //   ),
+          //   title: Text(
+          //     'LogOut',
+          //     style:
+          //         GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.bold),
+          //   ),
+          //   onTap: () async {
+          //     controller.emailController.clear();
+          //     controller.passwordController.clear();
 
-              await _signOut();
-              Get.to(() => LoginScreen());
-            },
-          ),
+          //     await _signOut();
+          //     Get.to(() => LoginScreen());
+          //   },
+          // ),
         ],
       ),
     );
