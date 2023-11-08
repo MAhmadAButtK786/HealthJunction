@@ -20,14 +20,15 @@ class CharityScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: Navbar(
-          color: cCharity,
-          textNav: "Charity",
-          onMenuPressed: _handleMenuPressed),
+      key: scaffoldKey,
       drawer: ReusableDrawerSideBar(
         color: cCharity,
         headerText: "Charity",
       ),
+      appBar: Navbar(
+          color: cCharity,
+          textNav: "Charity",
+          onMenuPressed: _handleMenuPressed),
       backgroundColor: Colors.white,
       body: Column(
         children: [

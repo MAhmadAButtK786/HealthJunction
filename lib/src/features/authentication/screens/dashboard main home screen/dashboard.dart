@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/charity/charity.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/BloodBankHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/ClinicHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/HospitalHome.dart';
@@ -148,6 +149,8 @@ class Dashboard extends StatelessWidget {
                             Get.to(() => BloodBankhome());
                           } else if (index == 3) {
                             Get.to(() => Medicinehome());
+                          } else if (index == 4) {
+                            Get.to(() => CharityScreen());
                           }
                         },
                         child: Container(
