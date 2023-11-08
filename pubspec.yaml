@@ -66,6 +66,8 @@ dependencies:
   animations: ^2.0.8
   # sms launcher dependency
   flutter_sms: ^2.3.3
+  # whatsapp api dependecy
+  whatsapp: ^0.0.1
   
   excel: ^3.0.0
 dev_dependencies:
@@ -78,6 +80,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  
 
 
 flutter_native_splash:
