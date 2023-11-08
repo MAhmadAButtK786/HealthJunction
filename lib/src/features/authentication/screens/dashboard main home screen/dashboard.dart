@@ -16,12 +16,14 @@ import 'package:healthjunction/src/features/authentication/screens/sidebar/sideb
 class Dashboard extends StatelessWidget {
   var height, width;
 
-  List imgData = [clinic, hospital, bloodBank, medicine];
+  List imgData = [clinic, hospital, bloodBank, medicine, charity, labs];
   List titles = [
     "Hospital",
     "Clinic",
     "Blood Bank",
     "Medicine",
+    "Charity",
+    "Laboratories",
   ];
   @override
   Widget build(BuildContext context) {
@@ -131,7 +133,8 @@ class Dashboard extends StatelessWidget {
                         mainAxisSpacing: 45,
                         crossAxisSpacing: 20),
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    //physics: NeverScrollableScrollPhysics(),
+                    physics: ScrollPhysics(),
                     itemCount: imgData.length,
                     itemBuilder: (context, index) {
                       return InkWell(
