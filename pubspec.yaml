@@ -64,6 +64,8 @@ dependencies:
   csv: ^5.1.1
   # adding Animation Library
   animations: ^2.0.8
+  # sms launcher dependency
+  flutter_sms: ^2.3.3
   
   excel: ^3.0.0
 dev_dependencies:
