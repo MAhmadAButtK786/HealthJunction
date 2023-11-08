@@ -62,6 +62,8 @@ dependencies:
   http: ^1.1.0
   # adding Dependencies to read data from CSV and adding it in Firebase FireStore
   csv: ^5.1.1
+  # adding Animation Library
+  animations: ^2.0.8
   
   excel: ^3.0.0
 dev_dependencies:

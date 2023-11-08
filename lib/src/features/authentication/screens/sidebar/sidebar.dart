@@ -8,6 +8,7 @@ import 'package:healthjunction/src/features/authentication/screens/ambullance/am
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/BloodBankHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
 import 'package:healthjunction/src/features/authentication/screens/emergency/emergency.dart';
+import 'package:healthjunction/src/features/authentication/screens/information/info.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -75,7 +76,7 @@ class ReusableDrawerSideBar extends StatelessWidget {
             ),
             onTap: () {
               Navigator.pop(context);
-              Get.to(() => ());
+              Get.to(() => Information());
             },
           ),
           ListTile(
