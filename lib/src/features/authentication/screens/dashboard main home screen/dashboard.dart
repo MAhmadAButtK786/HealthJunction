@@ -135,6 +135,7 @@ class Dashboard extends StatelessWidget {
                     shrinkWrap: true,
                     //physics: NeverScrollableScrollPhysics(),
                     physics: ScrollPhysics(),
+
                     itemCount: imgData.length,
                     itemBuilder: (context, index) {
                       return InkWell(
