@@ -11,3 +11,4 @@ const homecolors = Color(0x350079);
 const tAccentColors = Color(0xD3D3D3);
 const cEmergency = Color(0xFFC71F0A);
 const cClinic = Color((0xFF03989e));
+const cCharity = Color(0xFFFEDEA8);
