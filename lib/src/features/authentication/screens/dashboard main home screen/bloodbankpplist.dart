@@ -1,20 +1,21 @@
-// ignore_for_file: file_names, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, prefer_typing_uninitialized_variables
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/RegistrationHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankpplist.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodlisthome.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/BloodBanks%20List/privatebb.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/BloodBanks%20List/publicbb.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
-import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 
-class BloodBankhome extends StatelessWidget {
+class BloodBankListPP extends StatelessWidget {
+  BloodBankListPP({super.key});
   var height, width;
 
   List imgData = [bloodBank, bloodBank, bloodBank];
-  List titles = [" Registration ", " Lists", "Blood Banks"];
+  List titles = [" Private Blood Banks", "Public Blood Banks"];
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
@@ -126,15 +127,11 @@ class BloodBankhome extends StatelessWidget {
                     return InkWell(
                       onTap: () {
                         if (index == 0) {
-                          Get.to(() => RegistrationHome());
+                          Get.to(() => PrivateBB());
                         }
 
                         if (index == 1) {
-                          Get.to(() => BloodBankListhome());
-                        }
-
-                        if (index == 2) {
-                          Get.to(() => BloodBankListPP());
+                          Get.to(() => PublicBB());
                         }
                       },
                       child: Container(
