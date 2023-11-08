@@ -1,11 +1,13 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_import
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_import, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
@@ -24,11 +26,11 @@ class Clinichome extends StatelessWidget {
     return Scaffold(
       drawer: ReusableDrawerSideBar(
         headerText: "Clinic",
-        color: Colors.tealAccent.shade400,
+        color: cClinic,
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.tealAccent.shade400,
+          color: cClinic,
           child: Column(
             children: [
               Container(
@@ -67,7 +69,7 @@ class Clinichome extends StatelessWidget {
                                   )),
                           IconButton(
                             onPressed: () {
-                              Get.to(() => ProfileScreen());
+                              Get.to(() => ProfileMainPage());
                             },
                             icon: Icon(
                               Icons.person,
@@ -167,6 +169,7 @@ class Clinichome extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
+                                color: cClinic,
                               ),
                             ),
                           ],

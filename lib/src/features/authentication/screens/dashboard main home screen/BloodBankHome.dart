@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/RegistrationHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_search/donor_search.dart';
-import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/search_recipient.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodlisthome.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
@@ -14,8 +12,8 @@ import 'package:healthjunction/src/features/authentication/screens/profile_icon_
 class BloodBankhome extends StatelessWidget {
   var height, width;
 
-  List imgData = [bloodBank, bloodBank, bloodBank, bloodBank];
-  List titles = [" Registration  ", "  Donors  ", "  Recipients ", " Lists "];
+  List imgData = [bloodBank, bloodBank];
+  List titles = [" Registration ", " Lists "];
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
@@ -129,13 +127,8 @@ class BloodBankhome extends StatelessWidget {
                         if (index == 0) {
                           Get.to(() => RegistrationHome());
                         }
+
                         if (index == 1) {
-                          Get.to(() => SearchDonor());
-                        }
-                        if (index == 2) {
-                          Get.to(() => SearchRecipient());
-                        }
-                        if (index == 3) {
                           Get.to(() => BloodBankListhome());
                         }
                       },
@@ -163,9 +156,9 @@ class BloodBankhome extends StatelessWidget {
                             Text(
                               titles[index],
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red),
                             ),
                           ],
                         ),

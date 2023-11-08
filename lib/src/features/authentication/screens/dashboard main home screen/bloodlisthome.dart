@@ -6,8 +6,8 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_list/donor_list.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_list.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/RegistrationHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_search/donor_search.dart';
-import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/search_recipient.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
+
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 
@@ -62,7 +62,7 @@ class BloodBankListhome extends StatelessWidget {
                                   )),
                           IconButton(
                             onPressed: () {
-                              Get.to(() => ProfileScreen());
+                              Get.to(() => ProfileMainPage());
                             },
                             icon: Icon(
                               Icons.person,
@@ -160,9 +160,9 @@ class BloodBankListhome extends StatelessWidget {
                             Text(
                               titles[index],
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red),
                             ),
                           ],
                         ),

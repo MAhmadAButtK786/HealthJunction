@@ -1,9 +1,10 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: file_names, use_key_in_widget_constructors, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/medicine%20suppliers%20module/Medicinesuppliersscreen.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
@@ -64,7 +65,7 @@ class Medicinehome extends StatelessWidget {
                                   )),
                           IconButton(
                             onPressed: () {
-                              Get.to(() => ProfileScreen());
+                              Get.to(() => ProfileMainPage());
                             },
                             icon: Icon(
                               Icons.person,
@@ -159,6 +160,7 @@ class Medicinehome extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.green,
                               ),
                             ),
                           ],
