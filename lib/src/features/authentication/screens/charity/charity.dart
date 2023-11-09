@@ -70,7 +70,7 @@ class CharityScreen extends StatelessWidget {
                     final charityinfo = Card(
                       color: cCharity,
                       child: ExpansionTile(
-                        title: Text("Title: ${data['Title']}",
+                        title: Text("${data['Title']}",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold)),

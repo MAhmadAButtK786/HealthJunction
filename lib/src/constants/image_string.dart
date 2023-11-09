@@ -24,3 +24,4 @@ const String firebrigade = "assets/images/fb.jpg";
 const String facbook = "assets/images/facbook.png";
 const String twitterX = "assets/images/X (Twitter).png";
 const String iCharity = "assets/images/Charity.jpg";
+const String ppb = "assets/images/bloodbankpp.jpg";
