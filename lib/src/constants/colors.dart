@@ -12,3 +12,4 @@ const tAccentColors = Color(0xD3D3D3);
 const cEmergency = Color(0xFFC71F0A);
 const cClinic = Color((0xFF03989e));
 const cCharity = Color(0xFF9DD180);
+const cBBPP = Color(0xFF1AA99D);
