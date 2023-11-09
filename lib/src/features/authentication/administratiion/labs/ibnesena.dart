@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_const_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:csv/csv.dart';

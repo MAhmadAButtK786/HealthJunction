@@ -22,6 +22,7 @@ import 'package:healthjunction/src/features/authentication/repository/recipient_
 import 'package:healthjunction/src/features/authentication/repository/user_repository.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_form/donor_form.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_form.dart';
+import 'package:healthjunction/src/features/authentication/screens/charity/charity.dart';
 
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_mail/forget_password_mail.dart';
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_phone/forget_password_phone.dart';
