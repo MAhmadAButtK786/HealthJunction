@@ -5,17 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen2.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class PublicBB extends StatefulWidget {
-  const PublicBB({Key? key}) : super(key: key);
-
+  PublicBB({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   _PublicBBState createState() => _PublicBBState();
 }
-
-final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
 void _handleMenuPressed() {
   scaffoldKey.currentState?.openDrawer();
@@ -30,7 +29,7 @@ class _PublicBBState extends State<PublicBB>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 7),
       vsync: this,
     )..repeat(reverse: true);
     _animation = CurvedAnimation(
@@ -52,12 +51,12 @@ class _PublicBBState extends State<PublicBB>
         backgroundColor: cBBPP,
         drawer: ReusableDrawerSideBar(
           color: Colors.red,
-          headerText: "Public Blood Banks",
+          headerText: "Blood Banks",
         ),
         key: scaffoldKey,
         appBar: Navbar(
             color: Colors.red,
-            textNav: "Public Blood Banks",
+            textNav: "Blood Banks",
             onMenuPressed: _handleMenuPressed),
         body: Column(
           children: [
@@ -67,6 +66,9 @@ class _PublicBBState extends State<PublicBB>
                 opacity: _animation,
                 child: Image(image: AssetImage(ppb)),
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
@@ -111,10 +113,8 @@ class _PublicBBState extends State<PublicBB>
                         BBPWidget.add(publicbbinfo);
                       }
                     }
-                    return Expanded(
-                      child: ListView(
-                        children: BBPWidget,
-                      ),
+                    return ListView(
+                      children: BBPWidget,
                     );
                   } else {
                     return Text('No data found');

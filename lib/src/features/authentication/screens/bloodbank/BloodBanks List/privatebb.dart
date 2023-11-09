@@ -11,13 +11,13 @@ import 'package:healthjunction/src/features/authentication/screens/navbar/navbar
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class PrivateBB extends StatefulWidget {
-  const PrivateBB({super.key});
+  PrivateBB({super.key});
 
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   State<PrivateBB> createState() => _PrivateBBState();
 }
 
-final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 void _handleMenuPressed() {
   scaffoldKey.currentState?.openDrawer();
 }
@@ -31,7 +31,7 @@ class _PrivateBBState extends State<PrivateBB>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 20),
+      duration: const Duration(seconds: 7),
       vsync: this,
     )..repeat(reverse: true);
     _animation = CurvedAnimation(
@@ -70,7 +70,7 @@ class _PrivateBBState extends State<PrivateBB>
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
@@ -111,6 +111,9 @@ class _PrivateBBState extends State<PrivateBB>
                                       "License Number:${data['License Number']}\nAddress:${data['Address']}\nSector:${data['Secter']}")),
                             ],
                           ),
+                        );
+                        SizedBox(
+                          height: 28,
                         );
                         BBPWidget.add(publicbbinfo);
                       }
