@@ -35,3 +35,4 @@ const String induslab = "assets/images/induslab.png";
 const String lmldc = "assets/images/LMLDC.png";
 const String labms = "assets/images/Labor.png";
 const String govt = "assets/images/govt.png";
+const String excel = "assets/image/excel.jpg";

@@ -5,11 +5,12 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
-import 'package:healthjunction/src/features/authentication/administratiion/labs/healthzone.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/allied.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/alnoor.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/chughtai.dart';
+import 'package:healthjunction/src/features/authentication/screens/laboratories/excel.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/govt.dart';
+import 'package:healthjunction/src/features/authentication/screens/laboratories/healthzone.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/idc.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/indus.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/lmldc.dart';
@@ -27,6 +28,7 @@ class LabsMainScreen extends StatelessWidget {
     "Alnoor Diagnostic Center",
     "Islamabad Diagnostic Center",
     "Lahore Medical Lab and Diagnostic Center",
+    "Excel",
     "Registered Labs In Pakistan By Government",
   ];
   List image = [
@@ -37,6 +39,7 @@ class LabsMainScreen extends StatelessWidget {
     alnoor,
     idc,
     lmldc,
+    excel,
     govt
   ];
   void _handleMenuPressed() {
@@ -101,7 +104,7 @@ class LabsMainScreen extends StatelessWidget {
                           Get.to(() => Indus());
                         }
                         if (index == 3) {
-                          Get.to(() => HealthZone());
+                          Get.to(() => HealthZoneL());
                         }
                         if (index == 4) {
                           Get.to(() => Alnoor());
@@ -113,6 +116,9 @@ class LabsMainScreen extends StatelessWidget {
                           Get.to(() => LMLDC());
                         }
                         if (index == 7) {
+                          Get.to(() => ExcelL());
+                        }
+                        if (index == 8) {
                           Get.to(() => Govt());
                         }
                         print("Tapped on ${titleN[index]}");

@@ -30,7 +30,7 @@ class _IDCLabState extends State<IDCLab> {
   Future<void> exportData() async {
     try {
       final CollectionReference idclab =
-          FirebaseFirestore.instance.collection("IDC");
+          FirebaseFirestore.instance.collection("IDCL");
       final idc = await rootBundle.loadString(
           'assets/dataSets/2- islamabad diagnostic center (IDC).csv');
       List<List<dynamic>> csvdata = CsvToListConverter().convert(idc);

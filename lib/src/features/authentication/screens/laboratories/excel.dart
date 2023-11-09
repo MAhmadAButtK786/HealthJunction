@@ -6,8 +6,8 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
-class IDC extends StatelessWidget {
-  IDC({super.key});
+class ExcelL extends StatelessWidget {
+  ExcelL({super.key});
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   void _handleMenuPressed() {
     scaffoldKey.currentState?.openDrawer();
@@ -20,12 +20,10 @@ class IDC extends StatelessWidget {
       key: scaffoldKey,
       drawer: ReusableDrawerSideBar(
         color: clab,
-        headerText: "Islamabad Diagnostic Center",
+        headerText: "Excel Lab",
       ),
       appBar: Navbar(
-          color: clab,
-          textNav: "Islamabad Diagnostic Center",
-          onMenuPressed: _handleMenuPressed),
+          color: clab, textNav: "Excel Lab", onMenuPressed: _handleMenuPressed),
       backgroundColor: Colors.white,
       body: Column(
         children: [
@@ -34,7 +32,7 @@ class IDC extends StatelessWidget {
           ),
           StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
-                .collection('IDCL')
+                .collection('excel')
                 .orderBy("Test Name")
                 .snapshots(),
             builder: (context, snapshot) {

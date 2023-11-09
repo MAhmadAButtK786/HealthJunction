@@ -14,7 +14,6 @@ class Allied extends StatelessWidget {
   }
 
   @override
-  @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
