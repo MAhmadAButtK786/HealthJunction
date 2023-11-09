@@ -25,3 +25,12 @@ const String facbook = "assets/images/facbook.png";
 const String twitterX = "assets/images/X (Twitter).png";
 const String iCharity = "assets/images/Charity.jpg";
 const String ppb = "assets/images/bloodbankpp.jpg";
+
+const String alliedL = "assets/images/AlliedLabs.png";
+const String alnoor = "assets/images/Alnoor.png";
+const String chugtai = "assets/images/chugtai.jpg";
+const String healthZone = "assets/images/HealthZoe.png";
+const String idc = "assets/images/IDC.png";
+const String induslab = "assets/images/induslab.png";
+const String lmldc = "assets/images/LMLDC.png";
+const String labms = "assets/images/Labor.png";
