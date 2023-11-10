@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen2.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
@@ -57,7 +58,7 @@ class hospitalpage1 extends StatelessWidget {
                           }),
                           IconButton(
                             onPressed: () {
-                              Get.to(() => ProfileScreen());
+                              Get.to(() => ProfileMainPage());
                             },
                             icon: Icon(
                               Icons.person,

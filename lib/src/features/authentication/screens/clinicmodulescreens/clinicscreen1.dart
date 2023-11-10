@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen2.dart';
+import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
@@ -58,7 +59,7 @@ class clinicpage1 extends StatelessWidget {
                           }),
                           IconButton(
                             onPressed: () {
-                              Get.to(() => ProfileScreen());
+                              Get.to(() => ProfileMainPage());
                             },
                             icon: Icon(
                               Icons.person,
