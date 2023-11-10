@@ -42,95 +42,92 @@ class LabsMainScreen extends StatelessWidget {
     excel,
     govt
   ];
-  void _handleMenuPressed() {
-    scaffoldKey.currentState?.openDrawer();
-  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      backgroundColor: clab,
-      key: scaffoldKey,
-      drawer: ReusableDrawerSideBar(
-        color: clab,
-        headerText: "Laboratories",
-      ),
-      appBar: Navbar(
+      child: Scaffold(
+        backgroundColor: clab,
+        key: scaffoldKey,
+        drawer: ReusableDrawerSideBar(
+          color: clab,
+          headerText: "Laboratories",
+        ),
+        appBar: Navbar(
           color: clab,
           textNav: "Laboratories",
-          onMenuPressed: _handleMenuPressed),
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.only(left: 10, top: 10),
-            child: Image(image: AssetImage(labms)),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: titleN.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.all(8.0), // Add space around the Container
-                  child: Card(
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: AssetImage(image[index]),
-                        radius: 20,
-                      ),
-                      title: Text(
-                        titleN[index],
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey,
-                        ),
-                      ),
-                      subtitle: Text(
-                        'Click for more details',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      onTap: () {
-                        if (index == 0) {
-                          Get.to(() => Allied());
-                        }
-                        if (index == 1) {
-                          Get.to(() => Chughtai());
-                        }
-                        if (index == 2) {
-                          Get.to(() => Indus());
-                        }
-                        if (index == 3) {
-                          Get.to(() => HealthZoneL());
-                        }
-                        if (index == 4) {
-                          Get.to(() => Alnoor());
-                        }
-                        if (index == 5) {
-                          Get.to(() => IDC());
-                        }
-                        if (index == 6) {
-                          Get.to(() => LMLDC());
-                        }
-                        if (index == 7) {
-                          Get.to(() => ExcelL());
-                        }
-                        if (index == 8) {
-                          Get.to(() => Govt());
-                        }
-                        print("Tapped on ${titleN[index]}");
-                      },
-                    ),
-                  ),
-                );
-              },
+          onMenuPressed: () {
+            scaffoldKey.currentState?.openDrawer();
+          },
+        ),
+        body: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.only(left: 10, top: 10),
+              child: Image(image: AssetImage(labms)),
             ),
-          ),
-        ],
+            Expanded(
+              child: ListView.builder(
+                itemCount: titleN.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.all(8.0),
+                    child: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: AssetImage(image[index]),
+                          radius: 20,
+                        ),
+                        title: Text(
+                          titleN[index],
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueGrey,
+                          ),
+                        ),
+                        subtitle: Text(
+                          'Click for more details',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        onTap: () {
+                          if (index == 0) {
+                            Get.to(() => Allied());
+                          } else if (index == 1) {
+                            Get.to(() => Chughtai());
+                          } else if (index == 2) {
+                            Get.to(() => Indus());
+                          } else if (index == 3) {
+                            Get.to(() => HealthZoneL());
+                          } else if (index == 4) {
+                            Get.to(() => Alnoor());
+                          } else if (index == 5) {
+                            Get.to(() => IDC());
+                          } else if (index == 6) {
+                            Get.to(() => LMLDC());
+                          } else if (index == 7) {
+                            Get.to(() => ExcelL());
+                          } else if (index == 8) {
+                            Get.to(() => Govt());
+                          }
+                          print("Tapped on ${titleN[index]}");
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }
