@@ -13,8 +13,18 @@ class HealthZoneL extends StatefulWidget {
 
 class _HealthZoneLState extends State<HealthZoneL> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  void _handleMenuPressed() {
-    scaffoldKey.currentState?.openDrawer();
+  late TextEditingController _searchController;
+  late String searchTerm = ''; // Declare searchTerm here
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+  }
+
+  void _performSearch() {
+    setState(() {
+      searchTerm = _searchController.text.toLowerCase().trim();
+    });
   }
 
   @override
@@ -26,14 +36,29 @@ class _HealthZoneLState extends State<HealthZoneL> {
           color: clab,
           headerText: "Health Zone",
         ),
-        appBar: Navbar(
-          color: clab,
-          textNav: "Health Zone",
-          onMenuPressed: _handleMenuPressed,
+        appBar: AppBar(
+          title: Text("Health Zone Lab"),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                _performSearch();
+              },
+            ),
+          ],
         ),
         backgroundColor: Colors.white,
         body: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                ),
+              ),
+            ),
             SizedBox(
               height: 10,
             ),
@@ -54,26 +79,31 @@ class _HealthZoneLState extends State<HealthZoneL> {
                         data.containsKey("Sample Required") &&
                         data.containsKey("Price") &&
                         data.containsKey("Reporting Time")) {
-                      final charityinfo = Card(
-                        color: cCharity,
-                        child: ExpansionTile(
-                          title: Text(
-                            "${data['Test Name']}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                      if (searchTerm.isEmpty ||
+                          data['Test Name']
+                              .toLowerCase()
+                              .contains(searchTerm)) {
+                        final charityinfo = Card(
+                          color: cCharity,
+                          child: ExpansionTile(
+                            title: Text(
+                              "${data['Test Name']}",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
+                            children: <Widget>[
+                              ListTile(
+                                title: Text(
+                                    "Code: ${data['Code']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
+                              ),
+                            ],
                           ),
-                          children: <Widget>[
-                            ListTile(
-                              title: Text(
-                                  "Code: ${data['Code']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
-                            ),
-                          ],
-                        ),
-                      );
+                        );
 
-                      test.add(charityinfo);
+                        test.add(charityinfo);
+                      }
                     }
                   }
                 }

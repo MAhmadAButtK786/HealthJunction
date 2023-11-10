@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, prefer_const_constructors_in_immutables, unused_import
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/colors.dart';
@@ -13,20 +15,18 @@ class Chughtai extends StatefulWidget {
 
 class _ChughtaiState extends State<Chughtai> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
-  late Stream<QuerySnapshot> _stream;
-
+  late TextEditingController _searchController;
+  late String searchTerm = ''; // Declare searchTerm here
   @override
   void initState() {
     super.initState();
-    _stream = FirebaseFirestore.instance
-        .collection('Chugtai Labs')
-        .orderBy("Test Name")
-        .snapshots();
+    _searchController = TextEditingController();
   }
 
-  void _handleMenuPressed() {
-    scaffoldKey.currentState?.openDrawer();
+  void _performSearch() {
+    setState(() {
+      searchTerm = _searchController.text.toLowerCase().trim();
+    });
   }
 
   @override
@@ -38,19 +38,37 @@ class _ChughtaiState extends State<Chughtai> {
           color: clab,
           headerText: "Chughtai Lab",
         ),
-        appBar: Navbar(
-          color: clab,
-          textNav: "Chughtai Lab",
-          onMenuPressed: _handleMenuPressed,
+        appBar: AppBar(
+          title: Text("Chughtai Lab"),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                _performSearch();
+              },
+            ),
+          ],
         ),
         backgroundColor: Colors.white,
         body: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                ),
+              ),
+            ),
             SizedBox(
               height: 10,
             ),
             StreamBuilder<QuerySnapshot>(
-              stream: _stream,
+              stream: FirebaseFirestore.instance
+                  .collection('Chugtai Labs')
+                  .orderBy("Test Name")
+                  .snapshots(),
               builder: (context, snapshot) {
                 List<Widget> test = [];
                 if (snapshot.hasData) {
@@ -60,25 +78,30 @@ class _ChughtaiState extends State<Chughtai> {
                     final data = document.data() as Map<String, dynamic>;
                     if (data.containsKey("Test Name") &&
                         data.containsKey("Price")) {
-                      final charityinfo = Card(
-                        color: cCharity,
-                        child: ExpansionTile(
-                          title: Text(
-                            "${data['Test Name']}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                      if (searchTerm.isEmpty ||
+                          data['Test Name']
+                              .toLowerCase()
+                              .contains(searchTerm)) {
+                        final charityinfo = Card(
+                          color: cCharity,
+                          child: ExpansionTile(
+                            title: Text(
+                              "${data['Test Name']}",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
+                            children: <Widget>[
+                              ListTile(
+                                title: Text("Price:${data['Price']}"),
+                              ),
+                            ],
                           ),
-                          children: <Widget>[
-                            ListTile(
-                              title: Text("Price:${data['Price']}"),
-                            ),
-                          ],
-                        ),
-                      );
+                        );
 
-                      test.add(charityinfo);
+                        test.add(charityinfo);
+                      }
                     }
                   }
                 }

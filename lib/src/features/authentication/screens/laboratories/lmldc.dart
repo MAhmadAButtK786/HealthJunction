@@ -1,8 +1,8 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, library_private_types_in_public_api, prefer_const_constructors, unused_element
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/colors.dart';
-import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class LMLDC extends StatefulWidget {
   LMLDC({Key? key}) : super(key: key);
@@ -13,8 +13,18 @@ class LMLDC extends StatefulWidget {
 
 class _LMLDCState extends State<LMLDC> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  void _handleMenuPressed() {
-    scaffoldKey.currentState?.openDrawer();
+  late TextEditingController _searchController;
+  late String searchTerm = ''; // Declare searchTerm here
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+  }
+
+  void _performSearch() {
+    setState(() {
+      searchTerm = _searchController.text.toLowerCase().trim();
+    });
   }
 
   @override
@@ -22,18 +32,33 @@ class _LMLDCState extends State<LMLDC> {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        drawer: ReusableDrawerSideBar(
-          color: clab,
-          headerText: "Lahore Medical Lab & Diagnostic Center",
-        ),
-        appBar: Navbar(
-          color: clab,
-          textNav: "LMLDC",
-          onMenuPressed: _handleMenuPressed,
+        // drawer: ReusableDrawerSideBar(
+        //   color: clab,
+        //   headerText: "Lahore Medical Lab & Diagnostic Center",
+        // ),
+        appBar: AppBar(
+          title: Text("LML&DC"),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                _performSearch();
+              },
+            ),
+          ],
         ),
         backgroundColor: Colors.white,
         body: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                ),
+              ),
+            ),
             SizedBox(
               height: 10,
             ),
@@ -54,26 +79,31 @@ class _LMLDCState extends State<LMLDC> {
                         data.containsKey("Sample Required") &&
                         data.containsKey("Price") &&
                         data.containsKey("Reporting Time")) {
-                      final charityinfo = Card(
-                        color: cCharity,
-                        child: ExpansionTile(
-                          title: Text(
-                            "${data['Test Name']}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                      if (searchTerm.isEmpty ||
+                          data['Test Name']
+                              .toLowerCase()
+                              .contains(searchTerm)) {
+                        final charityinfo = Card(
+                          color: cCharity,
+                          child: ExpansionTile(
+                            title: Text(
+                              "${data['Test Name']}",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
+                            children: <Widget>[
+                              ListTile(
+                                title: Text(
+                                    "Catagory:${data['Catagory']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
+                              ),
+                            ],
                           ),
-                          children: <Widget>[
-                            ListTile(
-                              title: Text(
-                                  "Catagory:${data['Catagory']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
-                            ),
-                          ],
-                        ),
-                      );
+                        );
 
-                      test.add(charityinfo);
+                        test.add(charityinfo);
+                      }
                     }
                   }
                 }
