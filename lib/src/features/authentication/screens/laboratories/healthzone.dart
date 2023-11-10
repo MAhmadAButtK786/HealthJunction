@@ -1,11 +1,12 @@
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/colors.dart';
-import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class HealthZoneL extends StatefulWidget {
-  HealthZoneL({Key? key}) : super(key: key);
+  const HealthZoneL({Key? key}) : super(key: key);
 
   @override
   _HealthZoneLState createState() => _HealthZoneLState();
