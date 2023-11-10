@@ -55,8 +55,7 @@ class _LMLDCState extends State<LMLDC> {
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: 'Search...',
-                ),
+                    hintText: 'Search...', border: OutlineInputBorder()),
               ),
             ),
             SizedBox(
@@ -68,6 +67,9 @@ class _LMLDCState extends State<LMLDC> {
                   .orderBy("Catagory")
                   .snapshots(),
               builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator(); // Add loading indicator while waiting for data
+                }
                 List<Widget> test = [];
                 if (snapshot.hasData) {
                   final ltest = snapshot.data?.docs;

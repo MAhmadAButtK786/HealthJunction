@@ -56,8 +56,7 @@ class _HealthZoneLState extends State<HealthZoneL> {
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: 'Search...',
-                ),
+                    hintText: 'Search...', border: OutlineInputBorder()),
               ),
             ),
             SizedBox(

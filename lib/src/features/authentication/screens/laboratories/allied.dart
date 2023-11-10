@@ -10,7 +10,10 @@ class Allied extends StatefulWidget {
   _AlliedState createState() => _AlliedState();
 }
 
-class _AlliedState extends State<Allied> {
+class _AlliedState extends State<Allied> with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+  late final Animation<double> _fadeInAnimation;
+
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   late TextEditingController _searchController;
   late String searchTerm = ''; // Declare searchTerm here
@@ -19,6 +22,24 @@ class _AlliedState extends State<Allied> {
   void initState() {
     super.initState();
     _searchController = TextEditingController();
+
+    // Initialize animation controller
+    _animationController = AnimationController(
+      vsync: this,
+      duration:
+          Duration(milliseconds: 500), // Set the duration of the animation
+    );
+
+    // Create a tween for fade-in animation
+    _fadeInAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    // Start the animation when the widget is built
+    _animationController.forward();
   }
 
   void _performSearch() {
@@ -51,6 +72,7 @@ class _AlliedState extends State<Allied> {
                 controller: _searchController,
                 decoration: InputDecoration(
                   hintText: 'Search...',
+                  border: OutlineInputBorder(),
                 ),
               ),
             ),
@@ -63,11 +85,16 @@ class _AlliedState extends State<Allied> {
                   .orderBy("Code")
                   .snapshots(),
               builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator(); // Add loading indicator while waiting for data
+                }
+
                 List<Widget> test = [];
                 if (snapshot.hasData) {
                   final ltest = snapshot.data?.docs;
 
-                  for (var document in ltest!) {
+                  for (var i = 0; i < ltest!.length; i++) {
+                    final document = ltest[i];
                     final data = document.data() as Map<String, dynamic>;
                     if (data.containsKey("Test Name") &&
                         data.containsKey("Code") &&
@@ -78,22 +105,25 @@ class _AlliedState extends State<Allied> {
                           data['Test Name']
                               .toLowerCase()
                               .contains(searchTerm)) {
-                        final charityinfo = Card(
-                          color: Colors.blue, // Update color as needed
-                          child: ExpansionTile(
-                            title: Text(
-                              "${data['Test Name']}",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                        final charityinfo = FadeTransition(
+                          opacity: _fadeInAnimation,
+                          child: Card(
+                            color: Colors.blue, // Update color as needed
+                            child: ExpansionTile(
+                              title: Text(
+                                "${data['Test Name']}",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
+                              children: <Widget>[
+                                ListTile(
+                                  title: Text(
+                                      "Code: ${data['Code']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
+                                ),
+                              ],
                             ),
-                            children: <Widget>[
-                              ListTile(
-                                title: Text(
-                                    "Code: ${data['Code']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
-                              ),
-                            ],
                           ),
                         );
 
@@ -101,6 +131,9 @@ class _AlliedState extends State<Allied> {
                       }
                     }
                   }
+
+                  // Reverse the list to show the latest items first
+                  test = test.toList();
                 }
                 return Expanded(
                   child: ListView(

@@ -53,8 +53,7 @@ class _IDCState extends State<IDC> {
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: 'Search...',
-                ),
+                    hintText: 'Search...', border: OutlineInputBorder()),
               ),
             ),
             SizedBox(
@@ -66,6 +65,9 @@ class _IDCState extends State<IDC> {
                   .orderBy("Test Name")
                   .snapshots(),
               builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator(); // Add loading indicator while waiting for data
+                }
                 List<Widget> test = [];
                 if (snapshot.hasData) {
                   final ltest = snapshot.data?.docs;

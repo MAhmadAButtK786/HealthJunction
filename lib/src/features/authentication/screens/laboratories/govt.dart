@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, library_private_types_in_public_api, prefer_const_constructors
+// ignore_for_file: unused_import, library_private_types_in_public_api, prefer_const_constructors, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -35,10 +35,10 @@ class _GovtState extends State<Govt> {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        drawer: ReusableDrawerSideBar(
-          color: clab,
-          headerText: "Government Based Labs",
-        ),
+        // drawer: ReusableDrawerSideBar(
+        //   color: clab,
+        //   headerText: "Government Based Labs",
+        // ),
         appBar: AppBar(
           title: Text("Government Based Lab"),
           actions: [
@@ -58,8 +58,7 @@ class _GovtState extends State<Govt> {
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: 'Search...',
-                ),
+                    hintText: 'Search...', border: OutlineInputBorder()),
               ),
             ),
             SizedBox(
@@ -71,6 +70,9 @@ class _GovtState extends State<Govt> {
                   .orderBy("Serial Number")
                   .snapshots(),
               builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator(); // Add loading indicator while waiting for data
+                }
                 List<Widget> test = [];
                 if (snapshot.hasError) {
                   print("Something Went Wrong ${snapshot.error}");
