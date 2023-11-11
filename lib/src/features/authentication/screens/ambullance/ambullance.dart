@@ -18,6 +18,43 @@ class _AmbulanceState extends State<Ambulance>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _handleMenuPressed() {
+    scaffoldKey.currentState?.openDrawer();
+  }
+
+  //Titles of Ambulance Provider
+  List titles = [
+    tEdhi,
+    tCheepa,
+    tRedCresent,
+    tAlKhidmatFoundation,
+    tRescu1122,
+    tJDC
+  ];
+  //Contact Numbers of Ambulance Provider
+  List helpLineNumbers = [
+    nEdhi,
+    nCheepa,
+    nRedCresent,
+    nAlKhidmatFoundation,
+    nRescu1122,
+    nJDC
+  ];
+  //Important Information About
+  // Information about Ambulance Provider
+  List organizationInfo = [
+    infoEdhi,
+    infoCheepa,
+    infordc,
+    infoalk,
+    infoTR1122,
+    infoJDC
+  ];
+
+  //Image List
+  List imageList = [edhi, cheepa, redcs, alkhidmat, rescu1122, jdc];
   @override
   void initState() {
     _controller = AnimationController(
@@ -62,7 +99,7 @@ class _AmbulanceState extends State<Ambulance>
                   0,
                 ),
                 child: Container(
-                  padding: EdgeInsets.only(left: 30, top: 45),
+                  padding: EdgeInsets.only(left: 90, top: 45),
                   width: 370,
                   child: Image(image: AssetImage(ambulance)),
                 ),
@@ -151,42 +188,4 @@ class _AmbulanceState extends State<Ambulance>
       ),
     );
   }
-
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
-  void _handleMenuPressed() {
-    scaffoldKey.currentState?.openDrawer();
-  }
-
-  //Titles of Ambulance Provider
-  List titles = [
-    tEdhi,
-    tCheepa,
-    tRedCresent,
-    tAlKhidmatFoundation,
-    tRescu1122,
-    tJDC
-  ];
-  //Contact Numbers of Ambulance Provider
-  List helpLineNumbers = [
-    nEdhi,
-    nCheepa,
-    nRedCresent,
-    nAlKhidmatFoundation,
-    nRescu1122,
-    nJDC
-  ];
-  //Important Information About
-  // Information about Ambulance Provider
-  List organizationInfo = [
-    infoEdhi,
-    infoCheepa,
-    infordc,
-    infoalk,
-    infoTR1122,
-    infoJDC
-  ];
-
-  //Image List
-  List imageList = [edhi, cheepa, redcs, alkhidmat, rescu1122, jdc];
 }
