@@ -148,13 +148,10 @@ class LoginFooterWidget extends StatelessWidget {
                       image: AssetImage(facbook),
                       width: 35.0,
                     ),
-                    onPressed: () async {
-                      UserCredential? userCredential =
-                          await signInWithFacebook();
+                    onPressed: () {
+                      Future<UserCredential?> userCredential =
+                          signInWithFacebook();
                       if (userCredential != null) {
-                        // User signed in successfully, you can handle the user data here
-                        print(
-                            'User signed in with Facebook: ${userCredential.user}');
                         Get.to(() => Dashboard()); // Navigate to Dashboard
                       }
                     },

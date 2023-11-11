@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors, use_build_context_synchronously, deprecated_member_use, duplicate_ignore, avoid_print
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors, use_build_context_synchronously, deprecated_member_use, duplicate_ignore, avoid_print, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,28 +16,24 @@ class DonorList extends StatefulWidget {
 class _DonorListState extends State<DonorList> {
   String? selectedProvince;
   String? selectedBloodType;
-  String? selectedCity; // New variable for selected city
-  final cityController =
-      TextEditingController(); // Controller for city TextField
+  String? selectedCity;
+  final cityController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    cityController.addListener(
-        _updateCity); // Add listener to update city when text changes
+    cityController.addListener(_updateCity);
   }
 
   @override
   void dispose() {
-    cityController
-        .dispose(); // Dispose controller when not needed to free up resources
+    cityController.dispose();
     super.dispose();
   }
 
   void _updateCity() {
     setState(() {
-      selectedCity = cityController
-          .text; // Update selectedCity with current text in TextField
+      selectedCity = cityController.text;
     });
   }
 
@@ -78,7 +75,7 @@ class _DonorListState extends State<DonorList> {
                       setState(() {
                         selectedProvince = value;
                       });
-                      this.setState(() {}); // Add this line
+                      this.setState(() {});
                     },
                     hint: Text('Select Province'),
                     items: <String>[
@@ -103,7 +100,7 @@ class _DonorListState extends State<DonorList> {
                       setState(() {
                         selectedBloodType = value;
                       });
-                      this.setState(() {}); // Add this line
+                      this.setState(() {});
                     },
                     hint: Text('Select Blood Type'),
                     items: <String>[
@@ -141,7 +138,7 @@ class _DonorListState extends State<DonorList> {
                       selectedBloodType = null;
                       cityController.clear();
                     });
-                    this.setState(() {}); // Add this line
+                    this.setState(() {});
                   },
                 ),
                 TextButton(
@@ -201,9 +198,7 @@ class _DonorListState extends State<DonorList> {
             return Center(child: Text('No recipient data available.'));
           } else {
             List<QueryDocumentSnapshot> recipients = snapshot.data!;
-            SizedBox(
-              height: 10,
-            );
+
             return ListView.builder(
               itemCount: recipients.length,
               itemBuilder: (context, index) {
@@ -216,45 +211,117 @@ class _DonorListState extends State<DonorList> {
                 String phoneNumber = recipient['Phone'] ?? 'No Phone Number';
                 String city = recipient['City'] ?? 'No City Added';
                 String province = recipient['Province'] ?? 'No Province Added';
-                return ListTile(
-                  leading: Icon(
-                    Icons.person,
-                    color: Colors.red,
-                  ),
-                  title: Text(
-                    fullName,
-                    style: GoogleFonts.montserrat(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red),
-                  ),
-                  subtitle: Text(
-                    'Email: $email\nBlood Type: $bloodType\nAge: $age\nPhone Number: $phoneNumber\nCity: $city\nProvince:$province',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                  trailing: Icon(
-                    Icons.phone,
-                    color: Colors.red,
-                  ),
-                  onTap: () async {
-                    String phone = phoneNumber;
-                    String url = 'tel:$phone';
-                    try {
-                      // ignore: deprecated_member_use
-                      if (await canLaunch(url)) {
-                        await launch(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    } catch (e) {
-                      print('Error: $e');
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('Error: Could not make a phone call'),
-                      ));
-                    }
+
+                return TweenAnimationBuilder(
+                  tween: Tween<double>(begin: 0.8, end: 1.0),
+                  duration: Duration(milliseconds: 500),
+                  builder: (context, double scale, child) {
+                    return Transform.scale(
+                      scale: scale,
+                      child: Card(
+                        margin: const EdgeInsets.all(8.0),
+                        elevation: 4.0,
+                        child: ExpansionTile(
+                          title: Text(
+                            fullName,
+                            style: GoogleFonts.montserrat(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red,
+                            ),
+                          ),
+                          subtitle: Text(
+                            'Email: $email\nBlood Type: $bloodType\nAge: $age\nPhone Number: $phoneNumber\nCity: $city\nProvince:$province',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.grey, // Adjust subtitle color here
+                            ),
+                          ),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  IconButton(
+                                    onPressed: () async {
+                                      String phone = phoneNumber;
+                                      String url = 'tel:$phone';
+                                      try {
+                                        if (await canLaunch(url)) {
+                                          await launch(url);
+                                        } else {
+                                          throw 'Could not launch $url';
+                                        }
+                                      } catch (e) {
+                                        print('Error: $e');
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Error: Could not make a phone call',
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    icon: Icon(
+                                      Icons.phone,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () async {
+                                      var whatsappUrl =
+                                          "whatsapp://send?phone=$phoneNumber&text=${Uri.encodeFull('Hello!')}";
+                                      if (await canLaunch(whatsappUrl)) {
+                                        await launch(whatsappUrl);
+                                      } else {
+                                        print("Could not launch $whatsappUrl");
+                                      }
+                                    },
+                                    icon: Icon(
+                                      FontAwesomeIcons.whatsapp,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () async {
+                                      String message = 'Hello!';
+                                      String url =
+                                          'sms:$phoneNumber?body=${Uri.encodeFull(message)}';
+                                      try {
+                                        if (await canLaunch(url)) {
+                                          await launch(url);
+                                        } else {
+                                          throw 'Could not launch $url';
+                                        }
+                                      } catch (e) {
+                                        print('Error: $e');
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Error: Could not send a message',
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    icon: Icon(
+                                      FontAwesomeIcons.message,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
                   },
                 );
               },

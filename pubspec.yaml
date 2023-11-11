@@ -37,6 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   line_awesome_flutter: ^2.0.0
+  font_awesome_flutter: ^10.6.0
   # Fonts
   google_fonts: ^6.1.0
   # Native Splash Screen
