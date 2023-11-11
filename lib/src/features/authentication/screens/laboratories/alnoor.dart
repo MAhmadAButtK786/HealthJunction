@@ -11,7 +11,7 @@ class Alnoor extends StatefulWidget {
   _AlnoorState createState() => _AlnoorState();
 }
 
-class _AlnoorState extends State<Alnoor> {
+class _AlnoorState extends State<Alnoor> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   late TextEditingController _searchController;
   late String searchTerm = ''; // Declare searchTerm here
@@ -33,10 +33,6 @@ class _AlnoorState extends State<Alnoor> {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        // drawer: ReusableDrawerSideBar(
-        //   color: clab,
-        //   headerText: "Alnoor Diagnostic Center",
-        // ),
         appBar: AppBar(
           title: Text("Alnoor Diagnostic Center"),
           actions: [
@@ -98,7 +94,21 @@ class _AlnoorState extends State<Alnoor> {
                             ],
                           ));
 
-                      test.add(charityinfo);
+                      // Wrap each item with a ScaleTransition for a subtle appearance
+                      final animatedCharityInfo = ScaleTransition(
+                        scale: Tween(begin: 0.0, end: 1.0).animate(
+                          CurvedAnimation(
+                            parent: AnimationController(
+                              duration: const Duration(milliseconds: 500),
+                              vsync: this,
+                            )..forward(),
+                            curve: Curves.easeOut,
+                          ),
+                        ),
+                        child: charityinfo,
+                      );
+
+                      test.add(animatedCharityInfo);
                     }
                   }
                 }

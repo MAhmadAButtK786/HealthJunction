@@ -108,7 +108,7 @@ class _AlliedState extends State<Allied> with SingleTickerProviderStateMixin {
                         final charityinfo = FadeTransition(
                           opacity: _fadeInAnimation,
                           child: Card(
-                            color: Colors.blue, // Update color as needed
+                            color: Colors.teal, // Update color as needed
                             child: ExpansionTile(
                               title: Text(
                                 "${data['Test Name']}",
