@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, deprecated_member_use, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable
+// ignore_for_file: prefer_const_constructors, deprecated_member_use, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable, prefer_typing_uninitialized_variables, file_names
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +8,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Medicine2 extends StatelessWidget {
   var height, width;
+
+  Medicine2({super.key});
 
   @override
   Widget build(BuildContext context) {
