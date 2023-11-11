@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, library_private_types_in_public_api, unused_import, unused_element
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
