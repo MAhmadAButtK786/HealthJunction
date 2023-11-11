@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_import, unused_import
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_import, unused_import, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -145,7 +145,6 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
-
                             SizedBox(
                               height: 5,
                             ),
@@ -160,7 +159,6 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
-
                           ],
                         ),
                       )
@@ -241,9 +239,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
     );
   }
 
-  @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     throw UnimplementedError();
   }
 }
