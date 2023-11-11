@@ -1,8 +1,7 @@
-// ignore_for_file: use_key_in_widget_constructors, unused_import, prefer_typing_uninitialized_variables, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names, deprecated_member_use, unnecessary_import
+// ignore_for_file: prefer_const_constructors, deprecated_member_use, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,148 +15,192 @@ class Medicine2 extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: ReusableDrawerSideBar(
-          color: Colors.green, headerText: "Medical Suppliers"),
+        color: Colors.green,
+        headerText: "Medical Suppliers",
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.green,
-              ),
-              height: height * 0.28,
-              width: width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: 35,
-                      left: 20,
-                      right: 20,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Builder(builder: (context) {
-                          return InkWell(
-                            onTap: () {
-                              Scaffold.of(context).openDrawer();
-                            },
-                            child: Icon(
-                              Icons.menu,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          );
-                        }),
-                        IconButton(
-                          onPressed: () {
-                            Get.to(() => ProfileScreen());
-                          },
-                          icon: Icon(
-                            Icons.person,
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: 20,
-                      left: 30,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Medicine  ",
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: 1,
-                          ),
-                        ),
-                        Text(
-                          "Suppliers  ",
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: 1,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "Innovative App for Health Care",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white54,
-                            letterSpacing: 1,
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            // White part with hyperlinks
-            Container(
-              width: double.infinity,
-              color: Colors.white,
-              padding: EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  //_buildLink("Google", "https://www.google.com"),
-                  _buildLink("DVAGO", "https://www.dvago.pk"),
-                  _buildLink("dawaai", "https://dawaai.pk/"),
-                  _buildLink(
-                      "medicalstore.com.pk", "https://medicalstore.com.pk"),
-                  _buildLink("Sehat.com.pk", "https://sehat.com.pk"),
-                  _buildLink("Medoline", "https://medonline.pk/"),
-                  _buildLink("Meri Pharmacy", "https://meripharmacy.pk"),
-                  _buildLink("DWatson", "https://dwatson.pk"),
-                  _buildLink("Ahmed Medico", "https://ahmedmedico.pk"),
-                  //_buildLink("Facebook", "https://www.facebook.com"),
-                ],
-              ),
-            ),
+            _buildTopBar(context),
+            _buildLinks(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildLink(String text, String url) {
+  Widget _buildTopBar(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.green, Colors.blue], // Adjust gradient colors
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      height: height * 0.28,
+      width: width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              top: 35,
+              left: 20,
+              right: 20,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Builder(builder: (context) {
+                  return InkWell(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    child: Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  );
+                }),
+                _buildProfileIcon(context),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              top: 20,
+              left: 30,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Medicine  ",
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 1,
+                  ),
+                ),
+                Text(
+                  "Suppliers  ",
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 1,
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Innovative App for Health Care",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    letterSpacing: 1,
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProfileIcon(BuildContext context) {
+    return Hero(
+      tag: 'profile-tag',
+      child: Material(
+        color: Colors.transparent,
+        child: IconButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ProfileScreen(),
+              ),
+            );
+          },
+          icon: Icon(
+            Icons.person,
+            color: Colors.white,
+            size: 30,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLinks() {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.green, width: 6),
-        borderRadius: BorderRadius.circular(8),
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3),
+          ),
+        ],
       ),
-      child: InkWell(
-        onTap: () async {
-          // Open the URL when tapped
-          if (await canLaunch(url)) {
-            await launch(url);
-          } else {
-            throw 'Could not launch $url';
-          }
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.green,
-              //backgroundColor: Colors.green,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            _buildAnimatedLink("DVAGO", "https://www.dvago.pk"),
+            _buildAnimatedLink("dawaai", "https://dawaai.pk/"),
+            _buildAnimatedLink(
+                "medicalstore.com.pk", "https://medicalstore.com.pk"),
+            _buildAnimatedLink("Sehat", "https://sehat.com.pk"),
+            _buildAnimatedLink("Medoline", "https://medonline.pk/"),
+            _buildAnimatedLink("Meri Pharmacy", "https://meripharmacy.pk"),
+            _buildAnimatedLink("DWatson", "https://dwatson.pk"),
+            _buildAnimatedLink("Ahmed Medico", "https://ahmedmedico.pk"),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAnimatedLink(String text, String url) {
+    return AnimatedOpacity(
+      duration: Duration(milliseconds: 500),
+      opacity: 1,
+      child: Container(
+        width: double.infinity,
+        margin: EdgeInsets.only(bottom: 10),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.green, width: 2),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: InkWell(
+          onTap: () async {
+            // Open the URL when tapped
+            if (await canLaunch(url)) {
+              await launch(url);
+            } else {
+              throw 'Could not launch $url';
+            }
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.green,
+              ),
             ),
           ),
         ),
