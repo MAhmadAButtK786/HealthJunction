@@ -21,23 +21,25 @@ class Medicinehome extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: ReusableDrawerSideBar(
-        color: Colors.green,
+        color: Color.fromARGB(255, 67, 187, 161),
         headerText: "Medicine",
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.green,
+          color: Color.fromARGB(255, 67, 187, 161),
           child: Column(
             children: [
               Container(
                 decoration: BoxDecoration(
-
-                    /* borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(50),
-                    bottomRight: Radius.circular(50),
-
-                  ),*/
-                    ),
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.green,
+                      Colors.blue
+                    ], // Adjust gradient colors
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
                 height: height * 0.25,
                 width: width,
                 child: Column(
