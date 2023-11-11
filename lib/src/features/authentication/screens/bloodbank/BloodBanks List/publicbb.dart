@@ -16,14 +16,12 @@ class PublicBB extends StatefulWidget {
   _PublicBBState createState() => _PublicBBState();
 }
 
-void _handleMenuPressed() {
-  scaffoldKey.currentState?.openDrawer();
-}
-
 class _PublicBBState extends State<PublicBB>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
+  late TextEditingController _searchController;
+  late String searchTerm = ''; // Declare searchTerm here
 
   @override
   void initState() {
@@ -36,6 +34,18 @@ class _PublicBBState extends State<PublicBB>
       parent: _controller,
       curve: Curves.easeIn,
     );
+
+    _searchController = TextEditingController();
+  }
+
+  void _handleMenuPressed() {
+    widget.scaffoldKey.currentState?.openDrawer();
+  }
+
+  void _performSearch() {
+    setState(() {
+      searchTerm = _searchController.text.toLowerCase().trim();
+    });
   }
 
   @override
@@ -49,17 +59,42 @@ class _PublicBBState extends State<PublicBB>
     return SafeArea(
       child: Scaffold(
         backgroundColor: cBBPP,
-        drawer: ReusableDrawerSideBar(
-          color: Colors.red,
-          headerText: "Blood Banks",
+        key: widget.scaffoldKey,
+        appBar: AppBar(
+          title: Text(
+            "Blood Banks",
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                _performSearch();
+              },
+            ),
+          ],
+          backgroundColor: Colors.red,
+          centerTitle: true,
         ),
-        key: scaffoldKey,
-        appBar: Navbar(
-            color: Colors.red,
-            textNav: "Blood Banks",
-            onMenuPressed: _handleMenuPressed),
         body: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _searchController,
+                style: TextStyle(color: Colors.white, fontSize: 17),
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  border: OutlineInputBorder(),
+                  hintStyle: TextStyle(color: Colors.white),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
             Container(
               padding: EdgeInsets.only(top: 20, left: 10, right: 10),
               child: FadeTransition(
@@ -93,24 +128,30 @@ class _PublicBBState extends State<PublicBB>
                           data.containsKey("License Number") &&
                           data.containsKey("Secter") &&
                           data.containsKey("Address")) {
-                        final publicbbinfo = Card(
-                          color: Colors.white,
-                          child: ExpansionTile(
-                            title: Text(
-                              "${data['Name']} ",
-                              style: GoogleFonts.montserrat(
+                        if (searchTerm.isEmpty ||
+                            data['Name'].toLowerCase().contains(searchTerm)) {
+                          final publicbbinfo = Card(
+                            color: Colors.white,
+                            child: ExpansionTile(
+                              title: Text(
+                                "${data['Name']} ",
+                                style: GoogleFonts.montserrat(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.red),
-                            ),
-                            children: [
-                              ListTile(
+                                  color: Colors.red,
+                                ),
+                              ),
+                              children: [
+                                ListTile(
                                   title: Text(
-                                      "License Number:${data['License Number']}\nAddress:${data['Address']}\nSector:${data['Secter']}")),
-                            ],
-                          ),
-                        );
-                        BBPWidget.add(publicbbinfo);
+                                    "License Number:${data['License Number']}\nAddress:${data['Address']}\nSector:${data['Secter']}",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                          BBPWidget.add(publicbbinfo);
+                        }
                       }
                     }
                     return ListView(

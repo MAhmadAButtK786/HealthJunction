@@ -1,31 +1,26 @@
-// ignore_for_file: unused_import, prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, unused_element, non_constant_identifier_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
-import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen2.dart';
-import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class PrivateBB extends StatefulWidget {
   PrivateBB({super.key});
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   State<PrivateBB> createState() => _PrivateBBState();
-}
-
-void _handleMenuPressed() {
-  scaffoldKey.currentState?.openDrawer();
 }
 
 class _PrivateBBState extends State<PrivateBB>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
+  late TextEditingController _searchController;
+  late String searchTerm = ''; // Declare searchTerm here
 
   @override
   void initState() {
@@ -38,6 +33,18 @@ class _PrivateBBState extends State<PrivateBB>
       parent: _controller,
       curve: Curves.easeIn,
     );
+
+    _searchController = TextEditingController();
+  }
+
+  void _handleMenuPressed() {
+    widget.scaffoldKey.currentState?.openDrawer();
+  }
+
+  void _performSearch() {
+    setState(() {
+      searchTerm = _searchController.text.toLowerCase().trim();
+    });
   }
 
   @override
@@ -51,17 +58,42 @@ class _PrivateBBState extends State<PrivateBB>
     return SafeArea(
       child: Scaffold(
         backgroundColor: cBBPP,
-        drawer: ReusableDrawerSideBar(
-          color: Colors.red,
-          headerText: "Blood Banks",
+        key: widget.scaffoldKey,
+        appBar: AppBar(
+          title: Text(
+            "Blood Banks",
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                _performSearch();
+              },
+            ),
+          ],
+          backgroundColor: Colors.red,
+          centerTitle: true,
         ),
-        key: scaffoldKey,
-        appBar: Navbar(
-            color: Colors.red,
-            textNav: "Blood Banks",
-            onMenuPressed: _handleMenuPressed),
         body: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _searchController,
+                style: TextStyle(color: Colors.white, fontSize: 17),
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  border: OutlineInputBorder(),
+                  hintStyle: TextStyle(color: Colors.white),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
             Container(
               padding: EdgeInsets.only(top: 20, left: 10, right: 10),
               child: FadeTransition(
@@ -95,33 +127,34 @@ class _PrivateBBState extends State<PrivateBB>
                           data.containsKey("License Number") &&
                           data.containsKey("Secter") &&
                           data.containsKey("Address")) {
-                        final publicbbinfo = Card(
-                          color: Colors.white,
-                          child: ExpansionTile(
-                            title: Text(
-                              "${data['Name']} ",
-                              style: GoogleFonts.montserrat(
+                        if (searchTerm.isEmpty ||
+                            data['Name'].toLowerCase().contains(searchTerm)) {
+                          final publicbbinfo = Card(
+                            color: Colors.white,
+                            child: ExpansionTile(
+                              title: Text(
+                                "${data['Name']} ",
+                                style: GoogleFonts.montserrat(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.red),
-                            ),
-                            children: [
-                              ListTile(
+                                  color: Colors.red,
+                                ),
+                              ),
+                              children: [
+                                ListTile(
                                   title: Text(
-                                      "License Number:${data['License Number']}\nAddress:${data['Address']}\nSector:${data['Secter']}")),
-                            ],
-                          ),
-                        );
-                        SizedBox(
-                          height: 28,
-                        );
-                        BBPWidget.add(publicbbinfo);
+                                    "License Number:${data['License Number']}\nAddress:${data['Address']}\nSector:${data['Secter']}",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                          BBPWidget.add(publicbbinfo);
+                        }
                       }
                     }
-                    return Expanded(
-                      child: ListView(
-                        children: BBPWidget,
-                      ),
+                    return ListView(
+                      children: BBPWidget,
                     );
                   } else {
                     return Text('No data found');
