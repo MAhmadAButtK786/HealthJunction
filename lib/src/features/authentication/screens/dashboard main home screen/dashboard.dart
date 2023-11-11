@@ -49,7 +49,12 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
         Tween<double>(begin: 0.0, end: 1.0).animate(_innovativeAppController);
     _innovativeAppController.forward();
   }
-
+  @override
+  void dispose() {
+    _healthJunctionController.dispose();
+    _innovativeAppController.dispose();
+    super.dispose();
+  }
 
   var height, width;
 
