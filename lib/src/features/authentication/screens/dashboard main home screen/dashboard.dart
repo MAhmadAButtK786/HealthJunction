@@ -15,7 +15,42 @@ import 'package:healthjunction/src/features/authentication/screens/profile_icon_
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
+  @override
+  _AnihomebothState createState() => _AnihomebothState();
+}
+
+class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
+  late AnimationController _healthJunctionController;
+  late Animation<double> _healthJunctionOpacityAnimation;
+
+  late AnimationController _innovativeAppController;
+  late Animation<double> _innovativeAppOpacityAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Health Junction Animation
+    _healthJunctionController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 3),
+    );
+    _healthJunctionOpacityAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_healthJunctionController);
+    _healthJunctionController.forward();
+
+    // Innovative App Animation
+    _innovativeAppController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 13),
+    );
+    _innovativeAppOpacityAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_innovativeAppController);
+    _innovativeAppController.forward();
+  }
+
+
   var height, width;
 
   List imgData = [clinic, hospital, bloodBank, medicine, charity, labs];
@@ -92,26 +127,34 @@ class Dashboard extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              " Health Junction",
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 1,
+                            FadeTransition(
+                              opacity: _healthJunctionOpacityAnimation,
+                              child: Text(
+                                " Health Junction",
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 1,
+                                ),
                               ),
                             ),
+
                             SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              " Innovative App for Health Care",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                letterSpacing: 1,
+                            FadeTransition(
+                              opacity: _innovativeAppOpacityAnimation,
+                              child: Text(
+                                " Innovative App for Health Care",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white54,
+                                  letterSpacing: 1,
+                                ),
                               ),
-                            )
+                            ),
+
                           ],
                         ),
                       )
@@ -190,5 +233,11 @@ class Dashboard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 }
