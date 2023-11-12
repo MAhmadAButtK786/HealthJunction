@@ -2,7 +2,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:healthjunction/src/constants/colors.dart';
 
 class ExcelL extends StatefulWidget {
   ExcelL({Key? key}) : super(key: key);
@@ -46,6 +45,8 @@ class _ExcelLState extends State<ExcelL> {
               },
             ),
           ],
+          backgroundColor: Colors.teal,
+          centerTitle: true,
         ),
         backgroundColor: Colors.white,
         body: Column(
@@ -83,7 +84,7 @@ class _ExcelLState extends State<ExcelL> {
                               .toLowerCase()
                               .contains(searchTerm)) {
                         final charityinfo = Card(
-                          color: cCharity,
+                          color: Colors.teal,
                           child: ExpansionTile(
                             title: Text(
                               "${data['Test Name']}",
