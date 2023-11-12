@@ -49,6 +49,8 @@ class _GovtState extends State<Govt> {
               },
             ),
           ],
+          backgroundColor: Colors.green,
+          centerTitle: true,
         ),
         backgroundColor: Colors.white,
         body: Column(
@@ -93,7 +95,7 @@ class _GovtState extends State<Govt> {
                               .contains(searchTerm) ||
                           data['Lab Name'].toLowerCase().contains(searchTerm)) {
                         final labinfo = Card(
-                          color: cCharity,
+                          color: Colors.green,
                           child: ExpansionTile(
                             title: Text(
                               "${data['Lab Name']}",
