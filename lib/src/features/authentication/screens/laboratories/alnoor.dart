@@ -2,7 +2,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:healthjunction/src/constants/colors.dart';
 
 class Alnoor extends StatefulWidget {
   Alnoor({Key? key}) : super(key: key);
@@ -43,6 +42,8 @@ class _AlnoorState extends State<Alnoor> with TickerProviderStateMixin {
               },
             ),
           ],
+          backgroundColor: Colors.teal,
+          centerTitle: true,
         ),
         backgroundColor: Colors.white,
         body: Column(
@@ -78,7 +79,7 @@ class _AlnoorState extends State<Alnoor> with TickerProviderStateMixin {
                     if (data.containsKey("Test Name") &&
                         data.containsKey("Price")) {
                       final charityinfo = Card(
-                          color: cCharity,
+                          color: Colors.teal,
                           child: ExpansionTile(
                             title: Text(
                               "${data['Test Name']}",
