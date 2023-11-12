@@ -1,8 +1,7 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, library_private_types_in_public_api, prefer_const_constructors, unused_element
+// ignore_for_file: prefer_const_constructors_in_immutables, library_private_types_in_public_api, prefer_const_constructors, unused_element, unused_import
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:healthjunction/src/constants/colors.dart';
 
 class LMLDC extends StatefulWidget {
   LMLDC({Key? key}) : super(key: key);
@@ -46,6 +45,8 @@ class _LMLDCState extends State<LMLDC> {
               },
             ),
           ],
+          backgroundColor: Colors.teal,
+          centerTitle: true,
         ),
         backgroundColor: Colors.white,
         body: Column(
@@ -86,7 +87,7 @@ class _LMLDCState extends State<LMLDC> {
                               .toLowerCase()
                               .contains(searchTerm)) {
                         final charityinfo = Card(
-                          color: cCharity,
+                          color: Colors.teal,
                           child: ExpansionTile(
                             title: Text(
                               "${data['Test Name']}",
