@@ -63,6 +63,8 @@ class _AlliedState extends State<Allied> with SingleTickerProviderStateMixin {
               },
             ),
           ],
+          backgroundColor: Colors.teal,
+          centerTitle: true,
         ),
         body: Column(
           children: [
