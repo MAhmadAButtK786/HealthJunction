@@ -34,10 +34,10 @@ class _ChughtaiState extends State<Chughtai> {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        drawer: ReusableDrawerSideBar(
-          color: clab,
-          headerText: "Chughtai Lab",
-        ),
+        // drawer: ReusableDrawerSideBar(
+        //   color: clab,
+        //   headerText: "Chughtai Lab",
+        // ),
         appBar: AppBar(
           title: Text("Chughtai Lab"),
           actions: [
