@@ -48,6 +48,8 @@ class _ChughtaiState extends State<Chughtai> {
               },
             ),
           ],
+          backgroundColor: Colors.teal,
+          centerTitle: true,
         ),
         backgroundColor: Colors.white,
         body: Column(
@@ -85,7 +87,7 @@ class _ChughtaiState extends State<Chughtai> {
                               .toLowerCase()
                               .contains(searchTerm)) {
                         final charityinfo = Card(
-                          color: cCharity,
+                          color: Colors.teal,
                           child: ExpansionTile(
                             title: Text(
                               "${data['Test Name']}",
