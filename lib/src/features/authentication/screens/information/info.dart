@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors, unused_import
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 
 class Information extends StatefulWidget {
   const Information({Key? key});
@@ -52,7 +53,7 @@ class _InformationState extends State<Information>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: ReusableDrawerSideBar(
+        drawer: ReusableDrawerSideBar2(
           color: const Color.fromARGB(255, 112, 140, 163),
           headerText: "Health Junction",
         ),
