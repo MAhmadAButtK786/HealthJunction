@@ -181,7 +181,7 @@ class BloodBankListhome extends StatelessWidget {
             children: [
               Image.asset(
                 imgData[index],
-                width: 100,
+                width: 170,
               ),
               Text(
                 titles[index],
