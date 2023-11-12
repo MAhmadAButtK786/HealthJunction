@@ -12,7 +12,7 @@ import 'package:healthjunction/src/features/authentication/screens/sidebar/sideb
 class RegistrationHome extends StatelessWidget {
   var height, width;
 
-  List imgData = [bloodBank, bloodBank];
+  List imgData = [dr2, dr2];
   List titles = [
     "Register as Donor",
     "Register as Recipients",

@@ -13,7 +13,7 @@ class BloodBankListhome extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [bloodBank, bloodBank];
+  List imgData = [dr, dr];
   List titles = ["  Donors Lists ", "  Recepients Lists"];
 
   @override

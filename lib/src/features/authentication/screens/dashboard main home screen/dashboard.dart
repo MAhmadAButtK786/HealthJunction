@@ -59,7 +59,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
 
   var height, width;
 
-  List imgData = [clinic, hospital, bloodBank, medicine, charity, labs];
+  List imgData = [clinicc, hosp, frontB, med, cc, l1];
   List titles = [
     "Hospital",
     "Clinic",
@@ -224,6 +224,12 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                 imgData[index],
                                 width: 100,
                               ),
+                              Text(titles[index],
+                                  style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.bold,
+                                    // color: Colors.),
+                                  ))
                             ],
                           ),
                         ),
