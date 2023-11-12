@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors, use_build_context_synchronously, deprecated_member_use, duplicate_ignore, avoid_print, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors, use_build_context_synchronously, duplicate_ignore, avoid_print, avoid_unnecessary_containers, deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -280,6 +280,14 @@ class _DonorListState extends State<DonorList> {
                                         await launch(whatsappUrl);
                                       } else {
                                         print("Could not launch $whatsappUrl");
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Please open WhatsApp and send a message to $phoneNumber',
+                                            ),
+                                          ),
+                                        );
                                       }
                                     },
                                     icon: Icon(
