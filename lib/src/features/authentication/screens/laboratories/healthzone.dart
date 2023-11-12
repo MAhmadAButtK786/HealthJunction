@@ -47,6 +47,8 @@ class _HealthZoneLState extends State<HealthZoneL> {
               },
             ),
           ],
+          backgroundColor: Colors.teal,
+          centerTitle: true,
         ),
         backgroundColor: Colors.white,
         body: Column(
@@ -84,7 +86,7 @@ class _HealthZoneLState extends State<HealthZoneL> {
                               .toLowerCase()
                               .contains(searchTerm)) {
                         final charityinfo = Card(
-                          color: cCharity,
+                          color: Colors.teal,
                           child: ExpansionTile(
                             title: Text(
                               "${data['Test Name']}",
