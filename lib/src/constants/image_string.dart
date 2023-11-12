@@ -49,3 +49,6 @@ const String cc = "assets/images/charitycc.jpg";
 const String l1 = "assets/images/L1.jpg";
 const String appoint = "assets/images/appoint.jpg";
 const String availability = "assets/images/Avai.png";
+const String hosinfa = "assets/images/hosinfa.jpg";
+const String hosappoint = "assets/images/hospappoint.png";
+const String medi2 = "assets/images/medi2.jpg";

@@ -74,7 +74,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
     Colors.red, // Text color for Blood Bank
     Colors.green, // Text color for Medicine
     Colors.purple, // Text color for Charity
-    Color(0xFFA5D5E2), // Text color for Laboratories
+    Color.fromARGB(255, 86, 192, 221), // Text color for Laboratories
   ];
 
   @override

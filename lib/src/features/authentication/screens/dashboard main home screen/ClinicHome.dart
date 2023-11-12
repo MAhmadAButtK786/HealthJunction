@@ -181,7 +181,7 @@ class Clinichome extends StatelessWidget {
             children: [
               Image.asset(
                 imgData[index],
-                width: 100,
+                width: 150,
               ),
               Text(
                 titles[index],

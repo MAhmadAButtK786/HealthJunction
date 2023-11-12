@@ -11,7 +11,7 @@ import 'package:healthjunction/src/features/authentication/screens/sidebar/sideb
 class Medicinehome extends StatelessWidget {
   var height, width;
 
-  List imgData = [medicine];
+  List imgData = [medi2];
   List titles = [
     " Medicine Suppliers  ",
   ];
@@ -155,7 +155,7 @@ class Medicinehome extends StatelessWidget {
                           children: [
                             Image.asset(
                               imgData[index],
-                              width: 100,
+                              width: 200,
                             ),
                             Text(
                               titles[index],

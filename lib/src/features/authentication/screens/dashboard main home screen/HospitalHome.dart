@@ -13,7 +13,7 @@ class Hospitalhome extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [hospital, hospital];
+  List imgData = [hosinfa, hosappoint];
   List titles = ["Check Availability / Information", "Appointment"];
 
   @override
@@ -184,7 +184,7 @@ class Hospitalhome extends StatelessWidget {
             children: [
               Image.asset(
                 imgData[index],
-                width: 100,
+                width: 140,
               ),
               Text(
                 titles[index],
