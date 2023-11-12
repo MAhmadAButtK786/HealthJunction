@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Information extends StatefulWidget {
   const Information({Key? key});
@@ -15,7 +16,8 @@ class _InformationState extends State<Information>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
-
+  late TextEditingController _searchController;
+  late String searchTerm = '';
   @override
   void initState() {
     super.initState();
@@ -30,6 +32,14 @@ class _InformationState extends State<Information>
       parent: _controller,
       curve: Curves.easeInOut,
     ));
+    _searchController =
+        TextEditingController(); // Initialize _searchController here
+  }
+
+  void _performSearch() {
+    setState(() {
+      searchTerm = _searchController.text.toLowerCase().trim();
+    });
   }
 
   @override
@@ -42,23 +52,39 @@ class _InformationState extends State<Information>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Text("Basic Health Information"),
-        //   centerTitle: true,
-        //   backgroundColor: Colors.blueAccent,
-        // ),
-
+        drawer: ReusableDrawerSideBar(
+          color: const Color.fromARGB(255, 112, 140, 163),
+          headerText: "Health Junction",
+        ),
+        appBar: AppBar(
+          title: Text(
+            'Take A step For Your Health',
+            style: TextStyle(fontSize: 18),
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                _performSearch();
+              },
+            ),
+          ],
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 112, 140, 163),
+        ),
         backgroundColor: Colors.blue,
-
         body: Container(
           child: Column(
             children: [
+              SizedBox(
+                height: 10,
+              ),
               SlideTransition(
                 position: _offsetAnimation,
                 child: Text(
                   "Basic Health Information",
                   style: GoogleFonts.montserrat(
-                    fontSize: 24,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -66,6 +92,24 @@ class _InformationState extends State<Information>
               ),
               SizedBox(
                 height: 40,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: _searchController,
+                  style: TextStyle(color: Colors.white, fontSize: 17),
+                  decoration: InputDecoration(
+                    hintText: 'Search...',
+                    border: OutlineInputBorder(),
+                    hintStyle: TextStyle(color: Colors.white),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                  ),
+                ),
               ),
               StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
@@ -79,27 +123,33 @@ class _InformationState extends State<Information>
                       final data = document.data() as Map<String, dynamic>;
                       if (data.containsKey('Title') &&
                           data.containsKey('Description')) {
-                        final informationWidget = Card(
-                          color: Colors.white,
-                          margin: EdgeInsets.all(8.0),
-                          child: ListTile(
-                            title: Text(
-                              data['Title'],
-                              style: GoogleFonts.montserrat(
-                                  color: Colors.blueAccent,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
+                        if (searchTerm.isEmpty ||
+                            data['Title'].toLowerCase().contains(searchTerm)) {
+                          final informationWidget = Card(
+                            color: Colors.white,
+                            margin: EdgeInsets.all(8.0),
+                            child: ExpansionTile(
+                              title: Text(
+                                data['Title'],
+                                style: GoogleFonts.montserrat(
+                                    color: Colors.blueAccent,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              children: [
+                                ListTile(
+                                    title: Text(
+                                  data['Description'],
+                                  style: GoogleFonts.montserrat(
+                                      color: Colors.black,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                )),
+                              ],
                             ),
-                            subtitle: Text(
-                              data['Description'],
-                              style: GoogleFonts.montserrat(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                          ),
-                        );
-                        infoWidgets.add(informationWidget);
+                          );
+                          infoWidgets.add(informationWidget);
+                        }
                       }
                     }
                   }
