@@ -63,7 +63,7 @@ class _PublicBBState extends State<PublicBB>
         key: widget.scaffoldKey,
         appBar: AppBar(
           title: Text(
-            "Blood Banks",
+            " Public Blood Banks",
           ),
           actions: [
             IconButton(
