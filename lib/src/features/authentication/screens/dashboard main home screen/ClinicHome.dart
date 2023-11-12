@@ -13,7 +13,7 @@ class Clinichome extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [clinic, clinic];
+  List imgData = [clinic, appoint];
   List titles = ["Check Availability /  Information ", "Appointment "];
 
   @override
