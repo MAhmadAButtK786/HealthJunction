@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_new, prefer_const_constructors, unused_import, no_leading_underscores_for_local_identifiers
+// ignore_for_file: unnecessary_new, prefer_const_constructors, unused_import, no_leading_underscores_for_local_identifiers, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,11 +24,11 @@ class CharityScreen extends StatelessWidget {
       child: Scaffold(
         key: scaffoldKey,
         drawer: ReusableDrawerSideBar(
-          color: cCharity,
+          color: Colors.deepPurple,
           headerText: "Charity",
         ),
         appBar: Navbar(
-          color: cCharity,
+          color: Colors.deepPurple,
           textNav: "Charity",
           onMenuPressed: _handleMenuPressed,
         ),
@@ -75,12 +75,12 @@ class CharityScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        color: cCharity,
+                        color: Colors.deepPurple[100],
                         child: ExpansionTile(
                           title: Text(
                             "${data['Title']}",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.deepPurple[900],
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -95,7 +95,6 @@ class CharityScreen extends StatelessWidget {
                               leading: Icon(Icons.phone),
                               title: Text("Contact: ${data['Contact']}"),
                               onTap: () {
-                                // ignore: deprecated_member_use
                                 launch("tel://${data['Contact']}");
                               },
                             ),
@@ -103,7 +102,6 @@ class CharityScreen extends StatelessWidget {
                               leading: Icon(Icons.location_on),
                               title: Text("Location: ${data['Location']}"),
                               onTap: () {
-                                // ignore: deprecated_member_use
                                 launch(
                                     "https://www.google.com/maps/search/?api=1&query=${data['Location']}");
                               },
