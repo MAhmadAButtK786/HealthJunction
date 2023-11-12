@@ -228,7 +228,6 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                   style: TextStyle(
                                     fontSize: 19,
                                     fontWeight: FontWeight.bold,
-                                    // color: Colors.),
                                   ))
                             ],
                           ),
