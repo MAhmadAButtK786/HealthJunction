@@ -13,8 +13,9 @@ class BloodBankhome extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [bloodBank, bloodBank, bloodBank];
-  List titles = [" Registration ", " Lists", "Blood Banks"];
+  List imgData = [bbb, lbp, bbppl];
+
+  List titles = [" Registration ", "Donor/Recipient Lists", "Blood Banks"];
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +26,13 @@ class BloodBankhome extends StatelessWidget {
     return Scaffold(
       drawer: ReusableDrawerSideBar(
         headerText: "Blood Bank",
-        color: Colors.deepOrange, // Improved Color Combination
+        color: Colors.deepOrange,
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.deepOrange, // Improved Color Combination
+          color: Colors.deepOrange,
           child: Column(
             children: [
-              // Improved Header Design
               buildHeader(context),
               // GridView for Blood Bank options
               buildBloodBankGrid(),
@@ -189,7 +189,7 @@ class BloodBankhome extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color: Colors.deepOrange, // Improved Color Combination
+                  color: Colors.redAccent, // Improved Color Combination
                 ),
               ),
             ],

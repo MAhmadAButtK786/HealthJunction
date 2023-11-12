@@ -13,7 +13,7 @@ class BloodBankListPP extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [bloodBank, bloodBank, bloodBank];
+  List imgData = [bbppl, bbppl];
   List titles = [" Private Blood Banks", "Public Blood Banks"];
 
   @override

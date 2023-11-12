@@ -36,3 +36,6 @@ const String lmldc = "assets/images/LMLDC.png";
 const String labms = "assets/images/Labor.png";
 const String govt = "assets/images/govt.png";
 const String excel = "assets/images/excel.jpg";
+const String bbppl = "assets/images/BBPPL.png";
+const String lbp = "assets/images/b.jpg";
+const String bbb = "assets/images/bb2.jpg";
