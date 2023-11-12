@@ -48,6 +48,8 @@ class _IndusState extends State<Indus> {
               },
             ),
           ],
+          backgroundColor: Colors.teal,
+          centerTitle: true,
         ),
         backgroundColor: Colors.white,
         body: Column(
@@ -87,7 +89,7 @@ class _IndusState extends State<Indus> {
                               .toLowerCase()
                               .contains(searchTerm)) {
                         final charityinfo = Card(
-                          color: cCharity,
+                          color: Colors.teal,
                           child: ExpansionTile(
                             title: Text(
                               "${data['Test Name']}",
