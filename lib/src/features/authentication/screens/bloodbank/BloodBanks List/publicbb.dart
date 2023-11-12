@@ -8,6 +8,7 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen2.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PublicBB extends StatefulWidget {
   PublicBB({Key? key}) : super(key: key);
@@ -144,8 +145,17 @@ class _PublicBBState extends State<PublicBB>
                               children: [
                                 ListTile(
                                   title: Text(
-                                    "License Number:${data['License Number']}\nAddress:${data['Address']}\nSector:${data['Secter']}",
+                                    "License Number:${data['License Number']}\nSector:${data['Secter']}",
                                   ),
+                                ),
+                                ListTile(
+                                  leading: Icon(Icons.location_on),
+                                  title: Text("Location: ${data['Address']}"),
+                                  onTap: () {
+                                    // ignore: deprecated_member_use
+                                    launch(
+                                        "https://www.google.com/maps/search/?api=1&query=${data['Address']}");
+                                  },
                                 ),
                               ],
                             ),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PrivateBB extends StatefulWidget {
   PrivateBB({super.key});
@@ -143,8 +144,18 @@ class _PrivateBBState extends State<PrivateBB>
                               children: [
                                 ListTile(
                                   title: Text(
-                                    "License Number:${data['License Number']}\nAddress:${data['Address']}\nSector:${data['Secter']}",
+                                    "License Number:${data['License Number']}\nSector:${data['Secter']}",
+                                    style: TextStyle(fontSize: 18),
                                   ),
+                                ),
+                                ListTile(
+                                  leading: Icon(Icons.location_on),
+                                  title: Text("Location: ${data['Address']}"),
+                                  onTap: () {
+                                    // ignore: deprecated_member_use
+                                    launch(
+                                        "https://www.google.com/maps/search/?api=1&query=${data['Address']}");
+                                  },
                                 ),
                               ],
                             ),
