@@ -61,13 +61,22 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
 
   List imgData = [clinicc, hosp, frontB, med, cc, l1];
   List titles = [
-    "Hospital",
     "Clinic",
+    "Hospital",
     "Blood Bank",
     "Medicine",
     "Charity",
     "Laboratories",
   ];
+  List<Color> textColors = [
+    Colors.teal, // Text color for Clinic
+    Colors.blue, // Text color for Hospital
+    Colors.red, // Text color for Blood Bank
+    Colors.green, // Text color for Medicine
+    Colors.purple, // Text color for Charity
+    Color(0xFFA5D5E2), // Text color for Laboratories
+  ];
+
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
@@ -228,6 +237,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                   style: TextStyle(
                                     fontSize: 19,
                                     fontWeight: FontWeight.bold,
+                                    color: textColors[index],
                                   ))
                             ],
                           ),

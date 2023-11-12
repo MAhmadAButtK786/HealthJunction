@@ -48,3 +48,4 @@ const String med = "assets/images/medicine.jpg";
 const String cc = "assets/images/charitycc.jpg";
 const String l1 = "assets/images/L1.jpg";
 const String appoint = "assets/images/appoint.jpg";
+const String availability = "assets/images/Avai.png";
