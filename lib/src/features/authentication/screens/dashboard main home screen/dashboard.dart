@@ -11,6 +11,7 @@ import 'package:healthjunction/src/features/authentication/screens/dashboard%20m
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicuser.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/hospitalhomeScreens/HospitalUserHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/hospitalhomeScreens/hospitalmain.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/labsmainscreen.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
@@ -202,7 +203,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                           if (index == 0) {
                             Get.to(() => Clinicmain());
                           } else if (index == 1) {
-                            Get.to(() => Hospitalhome());
+                            Get.to(() => Hospitalhomemain());
                           } else if (index == 2) {
                             Get.to(() => BloodBankhome());
                           } else if (index == 3) {
@@ -232,11 +233,11 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                             children: [
                               Image.asset(
                                 imgData[index],
-                                width: 120,
+                                width: 130,
                               ),
                               Text(titles[index],
                                   style: TextStyle(
-                                    fontSize: 19,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: textColors[index],
                                   ))
