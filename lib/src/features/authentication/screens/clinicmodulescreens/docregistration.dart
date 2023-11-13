@@ -76,7 +76,8 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                 TextFormField(
                     controller: clinicNameController,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(FontAwesomeIcons.hospital),
+                      prefixIcon: Icon(FontAwesomeIcons.hospital,
+                          color: Colors.tealAccent.shade400),
                       border: OutlineInputBorder(),
                       labelText: 'Clinic Name',
                       hintText: 'Enter Clinic Name',
@@ -95,7 +96,8 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                 TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.mail),
+                    prefixIcon:
+                        Icon(Icons.mail, color: Colors.tealAccent.shade400),
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     hintText: 'Enter Clinic Email Address',
@@ -125,7 +127,8 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                   controller: phoneController,
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.phone),
+                    prefixIcon:
+                        Icon(Icons.phone, color: Colors.tealAccent.shade400),
                     border: OutlineInputBorder(),
                     labelText: 'Clinic Contact Number',
                     hintText: 'Enter Clinic Contact Number',
@@ -148,7 +151,8 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                 TextFormField(
                     controller: clinicNameController,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(FontAwesomeIcons.map),
+                      prefixIcon: Icon(FontAwesomeIcons.map,
+                          color: Colors.tealAccent.shade400),
                       border: OutlineInputBorder(),
                       labelText: 'Clinic Address',
                       hintText: 'Enter Clinic Address',
@@ -170,7 +174,8 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                       labelText: 'Number of Doctors',
                       hintText: 'Enter Number of Doctors',
                       border: OutlineInputBorder(),
-                      prefixIcon: Icon(FontAwesomeIcons.userDoctor)),
+                      prefixIcon: Icon(FontAwesomeIcons.userDoctor,
+                          color: Colors.tealAccent.shade400)),
                   keyboardType: TextInputType.number,
                 ),
                 SizedBox(
@@ -183,7 +188,8 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                       labelText: 'Number of Rooms',
                       hintText: 'Enter Number of Rooms',
                       border: OutlineInputBorder(),
-                      prefixIcon: Icon(FontAwesomeIcons.bedPulse)),
+                      prefixIcon: Icon(FontAwesomeIcons.bedPulse,
+                          color: Colors.tealAccent.shade400)),
                   keyboardType: TextInputType.number,
                 ),
                 SizedBox(
@@ -194,13 +200,15 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                   TextFormField(
                     controller: doctorNameController[i],
                     decoration: InputDecoration(
-                      prefixIcon: Icon(FontAwesomeIcons.userDoctor),
+                      prefixIcon: Icon(FontAwesomeIcons.userDoctor,
+                          color: Colors.tealAccent.shade400),
                       border: OutlineInputBorder(),
                       labelText: 'Doctor Name',
                       hintText: 'Enter Doctor Name',
                       suffixIcon: i == doctorNameController.length - 1
                           ? IconButton(
-                              icon: Icon(Icons.add),
+                              icon: Icon(Icons.add,
+                                  color: Colors.tealAccent.shade400),
                               onPressed: addDoctorField,
                             )
                           : null,
@@ -220,13 +228,15 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                   TextFormField(
                     controller: licenseNumberController[i],
                     decoration: InputDecoration(
-                      prefixIcon: Icon(FontAwesomeIcons.idCard),
+                      prefixIcon: Icon(FontAwesomeIcons.idCard,
+                          color: Colors.tealAccent.shade400),
                       border: OutlineInputBorder(),
                       labelText: 'Licence Number',
                       hintText: 'Enter Licence Number',
                       suffixIcon: i == licenseNumberController.length - 1
                           ? IconButton(
-                              icon: Icon(Icons.add),
+                              icon: Icon(Icons.add,
+                                  color: Colors.tealAccent.shade400),
                               onPressed: addDoctorField,
                             )
                           : null,
@@ -246,13 +256,17 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                   TextFormField(
                     controller: facilitiesController[i],
                     decoration: InputDecoration(
-                      prefixIcon: Icon(FontAwesomeIcons.medkit),
+                      prefixIcon: Icon(FontAwesomeIcons.medkit,
+                          color: Colors.tealAccent.shade400),
                       border: OutlineInputBorder(),
                       labelText: 'Facilites',
                       hintText: 'Enter Facilities in Your Clinic',
                       suffixIcon: i == facilitiesController.length - 1
                           ? IconButton(
-                              icon: Icon(Icons.add),
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.tealAccent.shade400,
+                              ),
                               onPressed: addDoctorField,
                             )
                           : null,
@@ -290,6 +304,8 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                         final email = emailController.text.trim();
                       }
                     },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.tealAccent.shade400),
                     child: Text('Submit'),
                   ),
                 ),

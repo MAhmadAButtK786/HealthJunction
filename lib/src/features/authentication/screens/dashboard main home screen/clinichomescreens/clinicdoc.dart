@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicmanage.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/docregistration.dart';
@@ -14,7 +15,7 @@ class ClinicRegistraionmain extends StatelessWidget {
   ClinicRegistraionmain({super.key});
   var height, width;
   List imgData = [clinic1, doc];
-  List titles = ["Clinic", "Register Your Clinic"];
+  List titles = ["Clinic Management", "Register Your Clinic"];
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
@@ -202,7 +203,7 @@ class ClinicRegistraionmain extends StatelessWidget {
   void handleGridItemClick(int index) {
     switch (index) {
       case 0:
-        Get.to(() => clinicpage1());
+        Get.to(() => ClinicManage());
         break;
       case 1:
         Get.to(() => ClinicRegistration());
