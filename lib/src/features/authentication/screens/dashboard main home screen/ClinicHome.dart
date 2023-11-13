@@ -6,6 +6,7 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/docregistration.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
@@ -13,8 +14,12 @@ class Clinichome extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [availability, appoint];
-  List titles = ["Check Availability /  Information ", "Appointment "];
+  List imgData = [availability, appoint, doc];
+  List titles = [
+    "Check Availability /  Information ",
+    "Appointment ",
+    "Clinic Registration"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +133,7 @@ class Clinichome extends StatelessWidget {
   }
 
   // Method to build the Clinic Grid
+
   Widget buildClinicGrid() {
     return Container(
       decoration: BoxDecoration(
@@ -147,17 +153,17 @@ class Clinichome extends StatelessWidget {
           crossAxisSpacing: 20,
         ),
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: ScrollPhysics(),
         itemCount: titles.length,
         itemBuilder: (context, index) {
-          return buildClinicItem(index);
+          return buildBloodBankItem(index);
         },
       ),
     );
   }
 
-  // Method to build a Clinic Item in the Grid
-  Widget buildClinicItem(int index) {
+  // Method to build a Blood Bank Item in the Grid
+  Widget buildBloodBankItem(int index) {
     return InkWell(
       onTap: () => handleGridItemClick(index),
       child: Container(
@@ -175,13 +181,13 @@ class Clinichome extends StatelessWidget {
         ),
         // Apply Hero Animation for smooth image transition
         child: Hero(
-          tag: 'clinicHero$index',
+          tag: 'bloodBankHero$index',
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset(
                 imgData[index],
-                width: 150,
+                width: 130,
               ),
               Text(
                 titles[index],
@@ -206,6 +212,9 @@ class Clinichome extends StatelessWidget {
         break;
       case 1:
         Get.to(() => clinicpage3());
+        break;
+      case 2:
+        Get.to(() => ClinicRegistration());
         break;
     }
   }

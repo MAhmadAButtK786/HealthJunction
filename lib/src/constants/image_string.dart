@@ -52,3 +52,4 @@ const String availability = "assets/images/Avai.png";
 const String hosinfa = "assets/images/hosinfa.jpg";
 const String hosappoint = "assets/images/hospappoint.png";
 const String medi2 = "assets/images/medi2.jpg";
+const String doc = "assets/images/doctors.jpg";
