@@ -1,38 +1,37 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, file_names
+// ignore_for_file: file_names, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/RegistrationHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankpplist.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodlisthome.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/blooddonor/donor_list/donor_list.dart';
+import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_list.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankhomescreens/RegistrationHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
-class BloodBankhome extends StatelessWidget {
+class BloodBankListhome extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [bbb, lbp, bbppl];
-
-  List titles = [" Registration ", "Donor/Recipient Lists", "Blood Banks"];
+  List imgData = [dr, dr];
+  List titles = ["  Donors Lists ", "  Recepients Lists"];
 
   @override
   Widget build(BuildContext context) {
-    // Get screen dimensions
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
       drawer: ReusableDrawerSideBar(
         headerText: "Blood Bank",
-        color: Colors.deepOrange,
+        color: Colors.deepOrange, // Improved Color Combination
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.deepOrange,
+          color: Colors.deepOrange, // Improved Color Combination
           child: Column(
             children: [
+              // Improved Header Design
               buildHeader(context),
               // GridView for Blood Bank options
               buildBloodBankGrid(),
@@ -182,12 +181,12 @@ class BloodBankhome extends StatelessWidget {
             children: [
               Image.asset(
                 imgData[index],
-                width: 130,
+                width: 170,
               ),
               Text(
                 titles[index],
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.redAccent, // Improved Color Combination
                 ),
@@ -203,13 +202,10 @@ class BloodBankhome extends StatelessWidget {
   void handleGridItemClick(int index) {
     switch (index) {
       case 0:
-        Get.to(() => RegistrationHome());
+        Get.to(() => DonorList());
         break;
       case 1:
-        Get.to(() => BloodBankListhome());
-        break;
-      case 2:
-        Get.to(() => BloodBankListPP());
+        Get.to(() => RecipientList());
         break;
     }
   }
