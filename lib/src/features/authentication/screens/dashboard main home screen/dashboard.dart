@@ -7,7 +7,8 @@ import 'package:healthjunction/main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/charity/charity.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/BloodBankHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/ClinicHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinicmain.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinicuser.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/HospitalHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/labsmainscreen.dart';
@@ -199,7 +200,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                       return InkWell(
                         onTap: () {
                           if (index == 0) {
-                            Get.to(() => Clinichome());
+                            Get.to(() => Clinicmain());
                           } else if (index == 1) {
                             Get.to(() => Hospitalhome());
                           } else if (index == 2) {

@@ -53,3 +53,6 @@ const String hosinfa = "assets/images/hosinfa.jpg";
 const String hosappoint = "assets/images/hospappoint.png";
 const String medi2 = "assets/images/medi2.jpg";
 const String doc = "assets/images/doctors.jpg";
+const String clinicreg = "assets/images/Clinicreg.jpg";
+const String clinicUser = "assets/images/user.jpg";
+const String clinic1 = "assets/images/clinic1.jpg";

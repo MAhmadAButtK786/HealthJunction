@@ -14,11 +14,10 @@ class Clinichome extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [availability, appoint, doc];
+  List imgData = [availability, appoint];
   List titles = [
     "Check Availability /  Information ",
     "Appointment ",
-    "Clinic Registration"
   ];
 
   @override
@@ -212,9 +211,6 @@ class Clinichome extends StatelessWidget {
         break;
       case 1:
         Get.to(() => clinicpage3());
-        break;
-      case 2:
-        Get.to(() => ClinicRegistration());
         break;
     }
   }
