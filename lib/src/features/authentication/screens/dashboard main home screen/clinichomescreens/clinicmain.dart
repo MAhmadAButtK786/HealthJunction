@@ -7,8 +7,8 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/docregistration.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinicdoc.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinicuser.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicdoc.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicuser.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
