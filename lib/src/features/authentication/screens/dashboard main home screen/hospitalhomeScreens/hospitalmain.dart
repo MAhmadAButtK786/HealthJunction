@@ -191,7 +191,7 @@ class Hospitalhomemain extends StatelessWidget {
               Text(
                 titles[index],
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Colors.blueAccent,
                 ),

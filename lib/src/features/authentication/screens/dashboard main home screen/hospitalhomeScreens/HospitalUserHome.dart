@@ -189,7 +189,7 @@ class Hospitalhome extends StatelessWidget {
               Text(
                 titles[index],
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.blueAccent,
                 ),
