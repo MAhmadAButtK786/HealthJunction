@@ -10,6 +10,7 @@ import 'package:healthjunction/src/features/authentication/screens/clinicmodules
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 void main() => runApp(MaterialApp(home: clinicpage2()));
@@ -28,7 +29,7 @@ class clinicpage2 extends StatelessWidget {
           color: Colors.tealAccent.shade400,
           textNav: "Clinic",
           onMenuPressed: _handleMenuPressed),
-      drawer: ReusableDrawerSideBar(
+      drawer: ReusableDrawerSideBar2(
         color: Colors.tealAccent,
         headerText: "Clinic",
       ),
