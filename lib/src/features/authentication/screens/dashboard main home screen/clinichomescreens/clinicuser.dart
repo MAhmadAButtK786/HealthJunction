@@ -10,6 +10,7 @@ import 'package:healthjunction/src/features/authentication/screens/clinicmodules
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/docregistration.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 
 class Clinichome extends StatelessWidget {
   var height, width;
@@ -27,7 +28,7 @@ class Clinichome extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      drawer: ReusableDrawerSideBar(
+      drawer: ReusableDrawerSideBar2(
         headerText: "Clinic",
         color: Colors.blue, // Improved Color Combination
       ),
