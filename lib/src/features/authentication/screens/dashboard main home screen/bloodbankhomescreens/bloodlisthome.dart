@@ -8,6 +8,7 @@ import 'package:healthjunction/src/features/authentication/screens/bloodbank/blo
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankhomescreens/RegistrationHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 
 class BloodBankListhome extends StatelessWidget {
   var height, width;
@@ -22,7 +23,7 @@ class BloodBankListhome extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      drawer: ReusableDrawerSideBar(
+      drawer: ReusableDrawerSideBar2(
         headerText: "Blood Bank",
         color: Colors.deepOrange, // Improved Color Combination
       ),
