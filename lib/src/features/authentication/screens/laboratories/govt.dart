@@ -2,10 +2,12 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen2.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Govt extends StatefulWidget {
   const Govt({Key? key}) : super(key: key);
@@ -107,8 +109,17 @@ class _GovtState extends State<Govt> {
                             children: <Widget>[
                               ListTile(
                                 title: Text(
-                                    "Serial Number:${data['Serial Number']}\nDistrict:${data['District']}\nLocation:${data['Location']}"),
+                                    "Serial Number:${data['Serial Number']}\nDistrict:${data['District']}"),
                               ),
+                              ListTile(
+                                leading: Icon(Icons.location_on),
+                                title: Text("Address:${data['Location']}"),
+                                onTap: () {
+                                  // ignore: deprecated_member_use
+                                  launch(
+                                      "https://www.google.com/maps/search/?api=1&query=${data['Location']}");
+                                },
+                              )
                             ],
                           ),
                         );
