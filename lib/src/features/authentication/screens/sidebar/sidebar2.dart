@@ -51,6 +51,20 @@ class ReusableDrawerSideBar2 extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
+              Icons.home,
+              color: color,
+            ),
+            title: Text(
+              'Home',
+              style:
+                  GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.bold),
+            ),
+            onTap: () {
+              Get.to(() => Dashboard());
+            },
+          ),
+          ListTile(
+            leading: Icon(
               LineAwesomeIcons.ambulance,
               color: color,
             ),
@@ -92,20 +106,6 @@ class ReusableDrawerSideBar2 extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Get.to(() => Emergency());
-            },
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.home,
-              color: color,
-            ),
-            title: Text(
-              'Home',
-              style:
-                  GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.bold),
-            ),
-            onTap: () {
-              Get.to(() => Dashboard());
             },
           ),
         ],
