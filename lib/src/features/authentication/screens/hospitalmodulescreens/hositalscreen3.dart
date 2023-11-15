@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
@@ -35,7 +36,7 @@ class hospitalpage3 extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                        top: 35,
+                        top: 45,
                         left: 20,
                         right: 20,
                       ),
@@ -49,6 +50,13 @@ class hospitalpage3 extends StatelessWidget {
                               color: Colors.white,
                               size: 30,
                             ),
+                          ),
+                          Text(
+                            "Hospital",
+                            style: GoogleFonts.montserrat(
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           ),
                           IconButton(
                             onPressed: () {

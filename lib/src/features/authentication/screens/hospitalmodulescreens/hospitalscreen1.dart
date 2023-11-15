@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen2.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 
 // ignore: camel_case_types
 class hospitalpage1 extends StatelessWidget {
@@ -18,7 +19,7 @@ class hospitalpage1 extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      drawer: ReusableDrawerSideBar(
+      drawer: ReusableDrawerSideBar2(
         color: Colors.blue,
         headerText: "Hospital",
       ),
@@ -36,7 +37,7 @@ class hospitalpage1 extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                        top: 35,
+                        top: 45,
                         left: 20,
                         right: 20,
                       ),
@@ -55,6 +56,13 @@ class hospitalpage1 extends StatelessWidget {
                               ),
                             );
                           }),
+                          Text(
+                            "Hospital",
+                            style: GoogleFonts.montserrat(
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
                           IconButton(
                             onPressed: () {
                               Get.to(() => ProfileMainPage());

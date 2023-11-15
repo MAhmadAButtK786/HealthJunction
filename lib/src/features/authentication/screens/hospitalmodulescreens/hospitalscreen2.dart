@@ -8,6 +8,7 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 void main() => runApp(MaterialApp(home: hospitalpage2()));
@@ -28,7 +29,8 @@ class hospitalpage2 extends StatelessWidget {
           color: Colors.blue,
           textNav: "Hospital",
           onMenuPressed: _handleMenuPressed),
-      drawer: ReusableDrawerSideBar(color: Colors.blue, headerText: "Hospital"),
+      drawer:
+          ReusableDrawerSideBar2(color: Colors.blue, headerText: "Hospital"),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
