@@ -122,7 +122,18 @@ class CharityScreen extends StatelessWidget {
                               },
                             ),
                             ListTile(
-                              leading: Icon(Icons.copy),
+                              leading: IconButton(
+                                icon: Icon(Icons.copy),
+                                onPressed: () {
+                                  Clipboard.setData(ClipboardData(
+                                      text: data['Account Number']));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content: Text(
+                                            'Account number copied to clipboard')),
+                                  );
+                                },
+                              ),
                               title: Text("${data['Account Details']}"),
                               subtitle: SelectableText(
                                 "IBAN:${data['IBAN']}\nSwift Code:${data['Swift Code']}\nAccount Number:${data['Account Number']}\nBranch Code:${data['Branch Code']}",
