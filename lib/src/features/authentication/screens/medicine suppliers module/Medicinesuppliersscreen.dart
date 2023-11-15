@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, deprecated_member_use, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable, prefer_typing_uninitialized_variables, file_names
+// ignore_for_file: prefer_const_constructors, deprecated_member_use, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable, prefer_typing_uninitialized_variables, file_names, unused_element
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
@@ -161,22 +162,39 @@ class Medicine2 extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            _buildAnimatedLink("DVAGO", "https://www.dvago.pk"),
-            _buildAnimatedLink("dawaai", "https://dawaai.pk/"),
-            _buildAnimatedLink(
-                "medicalstore.com.pk", "https://medicalstore.com.pk"),
-            _buildAnimatedLink("Sehat", "https://sehat.com.pk"),
-            _buildAnimatedLink("Medoline", "https://medonline.pk/"),
-            _buildAnimatedLink("Meri Pharmacy", "https://meripharmacy.pk"),
-            _buildAnimatedLink("DWatson", "https://dwatson.pk"),
-            _buildAnimatedLink("Ahmed Medico", "https://ahmedmedico.pk"),
+            _buildAnimatedLinkWithImage(dvago, "DVAGO", "https://www.dvago.pk"),
+            _buildAnimatedLinkWithImage(dawaai, "Dawaai", "https://dawaai.pk/"),
+            _buildAnimatedLinkWithImage(
+                medicalstore, "Medical Store", "https://medicalstore.com.pk"),
+            _buildAnimatedLinkWithImage(sehat, "Sehat", "https://sehat.com.pk"),
+            _buildAnimatedLinkWithImage(
+                medonline, "Medoline", "https://medonline.pk/"),
+            _buildAnimatedLinkWithImage(
+                maripharmacy, "Meri Pharmacy", "https://meripharmacy.pk"),
+            _buildAnimatedLinkWithImage(
+                dwaston, "Dwatson", "https://dwatson.pk"),
+            _buildAnimatedLinkWithImage(
+                ahmedmedico, "Ahmed Medico", "https://ahmedmedico.pk"),
+            _buildAnimatedLinkWithImage(
+                servaid, "Servaid", "https://www.servaid.com.pk/"),
+            _buildAnimatedLinkWithImage(
+                hhl, "HHL Pharmacy", "https://hlhpharmacy.com.pk/"),
+            _buildAnimatedLinkWithImage(insta, "Insta Care",
+                "https://instacare.pk/online-pharmacy-in-pakistan"),
+            _buildAnimatedLinkWithImage(
+                next, "Next Health", "https://nexthealth.pk/"),
+            _buildAnimatedLinkWithImage(
+                emed, "E meds", "https://www.emeds.pk/"),
+            _buildAnimatedLinkWithImage(livewell, "Live Well Pharmacy",
+                "https://www.livewellpharmacy.org/"),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildAnimatedLink(String text, String url) {
+  Widget _buildAnimatedLinkWithImage(
+      String text, String url, String imagePath) {
     return AnimatedOpacity(
       duration: Duration(milliseconds: 500),
       opacity: 1,
@@ -198,12 +216,23 @@ class Medicine2 extends StatelessWidget {
           },
           child: Padding(
             padding: const EdgeInsets.all(18.0),
-            child: Text(
-              text,
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.green,
-              ),
+            child: Row(
+              children: [
+                // Image before the text
+                Image.asset(
+                  imagePath,
+                  height: 30, // Adjust the height as needed
+                  width: 30, // Adjust the width as needed
+                ),
+                SizedBox(width: 10), // Add some spacing between image and text
+                Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.green,
+                  ),
+                ),
+              ],
             ),
           ),
         ),

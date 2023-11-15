@@ -14,8 +14,8 @@ class Hospitalhome extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [hosinfa, hosappoint];
-  List titles = ["Check Availability / Information", "Appointment"];
+  List imgData = [hosinfa];
+  List titles = ["Check Availability / Information"];
 
   @override
   Widget build(BuildContext context) {
@@ -207,9 +207,6 @@ class Hospitalhome extends StatelessWidget {
     switch (index) {
       case 0:
         Get.to(() => hospitalpage1());
-        break;
-      case 1:
-        Get.to(() => hospitalpage3());
         break;
     }
   }
