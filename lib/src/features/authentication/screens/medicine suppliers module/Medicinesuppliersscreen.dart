@@ -169,23 +169,23 @@ class Medicine2 extends StatelessWidget {
             _buildAnimatedLinkWithImage(
                  "Medoline", "https://medonline.pk/",medonline),
             _buildAnimatedLinkWithImage(
-                maripharmacy, "Meri Pharmacy", "https://meripharmacy.pk"),
+                 "Meri Pharmacy", "https://meripharmacy.pk",maripharmacy),
             _buildAnimatedLinkWithImage(
-                dwaston, "Dwatson", "https://dwatson.pk"),
+                 "Dwatson", "https://dwatson.pk",dwaston),
             _buildAnimatedLinkWithImage(
-                ahmedmedico, "Ahmed Medico", "https://ahmedmedico.pk"),
+                "Ahmed Medico", "https://ahmedmedico.pk", ahmedmedico),
             _buildAnimatedLinkWithImage(
-                servaid, "Servaid", "https://www.servaid.com.pk/"),
+                 "Servaid", "https://www.servaid.com.pk/",servaid),
             _buildAnimatedLinkWithImage(
-                hhl, "HHL Pharmacy", "https://hlhpharmacy.com.pk/"),
-            _buildAnimatedLinkWithImage(insta, "Insta Care",
-                "https://instacare.pk/online-pharmacy-in-pakistan"),
+                 "HHL Pharmacy", "https://hlhpharmacy.com.pk/",hhl),
+            _buildAnimatedLinkWithImage( "Insta Care",
+                "https://instacare.pk/online-pharmacy-in-pakistan",insta),
             _buildAnimatedLinkWithImage(
-                next, "Next Health", "https://nexthealth.pk/"),
+                 "Next Health", "https://nexthealth.pk/",next),
             _buildAnimatedLinkWithImage(
-                emed, "E meds", "https://www.emeds.pk/"),
-            _buildAnimatedLinkWithImage(livewell, "Live Well Pharmacy",
-                "https://www.livewellpharmacy.org/"),
+               "E meds", "https://www.emeds.pk/",  emed),
+            _buildAnimatedLinkWithImage( "Live Well Pharmacy",
+                "https://www.livewellpharmacy.org/",livewell),
           ],
         ),
       ),
