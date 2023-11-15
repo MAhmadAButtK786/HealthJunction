@@ -8,6 +8,7 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Emergency extends StatelessWidget {
@@ -54,7 +55,7 @@ class Emergency extends StatelessWidget {
           textNav: "Emergency",
           onMenuPressed: _handleMenuPressed),
       drawer:
-          ReusableDrawerSideBar(color: Colors.red, headerText: "Ambullance"),
+          ReusableDrawerSideBar2(color: Colors.red, headerText: "Ambullance"),
       backgroundColor: cEmergency,
       body: Column(
         children: [
