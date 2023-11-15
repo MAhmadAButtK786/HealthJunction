@@ -68,8 +68,14 @@ class CharityScreen extends StatelessWidget {
                     final data = document.data() as Map<String, dynamic>;
                     if (data.containsKey("Title") &&
                         data.containsKey("Location") &&
-                        data.containsKey("Basic Information") &&
-                        data.containsKey("Account Details")) {
+                        data.containsKey("Account Details") &&
+                        data.containsKey("Account Number") &&
+                        data.containsKey("IBAN") &&
+                        data.containsKey("Swift Code") &&
+                        data.containsKey("Branch Code") &&
+                        data.containsKey("Contact") &&
+                        data.containsKey("Internation Contact") &&
+                        data.containsKey("Descripyion")) {
                       final charityinfo = Card(
                         elevation: 5,
                         shape: RoundedRectangleBorder(
@@ -88,7 +94,7 @@ class CharityScreen extends StatelessWidget {
                             ListTile(
                               leading: Icon(Icons.info_outline),
                               title: Text(
-                                "Information: ${data['Basic Information']}",
+                                "Information: ${data['Descryption']}",
                               ),
                             ),
                             ListTile(
@@ -96,6 +102,15 @@ class CharityScreen extends StatelessWidget {
                               title: Text("Contact: ${data['Contact']}"),
                               onTap: () {
                                 launch("tel://${data['Contact']}");
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.phone),
+                              title: Text(
+                                  "Contact: ${data['International Contact']}"),
+                              onTap: () {
+                                launch(
+                                    "tel://${data['International Contact']}");
                               },
                             ),
                             ListTile(
@@ -108,21 +123,9 @@ class CharityScreen extends StatelessWidget {
                             ),
                             ListTile(
                               leading: Icon(Icons.copy),
-                              title: Text("Account Details:"),
+                              title: Text("${data['Account Details']}"),
                               subtitle: SelectableText(
-                                "${data['Account Details']}",
-                                onTap: () {
-                                  Clipboard.setData(
-                                    ClipboardData(
-                                      text: "${data['Account Details']}",
-                                    ),
-                                  );
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('Copied to Clipboard'),
-                                    ),
-                                  );
-                                },
+                                "IBAN:${data['IBAN']}\nSwift Code:${data['Swift Code']}\nAccount Number:${data['Account Number']}\nBranch Code:${data['Branch Code']}",
                               ),
                             ),
                           ],
