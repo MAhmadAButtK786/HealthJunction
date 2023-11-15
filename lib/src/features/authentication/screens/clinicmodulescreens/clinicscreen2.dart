@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, unused_import
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, unused_import, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -6,6 +6,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
@@ -46,7 +47,7 @@ class clinicpage2 extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  "Hospital Name",
+                  "Clinic Name",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -56,7 +57,7 @@ class clinicpage2 extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 Text(
-                  "Hospital Address",
+                  "Clinic Address",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
@@ -130,6 +131,14 @@ class clinicpage2 extends StatelessWidget {
                     ],
                   ),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => clinicpage3());
+                  },
+                  child: Text("Book Appointment"),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal.shade400),
+                )
               ],
             ),
           ),

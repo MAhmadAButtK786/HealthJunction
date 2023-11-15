@@ -172,7 +172,7 @@ class clinicpage3 extends StatelessWidget {
                           SizedBox(height: 10),
                           TextFormField(
                             decoration: InputDecoration(
-                              labelText: ' Name and CNIC ',
+                              labelText: ' Name ',
                               border: OutlineInputBorder(),
                             ),
                           ),
@@ -186,7 +186,7 @@ class clinicpage3 extends StatelessWidget {
                           SizedBox(height: 10),
                           TextFormField(
                             decoration: InputDecoration(
-                              labelText: ' Doctor Name ',
+                              labelText: ' CNIC ',
                               border: OutlineInputBorder(),
                             ),
                           ),
@@ -202,10 +202,10 @@ class clinicpage3 extends StatelessWidget {
                             // Handle registration button press
                           },
                           style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              backgroundColor: Colors.teal.shade400),
                           child: Text(" Apply for Appointment "),
                         ),
                         SizedBox(width: 16),
@@ -217,8 +217,7 @@ class clinicpage3 extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            backgroundColor: Colors
-                                .grey, // Set the button's background color
+                            backgroundColor: Colors.grey,
                           ),
                           child: Text(" More "),
                         ),
