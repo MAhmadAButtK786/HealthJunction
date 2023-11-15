@@ -94,7 +94,7 @@ class CharityScreen extends StatelessWidget {
                             ListTile(
                               leading: Icon(Icons.info_outline),
                               title: Text(
-                                "Information: ${data['Descryption']}",
+                                "Information: ${data['Descripyion']}",
                               ),
                             ),
                             ListTile(
@@ -107,10 +107,9 @@ class CharityScreen extends StatelessWidget {
                             ListTile(
                               leading: Icon(Icons.phone),
                               title: Text(
-                                  "Contact: ${data['International Contact']}"),
+                                  "Contact: ${data['Internation Contact']}"),
                               onTap: () {
-                                launch(
-                                    "tel://${data['International Contact']}");
+                                launch("tel://${data['Internation Contact']}");
                               },
                             ),
                             ListTile(

@@ -162,30 +162,31 @@ class Medicine2 extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            _buildAnimatedLinkWithImage( "DVAGO", "https://www.dvago.pk",dvago),
-            _buildAnimatedLinkWithImage( "Dawaai", "https://dawaai.pk/",dawaai),
-            _buildAnimatedLinkWithImage("Medical Store", "https://medicalstore.com.pk",medicalstore),
-            _buildAnimatedLinkWithImage( "Sehat", "https://sehat.com.pk",sehat),
+            _buildAnimatedLinkWithImage("DVAGO", "https://www.dvago.pk", dvago),
+            _buildAnimatedLinkWithImage("Dawaai", "https://dawaai.pk/", dawaai),
             _buildAnimatedLinkWithImage(
-                 "Medoline", "https://medonline.pk/",medonline),
+                "Medical Store", "https://medicalstore.com.pk", medicalstore),
+            _buildAnimatedLinkWithImage("Sehat", "https://sehat.com.pk", sehat),
             _buildAnimatedLinkWithImage(
-                 "Meri Pharmacy", "https://meripharmacy.pk",maripharmacy),
+                "Medoline", "https://medonline.pk/", medonline),
             _buildAnimatedLinkWithImage(
-                 "Dwatson", "https://dwatson.pk",dwaston),
+                "Meri Pharmacy", "https://meripharmacy.pk", maripharmacy),
+            _buildAnimatedLinkWithImage(
+                "Dwatson", "https://dwatson.pk", dwaston),
             _buildAnimatedLinkWithImage(
                 "Ahmed Medico", "https://ahmedmedico.pk", ahmedmedico),
             _buildAnimatedLinkWithImage(
-                 "Servaid", "https://www.servaid.com.pk/",servaid),
+                "Servaid", "https://www.servaid.com.pk/", servaid),
             _buildAnimatedLinkWithImage(
-                 "HHL Pharmacy", "https://hlhpharmacy.com.pk/",hhl),
-            _buildAnimatedLinkWithImage( "Insta Care",
-                "https://instacare.pk/online-pharmacy-in-pakistan",insta),
+                "HHL Pharmacy", "https://hlhpharmacy.com.pk/", hhl),
+            _buildAnimatedLinkWithImage("Insta Care",
+                "https://instacare.pk/online-pharmacy-in-pakistan", insta),
             _buildAnimatedLinkWithImage(
-                 "Next Health", "https://nexthealth.pk/",next),
+                "Next Health", "https://nexthealth.pk/", next),
             _buildAnimatedLinkWithImage(
-               "E meds", "https://www.emeds.pk/",  emed),
-            _buildAnimatedLinkWithImage( "Live Well Pharmacy",
-                "https://www.livewellpharmacy.org/",livewell),
+                "E meds", "https://www.emeds.pk/", emed),
+            _buildAnimatedLinkWithImage("Live Well Pharmacy",
+                "https://www.livewellpharmacy.org/", livewell),
           ],
         ),
       ),
@@ -220,8 +221,8 @@ class Medicine2 extends StatelessWidget {
                 // Image before the text
                 Image.asset(
                   imagePath,
-                  height: 30, // Adjust the height as needed
-                  width: 30, // Adjust the width as needed
+                  height: 50, // Adjust the height as needed
+                  width: 50, // Adjust the width as needed
                 ),
                 SizedBox(width: 10), // Add some spacing between image and text
                 Text(
