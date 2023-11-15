@@ -112,36 +112,6 @@ class ProfileMainPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(
-                        Icons.settings,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text(
-                        "Setting",
-                        style: TextStyle(color: Colors.blue, fontSize: 18),
-                      ),
-                    ],
-                  ),
-                  style: OutlinedButton.styleFrom(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      side: BorderSide(color: Colors.blue)),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              SizedBox(
-                width: 270,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  child: Row(
-                    children: [
-                      Icon(
                         Icons.assignment,
                         color: Colors.blue,
                       ),
