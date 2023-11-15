@@ -7,6 +7,7 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 
 // ignore: use_key_in_widget_constructors
 class hospitalpage3 extends StatelessWidget {
@@ -18,7 +19,8 @@ class hospitalpage3 extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      drawer: ReusableDrawerSideBar(color: Colors.blue, headerText: "Hospital"),
+      drawer:
+          ReusableDrawerSideBar2(color: Colors.blue, headerText: "Hospital"),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.blue,
