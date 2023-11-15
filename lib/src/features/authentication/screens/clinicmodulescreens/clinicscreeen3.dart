@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
@@ -51,6 +52,13 @@ class clinicpage3 extends StatelessWidget {
                                       size: 30,
                                     ),
                                   )),
+                          Text(
+                            "Clinics",
+                            style: GoogleFonts.montserrat(
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
                           IconButton(
                             onPressed: () {
                               Get.to(() => ProfileMainPage());
