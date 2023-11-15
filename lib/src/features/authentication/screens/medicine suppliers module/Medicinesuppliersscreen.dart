@@ -1,12 +1,11 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable, prefer_typing_uninitialized_variables, file_names, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:healthjunction/src/constants/image_string.dart'; // Assuming you have this file for image paths
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Medicine2 extends StatelessWidget {
   var height, width;
@@ -25,8 +24,8 @@ class Medicine2 extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _buildTopBar(context),
-            _buildLinks(),
+            _buildTopBar(context), // Building the top app bar
+            _buildLinks(), // Building the links section
           ],
         ),
       ),
@@ -37,12 +36,15 @@ class Medicine2 extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.green, Colors.blue], // Adjust gradient colors
+          colors: [
+            Colors.green,
+            Colors.blue
+          ], // Gradient colors for the app bar
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
       ),
-      height: height * 0.28,
+      height: height * 0.28, // Setting the height of the app bar
       width: width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +61,8 @@ class Medicine2 extends StatelessWidget {
                 Builder(builder: (context) {
                   return InkWell(
                     onTap: () {
-                      Scaffold.of(context).openDrawer();
+                      Scaffold.of(context)
+                          .openDrawer(); // Open the drawer on menu icon tap
                     },
                     child: Icon(
                       Icons.menu,
@@ -68,7 +71,7 @@ class Medicine2 extends StatelessWidget {
                     ),
                   );
                 }),
-                _buildProfileIcon(context),
+                _buildProfileIcon(context), // Building the profile icon
               ],
             ),
           ),
@@ -126,7 +129,8 @@ class Medicine2 extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => ProfileScreen(),
+                builder: (context) =>
+                    ProfileScreen(), // Navigate to profile screen on icon tap
               ),
             );
           },
@@ -162,39 +166,44 @@ class Medicine2 extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            _buildAnimatedLinkWithImage(dvago, "DVAGO", "https://www.dvago.pk"),
-            _buildAnimatedLinkWithImage(dawaai, "Dawaai", "https://dawaai.pk/"),
+            // Building each animated link with image
             _buildAnimatedLinkWithImage(
-                medicalstore, "Medical Store", "https://medicalstore.com.pk"),
-            _buildAnimatedLinkWithImage(sehat, "Sehat", "https://sehat.com.pk"),
+                ImageStrings.dvago, "DVAGO", "https://www.dvago.pk"),
             _buildAnimatedLinkWithImage(
-                medonline, "Medoline", "https://medonline.pk/"),
+                ImageStrings.dawaai, "Dawaai", "https://dawaai.pk/"),
+            _buildAnimatedLinkWithImage(ImageStrings.medicalstore,
+                "Medical Store", "https://medicalstore.com.pk"),
             _buildAnimatedLinkWithImage(
-                maripharmacy, "Meri Pharmacy", "https://meripharmacy.pk"),
+                ImageStrings.sehat, "Sehat", "https://sehat.com.pk"),
             _buildAnimatedLinkWithImage(
-                dwaston, "Dwatson", "https://dwatson.pk"),
+                ImageStrings.medonline, "Medoline", "https://medonline.pk"),
+            _buildAnimatedLinkWithImage(ImageStrings.maripharmacy,
+                "Meri Pharmacy", "https://meripharmacy.pk"),
             _buildAnimatedLinkWithImage(
-                ahmedmedico, "Ahmed Medico", "https://ahmedmedico.pk"),
+                ImageStrings.dwaston, "Dwatson", "https://dwatson.pk"),
+            _buildAnimatedLinkWithImage(ImageStrings.ahmedmedico,
+                "Ahmed Medico", "https://ahmedmedico.pk"),
             _buildAnimatedLinkWithImage(
-                servaid, "Servaid", "https://www.servaid.com.pk/"),
+                ImageStrings.servaid, "Servaid", "https://www.servaid.com.pk"),
             _buildAnimatedLinkWithImage(
-                hhl, "HHL Pharmacy", "https://hlhpharmacy.com.pk/"),
-            _buildAnimatedLinkWithImage(insta, "Insta Care",
+                ImageStrings.hhl, "HHL Pharmacy", "https://hlhpharmacy.com.pk"),
+            _buildAnimatedLinkWithImage(ImageStrings.insta, "Insta Care",
                 "https://instacare.pk/online-pharmacy-in-pakistan"),
             _buildAnimatedLinkWithImage(
-                next, "Next Health", "https://nexthealth.pk/"),
+                ImageStrings.next, "Next Health", "https://nexthealth.pk"),
             _buildAnimatedLinkWithImage(
-                emed, "E meds", "https://www.emeds.pk/"),
-            _buildAnimatedLinkWithImage(livewell, "Live Well Pharmacy",
-                "https://www.livewellpharmacy.org/"),
+                ImageStrings.emed, "E meds", "https://www.emeds.pk"),
+            _buildAnimatedLinkWithImage(ImageStrings.livewell,
+                "Live Well Pharmacy", "https://www.livewellpharmacy.org"),
           ],
         ),
       ),
     );
   }
 
+  // Building each animated link with image
   Widget _buildAnimatedLinkWithImage(
-      String text, String url, String imagePath) {
+      String imagePath, String text, String url) {
     return AnimatedOpacity(
       duration: Duration(milliseconds: 500),
       opacity: 1,
