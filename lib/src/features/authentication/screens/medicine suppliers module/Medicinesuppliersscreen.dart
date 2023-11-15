@@ -162,13 +162,12 @@ class Medicine2 extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            _buildAnimatedLinkWithImage(dvago, "DVAGO", "https://www.dvago.pk"),
-            _buildAnimatedLinkWithImage(dawaai, "Dawaai", "https://dawaai.pk/"),
+            _buildAnimatedLinkWithImage( "DVAGO", "https://www.dvago.pk",dvago),
+            _buildAnimatedLinkWithImage( "Dawaai", "https://dawaai.pk/",dawaai),
+            _buildAnimatedLinkWithImage("Medical Store", "https://medicalstore.com.pk",medicalstore),
+            _buildAnimatedLinkWithImage( "Sehat", "https://sehat.com.pk",sehat),
             _buildAnimatedLinkWithImage(
-                medicalstore, "Medical Store", "https://medicalstore.com.pk"),
-            _buildAnimatedLinkWithImage(sehat, "Sehat", "https://sehat.com.pk"),
-            _buildAnimatedLinkWithImage(
-                medonline, "Medoline", "https://medonline.pk/"),
+                 "Medoline", "https://medonline.pk/",medonline),
             _buildAnimatedLinkWithImage(
                 maripharmacy, "Meri Pharmacy", "https://meripharmacy.pk"),
             _buildAnimatedLinkWithImage(
