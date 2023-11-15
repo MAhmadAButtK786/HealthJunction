@@ -7,6 +7,7 @@ import 'package:healthjunction/src/features/authentication/screens/bloodbank/Blo
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/BloodBanks%20List/publicbb.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 
 class BloodBankListPP extends StatelessWidget {
   BloodBankListPP({super.key});
@@ -22,7 +23,7 @@ class BloodBankListPP extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      drawer: ReusableDrawerSideBar(
+      drawer: ReusableDrawerSideBar2(
         headerText: "Blood Bank",
         color: Colors.red, // Improved Color Combination
       ),
