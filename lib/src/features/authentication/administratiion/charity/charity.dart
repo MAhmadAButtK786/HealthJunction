@@ -34,8 +34,8 @@ class _CharityNGODataState extends State<CharityNGOData> {
       final CollectionReference charityorgData =
           FirebaseFirestore.instance.collection('NGOs');
 
-      final charityNGOsBytes = await rootBundle
-          .load('assets/dataSets/charity engos information (2).csv');
+      final charityNGOsBytes = await rootBundle.load(
+          'assets/dataSets/charity engos information new updaated (3).csv');
       final charityNGOs = utf8.decode(charityNGOsBytes.buffer.asUint8List(),
           allowMalformed: true);
 
@@ -44,10 +44,16 @@ class _CharityNGODataState extends State<CharityNGOData> {
       for (var i = 1; i < csvData.length; i++) {
         var record = {
           "Title": csvData[i][0],
-          "Basic Information": csvData[i][1],
-          "Location": csvData[i][2],
-          "Contact": csvData[i][3],
-          "Account Details": csvData[i][4],
+          // "Logo": logoUrl,
+          "Descripyion": csvData[i][2],
+          "Location": csvData[i][3],
+          "Contact": csvData[i][4],
+          "Internation Contact": csvData[i][5],
+          "Account Details": csvData[i][6],
+          "Account Number": csvData[i][7],
+          "Branch Code": csvData[i][8],
+          "IBAN": csvData[i][9],
+          "Swift Code": csvData[i][10],
         };
         await charityorgData.add(record);
         print("Data Stored in Firestore Successfully ");
