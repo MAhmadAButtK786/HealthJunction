@@ -1,13 +1,10 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors, use_build_context_synchronously, deprecated_member_use, duplicate_ignore, avoid_print
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors, use_build_context_synchronously, duplicate_ignore, avoid_print, avoid_unnecessary_containers, deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-// Your original imports
-// ...
 
 void main() => runApp(MaterialApp(home: RecipientList()));
 
@@ -161,7 +158,7 @@ class _RecipientListState extends State<RecipientList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: ReusableDrawerSideBar(
+      drawer: ReusableDrawerSideBar2(
         color: Colors.red,
         headerText: "Recipient List",
       ),
@@ -201,6 +198,7 @@ class _RecipientListState extends State<RecipientList> {
             return Center(child: Text('No recipient data available.'));
           } else {
             List<QueryDocumentSnapshot> recipients = snapshot.data!;
+
             return ListView.builder(
               itemCount: recipients.length,
               itemBuilder: (context, index) {
@@ -277,11 +275,19 @@ class _RecipientListState extends State<RecipientList> {
                                   IconButton(
                                     onPressed: () async {
                                       var whatsappUrl =
-                                          "whatsapp://send?phone=$phoneNumber&text=${Uri.encodeFull('Hello! I want to donate Blood. Do you need')}";
+                                          "whatsapp://send?phone=$phoneNumber&text=${Uri.encodeFull('Hello! I am looking for a donor. Are you Available?')}";
                                       if (await canLaunch(whatsappUrl)) {
                                         await launch(whatsappUrl);
                                       } else {
                                         print("Could not launch $whatsappUrl");
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Please open WhatsApp and send a message to $phoneNumber',
+                                            ),
+                                          ),
+                                        );
                                       }
                                     },
                                     icon: Icon(

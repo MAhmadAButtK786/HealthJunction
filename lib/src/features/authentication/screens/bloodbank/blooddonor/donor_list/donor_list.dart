@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MaterialApp(home: DonorList()));
@@ -158,7 +158,7 @@ class _DonorListState extends State<DonorList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: ReusableDrawerSideBar(
+      drawer: ReusableDrawerSideBar2(
         color: Colors.red,
         headerText: "Donor List",
       ),

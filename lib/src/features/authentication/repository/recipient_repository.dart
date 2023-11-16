@@ -9,53 +9,22 @@ class RecipientRepository extends GetxController {
   static RecipientRepository get instance => Get.find();
   final _db = FirebaseFirestore.instance;
   // ... existing code ...
-  Future<void> createUser(RecepientModel recipient) async {
-    var emailExists = await _db
+  Future<void> createUser(RecepientModel donor) async {
+    _db
         .collection("Recepients")
-        .where("email", isEqualTo: recipient.email)
-        .get();
-
-    var phoneExists = await _db
-        .collection("Recepients")
-        .where("phone", isEqualTo: recipient.phoneNumber)
-        .get();
-
-    if (emailExists.docs.isNotEmpty) {
-      // Email already exists
-      Get.snackbar(
-        "Failed",
-        "Email is already registered.",
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
-        colorText: Colors.redAccent,
-      );
-    } else if (phoneExists.docs.isNotEmpty) {
-      // Phone number already exists
-      Get.snackbar(
-        "Failed",
-        "Phone number is already registered.",
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent.withOpacity(0.1),
-        colorText: Colors.redAccent,
-      );
-    } else {
-      // Email and phone number are unique, add the recipient
-      await _db
-          .collection("Recepients")
-          .add(recipient.toJason())
-          .then((value) => Get.snackbar("Success", "You are added as Recepient",
+        .add(donor.toJason())
+        .then((value) => Get.snackbar(
+              "Success",
+              "You are registered as Recipients",
               snackPosition: SnackPosition.BOTTOM,
               backgroundColor: Colors.green.withOpacity(0.1),
-              colorText: Colors.green))
-          .catchError((error) {
-        Get.snackbar(
-          "Failed",
-          "Failed to add you as a Recepient",
+              colorText: Colors.green,
+            ))
+        .catchError((error) {
+      Get.snackbar("Failed", "Failed to Register you as Recipients",
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.redAccent.withOpacity(0.1),
-          colorText: Colors.redAccent,
-        );
-      });
-    }
+          colorText: Colors.redAccent);
+    });
   }
 }
