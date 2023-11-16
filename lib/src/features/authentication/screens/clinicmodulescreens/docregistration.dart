@@ -45,6 +45,12 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
     });
   }
 
+  void addLicense() {
+    setState(() {
+      licenseNumberController.add(TextEditingController());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -237,13 +243,13 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                           ? IconButton(
                               icon: Icon(Icons.add,
                                   color: Colors.tealAccent.shade400),
-                              onPressed: addDoctorField,
+                              onPressed: addLicense,
                             )
                           : null,
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter Doctor Name.';
+                        return 'Please enter License Number.';
                       }
                       return null;
                     },
@@ -267,13 +273,13 @@ class _ClinicRegistrationState extends State<ClinicRegistration> {
                                 Icons.add,
                                 color: Colors.tealAccent.shade400,
                               ),
-                              onPressed: addDoctorField,
+                              onPressed: addFacility,
                             )
                           : null,
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter Doctor Name.';
+                        return 'Please enter Facility Name.';
                       }
                       return null;
                     },
