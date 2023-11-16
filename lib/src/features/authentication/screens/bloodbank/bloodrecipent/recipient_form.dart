@@ -10,6 +10,7 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/repository/recipient_repository.dart';
 import 'package:healthjunction/src/features/authentication/screens/bloodbank/bloodrecipent/recipient_list.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankhomescreens/BloodBankHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankhomescreens/bloodlisthome.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
@@ -416,7 +417,7 @@ class _RecipientForm extends State<RecipientForm> {
                     );
                     _recipientRepository.createUser(recipient);
 
-                    Get.to(() => BloodBankListhome());
+                    Get.to(() => BloodBankhome());
                     _showResultDialog(context);
                   }
                 }
