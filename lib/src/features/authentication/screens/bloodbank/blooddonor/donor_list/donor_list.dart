@@ -275,7 +275,7 @@ class _DonorListState extends State<DonorList> {
                                   IconButton(
                                     onPressed: () async {
                                       var whatsappUrl =
-                                          "whatsapp://send?phone=$phoneNumber&text=${Uri.encodeFull('Hello!')}";
+                                          "whatsapp://send?phone=$phoneNumber&text=${Uri.encodeFull('Hello! I am looking for a donor. Are you Available?')}";
                                       if (await canLaunch(whatsappUrl)) {
                                         await launch(whatsappUrl);
                                       } else {

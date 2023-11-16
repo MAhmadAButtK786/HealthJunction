@@ -16,7 +16,7 @@ class Hospitalhomemain extends StatelessWidget {
 
   // List of images and titles
   List imgData = [hospital3, hospitalreg];
-  List titles = ["User", "Hospital Registration"];
+  List titles = ["Patient", "Hospital Registration"];
 
   @override
   Widget build(BuildContext context) {

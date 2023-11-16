@@ -17,7 +17,7 @@ class Clinicmain extends StatelessWidget {
 
   // List of images and titles
   List imgData = [clinicUser, clinicreg];
-  List titles = ["User", "Clinic Registration"];
+  List titles = ["Patient", "Clinic Registration"];
 
   @override
   Widget build(BuildContext context) {
