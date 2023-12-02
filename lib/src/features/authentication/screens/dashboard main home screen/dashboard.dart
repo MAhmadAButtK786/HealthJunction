@@ -14,6 +14,7 @@ import 'package:healthjunction/src/features/authentication/screens/dashboard%20m
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/hospitalhomeScreens/hospitalmain.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/patient/patientdashboard.dart';
+import 'package:healthjunction/src/features/authentication/screens/laboratories/laboratories.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/labsmainscreen.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
@@ -213,7 +214,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                           } else if (index == 4) {
                             Get.to(() => CharityScreen());
                           } else if (index == 5) {
-                            Get.to(() => LabsMainScreen());
+                            Get.to(() => Laboratoriesmain());
                           }
                         },
                         child: Container(

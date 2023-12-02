@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, must_be_immutable
+// ignore_for_file: prefer_const_constructors, avoid_print, must_be_immutable, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -21,7 +21,6 @@ class LabsMainScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   LabsMainScreen({super.key});
   List titleN = [
-    "Registered Labs In Pakistan By Government",
     "Allied Lahore Lab",
     "Chughtai Lab",
     "Indus Lab",
@@ -32,7 +31,6 @@ class LabsMainScreen extends StatelessWidget {
     "Excel",
   ];
   List image = [
-    govt,
     alliedL,
     chugtai,
     induslab,
@@ -98,24 +96,22 @@ class LabsMainScreen extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
-                          if (index == 1) {
+                          if (index == 0) {
                             Get.to(() => Allied());
-                          } else if (index == 2) {
+                          } else if (index == 1) {
                             Get.to(() => Chughtai());
-                          } else if (index == 3) {
+                          } else if (index == 2) {
                             Get.to(() => Indus());
-                          } else if (index == 4) {
+                          } else if (index == 3) {
                             Get.to(() => HealthZoneL());
-                          } else if (index == 5) {
+                          } else if (index == 4) {
                             Get.to(() => Alnoor());
-                          } else if (index == 6) {
+                          } else if (index == 5) {
                             Get.to(() => IDC());
-                          } else if (index == 7) {
+                          } else if (index == 6) {
                             Get.to(() => LMLDC());
-                          } else if (index == 8) {
+                          } else if (index == 7) {
                             Get.to(() => ExcelL());
-                          } else if (index == 0) {
-                            Get.to(() => Govt());
                           }
                           print("Tapped on ${titleN[index]}");
                         },
