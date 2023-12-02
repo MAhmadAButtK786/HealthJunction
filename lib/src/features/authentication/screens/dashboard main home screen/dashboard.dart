@@ -64,7 +64,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
   List imgData = [clinicc, hosp, frontB, med, cc, l1];
   List titles = [
     "Patient",
-    "Hospital/Clinic",
+    "HealthPoints",
     "Blood Bank",
     "Medicine",
     "Charity",
@@ -75,7 +75,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
     Colors.blue, // Text color for Hospital
     Colors.red, // Text color for Blood Bank
     Colors.green, // Text color for Medicine
-    Colors.purple, // Text color for Charity
+    const Color.fromARGB(255, 185, 23, 214), // Text color for Charity
     Color.fromARGB(255, 61, 189, 224), // Text color for Laboratories
   ];
 

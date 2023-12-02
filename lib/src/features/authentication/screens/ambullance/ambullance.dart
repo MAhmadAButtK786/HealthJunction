@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Ambulance extends StatefulWidget {
@@ -80,7 +80,7 @@ class _AmbulanceState extends State<Ambulance>
         textNav: 'Ambullance',
         onMenuPressed: _handleMenuPressed,
       ),
-      drawer: ReusableDrawerSideBar(
+      drawer: ReusableDrawerSideBar2(
         color: Colors.redAccent,
         headerText: "Ambullance",
       ),
