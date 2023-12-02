@@ -21,6 +21,7 @@ class LabsMainScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   LabsMainScreen({super.key});
   List titleN = [
+    "Registered Labs In Pakistan By Government",
     "Allied Lahore Lab",
     "Chughtai Lab",
     "Indus Lab",
@@ -29,9 +30,9 @@ class LabsMainScreen extends StatelessWidget {
     "Islamabad Diagnostic Center",
     "Lahore Medical Lab and Diagnostic Center",
     "Excel",
-    "Registered Labs In Pakistan By Government",
   ];
   List image = [
+    govt,
     alliedL,
     chugtai,
     induslab,
@@ -40,7 +41,6 @@ class LabsMainScreen extends StatelessWidget {
     idc,
     lmldc,
     excel,
-    govt
   ];
 
   @override
@@ -98,23 +98,23 @@ class LabsMainScreen extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
-                          if (index == 0) {
+                          if (index == 1) {
                             Get.to(() => Allied());
-                          } else if (index == 1) {
-                            Get.to(() => Chughtai());
                           } else if (index == 2) {
-                            Get.to(() => Indus());
+                            Get.to(() => Chughtai());
                           } else if (index == 3) {
-                            Get.to(() => HealthZoneL());
+                            Get.to(() => Indus());
                           } else if (index == 4) {
-                            Get.to(() => Alnoor());
+                            Get.to(() => HealthZoneL());
                           } else if (index == 5) {
-                            Get.to(() => IDC());
+                            Get.to(() => Alnoor());
                           } else if (index == 6) {
-                            Get.to(() => LMLDC());
+                            Get.to(() => IDC());
                           } else if (index == 7) {
-                            Get.to(() => ExcelL());
+                            Get.to(() => LMLDC());
                           } else if (index == 8) {
+                            Get.to(() => ExcelL());
+                          } else if (index == 0) {
                             Get.to(() => Govt());
                           }
                           print("Tapped on ${titleN[index]}");

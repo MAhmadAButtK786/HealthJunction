@@ -109,11 +109,23 @@ class _GovtState extends State<Govt> {
                             children: <Widget>[
                               ListTile(
                                 title: Text(
-                                    "Serial Number:${data['Serial Number']}\nDistrict:${data['District']}"),
+                                  "Serial Number:${data['Serial Number']}\nDistrict:${data['District']}",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
                               ListTile(
-                                leading: Icon(Icons.location_on),
-                                title: Text("Address:${data['Location']}"),
+                                leading: Icon(
+                                  Icons.location_on,
+                                  color: Colors.white,
+                                ),
+                                title: Text(
+                                  "Address:${data['Location']}",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
                                 onTap: () {
                                   // ignore: deprecated_member_use
                                   launch(
