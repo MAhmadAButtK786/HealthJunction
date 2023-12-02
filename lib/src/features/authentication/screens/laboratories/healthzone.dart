@@ -98,7 +98,10 @@ class _HealthZoneLState extends State<HealthZoneL> {
                             children: <Widget>[
                               ListTile(
                                 title: Text(
-                                    "Code: ${data['Code']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
+                                    "Code: ${data['Code']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    )),
                               ),
                             ],
                           ),

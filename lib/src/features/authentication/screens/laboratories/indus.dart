@@ -101,7 +101,10 @@ class _IndusState extends State<Indus> {
                             children: <Widget>[
                               ListTile(
                                 title: Text(
-                                    "Code: ${data['Code']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
+                                    "Code: ${data['Code']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    )),
                               ),
                             ],
                           ),

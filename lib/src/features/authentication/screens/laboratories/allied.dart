@@ -122,7 +122,10 @@ class _AlliedState extends State<Allied> with SingleTickerProviderStateMixin {
                               children: <Widget>[
                                 ListTile(
                                   title: Text(
-                                      "Code: ${data['Code']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
+                                      "Code: ${data['Code']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      )),
                                 ),
                               ],
                             ),

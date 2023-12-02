@@ -90,7 +90,10 @@ class _AlnoorState extends State<Alnoor> with TickerProviderStateMixin {
                             ),
                             children: <Widget>[
                               ListTile(
-                                title: Text("Price:${data['Price']}"),
+                                title: Text("Price:${data['Price']}",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    )),
                               ),
                             ],
                           ));

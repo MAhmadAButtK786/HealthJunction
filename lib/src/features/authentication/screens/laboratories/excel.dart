@@ -95,7 +95,10 @@ class _ExcelLState extends State<ExcelL> {
                             ),
                             children: <Widget>[
                               ListTile(
-                                title: Text("Price:${data['Price']}"),
+                                title: Text("Price:${data['Price']}",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    )),
                               ),
                             ],
                           ),

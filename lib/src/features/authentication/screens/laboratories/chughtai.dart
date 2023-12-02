@@ -98,7 +98,10 @@ class _ChughtaiState extends State<Chughtai> {
                             ),
                             children: <Widget>[
                               ListTile(
-                                title: Text("Price:${data['Price']}"),
+                                title: Text("Price:${data['Price']}",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    )),
                               ),
                             ],
                           ),

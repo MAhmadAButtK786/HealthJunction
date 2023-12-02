@@ -99,7 +99,10 @@ class _LMLDCState extends State<LMLDC> {
                             children: <Widget>[
                               ListTile(
                                 title: Text(
-                                    "Catagory:${data['Catagory']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}"),
+                                    "Catagory:${data['Catagory']}\nPrice:${data['Price']}\nSample Required:${data['Sample Required']}\nReporting Time:${data['Reporting Time']}",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    )),
                               ),
                             ],
                           ),
