@@ -18,8 +18,8 @@ class HealthClinicRegmain extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [clinicreg];
-  List titles = ["Clinic Registration"];
+  List imgData = [cc1];
+  List titles = ["Clinic Managment"];
 
   @override
   Widget build(BuildContext context) {
