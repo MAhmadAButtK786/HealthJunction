@@ -13,7 +13,7 @@ import 'package:healthjunction/src/features/authentication/screens/hospitalmodul
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
-class Clinicmain extends StatelessWidget {
+class Patientmain extends StatelessWidget {
   var height, width;
 
   // List of images and titles
