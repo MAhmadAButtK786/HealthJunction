@@ -211,7 +211,7 @@ class HealthPointsmain extends StatelessWidget {
         Get.to(() => HospitalRegistration());
         break;
       case 1:
-        Get.to(() => ClinicRegistraionmain());
+        Get.to(() => ClinicRegistration());
         break;
     }
   }

@@ -15,7 +15,7 @@ class ClinicRegistraionmain extends StatelessWidget {
   ClinicRegistraionmain({super.key});
   var height, width;
   List imgData = [clinic1, doc];
-  List titles = ["Clinic Management", "Register Your Clinic"];
+  List titles = ["Manage Appointments", "Register Your Clinic"];
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
