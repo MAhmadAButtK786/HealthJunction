@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/charity/charity.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/Healthpoints/healthpointshome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankhomescreens/BloodBankHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicmain.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicuser.dart';
@@ -204,7 +205,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                           if (index == 0) {
                             Get.to(() => Patientmain());
                           } else if (index == 1) {
-                            Get.to(() => Hospitalhomemain());
+                            Get.to(() => HealthPointsmain());
                           } else if (index == 2) {
                             Get.to(() => BloodBankhome());
                           } else if (index == 3) {
