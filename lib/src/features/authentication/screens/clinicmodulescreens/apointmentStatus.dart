@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, file_names
 
 import 'package:flutter/material.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';

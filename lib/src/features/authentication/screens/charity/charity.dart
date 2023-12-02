@@ -92,20 +92,27 @@ class CharityScreen extends StatelessWidget {
                           ),
                           children: <Widget>[
                             ListTile(
-                              leading: Icon(Icons.info_outline),
+                              leading: Icon(Icons.info_outline,
+                                  color: Colors.deepPurple),
                               title: Text(
                                 "Information: ${data['Descripyion']}",
                               ),
                             ),
                             ListTile(
-                              leading: Icon(Icons.phone),
+                              leading: Icon(
+                                Icons.phone,
+                                color: Colors.deepPurple.shade900,
+                              ),
                               title: Text("Contact: ${data['Contact']}"),
                               onTap: () {
                                 launch("tel://${data['Contact']}");
                               },
                             ),
                             ListTile(
-                              leading: Icon(Icons.phone),
+                              leading: Icon(
+                                Icons.phone,
+                                color: Colors.deepPurple.shade900,
+                              ),
                               title: Text(
                                   "Contact: ${data['Internation Contact']}"),
                               onTap: () {
@@ -113,7 +120,10 @@ class CharityScreen extends StatelessWidget {
                               },
                             ),
                             ListTile(
-                              leading: Icon(Icons.location_on),
+                              leading: Icon(
+                                Icons.location_on,
+                                color: Colors.deepPurple.shade900,
+                              ),
                               title: Text("Location: ${data['Location']}"),
                               onTap: () {
                                 launch(
@@ -122,7 +132,10 @@ class CharityScreen extends StatelessWidget {
                             ),
                             ListTile(
                               leading: IconButton(
-                                icon: Icon(Icons.copy),
+                                icon: Icon(
+                                  Icons.copy_sharp,
+                                  color: Colors.deepPurple.shade900,
+                                ),
                                 onPressed: () {
                                   Clipboard.setData(ClipboardData(
                                       text: data['Account Number']));
