@@ -11,7 +11,7 @@ import 'package:healthjunction/src/features/authentication/screens/sidebar/sideb
 
 class GovtLabsMainScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  static const titleN = ["Registered Labs In Pakistan By Government"];
+  static const titleN = ["Registered Labs in Punjab By Government"];
 
   GovtLabsMainScreen({Key? key}) : super(key: key);
 

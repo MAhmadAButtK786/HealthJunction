@@ -28,11 +28,11 @@ class Patientmain extends StatelessWidget {
     return Scaffold(
       drawer: ReusableDrawerSideBar(
         headerText: "Patients",
-        color: Colors.tealAccent,
+        color: Colors.teal,
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.tealAccent,
+          color: Colors.teal,
           child: Column(
             children: [
               // Improved Header Design
@@ -196,8 +196,7 @@ class Patientmain extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(
-                      255, 6, 240, 248), // Improved Color Combination
+                  color: Colors.teal, // Improved Color Combination
                 ),
               ),
             ],
