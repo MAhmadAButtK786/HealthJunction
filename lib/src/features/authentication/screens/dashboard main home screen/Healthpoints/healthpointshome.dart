@@ -7,6 +7,8 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/docregistration.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/Healthpoints/healthclinichome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/Healthpoints/hospitalregisterhome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicdoc.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicuser.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen1.dart';
@@ -18,8 +20,8 @@ class HealthPointsmain extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [hospitalreg, clinicreg];
-  List titles = ["Hospitals Registration", "Clinics Registration"];
+  List imgData = [hospital10, clinic3];
+  List titles = ["Hospitals ", "Clinics"];
 
   @override
   Widget build(BuildContext context) {
@@ -105,9 +107,9 @@ class HealthPointsmain extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Clinic",
+                  "Health Points",
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 35,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
@@ -187,7 +189,7 @@ class HealthPointsmain extends StatelessWidget {
             children: [
               Image.asset(
                 imgData[index],
-                width: 140,
+                width: 150,
               ),
               Text(
                 titles[index],
@@ -208,10 +210,10 @@ class HealthPointsmain extends StatelessWidget {
   void handleGridItemClick(int index) {
     switch (index) {
       case 0:
-        Get.to(() => HospitalRegistration());
+        Get.to(() => HealthRegmain());
         break;
       case 1:
-        Get.to(() => ClinicRegistration());
+        Get.to(() => HealthClinicRegmain());
         break;
     }
   }

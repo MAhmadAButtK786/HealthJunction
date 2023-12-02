@@ -10,15 +10,16 @@ import 'package:healthjunction/src/features/authentication/screens/clinicmodules
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicdoc.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicuser.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen1.dart';
+import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitareg.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
-class Patientmain extends StatelessWidget {
+class HealthClinicRegmain extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [clinicUser, clinicreg];
-  List titles = ["Clinics", "Hospitals"];
+  List imgData = [clinicreg];
+  List titles = ["Clinic Registration"];
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +28,12 @@ class Patientmain extends StatelessWidget {
 
     return Scaffold(
       drawer: ReusableDrawerSideBar(
-        headerText: "Patients",
-        color: Colors.tealAccent,
+        headerText: "Clinic",
+        color: Colors.blue, // Improved Color Combination
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.tealAccent,
+          color: Colors.blue, // Improved Color Combination
           child: Column(
             children: [
               // Improved Header Design
@@ -51,10 +52,7 @@ class Patientmain extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            const Color.fromARGB(255, 49, 125, 187),
-            const Color.fromARGB(255, 71, 235, 196)
-          ], // Adjust gradient colors
+          colors: [Colors.blue, Colors.tealAccent], // Adjust gradient colors
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -107,7 +105,7 @@ class Patientmain extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Patients",
+                  "Health Points",
                   style: TextStyle(
                     fontSize: 35,
                     color: Colors.white,
@@ -196,8 +194,7 @@ class Patientmain extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(
-                      255, 6, 240, 248), // Improved Color Combination
+                  color: Colors.blue, // Improved Color Combination
                 ),
               ),
             ],
@@ -211,10 +208,7 @@ class Patientmain extends StatelessWidget {
   void handleGridItemClick(int index) {
     switch (index) {
       case 0:
-        Get.to(() => Clinichome());
-        break;
-      case 1:
-        Get.to(() => hospitalpage1());
+        Get.to(() => ClinicRegistraionmain());
         break;
     }
   }
