@@ -63,8 +63,8 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
 
   List imgData = [clinicc, hosp, frontB, med, cc, l1];
   List titles = [
-    "Clinic",
-    "Hospital",
+    "Patient",
+    "Hospital/Clinic",
     "Blood Bank",
     "Medicine",
     "Charity",
