@@ -27,12 +27,12 @@ class Patientmain extends StatelessWidget {
 
     return Scaffold(
       drawer: ReusableDrawerSideBar(
-        headerText: "Clinic",
-        color: Colors.blue, // Improved Color Combination
+        headerText: "Patients",
+        color: Colors.tealAccent,
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.blue, // Improved Color Combination
+          color: Colors.tealAccent,
           child: Column(
             children: [
               // Improved Header Design
@@ -51,7 +51,10 @@ class Patientmain extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.blue, Colors.tealAccent], // Adjust gradient colors
+          colors: [
+            const Color.fromARGB(255, 49, 125, 187),
+            const Color.fromARGB(255, 71, 235, 196)
+          ], // Adjust gradient colors
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -104,9 +107,9 @@ class Patientmain extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Clinic",
+                  "Patients",
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 35,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
