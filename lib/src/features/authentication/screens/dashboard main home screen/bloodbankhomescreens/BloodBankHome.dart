@@ -30,7 +30,13 @@ class BloodBankhome extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.deepOrange,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.red, Colors.orange], // Adjust gradient colors
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
+            ),
+          ),
           child: Column(
             children: [
               buildHeader(context),
@@ -50,7 +56,7 @@ class BloodBankhome extends StatelessWidget {
         gradient: LinearGradient(
           colors: [Colors.red, Colors.orange], // Adjust gradient colors
           begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          end: Alignment.topRight,
         ),
       ),
       height: height * 0.25,
