@@ -77,3 +77,5 @@ const String hospital10 = "assets/images/hospitallimg.jpg";
 const String ppLab = "assets/images/pplab.jpg";
 const String patient = "assets/images/Patient3.jpg";
 const String cc1 = "assets/images/cc.png";
+const String bappoint = "assets/images/bookappointment.jpg";
+const String cappoint = "assets/images/check appointment.jpg";

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/apointmentStatus.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/docregistration.dart';
@@ -17,8 +18,8 @@ class Patientmain extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [clinicUser, clinicreg];
-  List titles = ["Clinics", "Hospitals"];
+  List imgData = [bappoint, cappoint, clinicreg];
+  List titles = ["Book Appointment", "Check Appointments", "Hospitals"];
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,16 @@ class Patientmain extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.teal,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                const Color.fromARGB(255, 49, 125, 187),
+                const Color.fromARGB(255, 71, 235, 196)
+              ], // Adjust gradient colors
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
+            ),
+          ),
           child: Column(
             children: [
               // Improved Header Design
@@ -53,7 +63,7 @@ class Patientmain extends StatelessWidget {
         gradient: LinearGradient(
           colors: [
             const Color.fromARGB(255, 49, 125, 187),
-            const Color.fromARGB(255, 71, 235, 196)
+            Color.fromARGB(230, 71, 235, 197)
           ], // Adjust gradient colors
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -196,7 +206,7 @@ class Patientmain extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.teal, // Improved Color Combination
+                  color: Colors.teal,
                 ),
               ),
             ],
@@ -210,9 +220,11 @@ class Patientmain extends StatelessWidget {
   void handleGridItemClick(int index) {
     switch (index) {
       case 0:
-        Get.to(() => Clinichome());
+        Get.to(() => clinicpage1());
         break;
       case 1:
+        Get.to(() => AppointmentStatusScreen());
+      case 2:
         Get.to(() => hospitalpage1());
         break;
     }
