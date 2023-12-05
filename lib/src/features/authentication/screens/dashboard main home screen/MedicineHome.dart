@@ -26,7 +26,13 @@ class Medicinehome extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Color.fromARGB(255, 67, 187, 161),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.green, Colors.blue], // Adjust gradient colors
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
+            ),
+          ),
           child: Column(
             children: [
               Container(
@@ -37,7 +43,7 @@ class Medicinehome extends StatelessWidget {
                       Colors.blue
                     ], // Adjust gradient colors
                     begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                    end: Alignment.topRight,
                   ),
                 ),
                 height: height * 0.25,
