@@ -91,11 +91,16 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
       child: Scaffold(
         drawer: ReusableDrawerSideBar(
           headerText: 'Health Junction',
-          color: Colors.indigo,
+          color: Colors.lightBlue,
         ),
         body: SingleChildScrollView(
           child: Container(
-            color: Colors.indigo,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(back),
+                fit: BoxFit.cover, // Adjust the fit as needed
+              ),
+            ),
             child: Column(
               children: [
                 Container(
@@ -121,7 +126,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                 },
                                 child: Icon(
                                   Icons.menu,
-                                  color: Colors.white,
+                                  color: Colors.blue,
                                   size: 30,
                                 ),
                               ),
@@ -132,7 +137,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                               },
                               icon: Icon(
                                 Icons.person,
-                                color: Colors.white,
+                                color: Colors.blue,
                                 size: 30,
                               ),
                             )
@@ -153,7 +158,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                 " Health Junction",
                                 style: TextStyle(
                                   fontSize: 30,
-                                  color: Colors.white,
+                                  color: Colors.blue,
                                   fontWeight: FontWeight.w500,
                                   letterSpacing: 1,
                                 ),
@@ -168,7 +173,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                 " Innovative App for Health Care",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.white54,
+                                  color: Colors.blue,
                                   letterSpacing: 1,
                                 ),
                               ),
@@ -185,6 +190,10 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30),
+                    ),
+                    image: DecorationImage(
+                      image: AssetImage(back),
+                      fit: BoxFit.cover, // Adjust the fit as needed
                     ),
                   ),
                   height: height * 0.75,
