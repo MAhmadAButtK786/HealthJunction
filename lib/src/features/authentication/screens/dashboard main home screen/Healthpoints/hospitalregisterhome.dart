@@ -33,7 +33,16 @@ class HealthRegmain extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.blue, // Improved Color Combination
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.blue,
+                Colors.tealAccent
+              ], // Adjust gradient colors
+              begin: Alignment.topLeft,
+              end: Alignment.topRight,
+            ),
+          ), // Improved Color Combination
           child: Column(
             children: [
               // Improved Header Design
@@ -54,7 +63,7 @@ class HealthRegmain extends StatelessWidget {
         gradient: LinearGradient(
           colors: [Colors.blue, Colors.tealAccent], // Adjust gradient colors
           begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          end: Alignment.topRight,
         ),
       ),
       height: height * 0.25,
