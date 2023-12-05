@@ -297,7 +297,8 @@ class _RecipientListState extends State<RecipientList> {
                                   ),
                                   IconButton(
                                     onPressed: () async {
-                                      String message = 'Hello!';
+                                      String message =
+                                          'Hello! do you still need the blood for your patient';
                                       String url =
                                           'sms:$phoneNumber?body=${Uri.encodeFull(message)}';
                                       try {

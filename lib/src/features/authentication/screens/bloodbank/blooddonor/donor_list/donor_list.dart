@@ -297,7 +297,8 @@ class _DonorListState extends State<DonorList> {
                                   ),
                                   IconButton(
                                     onPressed: () async {
-                                      String message = 'Hello!';
+                                      String message =
+                                          'Hello! Are you available in the town to donate Blood';
                                       String url =
                                           'sms:$phoneNumber?body=${Uri.encodeFull(message)}';
                                       try {
