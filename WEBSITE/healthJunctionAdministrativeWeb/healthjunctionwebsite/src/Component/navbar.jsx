@@ -27,9 +27,9 @@ const Navbar = () => {
             {showServicesDropdown && (
               <div className="absolute top-full left-0 mt-2 bg-gray-900 text-gray-100 p-2 rounded-md">
                 {/* Dropdown content */}
-                <a href="#" className="block py-1">Service 1</a>
-                <a href="#" className="block py-1">Service 2</a>
-                <a href="#" className="block py-1">Service 3</a>
+                <a href="#" className="block py-1">BloodB</a>
+                <a href="#" className="block py-1">Charity</a>
+                <a href="#" className="block py-1"></a>
               </div>
             )}
           </div>

@@ -43,16 +43,23 @@ const Footer = () => {
             Services
           </p>
           <div className="flex flex-col items-start mt-5 space-y-2">
-            <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
-              Hospitals &amp; Clinics
-            </p>
-            <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
-              Blood Banks
-            </p>
-            <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
-              Charity &amp; Lab Inforamtion
-            </p>
-          </div>
+    <a href="https://example.com/hospitals">
+        <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
+            Hospitals &amp; Clinics
+        </p>
+    </a>
+    <a href="https://example.com/blood-banks">
+        <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
+            Blood Banks
+        </p>
+    </a>
+    <a href="https://example.com/charity-lab-info">
+        <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
+            Charity &amp; Lab Information
+        </p>
+    </a>
+</div>
+
         </div>
       </div>
       <hr className="my-6 border-gray-200 md:my-8 dark:border-gray-700 h-2" />
