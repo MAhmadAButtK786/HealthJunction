@@ -11,15 +11,14 @@ const Navbar = () => {
     <header className="text-gray-100 bg-gray-900 body-font shadow w-full">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-          <a className="mr-5 hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600">
-            Home
-          </a>
-          <a className="mr-5 hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600">
+          
+          <a className="mr-7 hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600"
+           href ="">
             Health Points
           </a>
           <div className="relative">
             <span
-              className="mr-5 hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600"
+              className="mr-7 hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600"
               onClick={toggleServicesDropdown}
             >
               Services
@@ -27,17 +26,19 @@ const Navbar = () => {
             {showServicesDropdown && (
               <div className="absolute top-full left-0 mt-2 bg-gray-900 text-gray-100 p-2 rounded-md">
                 {/* Dropdown content */}
-                <a href="#" className="block py-1">BloodB</a>
+                <a href="#" className="block py-1">BloodBank</a>
                 <a href="#" className="block py-1">Charity</a>
-                <a href="#" className="block py-1"></a>
+                <a href="#" className="block py-1">Laboratories</a>
               </div>
             )}
           </div>
-          <a className="hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600">
+          <a className="hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600" href=''>
             Contact
           </a>
         </nav>
-        <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
+        <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0"
+        href=''
+        >
           <img
             src="images/hjlogo.png"
             style={{ height: 50, marginTop: 10, marginBottom: 10, borderRadius: '50%', backgroundColor: 'blue' }}
