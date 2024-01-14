@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from React Router
 
 const Navbar = () => {
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
@@ -12,10 +13,9 @@ const Navbar = () => {
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
           
-          <a className="mr-7 hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600"
-           href ="">
+          <Link to="/" className="mr-7 hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600">
             Health Points
-          </a>
+          </Link>
           <div className="relative">
             <span
               className="mr-7 hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600"
@@ -26,39 +26,31 @@ const Navbar = () => {
             {showServicesDropdown && (
               <div className="absolute top-full left-0 mt-2 bg-gray-900 text-gray-100 p-2 rounded-md">
                 {/* Dropdown content */}
-                <a href="#" className="block py-1">BloodBank</a>
-                <a href="#" className="block py-1">Charity</a>
-                <a href="#" className="block py-1">Laboratories</a>
+                <Link to="/bloodbank" className="block py-1">BloodBank</Link>
+                <Link to="/charity" className="block py-1">Charity</Link>
+                <Link to="/laboratories" className="block py-1">Laboratories</Link>
               </div>
             )}
           </div>
-          <a className="hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600" href=''>
+          <Link to="/contact" className="hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600">
             Contact
-          </a>
+          </Link>
         </nav>
-        <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0"
-        href=''
-        >
+        <Link to="/" className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
           <img
             src="images/hjlogo.png"
             style={{ height: 50, marginTop: 10, marginBottom: 10, borderRadius: '50%', backgroundColor: 'blue' }}
             alt="logo"
           />
           <span className="ml-3 text-xl">Health Junction</span>
-        </a>
+        </Link>
         <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0 mt-4 lg:mt-0">
-          <a
-            href="#"
-            className="bg-indigo-700 hover:bg-indigo-500 text-white ml-4 py-2 px-3 rounded-lg lg:ml-0 lg:mr-4"
-          >
+          <Link to="/login" className="bg-indigo-700 hover:bg-indigo-500 text-white ml-4 py-2 px-3 rounded-lg lg:ml-0 lg:mr-4">
             Login
-          </a>
-          <a
-            href="#"
-            className="bg-indigo-700 hover:bg-indigo-500 text-white ml-4 py-2 px-3 rounded-lg lg:ml-0"
-          >
+          </Link>
+          <Link to="/register" className="bg-indigo-700 hover:bg-indigo-500 text-white ml-4 py-2 px-3 rounded-lg lg:ml-0">
             Register
-          </a>
+          </Link>
         </div>
       </div>
     </header>
