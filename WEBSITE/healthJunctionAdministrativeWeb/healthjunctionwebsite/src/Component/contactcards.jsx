@@ -4,7 +4,7 @@ const Contactcards = () => {
   return (
     <>
       {/* First Row */}
-      <div className="sm:flex sm:justify-center mb-8">
+      <div className="sm:flex sm:justify-center mb-8 ">
         {/* Card 1 */}
         <div className="flex flex-col rounded-lg bg-white shadow-lg mx-4 overflow-hidden transform transition-transform hover:scale-105">
           <a href="#!">
