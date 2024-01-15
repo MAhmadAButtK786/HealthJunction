@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
@@ -12,7 +12,6 @@ const Navbar = () => {
     <header className="text-gray-100 bg-gray-900 body-font shadow w-full">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-          
           <Link to="/" className="mr-7 hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600">
             Health Points
           </Link>
@@ -24,16 +23,16 @@ const Navbar = () => {
               Services
             </span>
             {showServicesDropdown && (
-              <div className="absolute top-full left-0 mt-2 bg-gray-900 text-gray-100 p-2 rounded-md">
-                {/* Dropdown content */}
-                <Link to="/bloodbank" className="block py-1">BloodBank</Link>
-                <Link to="/charity" className="block py-1">Charity</Link>
-                <Link to="/laboratories" className="block py-1">Laboratories</Link>
-              </div>
-            )}
+            <div className="absolute top-full left-0 mt-2 bg-gray-900 text-gray-100 p-2 rounded-md z-10">
+              <Link to="/bloodbank" className="block py-1 hover:text-blue-300">BloodBank</Link>
+              <Link to="/charity" className="block py-1 hover:text-blue-300">Charity</Link>
+              <Link to="/laboratories" className="block py-1 hover:text-blue-300">Laboratories</Link>
+            </div>
+          )}
+           
           </div>
           <Link to="/contact" className="hover:text-blue-300 cursor-pointer border-b border-transparent hover:border-indigo-600">
-            Contact
+            About Us
           </Link>
         </nav>
         <Link to="/" className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center lg:items-center lg:justify-center mb-4 md:mb-0">
