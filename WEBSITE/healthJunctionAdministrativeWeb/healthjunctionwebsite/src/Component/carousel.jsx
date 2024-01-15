@@ -224,7 +224,7 @@ const Carousel = () => {
                   Medicine
                 </h3>
                 <p className="text-gray-500">
-                  Users can buy medicine through the app which delivers medicine to your doorstep.
+                  Users can buy medicine through the apps which delivers medicine to your doorstep.
                 </p>
               </div>
               {/* end service block */}

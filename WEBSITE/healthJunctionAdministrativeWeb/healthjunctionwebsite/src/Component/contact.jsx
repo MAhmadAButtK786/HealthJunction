@@ -3,13 +3,19 @@ import React from 'react';
 import Navbar from './navbar';
 import Footer from './footer';
 import AboutUs from './about';
-import ContactUsDrawer from './contactUSDrawer';
-import ABcarousel from './aboutuscarousel';
+import Contactcards from './contactcards';
+import ContactInfo from './contactInfo';
 const Contact = () => {
   return (
   <>
+  
   <Navbar/>
+ 
   <AboutUs/>
+ <Contactcards/>
+ <ContactInfo/>
+ 
+ 
   <Footer/>
   </>
   );

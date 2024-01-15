@@ -1,156 +1,148 @@
 import React from "react";
 
 const Footer = () => {
-    return(
-        <>
-  <footer className="bg-blue-100/80 font-sans dark:bg-gray-900">
-    <div className="container px-6 py-12 mx-auto">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
-        <div className="sm:col-span-2">
-          <h1 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">
-            Subscribe our newsletter to get an update.
-          </h1>
-          <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
-            <input
-              id="email"
-              type="text"
-              className="px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
-              placeholder="Email Address"
-            />
-            <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
-              Subscribe
-            </button>
+  return (
+    <>
+      <footer className="bg-blue-100/80 font-sans dark:bg-gray-900">
+        <div className="container px-4 sm:px-6 lg:px-8 py-4 mx-auto">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-y-4 md:grid-cols-3 lg:grid-cols-4">
+            <div className="sm:col-span-2 md:col-span-1 lg:col-span-2">
+              <h1 className="text-lg font-semibold tracking-tight text-gray-800 dark:text-white">
+                Our Vision
+              </h1>
+              <div className="mt-2 space-y-4 text-gray-600 dark:text-gray-300 col-span-1">
+                <p className="leading-relaxed">
+                  We envision a world where healthcare is a fundamental right
+                  accessible to everyone. Our mission is to ensure that every
+                  individual receives the highest quality healthcare services,
+                  promoting well-being and fostering a healthier society.
+                </p>
+                
+               
+              </div>
+            </div>
+
+            <div className="md:col-span-1 lg:col-span-1">
+              <p className="font-semibold text-gray-800 dark:text-white">
+                Quick Links
+              </p>
+              <div className="flex flex-col items-start mt-2 space-y-2">
+                <p className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-500">
+                  Home
+                </p>
+                <p className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-500">
+                  Who We Are
+                </p>
+                <p className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-500">
+                  Our Philosophy
+                </p>
+              </div>
+            </div>
+            <div className="md:col-span-1 lg:col-span-1">
+              <p className="font-semibold text-gray-800 dark:text-white">
+                Services
+              </p>
+              <div className="flex flex-col items-start mt-2 space-y-2">
+                <a
+                  href="https://example.com/hospitals"
+                  className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-500"
+                >
+                  Hospitals & Clinics
+                </a>
+                <a
+                  href="https://example.com/blood-banks"
+                  className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-500"
+                >
+                  Blood Banks
+                </a>
+                <a
+                  href="https://example.com/charity-lab-info"
+                  className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-500"
+                >
+                  Charity & Lab Information
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div>
-          <p className="font-semibold text-gray-800 dark:text-white">
-            Quick Link
-          </p>
-          <div className="flex flex-col items-start mt-5 space-y-2">
-            <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
-              Home
-            </p>
-            <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
-              Who We Are
-            </p>
-            <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
-              Our Philosophy
-            </p>
+          <hr className="my-4 border-gray-200 dark:border-gray-700 h-1" />
+          <div className="flex justify-between items-center flex-col md:flex-row">
+            <div className="flex gap-2">
+              <a href="https://www.google.com">
+                <img
+                  src="https://www.svgrepo.com/show/303139/google-play-badge-logo.svg"
+                  width={120}
+                  height={95}
+                  alt=""
+                />
+              </a>
+              <a href="https://www.apple.com/app-store/">
+                <img
+                  src="https://www.svgrepo.com/show/303128/download-on-the-app-store-apple-logo.svg"
+                  width={120}
+                  height={95}
+                  alt=""
+                />
+              </a>
+            </div>
+            <div className="flex gap-2">
+              <a href="https://www.facebook.com">
+                <img
+                  src="https://www.svgrepo.com/show/303114/facebook-3-logo.svg"
+                  width={30}
+                  height={30}
+                  alt="fb"
+                />
+              </a>
+              <a href="https://www.twitter.com">
+                <img
+                  src="https://www.svgrepo.com/show/303115/twitter-3-logo.svg"
+                  width={30}
+                  height={30}
+                  alt="tw"
+                />
+              </a>
+              <a href="https://www.instagram.com">
+                <img
+                  src="https://www.svgrepo.com/show/303145/instagram-2-1-logo.svg"
+                  width={30}
+                  height={30}
+                  alt="inst"
+                />
+              </a>
+              {/* Additional social media icons */}
+              <a href="https://www.github.com">
+                <img
+                  src="https://www.svgrepo.com/show/94698/github.svg"
+                  width={30}
+                  height={30}
+                  alt="gt"
+                />
+              </a>
+              <a href="https://www.linkedin.com">
+                <img
+                  src="https://www.svgrepo.com/show/28145/linkedin.svg"
+                  width={30}
+                  height={30}
+                  alt="in"
+                />
+              </a>
+              <a href="https://www.dribbble.com">
+                <img
+                  src="https://www.svgrepo.com/show/22048/dribbble.svg"
+                  width={30}
+                  height={30}
+                  alt="db"
+                />
+              </a>
+            </div>
           </div>
-        </div>
-        <div>
-          <p className="font-semibold text-gray-800 dark:text-white">
-            Services
+          <p className="font-sans mt-4 text-center text-sm text-gray-600 dark:text-white">
+            © 2024 Your Company Inc. All rights reserved.
           </p>
-          <div className="flex flex-col items-start mt-5 space-y-2">
-    <a href="https://example.com/hospitals">
-        <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
-            Hospitals &amp; Clinics
-        </p>
-    </a>
-    <a href="https://example.com/blood-banks">
-        <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
-            Blood Banks
-        </p>
-    </a>
-    <a href="https://example.com/charity-lab-info">
-        <p className="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:cursor-pointer hover:text-blue-500">
-            Charity &amp; Lab Information
-        </p>
-    </a>
-</div>
-
         </div>
-      </div>
-      <hr className="my-6 border-gray-200 md:my-8 dark:border-gray-700 h-2" />
-      <div className="sm:flex sm:items-center sm:justify-between">
-    <div className="flex flex-1 gap-4 hover:cursor-pointer">
-        <a href="https://www.google.com">
-            <img
-                src="https://www.svgrepo.com/show/303139/google-play-badge-logo.svg"
-                width={130}
-                height={110}
-                alt=""
-            />
-        </a>
-        <a href="https://www.apple.com/app-store/">
-            <img
-                src="https://www.svgrepo.com/show/303128/download-on-the-app-store-apple-logo.svg"
-                width={130}
-                height={110}
-                alt=""
-            />
-        </a>
-    </div>
-    <div className="flex gap-4 hover:cursor-pointer">
-        <a href="https://www.facebook.com">
-            <img
-                src="https://www.svgrepo.com/show/303114/facebook-3-logo.svg"
-                width={30}
-                height={30}
-                alt="fb"
-            />
-        </a>
-        <a href="https://www.twitter.com">
-            <img
-                src="https://www.svgrepo.com/show/303115/twitter-3-logo.svg"
-                width={30}
-                height={30}
-                alt="tw"
-            />
-        </a>
-        <a href="https://www.instagram.com">
-            <img
-                src="https://www.svgrepo.com/show/303145/instagram-2-1-logo.svg"
-                width={30}
-                height={30}
-                alt="inst"
-            />
-        </a>
-        <a href="https://www.github.com">
-            <img
-                src="https://www.svgrepo.com/show/94698/github.svg"
-                className=""
-                width={30}
-                height={30}
-                alt="gt"
-            />
-        </a>
-        <a href="https://www.path.com">
-            <img
-                src="https://www.svgrepo.com/show/22037/path.svg"
-                width={30}
-                height={30}
-                alt="pn"
-            />
-        </a>
-        <a href="https://www.linkedin.com">
-            <img
-                src="https://www.svgrepo.com/show/28145/linkedin.svg"
-                width={30}
-                height={30}
-                alt="in"
-            />
-        </a>
-        <a href="https://www.dribbble.com">
-            <img
-                src="https://www.svgrepo.com/show/22048/dribbble.svg"
-                className=""
-                width={30}
-                height={30}
-                alt="db"
-            />
-        </a>
-    </div>
-</div>
+      </footer>
+    </>
+  );
+};
 
-      <p className="font-sans p-8 text-start md:text-center md:text-lg md:p-4">
-        © 2024 You Company Inc. All rights reserved.
-      </p>
-    </div>
-  </footer>
-</>
-
-    );
-}
 export default Footer;

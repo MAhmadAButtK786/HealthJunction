@@ -19,7 +19,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="flex flex-wrap justify-around bg-gray-100 p-8">
+    <div className="flex flex-wrap justify-around bg-white p-8">
       {data.map((item, index) => (
         <motion.div
           key={index}
