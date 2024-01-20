@@ -24,7 +24,7 @@ const Navbar = () => {
             </span>
             {showServicesDropdown && (
             <div className="absolute top-full left-0 mt-2 bg-gray-900 text-gray-100 p-2 rounded-md z-10">
-              <Link to="/bloodbank" className="block py-1 hover:text-blue-300">BloodBank</Link>
+              <Link to="/bloodbanks/bloodbank" className="block py-1 hover:text-blue-300">BloodBank</Link>
               <Link to="/charity" className="block py-1 hover:text-blue-300">Charity</Link>
               <Link to="/laboratories" className="block py-1 hover:text-blue-300">Laboratories</Link>
             </div>
