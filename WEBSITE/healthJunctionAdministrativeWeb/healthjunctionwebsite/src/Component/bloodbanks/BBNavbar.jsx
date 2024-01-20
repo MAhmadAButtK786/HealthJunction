@@ -15,7 +15,7 @@ function classNames(...classes) {
 
 export default function BBNavbar() {
   return (
-    <Disclosure as="nav" className="bg-gradient-to-r from-red-600 via-orange-400 to-orange-500">
+    <Disclosure as="nav" className="bg-gradient-to-r from-red-500 via-70% to-orange-500">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -59,6 +59,7 @@ export default function BBNavbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <a href="/faq">
                 <button
                   type="button"
                   className="relative rounded-full p-1  focus:outline-none  "
@@ -67,7 +68,7 @@ export default function BBNavbar() {
                   <span className="sr-only">View notifications</span>
                   <QuestionMarkCircleIcon className="h-8 w-8 " aria-hidden="true" color='white' />
                 </button>
-
+                </a>
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
