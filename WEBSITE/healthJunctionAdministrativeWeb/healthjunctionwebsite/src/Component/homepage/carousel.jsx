@@ -11,8 +11,8 @@ const Carousel = () => {
         <div className="container xl:max-w-6xl mx-auto px-4">
           {/* Heading start */}
           <header className="text-center mx-auto mb-12 lg:px-20">
-            <h2 className="text-2xl leading-normal mb-2 font-bold text-black">
-              What We Provide
+            <h2 className="text-2xl leading-normal mb-2 font-bold text-blue-700">
+              We are the one who cares about Your Health
             </h2>
             <svg
               version="1.1"
@@ -53,7 +53,7 @@ const Carousel = () => {
               />
             </svg>
             <p className="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">
-              Wellness and Medical Care Save Lives.
+              <h3>Services we Provide</h3>
             </p>
           </header>
           {/* End heading */}

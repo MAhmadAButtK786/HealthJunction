@@ -1,9 +1,9 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, BellIcon, HomeIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Home', href: '#', current: true },
   { name: 'Donors', href: '#', current: false },
   { name: 'Recipients', href: '#', current: false },
   { name: 'Blood Banks', href: '#', current: false },
@@ -15,7 +15,7 @@ function classNames(...classes) {
 
 export default function BBNavbar() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gradient-to-r from-red-600 via-orange-400 to-orange-500">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -33,10 +33,10 @@ export default function BBNavbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
+                <div className="flex flex-shrink-0 items-center ">
                   <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    className="h-10 w-auto rounded-full"
+                    src="images/hjlogo.png"
                     alt="Your Company"
                   />
                 </div>
@@ -47,7 +47,7 @@ export default function BBNavbar() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          item.current ? 'bg-gradient-to-r from-red-300 via-orange-500 to-orange-400 text-white' : 'text-white hover:bg-gradient-to-r from-red-300 via-orange-500 to-orange-400  hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
@@ -61,24 +61,20 @@ export default function BBNavbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative rounded-full p-1  focus:outline-none  "
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  <QuestionMarkCircleIcon className="h-8 w-8 " aria-hidden="true" color='white' />
                 </button>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="relative rounded-full p-1  focus:outline-none ">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                      <HomeIcon className="h-8 w-8 " aria-hidden="true" color='white' />
                     </Menu.Button>
                   </div>
                   <Transition
@@ -97,7 +93,7 @@ export default function BBNavbar() {
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Your Profile
+                            Home
                           </a>
                         )}
                       </Menu.Item>
@@ -107,7 +103,7 @@ export default function BBNavbar() {
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Settings
+                            About Us
                           </a>
                         )}
                       </Menu.Item>
