@@ -9,6 +9,7 @@ import Login from './Component/login';
 import Register from './Component/register';
 import bloodbank from './Component/bloodbanks/bbHome/bloodbank';
 import Homecharity from './Component/charity/CharityHome/homecharity';
+import LabsHome from './Component/lab/LabHome/LabHome';
 function App() {
   return (
       
@@ -17,9 +18,11 @@ function App() {
           <Route path="/bloodbank" component ={bloodbank}/>
           <Route path="/faq" component={Accordion}/>
           <Route path="/homecharity" component={Homecharity}/>
+          <Route path="/LabHome" component={LabsHome}/>
           <Route path="/contact" component={Contact} />
           <Route path="/login" component={Login}/>
           <Route path="/register" component={Register}/>
+          
         </Switch>
      
     
