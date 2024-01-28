@@ -25,7 +25,7 @@ const Accordion = () => {
     <>
       <BBNavbar />
       <div className="accordion-wrapper">
-        <p className='p-6 text-red-700 text-4xl font-bold'>
+        <p className='p-6 text-4xl font-bold text-red-700'>
           Frequently Asked Questions 
         </p>
         <div className="accordion">

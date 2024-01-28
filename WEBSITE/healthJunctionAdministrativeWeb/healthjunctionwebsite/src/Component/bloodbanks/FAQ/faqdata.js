@@ -1,4 +1,16 @@
 const blooddata = [
+
+  {
+    id: '0',
+    question: 'How is blood donation compatibility determined?',
+    answer: `Blood donation compatibility is determined by matching the blood type of the donor with the blood type of the recipient. The four main blood types are A, B, AB, and O. Additionally, each blood type is categorized by the presence or absence of the Rh factor (positive or negative). The compatibility rules are as follows:\n\n\n\n\n
+    1. Type A:\n   - Can donate to A and AB recipients.\n   - Can receive from A and O donors (compatible with A- and A+).\n\n
+    2. Type B:\n   - Can donate to B and AB recipients.\n   - Can receive from B and O donors (compatible with B- and B+).\n\n
+    3. Type AB:\n   - Can donate to AB recipients.\n   - Can receive from A, B, AB, and O donors (compatible with A-, A+, B-, B+, AB-, AB+, O-, O+).\n\n
+    4. Type O:\n   - Can donate to A, B, AB, and O recipients.\n   - Can receive from O donors (compatible with O- and O+).\n\n
+    It's important to match both the ABO type and Rh factor for a successful blood transfusion.`,
+        
+  },
     {
       id: '1',
       question: "Why should we donate blood?",
@@ -73,6 +85,8 @@ const blooddata = [
       id: '15',
       question: "What happens during the blood donation process?",
       answer: "During the blood donation process, a trained phlebotomist will insert a sterile needle into a vein, and blood is collected in a specialized bag. The process typically takes about 10-15 minutes for whole blood donation. Afterward, donors are provided with refreshments and observed for a short period to ensure they feel well before leaving."
-    }
+    },
+  
+  
   ];
 export default blooddata;  
