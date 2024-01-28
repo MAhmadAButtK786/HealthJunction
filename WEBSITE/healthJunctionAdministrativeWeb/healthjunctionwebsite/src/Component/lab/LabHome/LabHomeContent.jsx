@@ -33,6 +33,7 @@ const LabHomeContent = () => {
               src="images/img/Lab/L1.jpg"
               alt="Slide 1"
               className="absolute inset-0 w-full h-full"
+              style={{ width: '100%', height: '100%' }}
             />
             <div className="absolute inset-0 flex items-center justify-center"></div>
           </div>
@@ -43,6 +44,7 @@ const LabHomeContent = () => {
               src="images/img/Lab/l3.jpg"
               alt="Slide 2"
               className="absolute inset-0 w-full h-full"
+              style={{ width: '100%', height: '100%' }}
             />
             <div className="absolute inset-0 flex items-center justify-center"></div>
           </div>
@@ -52,7 +54,9 @@ const LabHomeContent = () => {
             <img
               src="images/img/Lab/l4.jpg"
               alt="Slide 3"
+
               className="absolute inset-0 w-full h-full"
+              style={{ width: '100%', height: '100%' }}
             />
             <div className="absolute inset-0 flex items-center justify-center"></div>
           </div>
@@ -63,6 +67,7 @@ const LabHomeContent = () => {
               src="images/img/Lab/L6.jpg"
               alt="Slide 4"
               className="absolute inset-0 w-full h-full"
+              style={{ width: '100%', height: '100%' }}
             />
             <div className="absolute inset-0 flex items-center justify-center"></div>
           </div>
@@ -73,6 +78,7 @@ const LabHomeContent = () => {
               src="images/img/Bank/testTube.jpg"
               alt="Slide 5"
               className="absolute inset-0 w-full h-full"
+              style={{ width: '100%', height: '100%' }}
             />
             <div className="absolute inset-0 flex items-center justify-center"></div>
           </div>
@@ -83,6 +89,7 @@ const LabHomeContent = () => {
               src="images/img/Bank/test2.jpg"
               alt="Slide 6"
               className="absolute inset-0 w-full h-full"
+              style={{ width: '100%', height: '100%' }}
             />
             <div className="absolute inset-0 flex items-center justify-center"></div>
           </div>
@@ -93,6 +100,7 @@ const LabHomeContent = () => {
               src="images/img/Hos/Hos.jpg"
               alt="Slide 6"
               className="absolute inset-0 w-full h-full"
+              style={{ width: '100%', height: '100%' }}
             />
             <div className="absolute inset-0 flex items-center justify-center"></div>
           </div>
