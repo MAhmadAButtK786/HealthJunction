@@ -1,6 +1,6 @@
 import React from "react";
 
-const Carousel = () => {
+const Cards = () => {
   return (
     <>
       {/* component */}
@@ -10,7 +10,7 @@ const Carousel = () => {
       >
         <div className="container xl:max-w-6xl mx-auto px-4">
           {/* Heading start */}
-          <header className="text-center mx-auto mb-12 lg:px-20">
+          <header className="text-center mx-auto mb-5 lg:px-20">
             <h2 className="text-2xl leading-normal mb-2 font-bold text-blue-700">
               We are the one who cares about Your Health
             </h2>
@@ -52,7 +52,7 @@ const Carousel = () => {
                 style={{ strokeWidth: 2, strokeMiterlimit: 10 }}
               />
             </svg>
-            <p className="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">
+            <p className="text-gray-700 leading-relaxed font-light text-xl mx-auto ">
               <h3>Services we Provide</h3>
             </p>
           </header>
@@ -237,4 +237,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default Cards;

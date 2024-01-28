@@ -2,14 +2,16 @@
 import React from "react";
 import Navbar from "../navbar";
 import Footer from "../footer";
-import Carousel from "./carousel";
+import Cards from "./Cards";
 import CAHomecards from "./ayatcontent";
+import HomeCarousel from "./carouselImage";
 const Home = () => {
   return (
     <div>
       <Navbar />
       <CAHomecards/>
-     <Carousel/>
+      <HomeCarousel/>
+     <Cards/>
       <Footer/>
     </div>
   );
