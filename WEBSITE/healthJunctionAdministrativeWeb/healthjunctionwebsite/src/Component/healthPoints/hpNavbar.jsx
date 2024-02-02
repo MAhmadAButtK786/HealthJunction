@@ -4,10 +4,10 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, HomeIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Home', href: '/healthPointHome', current: true },
+  { name: 'Home', href: '/', current: true },
   { name: 'Hospitals', href: '#', current: false },
   { name: 'Clinics', href: '#', current: false },
-  { name: 'Register Your Hospital', href: '/hpregf', current: false },
+  { name: 'Register Your Hospital', href: '#', current: false },
   { name: 'Our Guidlines', href: '#', current: false },
   
 ]
