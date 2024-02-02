@@ -11,12 +11,14 @@ import bloodbank from './Component/bloodbanks/bbHome/bloodbank';
 import Homecharity from './Component/charity/CharityHome/homecharity';
 import LabsHome from './Component/lab/LabHome/LabHome';
 import HealthPointHome from './Component/healthPoints/healthPointsHome/healthPointHome';
+import Guidlines from './Component/healthPoints/our Guidlines/guidlines';
 function App() {
   return (
       
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path ="/healthPointHome" exact component={HealthPointHome}/>
+          <Route path ="/guidlines" exact component={Guidlines}/>
           <Route path="/bloodbank" component ={bloodbank}/>
           <Route path="/faq" component={Accordion}/>
           <Route path="/homecharity" component={Homecharity}/>

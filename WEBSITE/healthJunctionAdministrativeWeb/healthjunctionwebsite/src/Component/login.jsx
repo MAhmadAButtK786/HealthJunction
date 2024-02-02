@@ -62,7 +62,7 @@ const Login =()=>{
             </label>
           </div>
           <div>
-            <a href="#" className="font-medium text-indigo-600">
+            <a href="forget" className="font-medium text-indigo-600">
               Forgot Password?
             </a>
           </div>
