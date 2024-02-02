@@ -8,7 +8,7 @@ const navigation = [
   { name: 'Hospitals', href: '#',  },
   { name: 'Clinics', href: '#',},
   { name: 'Register Your Hospital', href: '#',  },
-  { name: 'Our Guidlines', href: '/guidlines',  },
+  { name: 'Our Guidelines', href: '/guidlines',  },
   
 ]
 
