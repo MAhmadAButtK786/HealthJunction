@@ -1,11 +1,11 @@
 import React from 'react'
-import BBNavbar from '../../bloodbanks/BBNavbar'
+import CharityNavbar from '../charityNavbar'
 import Footer from '../../footer'
 import PartnerDetails from './partnerDetails'
 function Partner() {
   return (
 <>
-<BBNavbar/>
+<CharityNavbar/>
 <PartnerDetails/>
 <Footer></Footer>
 </>
