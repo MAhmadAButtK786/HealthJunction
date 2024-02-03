@@ -13,22 +13,23 @@ import LabsHome from './Component/lab/LabHome/LabHome';
 import HealthPointHome from './Component/healthPoints/healthPointsHome/healthPointHome';
 import Guidlines from './Component/healthPoints/our Guidlines/guidlines';
 import Partner from './Component/charity/our Partner/partner';
+import ForgetPassword from './Component/forgetPassword';
 function App() {
   return (
       
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Home} />
           <Route path ="/healthPointHome" exact component={HealthPointHome}/>
           <Route path ="/guidlines" exact component={Guidlines}/>
-          <Route path="/bloodbank" component ={bloodbank}/>
-          <Route path="/faq" component={Accordion}/>
-          <Route path="/homecharity" component={Homecharity}/>
-          <Route path="/partner" component={Partner}/>
-          <Route path="/LabHome" component={LabsHome}/>
-          <Route path="/contact" component={Contact} />
-          <Route path="/login" component={Login}/>
-          <Route path="/register" component={Register}/>
-          
+          <Route path="/bloodbank" exact component ={bloodbank}/>
+          <Route path="/faq" exact component={Accordion}/>
+          <Route path="/homecharity" exact component={Homecharity}/>
+          <Route path="/partner" exact component={Partner}/>
+          <Route path="/LabHome" exact component={LabsHome}/>
+          <Route path="/contact" exact component={Contact} />
+          <Route path="/" exact component={Login}/>
+          <Route path="/register" exact component={Register}/>
+          <Route path="/forgetPassword" exact component={ForgetPassword}/>
         </Switch>
      
     

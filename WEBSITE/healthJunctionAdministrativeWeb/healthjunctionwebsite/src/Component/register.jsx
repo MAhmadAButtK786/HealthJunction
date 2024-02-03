@@ -1,13 +1,18 @@
 import React from "react";
+import {Link} from "react-router-dom"
+
 const Register =()=>{
     return(
         <>
+  <div >
+        <h1 className="pt-5 text-4xl font-bold text-center text-blue-700">
+            Health Junction
+        </h1>
+    </div>
 
-
-        {/* component */}
         <div className="max-w-[280px] mx-auto">
-          <div className="flex flex-col items-center mt-[10vh]">
-            <h1 className="mb-5 text-blue-700 font-mono font-bold text-xl">
+          <div className="flex flex-col items-center mt-[5vh]">
+            <h1 className="mb-5 font-mono text-xl font-bold text-blue-700">
               Sign Up
             </h1>
             <button className="flex items-center mb-2 justify-center transition ease-in-out delay-50 px-3 py-2.5 space-x-2 bg-white border border-slate-600 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:ring-opacity-50">
@@ -75,31 +80,31 @@ const Register =()=>{
                   </g>{" "}
                 </g>
               </svg>
-              <span className="text-blue-700 font-medium">Continue with Google</span>
+              <span className="font-medium text-blue-700">Continue with Google</span>
             </button>
-            <span className="mb-2 text-blue-700 font-bold">Or</span>
+            <span className="mb-2 font-bold text-blue-700">Or</span>
             <form>
             <input
                 type="text"
-                className="w-full px-6 py-3 mb-2 border border-blue-700 rounded-lg font-medium "
+                className="w-full px-6 py-3 mb-2 font-medium border border-blue-700 rounded-lg "
                 placeholder="Username"
                 defaultValue=""
               />
               <input
                 type="text"
-                className="w-full px-6 py-3 mb-2 border border-blue-700 rounded-lg font-medium "
+                className="w-full px-6 py-3 mb-2 font-medium border border-blue-700 rounded-lg "
                 placeholder="Email"
                 defaultValue=""
               />
               <input
                 type="password"
-                className="w-full px-6 py-3 mb-2 border border-blue-700 rounded-lg font-medium "
+                className="w-full px-6 py-3 mb-2 font-medium border border-blue-700 rounded-lg "
                 placeholder="Password"
                 defaultValue=""
               />
               <input
                 type="password"
-                className="w-full px-6 py-3 mb-2 border border-blue-700 rounded-lg font-medium "
+                className="w-full px-6 py-3 mb-2 font-medium border border-blue-700 rounded-lg "
                 placeholder="Confirm password"
                 defaultValue=""
               />
@@ -107,11 +112,11 @@ const Register =()=>{
                 Register
               </button>
             </form>
-            <p className="text-center mt-3 text-lg  text-blue-700 ">
+            <p className="mt-3 text-lg text-center text-blue-700 ">
               Already have an account? 
-              <a href="/login" className="text-blue-700  font-bold">
+              <Link to="/" className="font-bold text-blue-700">
                  Log In
-              </a>
+              </Link>
             </p>
            
             <p className="text-center mt-3 text-[14px]">
