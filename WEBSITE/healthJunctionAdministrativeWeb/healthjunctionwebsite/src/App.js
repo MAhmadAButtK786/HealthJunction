@@ -12,6 +12,7 @@ import Homecharity from './Component/charity/CharityHome/homecharity';
 import LabsHome from './Component/lab/LabHome/LabHome';
 import HealthPointHome from './Component/healthPoints/healthPointsHome/healthPointHome';
 import Guidlines from './Component/healthPoints/our Guidlines/guidlines';
+import Partner from './Component/charity/our Partner/partner';
 function App() {
   return (
       
@@ -22,6 +23,7 @@ function App() {
           <Route path="/bloodbank" component ={bloodbank}/>
           <Route path="/faq" component={Accordion}/>
           <Route path="/homecharity" component={Homecharity}/>
+          <Route path="/partner" component={Partner}/>
           <Route path="/LabHome" component={LabsHome}/>
           <Route path="/contact" component={Contact} />
           <Route path="/login" component={Login}/>
