@@ -1,6 +1,6 @@
 import React from 'react';
-import HPNavbar from '../../Navbars/hpNavbar';
-import Footer from '../../footer';
+import HPNavbar from '../../../Navbars/hpNavbar';
+import Footer from '../../../footer';
 function BasicdF() {
   return (
    <>

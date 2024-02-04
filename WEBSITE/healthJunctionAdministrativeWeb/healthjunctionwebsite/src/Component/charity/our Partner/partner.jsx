@@ -1,5 +1,5 @@
 import React from 'react'
-import CharityNavbar from '../../Navbars/charityNavbar'
+import CharityNavbar from '../charityNavbar'
 import Footer from '../../footer'
 import PartnerDetails from './partnerDetails'
 import Events from './event/event'
