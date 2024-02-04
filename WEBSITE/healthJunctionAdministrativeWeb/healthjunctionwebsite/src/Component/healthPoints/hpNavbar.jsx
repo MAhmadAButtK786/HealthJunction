@@ -7,7 +7,7 @@ const navigation = [
   { name: 'Home', href: '/healthPointHome',  },
   { name: 'Hospitals', href: '#',  },
   { name: 'Clinics', href: '#',},
-  { name: 'Register Your Hospital', href: '#',  },
+  { name: 'Register Your Hospital', href: '/basicdf',  },
   { name: 'Our Guidelines', href: '/guidlines',  },
   
 ]

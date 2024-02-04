@@ -1,5 +1,5 @@
 import React from 'react'
-import HPNavbar from '../hpNavbar'
+import HPNavbar from '../../hpNavbar'
 import Footer from '../../../footer'
 import HospitalRegistrationForm from './hpForm'
 function HPRegistrationForm() {
