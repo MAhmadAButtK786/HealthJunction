@@ -6,7 +6,7 @@ import Contact from './Component/aboutUs/contact';
 import Home from './Component/homepage/home';
 import Accordion from './Component/bloodbanks/FAQ/faq';
 import Login from './Component/login';
-import Register from './Component/register';
+import Register from './Component/register'; 
 import bloodbank from './Component/bloodbanks/bbHome/bloodbank';
 import Homecharity from './Component/charity/CharityHome/homecharity';
 import LabsHome from './Component/lab/LabHome/LabHome';
