@@ -1,50 +1,16 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { database } from "../../firebase";
 
 function PrivateBBL() {
   const [donorsData, setDonorsData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchSector, setSearchSector] = useState("");
-  const [filters, setFilters] = useState({
-    sector: "",
-    name: "",
-  });
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    let filteredQuery = collection(database, "Private Blood Banks");
-
-    if (searchTerm !== "") {
-      const searchTermLower = searchTerm.toLowerCase();
-      console.log("searchTermLower:", searchTermLower);
-      filteredQuery = query(
-        filteredQuery,
-        where("NameLowerCase", "array-contains-any", [searchTermLower])
-      );
-    } else {
-      if (filters.sector !== "") {
-        filteredQuery = query(
-          filteredQuery,
-          where("Sector", "==", filters.sector)
-        );
-      }
-      if (filters.name !== "") {
-        const nameLower = filters.name.toLowerCase();
-        console.log("nameLower:", nameLower);
-        filteredQuery = query(
-          filteredQuery,
-          where("NameLowerCase", "array-contains-any", [nameLower])
-        );
-      }
-    }
-
-    const querySnapshot = await getDocs(filteredQuery);
+    const querySnapshot = await getDocs(collection(database, "Private Blood Banks"));
     const data = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -52,53 +18,11 @@ function PrivateBBL() {
     setDonorsData(data);
   };
 
-  const handleSearch = () => {
-    getData();
-  };
-
-  const handleSearchInputChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleSectorInputChange = (e) => {
-    setSearchSector(e.target.value);
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      sector: e.target.value,
-    }));
-  };
-
-  const handleNameInputChange = (e) => {
-    const name = e.target.value;
-    setSearchTerm(name);
-    // Convert name to lowercase for case-insensitive search
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      name: name,
-    }));
-  };
-
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
       <div className="text-center pb-7">
           <h1 className="text-5xl font-bold text-red-600">Private Blood Banks</h1>
-        </div>
-        <div className="flex justify-center mb-4">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={handleNameInputChange}
-            placeholder="Search by Name"
-            className="w-64 px-4 py-2 mr-2 border border-gray-300 rounded-md"
-          />
-
-          <button
-            onClick={handleSearch}
-            className="px-4 py-2 ml-2 text-white bg-red-700 rounded-md"
-          >
-            Search
-          </button>
         </div>
         <div className="">
           <table className="w-full mt-5 text-center border border-red-500">
