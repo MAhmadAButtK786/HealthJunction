@@ -1,142 +1,109 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useHistory, Link } from 'react-router-dom';
+import { IoMdMail, IoMdLock } from 'react-icons/io';
 
-const Login = () => {
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const auth = getAuth();
+  const googleProvider = new GoogleAuthProvider();
+  const history = useHistory();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      const user = result.user;
+      sessionStorage.setItem('username', user.email);
+      setLoading(false);
+      history.push('/home');
+      alert('Successfully logged in with credentials!');
+    } catch (error) {
+      setLoading(false);
+      alert('Something went wrong with Signing In: ' + error.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      sessionStorage.setItem('username', user.email);
+      setLoading(false);
+      history.push('/home');
+      alert('Successfully signed up with Google!');
+    } catch (error) {
+      setLoading(false);
+      alert('Google Sign In Error: ' + error.message);
+    }
+  };
+
   return (
-    <>
-      <div
-        style={{
-          backgroundColor: "#1428DD",
-          minHeight: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* component */}
-        <link rel="preconnect" href="https://rsms.me/" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              "\n:root { font-family: 'Inter', sans-serif; }\n@supports (font-variation-settings: normal) {\n  :root { font-family: 'Inter var', sans-serif; }\n}\n",
-          }}
-        />
-        <div className="p-3">
-          <h1 className="text-6xl font-bold text-center text-white">
-            Health Junction
-          </h1>
+    <div className="flex flex-col items-center justify-center min-h-screen text-white bg-blue-500">
+      <div className="mb-6 text-4xl font-bold">Health Junction</div>
+      <form className="w-full p-8 bg-white rounded-md shadow-md md:w-4/12">
+        <h2 className="mb-4 text-2xl font-bold">Login</h2>
+        <label htmlFor=""className='font-bold text-black'>Enter Your Email</label>
+        <div className="flex items-center mb-4">
+          <IoMdMail className="w-6 h-6 mr-2 text-gray-500" />
+          <input
+            type="email"
+            placeholder="Enter Email"
+            className="w-full px-4 py-2 text-black border border-blue-500 rounded-md focus:outline-none focus:border-white"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-        <div className="max-w-lg p-8 mx-auto my-10 bg-white shadow rounded-xl shadow-slate-300 md:w-2/3 lg:w-1/2 xl:w-1/3">
-          <h1 className="text-4xl font-medium">Login</h1>
-          <p className="text-slate-500">Hi, Welcome back 👋</p>
-          <div className="my-5">
-            <button className="flex items-center justify-center w-full py-3 my-3 space-x-2 text-center transition duration-150 border rounded-lg border-slate-200 text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow">
-              <img
-                src="https://www.svgrepo.com/show/355037/google.svg"
-                className="w-6 h-6"
-                alt=""
-              />{" "}
-              <span>Login with Google</span>
-            </button>
-          </div>
-          <form action="" className="my-10">
-            <div className="flex flex-col space-y-5">
-            <div className="flex flex-col space-y-5">
-              <label htmlFor="email">
-                <p className="pb-2 font-medium text-slate-700">Email address</p>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  className="w-full px-3 py-3 border rounded-lg border-slate-200 focus:outline-none focus:border-slate-500 hover:shadow"
-                  placeholder="Enter email address"
-                />
-              </label>
-              <label htmlFor="password">
-                <p className="pb-2 font-medium text-slate-700">Password</p>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  className="w-full px-3 py-3 border rounded-lg border-slate-200 focus:outline-none focus:border-slate-500 hover:shadow"
-                  placeholder="Enter your password"
-                />
-              </label>
-              <div className="flex flex-row justify-between">
-                <div>
-                  <label htmlFor="remember" className="">
-                    <input
-                      type="checkbox"
-                      id="remember"
-                      className="w-4 h-4 m-2 border-slate-200 focus:bg-indigo-600"
-                    />
-                    Remember me
-                  </label>
-                </div>
-                <div>
-                  <Link
-                    to="/forgetPassword"
-                    className="font-medium text-indigo-600"
-                  >
-                    Forgot Password?
-                  </Link>
-                </div>
-              </div>
-            </div>
-            </div>
-          </form>
-          <div className="flex flex-col space-y-5">
-            <Link
-              to="/home"
-              className="inline-flex items-center justify-center w-full py-3 space-x-2 font-medium text-white bg-indigo-600 border-indigo-500 rounded-lg hover:bg-indigo-500 hover:shadow"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                />
-              </svg>
-              <span>Login</span>
-            </Link>
-            <p className="text-center">
-              Not registered yet?{" "}
-              <Link
-                to="/register"
-                className="inline-flex items-center space-x-1 font-medium text-indigo-600"
-              >
-                <span>Register now </span>
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </span>
-              </Link>
-            </p>
-          </div>
+        <label htmlFor=""className='font-bold text-black pr-50'>Enter Your Password</label>
+        <div className="flex items-center mb-6">
+          <IoMdLock className="w-6 h-6 mr-2 text-gray-500" />
+          <input
+            type="password"
+            placeholder="Enter Password"
+            className="w-full px-4 py-2 text-black border border-blue-500 rounded-md focus:outline-none focus:border-white"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-      </div>
-    </>
+        <button
+          type="submit"
+          className={`w-full py-2 rounded-md ${
+            loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-blue-700 hover:bg-blue-800'
+          } text-white focus:outline-none mb-4`}
+          onClick={handleLogin}
+          disabled={loading}
+        >
+          {loading ? 'Logging In...' : 'Login'}
+        </button>
+        <button
+          type="button"
+          className={`w-full py-2 rounded-md ${
+            loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-gray-700 hover:bg-red-600'
+          } text-white focus:outline-none mb-4 flex justify-center items-center`}
+          onClick={handleGoogleSignIn}
+          disabled={loading}
+        >
+         <img src="images/Logos/google icon.png" alt=""  width={50} height={50} className="p-3"/>
+          {loading ? 'Logging In with Google...' : 'Sign in with Google'}
+        </button>
+        <div className="text-sm text-black">
+          Don't have an account?
+          <Link to="/register" className="text-blue-500">
+            Register
+          </Link>
+        </div>
+        <div className="mt-2 text-sm">
+          <Link to="/forgetPassword" className="text-blue-500">
+            Forgot Password?
+          </Link>
+        </div>
+      </form>
+    </div>
   );
 };
-
-export default Login;
+export default LoginPage;

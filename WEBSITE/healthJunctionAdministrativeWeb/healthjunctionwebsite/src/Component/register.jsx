@@ -6,7 +6,7 @@ import {
   updateProfile,
   signInWithPopup,
 } from "firebase/auth";
-import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, where, setDoc, doc } from "firebase/firestore";
 import { auth, googleProvider, database } from "./firebase";
 
 const Register = () => {
@@ -16,10 +16,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [isErrorVisible, setIsErrorVisible] = useState(false); // New state for error visibility
-  const [errorMessage, setErrorMessage] = useState(""); // New state for error message
-  const [isSuccessVisible, setIsSuccessVisible] = useState(false); // New state for success visibility
-  const [successMessage, setSuccessMessage] = useState(""); // New state for success message
 
   const handleGoogleSignIn = async () => {
     try {
@@ -39,8 +35,7 @@ const Register = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setErrorMessage("Passwords do not match.");
-      setIsErrorVisible(true);
+      console.error("Passwords do not match.");
       return;
     }
 
@@ -52,8 +47,7 @@ const Register = () => {
       const emailSnapshot = await getDocs(emailQuery);
 
       if (emailSnapshot.size > 0) {
-        setErrorMessage("Email is already in use. Please use a different email.");
-        setIsErrorVisible(true);
+        console.error("Email is already in use. Please use a different email.");
         return;
       }
 
@@ -66,21 +60,17 @@ const Register = () => {
 
       await updateProfile(user, { displayName: username });
 
-      await addDoc(collection(database, "Users"), {
-        uid: user.uid,
+      // Store user data including password in Firestore (not recommended)
+      await setDoc(doc(database, "Users", user.uid), {
         email: user.email,
         username: username,
+        password: password,
       });
-
-      // Show success message
-      setSuccessMessage("Successfully registered!");
-      setIsSuccessVisible(true);
 
       // Redirect to the home page after successful registration
       history.push("/home");
     } catch (error) {
-      setErrorMessage(`Registration Error: ${error.message}`);
-      setIsErrorVisible(true);
+      console.error(`Registration Error: ${error.message}`);
     }
   };
   return (
@@ -208,13 +198,7 @@ const Register = () => {
           </p>
         </div>
       </div>
-      {isErrorVisible && (
-        <p className="mt-2 text-center text-red-500">{errorMessage}</p>
-      )}
 
-      {isSuccessVisible && (
-        <p className="mt-2 text-center text-green-500">{successMessage}</p>
-      )}
     </>
   );
 };

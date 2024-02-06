@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 // firebase.js
 import { initializeApp, getApp, getApps } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from "firebase/storage";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, sendPasswordResetEmail as sendPasswordResetEmailFirebase } from "firebase/auth"; // Rename to avoid conflicts
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDElkWJzEFuz_N6tfXlL7WPv7sAWdwwcos",
@@ -15,10 +17,16 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+// Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const database = getFirestore(app);
 const storage = getStorage(app);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
-export { app, database, storage, auth, googleProvider };
+// Export the sendPasswordResetEmail function
+const sendPasswordResetEmail = async (email) => {
+  return sendPasswordResetEmailFirebase(auth, email);
+};
+
+export { app, database, storage, auth, googleProvider, sendPasswordResetEmail };
