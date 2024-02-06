@@ -20,6 +20,7 @@ import PrivateBB from './Component/bloodbanks/PrivateBB/privateBB';
 import PublicBB from './Component/bloodbanks/PublicBB/publicBB';
 import Recipients from './Component/bloodbanks/ReciepientList/recipient';
 import Donor from './Component/bloodbanks/DonorsList/donor';
+import CharityORG from './Component/charity/Charitable ORG Data/charityORG';
 function App() {
   return (
       
@@ -46,10 +47,14 @@ function App() {
           <Route path="/donors" exact component={Donor}/>
 
 
-
-          {/* Charity */}
+                {/* Charity Module Screens  */}
+          {/* Charity Home */}
           <Route path="/homecharity" exact component={Homecharity}/>
+          {/* Partner Screen */}
           <Route path="/partner" exact component={Partner}/>
+          {/* Charitable org Information */}
+          <Route path="/charityORG" exact component={CharityORG}/>
+
           {/* Lab Screen */}
           <Route path="/LabHome" exact component={LabsHome}/>
 
