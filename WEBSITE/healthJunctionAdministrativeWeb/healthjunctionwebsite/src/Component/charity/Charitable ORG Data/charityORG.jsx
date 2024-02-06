@@ -5,7 +5,6 @@ import CharityORGL from './charityORGList'
 function CharityORG() {
   return (
     <div >
-
       <CharityNavbar/>
       <CharityORGL/>
       <Footer/>

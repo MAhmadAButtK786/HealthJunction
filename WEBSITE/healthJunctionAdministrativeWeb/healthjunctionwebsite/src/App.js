@@ -55,8 +55,11 @@ function App() {
           {/* Charitable org Information */}
           <Route path="/charityORG" exact component={CharityORG}/>
 
-          {/* Lab Screen */}
+
+                {/* Lab Module Screens */}
+          {/* Lab Home Screen */}
           <Route path="/LabHome" exact component={LabsHome}/>
+          
 
           <Route path="/contact" exact component={Contact} />
           <Route path="/" exact component={Login}/>
