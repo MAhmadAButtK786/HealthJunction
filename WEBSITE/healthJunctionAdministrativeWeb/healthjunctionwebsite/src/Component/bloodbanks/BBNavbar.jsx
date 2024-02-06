@@ -94,7 +94,7 @@ export default function BBNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/home"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Home
@@ -104,7 +104,7 @@ export default function BBNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/contact"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             About Us

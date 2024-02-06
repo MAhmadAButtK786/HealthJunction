@@ -73,6 +73,9 @@ function RecipientList() {
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
+      <div className="text-center pb-7">
+          <h1 className="text-5xl font-bold text-red-600">Registered recipient in Our Platform</h1>
+        </div>
         <div className="flex flex-col items-center justify-center mb-4 md:flex-row">
           <input
             type="text"
