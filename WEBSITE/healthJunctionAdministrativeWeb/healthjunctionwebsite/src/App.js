@@ -30,8 +30,11 @@ function App() {
           <Route path ="/basicdF" exact component={BasicdF}/>
           <Route path="/hfcheckbox" exact component ={HPRegistrationForm}/>
           <Route path ="/guidlines" exact component={Guidlines}/>
-          {/* Blood Banks */}
+
+              {/* Blood Banks Modules Screens */}
+          {/* Blood Banks Home*/}
           <Route path="/bloodbank" exact component ={bloodbank}/>
+          {/* Blood Banks FAQ */}
           <Route path="/faq" exact component={Accordion}/>
           {/* Private Blood Banks */}
           <Route path="/privateBB" exact component={PrivateBB}/>
@@ -41,6 +44,8 @@ function App() {
           <Route path="/recipient" exact component={Recipients}/>
           {/* Donors Lists */}
           <Route path="/donors" exact component={Donor}/>
+
+
 
           {/* Charity */}
           <Route path="/homecharity" exact component={Homecharity}/>
