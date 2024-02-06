@@ -16,6 +16,10 @@ import Partner from './Component/charity/our Partner/partner';
 import ForgetPassword from './Component/forgetPassword';
 import BasicdF from './Component/healthPoints/healthpRegistration/Basic Form Data/basicdF';
 import HPRegistrationForm from './Component/healthPoints/healthpRegistration/CheckBox Part/hfcheckbox';
+import PrivateBB from './Component/bloodbanks/PrivateBB/privateBB';
+import PublicBB from './Component/bloodbanks/PublicBB/publicBB';
+import Recipients from './Component/bloodbanks/ReciepientList/recipient';
+import Donor from './Component/bloodbanks/DonorsList/donor';
 function App() {
   return (
       
@@ -29,6 +33,15 @@ function App() {
           {/* Blood Banks */}
           <Route path="/bloodbank" exact component ={bloodbank}/>
           <Route path="/faq" exact component={Accordion}/>
+          {/* Private Blood Banks */}
+          <Route path="/privateBB" exact component={PrivateBB}/>
+          {/* Public Blood */}
+          <Route path="/publicBB" exact component={PublicBB}/>
+          {/* Recipient List */}
+          <Route path="/recipient" exact component={Recipients}/>
+          {/* Donors Lists */}
+          <Route path="/donors" exact component={Donor}/>
+
           {/* Charity */}
           <Route path="/homecharity" exact component={Homecharity}/>
           <Route path="/partner" exact component={Partner}/>
