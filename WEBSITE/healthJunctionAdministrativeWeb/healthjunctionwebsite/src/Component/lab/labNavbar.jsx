@@ -1,142 +1,113 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, HomeIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import React, { useState } from "react";
 
-const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Private Laboratories', href: '#', current: false },
-  { name: 'Public Laboratories', href: '#', current: false },
- 
-]
+const LabNavbar = () => {
+  const [open, setOpen] = useState(false);
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-export default function LabNavbar() {
   return (
-    <Disclosure as="nav" className="bg-gradient-to-r from-gray-500 to-gray-800">
-      {({ open }) => (
-        <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="absolute -inset-0.5" />
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block h-6 w-6" color='black' aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center ">
-                  <img
-                    className="h-10 w-auto rounded-full"
-                    src="images/hjlogo.png"
-                    alt="Your Company"
-                  />
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gradient-to-r from-gray-600 to-gray-900 text-white' : 'text-white hover:bg-gradient-to-r from-gray-600 to-gray-900 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-             
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
-                  <div>
-                    <Menu.Button className="relative rounded-full p-1  focus:outline-none ">
-                      <span className="absolute -inset-1.5" />
-                      <span className="sr-only">Open user menu</span>
-                      <HomeIcon className="h-8 w-8 " aria-hidden="true" color='white' />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Home
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            About Us
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
+    <div className="relative z-10 w-full text-white bg-gray-700 dark-mode:text-gray-200 dark-mode:bg-gray-800">
+      <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+        <div className="flex flex-row items-center justify-between p-4">
+          <div className="flex items-center">
+            <img
+              src="images/hjlogo.png"
+              alt="Logo"
+              className="h-8 mr-2 rounded-full"
+            />
+            <a
+              href="/home"
+              className="text-lg font-semibold tracking-widest uppercase focus:outline-none focus:shadow-outline"
+            >
+              Health Junction
+            </a>
+          </div>
+          <button
+            className="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
+            onClick={() => setOpen(!open)}
+          >
+            <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
+              <path
+                fillRule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <nav
+          className={`flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row ${
+            open ? "flex" : "hidden"
+          }`}
+        >
+          <a
+            className="px-4 py-2 mt-2 text-sm font-semibold bg-gray-600 rounded-lg md:mt-0 focus:text-gray-900 focus:outline-none focus:shadow-outline"
+            href="/LabHome"
+          >
+            Laboratory Home
+          </a>
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+          >
+            <span>Private Labs</span>
+            <svg
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              className={`inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform ${
+                open ? "rotate-180" : "rotate-0"
+              }`}
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          <a
+            className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-black focus:text-white focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            href=""
+          >
+            Govt Registered Labs
+          </a>
+          <a
+            className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            href="/contact"
+          >
+            Contact Us
+          </a>
+          <div onClick={() => setOpen(false)} className="relative">
+            <div
+              className={`absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 ${
+                open ? "block" : "hidden"
+              }`}
+            >
+              <div className="px-2 py-2 bg-gray-500 rounded-md shadow">
+                <a
+                  className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="/AlliedLab"
+                >
+                  Allied Labs
+                </a>
+                <a
+                  className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href=""
+                >
+                  Link #1
+                </a>
+                <a
+                  className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href=""
+                >
+                  Link #1
+                </a>
               </div>
             </div>
           </div>
+        </nav>
+      </div>
+    </div>
+  );
+};
 
-          <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
-  )
-}
+export default LabNavbar;

@@ -21,6 +21,7 @@ import PublicBB from './Component/bloodbanks/PublicBB/publicBB';
 import Recipients from './Component/bloodbanks/ReciepientList/recipient';
 import Donor from './Component/bloodbanks/DonorsList/donor';
 import CharityORG from './Component/charity/Charitable ORG Data/charityORG';
+import AlliedLab from './Component/lab/privateLabs/LabsScreens/Allied Lab/alliedLab';
 function App() {
   return (
       
@@ -59,7 +60,7 @@ function App() {
                 {/* Lab Module Screens */}
           {/* Lab Home Screen */}
           <Route path="/LabHome" exact component={LabsHome}/>
-          
+          <Route path="/AlliedLab" exact component={AlliedLab}/>
 
           <Route path="/contact" exact component={Contact} />
           <Route path="/" exact component={Login}/>
