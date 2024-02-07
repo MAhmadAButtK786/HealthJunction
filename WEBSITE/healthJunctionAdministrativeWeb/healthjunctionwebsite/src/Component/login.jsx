@@ -4,7 +4,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { IoMdMail, IoMdLock } from 'react-icons/io';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 
-const LoginPage = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -120,4 +120,4 @@ const LoginPage = () => {
     </div>
   );
 };
-export default LoginPage;
+export default Login;
