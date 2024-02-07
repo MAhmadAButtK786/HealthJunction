@@ -4,7 +4,7 @@ import { database } from "../../../../firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-function LMDC() {
+function LahoreMDCD() {
   const [testsData, setTestsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,7 +35,7 @@ function LMDC() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <img src="images/img/Lab/AlliedLabs.png" alt="" className="mx-auto rounded-full w-52 h-52" />
+        <img src="images/img/Lab/LMLDC.png" alt="LMLDC" className="mx-auto rounded-full w-52 h-52" />
         
       </div>
 
@@ -82,4 +82,4 @@ function LMDC() {
   );
 }
 
-export default LMDC;
+export default LahoreMDCD;

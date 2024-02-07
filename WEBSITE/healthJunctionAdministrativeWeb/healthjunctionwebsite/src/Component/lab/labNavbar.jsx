@@ -65,10 +65,10 @@ const LabNavbar = () => {
             </svg>
           </button>
           <a
-            className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-black focus:text-white focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             href=""
           >
-            Govt Registered Labs
+            Government Registered Labs
           </a>
           <a
             className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
@@ -121,7 +121,7 @@ const LabNavbar = () => {
                 </a>
                 <a
                   className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                  href="/LMLDCLab"
+                  href="/LahoreMDC"
                 >
                  LMLDC Lab
                 </a>

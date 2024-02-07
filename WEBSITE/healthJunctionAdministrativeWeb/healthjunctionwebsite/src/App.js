@@ -26,7 +26,7 @@ import ChughtaiLab from './Component/lab/privateLabs/LabsScreens/ChughtaiLab/chu
 import ExcelLab from './Component/lab/privateLabs/LabsScreens/Excel Lab/excellab';
 import IDCLab from './Component/lab/privateLabs/LabsScreens/IDC/idc';
 import IndusLab from './Component/lab/privateLabs/LabsScreens/Indus Lab/indusLab';
-import LMLDCLab from './Component/lab/privateLabs/LabsScreens/LMLDC/lmdc';
+import LahoreMDC from './Component/lab/privateLabs/LabsScreens/LahoreMDC/LahoreMDC';
 import AlnoorLab from './Component/lab/privateLabs/LabsScreens/AlnoorLab/alnoorLab';
 function App() {
   return (
@@ -80,7 +80,7 @@ function App() {
           {/* Indus Lab */}
           <Route path="/IndusLab" exact component={IndusLab}/>
           {/* LMDC */}
-          <Route path="/LMDCLab" exact component={LMLDCLab}/>
+          <Route path="/LahoreMDC" exact component={LahoreMDC}/>
 
           <Route path="/contact" exact component={Contact} />
           <Route path="/" exact component={Login}/>
