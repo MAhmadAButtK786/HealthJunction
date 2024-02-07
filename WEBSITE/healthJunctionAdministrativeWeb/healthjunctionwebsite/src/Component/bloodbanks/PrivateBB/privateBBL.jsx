@@ -3,28 +3,51 @@ import { collection, getDocs } from "firebase/firestore";
 import { database } from "../../firebase";
 
 function PrivateBBL() {
-  const [donorsData, setDonorsData] = useState([]);
+  const [testsData, setTestsData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    getData();
+    if (database) {
+      getData();
+    }
   }, []);
 
   const getData = async () => {
-    const querySnapshot = await getDocs(collection(database, "Private Blood Banks"));
-    const data = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    setDonorsData(data);
+    try {
+      const querySnapshot = await getDocs(collection(database, "Private Blood Banks"));
+      const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setTestsData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredTests = testsData.filter((test) =>
+    test.Name &&
+    typeof test.Name === 'string' &&
+    test.Name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
-      <div className="text-center pb-7">
+        <div className="text-center pb-7">
           <h1 className="text-5xl font-bold text-red-600">Private Blood Banks</h1>
         </div>
         <div className="">
+          <div className="flex justify-center mb-4">
+            <input
+              type="text"
+              className="px-4 py-2 border border-gray-400 rounded"
+              placeholder="Search by name"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </div>
           <table className="w-full mt-5 text-center border border-red-500">
             <thead className="h-10 bg-red-700 border-b border-red-500">
               <tr>
@@ -35,7 +58,7 @@ function PrivateBBL() {
               </tr>
             </thead>
             <tbody>
-              {donorsData.map((donor) => (
+              {filteredTests.map((donor) => (
                 <tr
                   key={donor.id}
                   className="h-12 bg-white border-b border-gray-400"
@@ -53,7 +76,7 @@ function PrivateBBL() {
                     </a>
                   </td>
                   <td className="px-4 py-2">{donor["License Number"]}</td>
-                  <td className="px-4 py-2">{donor.Secter}</td>
+                  <td className="px-4 py-2">{donor.Sector}</td>
                 </tr>
               ))}
             </tbody>
