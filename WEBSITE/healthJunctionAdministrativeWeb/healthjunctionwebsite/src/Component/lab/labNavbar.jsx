@@ -91,15 +91,39 @@ const LabNavbar = () => {
                 </a>
                 <a
                   className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                  href=""
+                  href="/AlnoorLab"
                 >
-                  Link #1
+                  Alnoor Labs
                 </a>
                 <a
                   className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                  href=""
+                  href="/ChugtaiLab"
                 >
-                  Link #1
+                  Chughtai Lab
+                </a>
+                <a
+                  className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="/ExcelLab"
+                >
+                 Excel Lab
+                </a>
+                <a
+                  className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="/IDCLab"
+                >
+                 Islamabad Diagnostic Center
+                </a>
+                <a
+                  className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="/IndusLab"
+                >
+                 Indus Lab
+                </a>
+                <a
+                  className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                  href="/LMLDCLab"
+                >
+                 LMLDC Lab
                 </a>
               </div>
             </div>
