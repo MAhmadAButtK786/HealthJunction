@@ -1,60 +1,33 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useHistory, Link } from 'react-router-dom';
 import { IoMdMail, IoMdLock } from 'react-icons/io';
-import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
-  const googleProvider = new GoogleAuthProvider();
+ 
   const history = useHistory();
-  const db = getFirestore();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       setLoading(true);
-
-      // Check if the user exists in Firestore
-      const userQuery = query(collection(db, 'Users'), where('email', '==', email));
-      const querySnapshot = await getDocs(userQuery);
-
-      if (!querySnapshot.empty) {
-        // User exists, proceed with authentication
-        const result = await signInWithEmailAndPassword(auth, email, password);
-        const user = result.user;
-        sessionStorage.setItem('username', user.email);
-        setLoading(false);
-        history.push('/home');
-        alert('Successfully logged in with credentials!');
-      } else {
-        // User doesn't exist
-        setLoading(false);
-        alert('User not found. Please check your credentials.');
-      }
-    } catch (error) {
-      setLoading(false);
-      alert('Something went wrong with Signing In: ' + error.message);
-    }
-  };
-
-  const handleGoogleSignIn = async () => {
-    try {
-      setLoading(true);
-      const result = await signInWithPopup(auth, googleProvider);
+      const result = await signInWithEmailAndPassword(auth, email, password);
       const user = result.user;
       sessionStorage.setItem('username', user.email);
       setLoading(false);
       history.push('/home');
-      alert('Successfully signed up with Google!');
+      alert('Successfully logged in with credentials!');
     } catch (error) {
       setLoading(false);
-      alert('Google Sign In Error: ' + error.message);
+      alert('Something went wrong with Signing In: ' + error.message);
     }
+  
   };
 
   return (
@@ -94,28 +67,7 @@ const LoginPage = () => {
         >
           {loading ? 'Logging In...' : 'Login'}
         </button>
-        <button
-          type="button"
-          className={`w-full py-2 rounded-md ${
-            loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-gray-700 hover:bg-red-600'
-          } text-white focus:outline-none mb-4 flex justify-center items-center`}
-          onClick={handleGoogleSignIn}
-          disabled={loading}
-        >
-         <img src="images/Logos/google icon.png" alt=""  width={50} height={50} className="p-3"/>
-          {loading ? 'Logging In with Google...' : 'Sign in with Google'}
-        </button>
-        <div className="text-sm text-black">
-          Don't have an account?
-          <Link to="/register" className="text-blue-500">
-            Register
-          </Link>
-        </div>
-        <div className="mt-2 text-sm">
-          <Link to="/forgetPassword" className="text-blue-500">
-            Forgot Password?
-          </Link>
-        </div>
+   
       </form>
     </div>
   );
