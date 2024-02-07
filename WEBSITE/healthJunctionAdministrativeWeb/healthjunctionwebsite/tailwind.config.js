@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const { Component } = require('react');
 
 /** @type {import('tailwindcss').Config} */
