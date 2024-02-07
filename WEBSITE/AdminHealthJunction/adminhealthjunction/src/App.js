@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch,Route} from 'react-router-dom'
 import AdminHome from "./components/Admin Home/adminHome";
-import Contact from './aboutUs/contact';
+import Contact from './components/aboutUs/contact';
 function App() {
   return (
    <>
