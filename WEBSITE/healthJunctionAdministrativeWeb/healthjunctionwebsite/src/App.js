@@ -22,6 +22,11 @@ import Recipients from './Component/bloodbanks/ReciepientList/recipient';
 import Donor from './Component/bloodbanks/DonorsList/donor';
 import CharityORG from './Component/charity/Charitable ORG Data/charityORG';
 import AlliedLab from './Component/lab/privateLabs/LabsScreens/Allied Lab/alliedLab';
+import ChughtaiLab from './Component/lab/privateLabs/LabsScreens/ChughtaiLab/chughtaiLab';
+import ExcelLab from './Component/lab/privateLabs/LabsScreens/Excel Lab/excellab';
+import IDCLab from './Component/lab/privateLabs/LabsScreens/IDC/idc';
+import IndusLab from './Component/lab/privateLabs/LabsScreens/Indus Lab/indusLab';
+import LMLDCLab from './Component/lab/privateLabs/LabsScreens/LMLDC/lmdc';
 function App() {
   return (
       
@@ -60,7 +65,19 @@ function App() {
                 {/* Lab Module Screens */}
           {/* Lab Home Screen */}
           <Route path="/LabHome" exact component={LabsHome}/>
+          {/* Labs Data */}
+          {/* Allied Lab */}
           <Route path="/AlliedLab" exact component={AlliedLab}/>
+          {/* ChughtaiLab */}
+          <Route path="/ChugtaiLab" exact component={ChughtaiLab}/> 
+          {/* ExcelLab */}
+          <Route path="/ExcelLab" exact component={ExcelLab}/>
+          {/* IDC  */}
+          <Route path="/IDCLab" exact component={IDCLab}/>
+          {/* Indus Lab */}
+          <Route path="/IndusLab" exact component={IndusLab}/>
+          {/* LMDC */}
+          <Route path="/LMDCLab" exact component={LMLDCLab}/>
 
           <Route path="/contact" exact component={Contact} />
           <Route path="/" exact component={Login}/>
