@@ -1,9 +1,15 @@
-
+import React from 'react';
+import {Switch,Route} from 'react-router-dom'
+import AdminHome from "./components/Admin Home/adminHome";
+import Contact from './aboutUs/contact';
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+   <>
+   <Switch>
+   <Route path="/" exact component={AdminHome} />
+   <Route path="/contact" exact component={Contact} />
+   </Switch>
+   </>
   );
 }
 
