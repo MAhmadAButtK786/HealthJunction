@@ -6,8 +6,8 @@ import { Bars3Icon, BellIcon, HomeIcon, QuestionMarkCircleIcon, XMarkIcon } from
 
 const navigation = [
   { name: 'Home', href: '/bloodbank',  },
-  { name: 'Donors', href: '/donors', },
-  { name: 'Recipients', href: '/recipient',  },
+  { name: 'Donors', href: '/donor', },
+  { name: 'Recipients', href: '/recipients',  },
   { name: 'Private Blood Banks', href: '/privateBB',  },
   { name: 'Public Blood Banks', href: '/publicBB',  },
 ]

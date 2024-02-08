@@ -51,7 +51,7 @@ const LoginAdmin = () => {
     <div className="flex flex-col items-center justify-center min-h-screen text-white bg-blue-500">
       <div className="mb-6 text-4xl font-bold">Health Junction</div>
       <form className="w-full p-8 bg-white rounded-md shadow-md md:w-4/12">
-        <h2 className="mb-4 text-2xl font-bold">Login</h2>
+        <h2 className="mb-4 text-2xl font-bold text-blue-600">Login as Admin</h2>
         <label htmlFor="" className='font-bold text-black'>Enter Administrative Username</label>
         <div className="flex items-center mb-4">
           <IoMdMail className="w-6 h-6 mr-2 text-gray-500" />

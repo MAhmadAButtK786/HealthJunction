@@ -1,40 +1,37 @@
-const bloodBankData = [
-    {
-      title: 'Donate Blood',
-      description: 'Join our life-saving mission. Your blood donation can make a huge difference and save lives.',
-      link: '/donate',
-      icon: '💉', // Syringe icon for blood donation
-    },
-    {
-      title: 'Find a Blood Drive',
-      description: 'Participate in our blood drives. Your contribution can help us reach more people in need.',
-      link: '/blood-drives',
-      icon: '📍', // Pin icon for location
-    },
-    {
-      title: 'Become a Donor',
-      description: 'Become a hero. Learn how you can join our community of life-savers.',
-      link: '/become-donor',
-      icon: '🦸', // Superhero icon for donors
-    },
-    {
-      title: 'Find Recipients',
-      description: 'Connect with those in need. Your donation can bring hope to someone\'s life.',
-      link: '/find-recipients',
-      icon: '🤝', // Handshake icon for connection
-    },
-    {
-      title: 'Blood Banks Directory',
-      description: 'Discover our network of blood banks. We ensure safe and reliable blood supply.',
-      link: '/blood-banks',
-      icon: '🌐', // Globe icon for network
-    },
-    {
-      title: 'Contact Us',
-      description: 'We\'re here to help. Reach out to us for any queries or assistance.',
-      link: '/contact',
-      icon: '📨', // Mail icon for contact
-    },
-  ];
-  
-  export default bloodBankData;
+const bloodBankData =[{
+  title: 'Manage Blood Donors',
+  description: 'View, add, or edit blood donor information. Every donor is a potential life-saver.',
+  link: '/manage-donors',
+  icon: '🅰️', // Blood type A icon for managing donors
+},
+{
+  title: 'Blood Drive Management',
+  description: 'Schedule, organize, and track blood drives. Maximize participation and impact.',
+  link: '/manage-drives',
+  icon: '🚗', // Car icon for blood drive management
+},
+{
+  title: 'Donation Statistics',
+  description: 'Analyze and track donation trends. Insights to improve blood collection efforts.',
+  link: '/donation-stats',
+  icon: '📊', // Bar chart icon for statistics
+},
+{
+  title: 'Recipient Management',
+  description: 'Coordinate blood distribution to recipients. Ensure timely delivery and support.',
+  link: '/manage-recipients',
+  icon: '🎁', // Gift icon for managing recipients
+},
+{
+  title: 'Blood Banks Management',
+  description: 'Monitor and manage blood banks efficiently. Ensure smooth operations and optimal blood supply.',
+  icon: '💉', // Syringe icon for blood inventory
+},
+{
+  title: 'Contact Support',
+  description: 'Get assistance and support. Reach out for technical or operational help.',
+  link: '/contact-support',
+  icon: '📞', // Telephone receiver icon for support
+},
+];
+export default bloodBankData;
