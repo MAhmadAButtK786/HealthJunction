@@ -76,7 +76,7 @@ function PublicBBL() {
                     </a>
                   </td>
                   <td className="px-4 py-2">{donor["License Number"]}</td>
-                  <td className="px-4 py-2">{donor.Sector}</td>
+                  <td className="px-4 py-2">{donor.Secter}</td>
                 </tr>
               ))}
             </tbody>
