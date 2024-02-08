@@ -7,14 +7,14 @@ import { getAuth, GoogleAuthProvider, sendPasswordResetEmail as sendPasswordRese
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDElkWJzEFuz_N6tfXlL7WPv7sAWdwwcos",
-  authDomain: "health-junction-675ff.firebaseapp.com",
-  projectId: "health-junction-675ff",
-  storageBucket: "health-junction-675ff.appspot.com",
-  messagingSenderId: "293812165856",
-  appId: "1:293812165856:web:d0a2e1cfe1f1cbba1bc485",
-  measurementId: "G-RLDCY49C88"
-};
+    apiKey: "AIzaSyDElkWJzEFuz_N6tfXlL7WPv7sAWdwwcos",
+    authDomain: "health-junction-675ff.firebaseapp.com",
+    projectId: "health-junction-675ff",
+    storageBucket: "health-junction-675ff.appspot.com",
+    messagingSenderId: "293812165856",
+    appId: "1:293812165856:web:2872d618c8149ef31bc485",
+    measurementId: "G-8LTPH5PKC5"
+  };
 
 // Initialize Firebase
 // Initialize Firebase

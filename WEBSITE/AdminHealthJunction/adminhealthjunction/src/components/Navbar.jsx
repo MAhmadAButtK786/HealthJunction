@@ -71,7 +71,7 @@ const Navbar = () => {
             </button>
             {showUserMenu && (
               <div className="absolute right-0 mt-2 text-gray-100 bg-gray-900 rounded-md">
-                <Link to="/profile" className="block px-4 py-2 hover:text-blue-300">Profile</Link>
+                <Link to="/login" className="block px-4 py-2 hover:text-blue-300">Login</Link>
                 <Link to="/settings" className="block px-4 py-2 hover:text-blue-300">Settings</Link>
                 <Link to="/logout" className="block px-4 py-2 hover:text-blue-300">Logout</Link>
               </div>
