@@ -6,13 +6,13 @@ const Cards = () => {
       {/* component */}
       <div
         id="services"
-        className="section relative pt-20 pb-8 md:pt-16 md:pb-0 bg-white"
+        className="relative pt-20 pb-8 bg-white section md:pt-16 md:pb-0"
       >
-        <div className="container xl:max-w-6xl mx-auto px-4">
+        <div className="container px-4 mx-auto xl:max-w-6xl">
           {/* Heading start */}
-          <header className="text-center mx-auto mb-5 lg:px-20">
-            <h2 className="text-2xl leading-normal mb-2 font-bold text-blue-700">
-              We are the one who cares about Your Health
+          <header className="mx-auto mb-5 text-center lg:px-20">
+            <h2 className="mb-2 text-2xl font-bold leading-normal text-blue-700">
+              What you can do as an Administrator
             </h2>
             <svg
               version="1.1"
@@ -52,15 +52,15 @@ const Cards = () => {
                 style={{ strokeWidth: 2, strokeMiterlimit: 10 }}
               />
             </svg>
-            <p className="text-gray-700 leading-relaxed font-light text-xl mx-auto ">
-              <h3>Services we Provide</h3>
+            <p className="mx-auto text-xl font-light leading-relaxed text-gray-700 ">
+              <h3>Have Control on</h3>
             </p>
           </header>
           {/* End heading */}
           {/* row */}
-          <div className="flex flex-wrap flex-row -mx-4 text-center">
+          <div className="flex flex-row flex-wrap -mx-4 text-center">
             <div
-              className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
+              className="flex-shrink w-full max-w-full px-4 sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
               data-wow-duration="1s"
               style={{
                 visibility: "visible",
@@ -69,25 +69,26 @@ const Cards = () => {
               }}
             >
               {/* service block */}
-              <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                <div className="inline-block text-gray-900 mb-4">
+              <div className="px-12 py-8 mb-12 transition duration-300 ease-in-out transform border-b border-gray-100 bg-gray-50 hover:-translate-y-2">
+                <div className="inline-block mb-4 text-gray-900">
                   {/* icon */}
                   <i
                     className="fas fa-hospital"
-                    style={{ fontSize: '2rem', color: 'blue' }}
+                    style={{ fontSize: "2rem", color: "blue" }}
                   ></i>
                 </div>
-                <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
+                <h3 className="mb-2 text-lg font-semibold leading-normal text-black">
                   Health Points
                 </h3>
                 <p className="text-gray-500">
-                  Hospitals and Clinics can register themselves by providing details of there facilities and vice versa.
+                  Verify and manage hospital eligibility, oversee clinics, patients, and
+                  users for registration purposes.
                 </p>
               </div>
               {/* end service block */}
             </div>
             <div
-              className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
+              className="flex-shrink w-full max-w-full px-4 sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
               data-wow-duration="1s"
               data-wow-delay=".1s"
               style={{
@@ -98,25 +99,26 @@ const Cards = () => {
               }}
             >
               {/* service block */}
-              <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                <div className="inline-block text-gray-900 mb-4">
+              <div className="px-12 py-8 mb-12 transition duration-300 ease-in-out transform border-b border-gray-100 bg-gray-50 hover:-translate-y-2">
+                <div className="inline-block mb-4 text-gray-900">
                   {/* icon */}
                   <i
                     className="fas fa-user-md"
-                    style={{ fontSize: '2rem', color: 'currentColor' }}
+                    style={{ fontSize: "2rem", color: "currentColor" }}
                   ></i>
                 </div>
-                <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
+                <h3 className="mb-2 text-lg font-semibold leading-normal text-black">
                   Patients
                 </h3>
                 <p className="text-gray-500">
-                  Users can book appointments with doctors and see the hospital and clinic details. 
+                  Manage and oversee user appointments, access detailed hospital and clinic
+                  information as an administrator.
                 </p>
               </div>
               {/* end service block */}
             </div>
             <div
-              className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
+              className="flex-shrink w-full max-w-full px-4 sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
               data-wow-duration="1s"
               data-wow-delay=".3s"
               style={{
@@ -127,25 +129,26 @@ const Cards = () => {
               }}
             >
               {/* service block */}
-              <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                <div className="inline-block text-gray-900 mb-4">
+              <div className="px-12 py-8 mb-12 transition duration-300 ease-in-out transform border-b border-gray-100 bg-gray-50 hover:-translate-y-2">
+                <div className="inline-block mb-4 text-gray-900">
                   {/* icon */}
                   <i
                     className="fas fa-tint"
-                    style={{ fontSize: '2rem', color: 'red' }}
+                    style={{ fontSize: "2rem", color: "red" }}
                   ></i>
                 </div>
-                <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
+                <h3 className="mb-2 text-lg font-semibold leading-normal text-black">
                   Blood Banks
                 </h3>
                 <p className="text-gray-500">
-                  Users can register as a donor and recipient, also see details of private and public blood banks.
+                  Oversee and Manage donor and recipient registration and
+                  details of private and public blood banks.
                 </p>
               </div>
               {/* end service block */}
             </div>
             <div
-              className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
+              className="flex-shrink w-full max-w-full px-4 sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
               data-wow-duration="1s"
               style={{
                 visibility: "visible",
@@ -154,25 +157,26 @@ const Cards = () => {
               }}
             >
               {/* service block */}
-              <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                <div className="inline-block text-gray-900 mb-4">
+              <div className="px-12 py-8 mb-12 transition duration-300 ease-in-out transform border-b border-gray-100 bg-gray-50 hover:-translate-y-2">
+                <div className="inline-block mb-4 text-gray-900">
                   {/* icon */}
                   <i
                     className="fas fa-hands-helping"
-                    style={{ fontSize: '2rem', color: 'purple' }}
+                    style={{ fontSize: "2rem", color: "purple" }}
                   ></i>
                 </div>
-                <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
+                <h3 className="mb-2 text-lg font-semibold leading-normal text-black">
                   Charity
                 </h3>
                 <p className="text-gray-500">
-                  Users can see details of charitable organizations they want to donate to.
+                  Provide users with detailed information about charitable
+                  organizations, empowering informed decisions.
                 </p>
               </div>
               {/* end service block */}
             </div>
             <div
-              className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
+              className="flex-shrink w-full max-w-full px-4 sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
               data-wow-duration="1s"
               data-wow-delay=".1s"
               style={{
@@ -183,25 +187,26 @@ const Cards = () => {
               }}
             >
               {/* service block */}
-              <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                <div className="inline-block text-gray-900 mb-4">
+              <div className="px-12 py-8 mb-12 transition duration-300 ease-in-out transform border-b border-gray-100 bg-gray-50 hover:-translate-y-2">
+                <div className="inline-block mb-4 text-gray-900">
                   {/* icon */}
                   <i
                     className="fas fa-flask"
-                    style={{ fontSize: '2rem', color: 'grey-900' }}
+                    style={{ fontSize: "2rem", color: "grey-900" }}
                   ></i>
                 </div>
-                <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
+                <h3 className="mb-2 text-lg font-semibold leading-normal text-black">
                   Laboratories
                 </h3>
                 <p className="text-gray-500">
-                  Users can see details of both private and public laboratories like there pricing.
+                  Supervise inventory, manage supplier relationships, coordinate
+                  delivery logistics, and provide customer support.
                 </p>
               </div>
               {/* end service block */}
             </div>
             <div
-              className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
+              className="flex-shrink w-full max-w-full px-4 sm:w-1/2 lg:w-1/3 lg:px-6 wow fadeInUp"
               data-wow-duration="1s"
               data-wow-delay=".3s"
               style={{
@@ -212,19 +217,19 @@ const Cards = () => {
               }}
             >
               {/* service block */}
-              <div className="py-8 px-12 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">
-                <div className="inline-block text-gray-900 mb-4">
+              <div className="px-12 py-8 mb-12 transition duration-300 ease-in-out transform border-b border-gray-100 bg-gray-50 hover:-translate-y-2">
+                <div className="inline-block mb-4 text-gray-900">
                   {/* icon */}
                   <i
                     className="fas fa-pills"
-                    style={{ fontSize: '2rem', color: 'green' }}
+                    style={{ fontSize: "2rem", color: "green" }}
                   ></i>
                 </div>
-                <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
+                <h3 className="mb-2 text-lg font-semibold leading-normal text-black">
                   Medicine
                 </h3>
                 <p className="text-gray-500">
-                  Users can buy medicine through the apps which delivers medicine to your doorstep.
+                Supervise inventory, manage supplier relationships, coordinate delivery logistics, and provide customer support.
                 </p>
               </div>
               {/* end service block */}
