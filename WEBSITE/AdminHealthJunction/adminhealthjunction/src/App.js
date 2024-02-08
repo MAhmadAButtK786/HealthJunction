@@ -9,6 +9,7 @@ import Donor from './components/bloodbanks/DonorsList/donor';
 import PrivateBB from './components/bloodbanks/PrivateBB/privateBB';
 import PublicBB from './components/bloodbanks/PublicBB/publicBB';
 import Recipients from './components/bloodbanks/ReciepientList/recipient';
+import AddRecipientPage from './components/bloodbanks/ReciepientList/insertrecipients';
 function App() {
   return (
    <>
@@ -22,6 +23,7 @@ function App() {
    <Route path="/privateBB" exact component={PrivateBB} />
    <Route path="/publicBB" exact component={PublicBB} />
    <Route path="/recipients" exact component={Recipients} />
+   <Route path="/insertsrecipients" exact component={AddRecipientPage} />
    </Switch>
    </>
   );
