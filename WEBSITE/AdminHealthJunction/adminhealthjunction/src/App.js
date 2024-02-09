@@ -10,6 +10,7 @@ import PrivateBB from './components/bloodbanks/PrivateBB/privateBB';
 import PublicBB from './components/bloodbanks/PublicBB/publicBB';
 import Recipients from './components/bloodbanks/ReciepientList/recipient';
 import AddRecipientPage from './components/bloodbanks/ReciepientList/insertrecipients';
+import AddDonorPage from './components/bloodbanks/DonorsList/insertdonors';
 // Lab Imports
 import LabsHome from './components/lab/LabHome/LabHome';
 import AlliedLab from './components/lab/privateLabs/LabsScreens/Allied Lab/alliedLab';
@@ -19,6 +20,7 @@ import ExcelLab from './components/lab/privateLabs/LabsScreens/Excel Lab/excella
 import IDCLab from './components/lab/privateLabs/LabsScreens/IDC/idc';
 import IndusLab from './components/lab/privateLabs/LabsScreens/Indus Lab/indusLab';
 import LahoreMDC from './components/lab/privateLabs/LabsScreens/LahoreMDC/LahoreMDC';
+
 function App() {
   return (
    <>
@@ -33,6 +35,7 @@ function App() {
    <Route path="/publicBB" exact component={PublicBB} />
    <Route path="/recipients" exact component={Recipients} />
    <Route path="/insertsrecipients" exact component={AddRecipientPage} />
+   <Route path="/insertsdonor" exact component={AddDonorPage} />
    {/* Lab Screens */}
    <Route path="/labhome" exact component={LabsHome} />
    <Route path="/alliedlab" exact component={AlliedLab} />

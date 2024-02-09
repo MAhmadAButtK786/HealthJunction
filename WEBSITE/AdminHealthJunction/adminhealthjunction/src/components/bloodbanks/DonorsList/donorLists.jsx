@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { database } from "../../../firebase";
-
+import {Link} from "react-router-dom";
 function DonorLists() {
   const [donorsData, setDonorsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,7 +45,6 @@ function DonorLists() {
         );
       }
     }
-
     const querySnapshot = await getDocs(filteredQuery);
     const data = querySnapshot.docs.map((doc) => ({
       id: doc.id,
@@ -69,13 +68,18 @@ function DonorLists() {
       [name]: value,
     }));
   };
-
+ 
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
       <div className="text-center pb-7">
           <h1 className="text-5xl font-bold text-red-600">Registered Donors in our Platform</h1>
         </div>
+        <Link to="/insertsdonor">
+          <button className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700 ">
+            Insert Donors
+          </button>
+        </Link>
         <div className="flex flex-col items-center justify-center mb-4 md:flex-row">
           <input
             type="text"
@@ -145,7 +149,7 @@ function DonorLists() {
             <option value="NI">NI</option>
           </select>
         </div>
-        <div className='overflow-x-auto'>
+        <div className="overflow-x-auto">
   <table className='w-full mt-5 text-center border border-red-400'>
     <thead className='h-10 bg-red-700 border border-red-400 '>
       <tr>
@@ -170,6 +174,7 @@ function DonorLists() {
           </td>
           <td className='px-4 py-2'>{donor.Phone}</td>
           <td className='px-4 py-2'>{donor.Province}</td>
+        
         </tr>
       ))}
     </tbody>

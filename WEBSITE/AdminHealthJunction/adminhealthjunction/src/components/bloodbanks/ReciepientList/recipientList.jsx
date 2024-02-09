@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where, deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { database } from "../../../firebase";
 import { Link } from "react-router-dom";
 
@@ -84,23 +91,22 @@ function RecipientList() {
       }
     }
   };
-  
-  
-  
 
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
         <div className="text-center pb-7">
-          <h1 className="text-5xl font-bold text-red-600">Registered recipients in Our Platform</h1>
+          <h1 className="text-5xl font-bold text-red-600">
+            Registered recipients in Our Platform
+          </h1>
         </div>
         <Link to="/insertsrecipients">
-          <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 ">
-            Insert
+          <button className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700 ">
+            Insert Recipients
           </button>
         </Link>
         <div className="flex flex-col items-center justify-center mb-4 md:flex-row">
-        <input
+          <input
             type="text"
             value={searchTerm}
             onChange={handleSearchInputChange}
@@ -179,32 +185,37 @@ function RecipientList() {
                 <th className="px-4 py-2 text-white">Email</th>
                 <th className="px-4 py-2 text-white">Phone</th>
                 <th className="px-4 py-2 text-white">Province</th>
-                <th className="px-4 py-2 text-white">Actions</th> 
-               
+                <th className="px-4 py-2 text-white">Actions</th>
               </tr>
             </thead>
             <tbody>
-            {recipientData.map((recipient, index) => (
-  <tr key={recipient.id || index} className="h-12 bg-white border-b border-gray-400">
+              {recipientData.map((recipient, index) => (
+                <tr
+                  key={recipient.id || index}
+                  className="h-12 bg-white border-b border-gray-400"
+                >
                   <td className="px-4 py-2">{recipient.FullName}</td>
                   <td className="px-4 py-2">{recipient.Age}</td>
                   <td className="px-4 py-2">{recipient.BloodType}</td>
                   <td className="px-4 py-2">{recipient.City}</td>
                   <td className="px-4 py-2">
-                    <a href={`mailto:${recipient.Email}`} className="text-blue-500 underline">
+                    <a
+                      href={`mailto:${recipient.Email}`}
+                      className="text-blue-500 underline"
+                    >
                       {recipient.Email}
                     </a>
                   </td>
                   <td className="px-4 py-2">{recipient.Phone}</td>
                   <td className="px-4 py-2">{recipient.Province}</td>
                   <td className="px-4 py-2">
-      <button
-        className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700"
-        onClick={() => handleDelete(recipient.id)}
-      >
-        Delete
-      </button>
-      </td>
+                    <button
+                      className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700"
+                      onClick={() => handleDelete(recipient.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
