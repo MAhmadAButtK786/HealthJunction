@@ -97,7 +97,7 @@ const LabNavbar = () => {
                 </a>
                 <a
                   className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:text-blue-600 focus:text-white hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                  href="/ChugtaiLab"
+                  href="/ChughtaiLab"
                 >
                   Chughtai Lab
                 </a>

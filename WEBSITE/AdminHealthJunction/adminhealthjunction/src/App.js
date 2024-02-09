@@ -22,6 +22,7 @@ import IndusLab from './components/lab/privateLabs/LabsScreens/Indus Lab/indusLa
 import LahoreMDC from './components/lab/privateLabs/LabsScreens/LahoreMDC/LahoreMDC';
 import AlliedInsertPage from './components/lab/privateLabs/LabsScreens/Allied Lab/insertalliedlab';
 import AlnoorInsertPage from './components/lab/privateLabs/LabsScreens/AlnoorLab/insertalnoorLab';
+import ChugtaiInsertPage from './components/lab/privateLabs/LabsScreens/ChughtaiLab/ChugtaiLabinsert';
 function App() {
   return (
    <>
@@ -48,6 +49,8 @@ function App() {
    <Route path="/lahoremdc" exact component={LahoreMDC} />
    <Route path="/alliedinsertpage" exact component={AlliedInsertPage} />
    <Route path="/alnoorinsertpage" exact component={AlnoorInsertPage} />
+   
+   <Route path="/chugtaiinsertpage" exact component={ChugtaiInsertPage} />
    </Switch>
    </>
   );

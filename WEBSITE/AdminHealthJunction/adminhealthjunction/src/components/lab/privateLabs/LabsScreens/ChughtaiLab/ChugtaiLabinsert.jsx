@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { database } from "../../../../../firebase";
 
-function AlnoorInsertPage() {
+function ChugtaiInsertPage() {
   const [formData, setFormData] = useState({
     "Test Name": "",
     
@@ -18,7 +18,7 @@ function AlnoorInsertPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await addDoc(collection(database, "Alnoor Lab"), formData);
+      await addDoc(collection(database, "Chugtai Labs"), formData);
       setFormData({
         "Test Name": "",
         "Price": "",
@@ -33,7 +33,7 @@ function AlnoorInsertPage() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <form onSubmit={handleSubmit} className="w-full max-w-md mt-5 bg-white rounded-lg shadow-md">
         <div className="px-6 py-4 font-bold text-center text-white bg-gray-600">
-          Add Test Data For Alnoor Lab
+          Add Test Data For Chughtai Lab
         </div>
         <div className="px-6 py-8">
           <div className="mb-4">
@@ -53,4 +53,4 @@ function AlnoorInsertPage() {
   );
 }
 
-export default AlnoorInsertPage;
+export default ChugtaiInsertPage;

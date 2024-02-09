@@ -3,7 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { database } from "../../../../../firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
+import {Link} from "react-router-dom"
 function Chughtai() {
   const [testsData, setTestsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -38,7 +38,13 @@ function Chughtai() {
         <img src="images/img/Lab/chugtai.jpg" alt="Chugtai" className="mx-auto rounded-full w-52 h-52" />
         
       </div>
-
+      <div className="px-8">
+      <Link to="/chugtaiinsertpage">
+          <button className="px-6 py-2 font-semibold text-white transition duration-300 ease-in-out bg-gray-400 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+            Insert Test
+          </button>
+        </Link>
+      </div>
       <div className="w-full px-4 pt-2 pb-5 mx-auto">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-2">
