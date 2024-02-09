@@ -24,6 +24,9 @@ import AlliedInsertPage from './components/lab/privateLabs/LabsScreens/Allied La
 import AlnoorInsertPage from './components/lab/privateLabs/LabsScreens/AlnoorLab/insertalnoorLab';
 import ChugtaiInsertPage from './components/lab/privateLabs/LabsScreens/ChughtaiLab/ChugtaiLabinsert';
 import ExcelInsertPage from './components/lab/privateLabs/LabsScreens/Excel Lab/excelinsert';
+import IDCInsertPage from './components/lab/privateLabs/LabsScreens/IDC/idcinsert';
+import IndusInsertPage from './components/lab/privateLabs/LabsScreens/Indus Lab/indusinsert';
+import LMLDCInsertPage from './components/lab/privateLabs/LabsScreens/LahoreMDC/lahoremdcinsert';
 function App() {
   return (
    <>
@@ -52,6 +55,9 @@ function App() {
    <Route path="/alnoorinsertpage" exact component={AlnoorInsertPage} />
    <Route path="/excelinsertpage" exact component={ExcelInsertPage} />
    <Route path="/chugtaiinsertpage" exact component={ChugtaiInsertPage} />
+   <Route path="/idcinsertpage" exact component={IDCInsertPage} />
+   <Route path="/indusinsertpage" exact component={IndusInsertPage} />
+   <Route path="/lmldcinsertpage" exact component={LMLDCInsertPage} />
    </Switch>
    </>
   );
