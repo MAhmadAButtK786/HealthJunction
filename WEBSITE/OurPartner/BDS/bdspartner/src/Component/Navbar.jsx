@@ -18,14 +18,14 @@ const Navbar = () => {
       <div className="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row">
         <nav className="flex flex-wrap items-center text-base lg:w-2/5 md:ml-auto">
           <Link to="/healthPointHome" className="border-b border-transparent cursor-pointer mr-7 hover:text-blue-300 hover:border-indigo-600">
-            Health Points
+            Our Drives
           </Link>
           <div className="relative">
             <span
               className="border-b border-transparent cursor-pointer mr-7 hover:text-blue-300 hover:border-indigo-600"
               onClick={toggleServicesDropdown}
             >
-              Services
+              List of Recipients
             </span>
             {showServicesDropdown && (
               <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md top-full">
@@ -36,16 +36,16 @@ const Navbar = () => {
             )}
           </div>
           <Link to="/contact" className="border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600">
-            About Us
+           List of Donors
           </Link>
         </nav>
         <Link to="/" className="flex items-center order-first mb-4 font-medium lg:order-none lg:w-1/5 title-font lg:items-center lg:justify-center md:mb-0">
           <img
-            src="images/hjlogo.png"
+            src="images/Logos/BDS.jpeg"
             style={{ height: 50, marginTop: 10, marginBottom: 10, borderRadius: '50%', backgroundColor: 'blue' }}
             alt="logo"
           />
-          <span className="ml-3 text-xl">Health Junction</span>
+          <span className="ml-3 text-xl">Blood Donor Society</span>
         </Link>
         <div className="inline-flex mt-4 ml-5 lg:w-2/5 lg:justify-end lg:ml-0 lg:mt-0">
           {/* Updated User menu design with a different icon */}
