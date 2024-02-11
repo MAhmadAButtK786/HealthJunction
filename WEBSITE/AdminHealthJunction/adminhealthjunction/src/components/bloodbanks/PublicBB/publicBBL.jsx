@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { database } from "../../../firebase";
-
+import {Link} from 'react-router-dom'
 function PublicBBL() {
   const [testsData, setTestsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -48,6 +48,11 @@ function PublicBBL() {
               onChange={handleSearch}
             />
           </div>
+          <Link to="/insertsPublicBB">
+          <button className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700 ">
+            Insert Public Blood Bank
+          </button>
+        </Link>
           <table className="w-full mt-5 text-center border border-red-500">
             <thead className="h-10 bg-red-700 border-b border-red-500">
               <tr>

@@ -11,6 +11,8 @@ import PublicBB from './components/bloodbanks/PublicBB/publicBB';
 import Recipients from './components/bloodbanks/ReciepientList/recipient';
 import AddRecipientPage from './components/bloodbanks/ReciepientList/insertrecipients';
 import AddDonorPage from './components/bloodbanks/DonorsList/insertdonors';
+import AddPrivateBB from './components/bloodbanks/PrivateBB/insertprivateBB';
+import AddPublicBB from './components/bloodbanks/PublicBB/insertpublicBB';
 // Lab Imports
 import LabsHome from './components/lab/LabHome/LabHome';
 import AlliedLab from './components/lab/privateLabs/LabsScreens/Allied Lab/alliedLab';
@@ -42,6 +44,8 @@ function App() {
    <Route path="/recipients" exact component={Recipients} />
    <Route path="/insertsrecipients" exact component={AddRecipientPage} />
    <Route path="/insertsdonor" exact component={AddDonorPage} />
+   <Route path="/insertsPrivateBB" exact component={AddPrivateBB} />
+   <Route path="/insertsPublicBB" exact component={AddPublicBB} />
    {/* Lab Screens */}
    <Route path="/labhome" exact component={LabsHome} />
    <Route path="/alliedlab" exact component={AlliedLab} />

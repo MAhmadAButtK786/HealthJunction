@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { database } from "../../../firebase";
-
+import {Link} from 'react-router-dom';
 function PrivateBBL() {
   const [testsData, setTestsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -48,6 +48,11 @@ function PrivateBBL() {
               onChange={handleSearch}
             />
           </div>
+          <Link to="/insertsPrivateBB">
+          <button className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700 ">
+            Insert Private Blood Bank
+          </button>
+        </Link>
           <table className="w-full mt-5 text-center border border-red-500">
             <thead className="h-10 bg-red-700 border-b border-red-500">
               <tr>
@@ -76,7 +81,7 @@ function PrivateBBL() {
                     </a>
                   </td>
                   <td className="px-4 py-2">{donor["License Number"]}</td>
-                  <td className="px-4 py-2">{donor.Sector}</td>
+                  <td className="px-4 py-2">{donor.Secter}</td>
                 </tr>
               ))}
             </tbody>
