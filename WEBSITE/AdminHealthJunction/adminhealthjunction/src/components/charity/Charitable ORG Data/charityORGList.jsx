@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { database } from "../../../firebase";
-
+import {Link} from 'react-router-dom'
 function CharityORGL() {
   const [NGOsData, setNGOsData] = useState([]);
 
@@ -65,6 +65,14 @@ function CharityORGL() {
           </p>
         </div>
       </div>
+      <div>
+      <Link to="/charityinsert">
+          <button className="px-4 py-2 font-bold text-white bg-purple-500 rounded hover:bg-purple-700 ">
+            Add NGOs 
+          </button>
+        </Link>
+      </div>
+     
       <div className="flex flex-wrap items-stretch justify-center w-full px-4 pt-10 mx-auto">
         {NGOsData.map((NGO) => (
           <NGOCard NGO={NGO} />

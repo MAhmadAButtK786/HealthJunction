@@ -32,7 +32,8 @@ import LMLDCInsertPage from "./components/lab/privateLabs/LabsScreens/LahoreMDC/
 // Charity Links
 import Homecharity from "./components/charity/CharityHome/homecharity";
 import CharityORG from "./components/charity/Charitable ORG Data/charityORG";
-import Partner from "../../../healthJunctionAdministrativeWeb/healthjunctionwebsite/src/Component/charity/our Partner/partner";
+import Partner from "./components/charity/our Partner/partner";
+import CharityForm from "./components/charity/Charitable ORG Data/charityinsertForm";
 function App() {
   return (
     <>
@@ -70,6 +71,7 @@ function App() {
         <Route path="/homecharity" exact component={Homecharity} />
         <Route path="/partner" exact component={Partner} />
         <Route path="/charityORG" exact component={CharityORG} />
+        <Route path="/charityinsert" exact component={CharityForm} />
       </Switch>
     </>
   );

@@ -57,7 +57,7 @@ const LoginAdmin = () => {
           <IoMdMail className="w-6 h-6 mr-2 text-gray-500" />
           <input
             type="email"
-            placeholder="Enter Email"
+            placeholder="Enter Username"
             className="w-full px-4 py-2 text-black border border-blue-500 rounded-md focus:outline-none focus:border-white"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
