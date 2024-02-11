@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { database } from "../../firebase";
+import { database } from "../../../firebase";
 
 function CharityORGL() {
   const [NGOsData, setNGOsData] = useState([]);
@@ -16,12 +16,12 @@ function CharityORGL() {
   };
 
   const NGOCard = ({ NGO }) => (
-    <details className="max-w-md mx-4 mb-8 rounded-lg overflow-hidden shadow-lg bg-white transform hover:scale-105 transition-transform duration-200 ease-in-out h-full">
-      <summary className="px-6 py-4 bg-gradient-to-r from-purple-600 to-red-500 text-white cursor-pointer">
-        <div className="font-bold text-xl mb-2">{NGO.Title || NGO.title}</div>
+    <details className="h-full max-w-md mx-4 mb-8 overflow-hidden transition-transform duration-200 ease-in-out transform bg-white rounded-lg shadow-lg hover:scale-105">
+      <summary className="px-6 py-4 text-white cursor-pointer bg-gradient-to-r from-purple-600 to-red-500">
+        <div className="mb-2 text-xl font-bold">{NGO.Title || NGO.title}</div>
         <p className="text-base">{NGO.Descripyion || NGO.description}</p>
       </summary>
-      <div className="px-6 py-4 flex-grow">
+      <div className="flex-grow px-6 py-4">
         {Object.entries(NGO).map(([key, value]) =>
           key !== "Title" && key !== "Descripyion" ? (
             <p key={key} className="text-gray-700">
@@ -49,12 +49,12 @@ function CharityORGL() {
     <div>
       <div className="p-5 text-center md:text-left md:flex md:items-center md:justify-center md:space-x-10 animate-pulse">
         <div className="md:w-1/2">
-          <h1 className="text-purple-700 text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-700 to-red-700">
+          <h1 className="text-5xl font-bold text-transparent text-purple-700 bg-clip-text bg-gradient-to-r from-purple-700 to-red-700">
             Charitable Organization Information
           </h1>
         </div>
         <div className="md:w-1/2">
-          <p className="text-purple-700 text-xl font-semibold">
+          <p className="text-xl font-semibold text-purple-700">
             Charitable organizations are vital as they address societal needs
             often overlooked by government resources. They provide essential
             services like food, shelter, education, and healthcare, and advocate
@@ -65,7 +65,7 @@ function CharityORGL() {
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap justify-center items-stretch w-full px-4 pt-10 mx-auto">
+      <div className="flex flex-wrap items-stretch justify-center w-full px-4 pt-10 mx-auto">
         {NGOsData.map((NGO) => (
           <NGOCard NGO={NGO} />
         ))}
