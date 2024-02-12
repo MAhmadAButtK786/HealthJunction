@@ -69,7 +69,7 @@ function AddDonorPage() {
     }
 
     try {
-      await addDoc(collection(database, "Donors"), donorData);
+      await addDoc(collection(database, "BDS Donors"), donorData);
       alert("Donor added successfully!");
       setRecipientData({
         FullName: "",
@@ -80,7 +80,7 @@ function AddDonorPage() {
         Phone: "",
         Province: "",
       });
-      // history.push("/donors"); 
+    // history.push("/donors"); 
     } catch (error) {
       console.error("Error adding donor: ", error);
       alert("Failed to add donor. Please try again.");

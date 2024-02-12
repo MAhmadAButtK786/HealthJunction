@@ -70,7 +70,7 @@ function AddRecipientPage() {
     }
 
     try {
-      await addDoc(collection(database, "Recepients"), recipientData);
+      await addDoc(collection(database, "BDS Recipient"), recipientData);
       alert("Recipient added successfully!");
       setRecipientData({
         FullName: "",
