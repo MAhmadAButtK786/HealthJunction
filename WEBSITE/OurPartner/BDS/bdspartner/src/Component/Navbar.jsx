@@ -41,8 +41,8 @@ const Navbar = () => {
             </button>
             {showDropdown2 && (
               <div className="absolute mt-1 right-0 w-40 bg-white rounded-lg shadow-md z-10">
-                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Insert Donor</a>
-                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Insert Recipient</a>
+                <a href="/donorReg" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Insert Donor</a>
+                <a href="/recipientReg" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Insert Recipient</a>
               </div>
             )}
           </div>
