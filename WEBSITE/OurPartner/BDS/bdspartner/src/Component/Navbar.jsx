@@ -1,82 +1,61 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
-  const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showDropdown1, setShowDropdown1] = useState(false);
+  const [showDropdown2, setShowDropdown2] = useState(false);
 
-  const toggleServicesDropdown = () => {
-    setShowServicesDropdown(!showServicesDropdown);
+  const toggleDropdown1 = () => {
+    setShowDropdown1(!showDropdown1);
   };
 
-  const toggleUserMenu = () => {
-    setShowUserMenu(!showUserMenu);
+  const toggleDropdown2 = () => {
+    setShowDropdown2(!showDropdown2);
   };
 
   return (
-    <header className="w-full text-gray-100 bg-gray-900 shadow body-font">
-      <div className="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row">
-        <nav className="flex flex-wrap items-center text-base lg:w-2/5 md:ml-auto">
-          <Link to="/healthPointHome" className="border-b border-transparent cursor-pointer mr-7 hover:text-blue-300 hover:border-indigo-600">
-            Our Drives
-          </Link>
-          <div className="relative">
-            <span
-              className="border-b border-transparent cursor-pointer mr-7 hover:text-blue-300 hover:border-indigo-600"
-              onClick={toggleServicesDropdown}
-            >
-              List of Recipients
-            </span>
-            {showServicesDropdown && (
-              <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md top-full">
-                <Link to="/bloodbank" className="block py-1 hover:text-blue-300">BloodBank</Link>
-                <Link to="/homecharity" className="block py-1 hover:text-blue-300">Charity</Link>
-                <Link to="/LabHome" className="block py-1 hover:text-blue-300">Laboratories</Link>
-              </div>
-            )}
-          </div>
-          <Link to="/contact" className="border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600">
-           List of Donors
-          </Link>
-        </nav>
-        <Link to="/" className="flex items-center order-first mb-4 font-medium lg:order-none lg:w-1/5 title-font lg:items-center lg:justify-center md:mb-0">
-          <img
-            src="images/Logos/BDS.jpeg"
-            style={{ height: 50, marginTop: 10, marginBottom: 10, borderRadius: '50%', backgroundColor: 'blue' }}
-            alt="logo"
-          />
-          <span className="ml-3 text-xl">Blood Donor Society</span>
-        </Link>
-        <div className="inline-flex mt-4 ml-5 lg:w-2/5 lg:justify-end lg:ml-0 lg:mt-0">
-          {/* Updated User menu design with a different icon */}
-          <div className="relative">
-            <button
-              className="px-3 py-2 text-white bg-indigo-700 rounded-lg hover:bg-indigo-500 focus:outline-none"
-              onClick={toggleUserMenu}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 15v-3m0 0v-3m0 3h3m-3 0h-3m-3 3h3m0 0h3m0-3v3m0 0v3m0-3h-3m3 0z"
-                />
+    <header className="text-gray-600 body-font bg-red-500">
+      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+          <a href="#" className="mr-5 text-white hover:text-white">Home</a>
+          <div className="relative inline-block">
+            <button onClick={toggleDropdown1} className="mr-5 bg-white hover:bg-gray-200 text-red-500 py-2 px-4 rounded inline-flex items-center">
+             Lists
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
-            {showUserMenu && (
-              <div className="absolute right-0 mt-2 text-gray-100 bg-gray-900 rounded-md">
-                <Link to="/login" className="block px-4 py-2 hover:text-blue-300">Login</Link>
-                <Link to="/settings" className="block px-4 py-2 hover:text-blue-300">Settings</Link>
-                <Link to="/logout" className="block px-4 py-2 hover:text-blue-300">Logout</Link>
+            {showDropdown1 && (
+              <div className="absolute mt-1 right-0 w-40 bg-white rounded-lg shadow-md z-10">
+                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Donor List</a>
+                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Recipient List</a>
+                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Our Team</a>
               </div>
             )}
           </div>
+          <div className="relative inline-block">
+            <button onClick={toggleDropdown2} className="bg-white hover:bg-gray-200 text-red-500 py-2 px-4 rounded inline-flex items-center">
+              Insert
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            {showDropdown2 && (
+              <div className="absolute mt-1 right-0 w-40 bg-white rounded-lg shadow-md z-10">
+                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Insert Donor</a>
+                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Insert Recipient</a>
+              </div>
+            )}
+          </div>
+        </nav>
+        <a href="#" className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-white lg:items-center lg:justify-center mb-4 md:mb-0">
+          <span className="ml-3 text-2xl">Blood Donor Society</span>
+        </a>
+        <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+          <button className="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 text-red-500">Button
+            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
         </div>
       </div>
     </header>

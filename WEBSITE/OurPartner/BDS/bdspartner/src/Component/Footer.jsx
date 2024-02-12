@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-y-4 md:grid-cols-3 lg:grid-cols-4">
             <div className="sm:col-span-2 md:col-span-1 lg:col-span-2">
               <h1 className="text-lg font-semibold tracking-tight text-gray-800 dark:text-white">
-                Our Vision
+                Health Junction Vision
               </h1>
               <div className="col-span-1 mt-2 space-y-4 text-gray-600 dark:text-gray-300">
                 <p className="leading-relaxed">
@@ -24,29 +24,29 @@ const Footer = () => {
 
             <div className="md:col-span-1 lg:col-span-1">
               <p className="font-semibold text-gray-800 dark:text-white">
-                Quick Links
+               Health Junction Quick Links 
               </p>
               <div className="flex flex-col items-start mt-2 space-y-2">
                 <Link to= "/home">
                 <p className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-500">
-                  Home
+                  Home 
                 </p>
                 </Link>
                 <Link to="/contact">
                 <p className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-500">
-                  Who We Are
+                 Who We Are
                 </p>
                 </Link>
                 <Link to="/contact">
                 <p className="text-gray-600 hover:underline hover:cursor-pointer hover:text-blue-500">
-                  Our Philosophy
+                  Health Junction Philosophy
                 </p>
                 </Link>
               </div>
             </div>
             <div className="md:col-span-1 lg:col-span-1">
               <p className="font-semibold text-gray-800 dark:text-white">
-                Services
+                Services Provided by Health Junction
               </p>
               <div className="flex flex-col items-start mt-2 space-y-2">
                 <Link
