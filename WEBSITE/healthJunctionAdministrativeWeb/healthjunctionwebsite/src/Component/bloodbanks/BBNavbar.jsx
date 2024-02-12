@@ -10,6 +10,8 @@ const navigation = [
   { name: 'Recipients', href: '/recipient',  },
   { name: 'Private Blood Banks', href: '/privateBB',  },
   { name: 'Public Blood Banks', href: '/publicBB',  },
+  { name: 'Register As Donor', href: '/donorsRegistration',  },
+  { name: 'Register As Recipient', href: '/recipientsRegistration',  },
 ]
 
 function classNames(...classes) {

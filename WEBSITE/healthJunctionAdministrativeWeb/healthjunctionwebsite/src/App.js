@@ -28,6 +28,8 @@ import IDCLab from './Component/lab/privateLabs/LabsScreens/IDC/idc';
 import IndusLab from './Component/lab/privateLabs/LabsScreens/Indus Lab/indusLab';
 import LahoreMDC from './Component/lab/privateLabs/LabsScreens/LahoreMDC/LahoreMDC';
 import AlnoorLab from './Component/lab/privateLabs/LabsScreens/AlnoorLab/alnoorLab';
+import AddDonorPage from './Component/bloodbanks/Registration/RegisterDonor';
+import AddRecipientPage from './Component/bloodbanks/Registration/RegisterRecipient';
 function App() {
   return (
       
@@ -52,7 +54,10 @@ function App() {
           <Route path="/recipient" exact component={Recipients}/>
           {/* Donors Lists */}
           <Route path="/donors" exact component={Donor}/>
-
+          {/* Register Donoe */}
+          <Route path="/donorsRegistration" exact component={AddDonorPage}/>
+          {/* Register Recipient */}
+          <Route path="/recipientsRegistration" exact component={AddRecipientPage}/>
 
                 {/* Charity Module Screens  */}
           {/* Charity Home */}
