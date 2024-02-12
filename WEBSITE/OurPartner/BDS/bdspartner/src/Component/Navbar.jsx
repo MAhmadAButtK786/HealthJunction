@@ -26,8 +26,8 @@ const Navbar = () => {
             </button>
             {showDropdown1 && (
               <div className="absolute mt-1 right-0 w-40 bg-white rounded-lg shadow-md z-10">
-                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Donor List</a>
-                <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Recipient List</a>
+                <a href="/donorlistBDS" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Donor List</a>
+                <a href="/recipientlistBDS" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Recipient List</a>
                 <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Our Team</a>
               </div>
             )}
