@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs,doc , deleteDoc } from "firebase/firestore"
 import { database } from "../../../firebase";
 import {Link} from 'react-router-dom'
 function PublicBBL() {
@@ -32,6 +32,24 @@ function PublicBBL() {
     test.Name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleDelete = (pbb) => {
+    if (window.confirm(`Are you sure you want to delete ${pbb.Name}?`)) {
+      deleteRecipient(pbb);
+    }
+  };
+
+  const deleteRecipient = async (pbb) => {
+    try {
+      await deleteDoc(doc(database, "Public Blood Banks", pbb.id));
+  
+      // Refresh data after deletion
+      getData();
+      alert(`${pbb.Name} has been deleted successfully.`);
+    } catch (error) {
+      console.error("Error deleting recipient: ", error);
+    }
+  };
+  
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
@@ -60,6 +78,7 @@ function PublicBBL() {
                 <th className="px-4 py-2 text-white">Address</th>
                 <th className="px-4 py-2 text-white">License Number</th>
                 <th className="px-4 py-2 text-white">Sector</th>
+                <th className="px-4 py-2 text-white">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -82,6 +101,7 @@ function PublicBBL() {
                   </td>
                   <td className="px-4 py-2">{donor["License Number"]}</td>
                   <td className="px-4 py-2">{donor.Secter}</td>
+                  <td className='px-4 py-2'> <button onClick={() => handleDelete(donor)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button></td>
                 </tr>
               ))}
             </tbody>
