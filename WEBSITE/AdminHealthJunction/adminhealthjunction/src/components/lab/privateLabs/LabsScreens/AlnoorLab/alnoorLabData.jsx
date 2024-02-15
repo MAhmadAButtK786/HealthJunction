@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, deleteDoc,doc } from "firebase/firestore";
 import { database } from "../../../../../firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'; // Added faTrash for delete icon
 import { Link } from "react-router-dom";
 function Alnoor() {
   const [testsData, setTestsData] = useState([]);
@@ -15,13 +15,13 @@ function Alnoor() {
   const getData = async () => {
     try {
       const querySnapshot = await getDocs(collection(database, "Alnoor Lab"));
-      const data = querySnapshot.docs.map((doc) => doc.data());
+      const data = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
       setTestsData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-
+  
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -31,7 +31,23 @@ function Alnoor() {
     typeof test["Test Name"] === 'string' &&
     test["Test Name"].toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  const handleDelete = (test) => {
+    if (window.confirm(`Are you sure you want to delete ${test["Test Name"]}?`)) {
+      deleteRecipient(test);
+    }
+  };
+  
+  const deleteRecipient = async (test) => {
+    try {
+      await deleteDoc(doc(database, "Alnoor Lab", test.id));
+  
+      // Refresh data after deletion
+      getData();
+      alert(`${test["Test Name"]} has been deleted successfully.`);
+    } catch (error) {
+      console.error("Error deleting test: ", error);
+    }
+  };
   return (
     <>
       <div className="flex items-center justify-center">
@@ -63,7 +79,7 @@ function Alnoor() {
               <tr>
               <th className="px-4 py-3 text-xl font-bold">Test Name</th>
                 <th className="px-4 py-3 text-xl font-bold">Price</th>
-               
+                <th className="px-4 py-3 text-xl font-bold">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -73,7 +89,11 @@ function Alnoor() {
            
                   <td className="px-4 py-2 border">{test["Price"]}</td>
                   
-                 
+                  <td className="px-4 py-2 border">
+                    <button onClick={() => handleDelete(test)} className="text-red-500 hover:text-red-700">
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
