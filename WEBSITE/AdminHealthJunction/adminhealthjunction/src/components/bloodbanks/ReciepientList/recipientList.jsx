@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
+import { collection, getDocs, query, where, deleteDoc } from "firebase/firestore"
 import { database } from "../../../firebase";
 import { Link } from "react-router-dom";
 
@@ -81,17 +74,37 @@ function RecipientList() {
       [name]: value,
     }));
   };
-  const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this recipient?")) {
-      try {
-        await deleteDoc(doc(database, "Recepients", id));
-        getData();
-      } catch (error) {
-        console.error("Error deleting recipient: ", error);
-      }
+  const handleDelete = (recipient) => {
+    if (window.confirm(`Are you sure you want to delete ${recipient.FullName}?`)) {
+      deleteRecipient(recipient);
     }
   };
 
+  const deleteRecipient = async (recipient) => {
+    try {
+      const filteredQuery = query(
+        collection(database, "Recepients"),
+        where("FullName", "==", recipient.FullName), // Assuming FullName is unique
+        where("Age", "==", recipient.Age),
+        where("BloodType", "==", recipient.BloodType),
+        where("City", "==", recipient.City),
+        where("Email", "==", recipient.Email),
+        where("Phone", "==", recipient.Phone),
+        where("Province", "==", recipient.Province)
+      );
+      
+      const querySnapshot = await getDocs(filteredQuery);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+
+      // Refresh data after deletion
+      getData();
+      alert(`${recipient.FullName} has been deleted successfully.`);
+    } catch (error) {
+      console.error("Error deleting donor: ", error);
+    }
+  };
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
@@ -208,14 +221,7 @@ function RecipientList() {
                   </td>
                   <td className="px-4 py-2">{recipient.Phone}</td>
                   <td className="px-4 py-2">{recipient.Province}</td>
-                  <td className="px-4 py-2">
-                    <button
-                      className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700"
-                      onClick={() => handleDelete(recipient.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
+                  <td className='px-4 py-2'> <button onClick={() => handleDelete(recipient)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button></td>
                 </tr>
               ))}
             </tbody>

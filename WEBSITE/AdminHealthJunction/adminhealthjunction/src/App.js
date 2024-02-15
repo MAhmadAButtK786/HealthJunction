@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'; 
 import { Switch, Route, Redirect } from 'react-router-dom';
+// Importing components
 import Home from "./components/Admin Home/home";
 import Contact from "./components/aboutUs/contact";
 import LoginAdmin from "./components/loginadmin";
-// Blood Banks import
+// Blood Banks
 import bloodbank from "./components/bloodbanks/bbHome/bloodbank";
 import Donor from "./components/bloodbanks/DonorsList/donor";
 import PrivateBB from "./components/bloodbanks/PrivateBB/privateBB";
@@ -13,7 +14,7 @@ import AddRecipientPage from "./components/bloodbanks/ReciepientList/insertrecip
 import AddDonorPage from "./components/bloodbanks/DonorsList/insertdonors";
 import AddPrivateBB from "./components/bloodbanks/PrivateBB/insertprivateBB";
 import AddPublicBB from "./components/bloodbanks/PublicBB/insertpublicBB";
-// Lab Imports
+// Labs
 import LabsHome from "./components/lab/LabHome/LabHome";
 import AlliedLab from "./components/lab/privateLabs/LabsScreens/Allied Lab/alliedLab";
 import AlnoorLab from "./components/lab/privateLabs/LabsScreens/AlnoorLab/alnoorLab";
@@ -34,8 +35,12 @@ import Homecharity from "./components/charity/CharityHome/homecharity";
 import CharityORG from "./components/charity/Charitable ORG Data/charityORG";
 import Partner from "./components/charity/our Partner/partner";
 import CharityForm from "./components/charity/Charitable ORG Data/charityinsertForm";
-import { auth } from './firebase'; // Import Firebase auth module
+// Import Firebase auth module
+import { auth } from './firebase';
+
 // Initialize Firebase
+
+// PrivateRoute Component
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
   return (
     <Route
@@ -51,11 +56,13 @@ const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
   );
 };
 
+// App Component
 const App = () => {
+  // State to manage authentication status
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Check authentication status
+    // Check authentication status on component mount
     auth.onAuthStateChanged(user => {
       if (user) {
         setIsAuthenticated(true);
@@ -64,43 +71,49 @@ const App = () => {
       }
     });
   }, []);
+
   return (
     <>
+      {/* Switch to render only one route at a time */}
       <Switch>
-        <PrivateRoute path="/home" exact component={Home}  isAuthenticated={isAuthenticated}/>
+        {/* Routes */}
+        <PrivateRoute path="/home" exact component={Home} isAuthenticated={isAuthenticated}/>
         <PrivateRoute path="/contact" exact component={Contact} isAuthenticated={isAuthenticated}/>
         <Route path="/login" exact component={LoginAdmin} />
+        
         {/* Blood Banks Screens */}
-        <PrivateRoute path="/bloodbank" exact component={bloodbank} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/donor" exact component={Donor} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/privateBB" exact component={PrivateBB} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/publicBB" exact component={PublicBB} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/recipients" exact component={Recipients} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/insertsrecipients" exact component={AddRecipientPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/insertsdonor" exact component={AddDonorPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/insertsPrivateBB" exact component={AddPrivateBB} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/insertsPublicBB" exact component={AddPublicBB} isAuthenticated={isAuthenticated}/>
+        <Route path="/bloodbank" exact component={bloodbank} />
+        <Route path="/donor" exact component={Donor} />
+        <Route path="/privateBB" exact component={PrivateBB} />
+        <Route path="/publicBB" exact component={PublicBB} />
+        <Route path="/recipients" exact component={Recipients} />
+        <Route path="/insertsrecipients" exact component={AddRecipientPage}/>
+        <Route path="/insertsdonor" exact component={AddDonorPage} />
+        <Route path="/insertsPrivateBB" exact component={AddPrivateBB} />
+        <Route path="/insertsPublicBB" exact component={AddPublicBB}/>
+        
         {/* Lab Screens */}
-        <PrivateRoute path="/labhome" exact component={LabsHome} isAuthenticated={isAuthenticated}/>
-       < PrivateRoute  path="/alliedlab" exact component={AlliedLab} isAuthenticated={isAuthenticated}/>
-       < PrivateRoute  path="/alnoorlab" exact component={AlnoorLab} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/chughtailab" exact component={ChughtaiLab} isAuthenticated={isAuthenticated}/>
-       < PrivateRoute  path="/excellab" exact component={ExcelLab} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/idclab" exact component={IDCLab} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/induslab" exact component={IndusLab} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/lahoremdc" exact component={LahoreMDC} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/alliedinsertpage" exact component={AlliedInsertPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/alnoorinsertpage" exact component={AlnoorInsertPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/excelinsertpage" exact component={ExcelInsertPage}isAuthenticated={isAuthenticated} />
-        <PrivateRoute  path="/chugtaiinsertpage" exact component={ChugtaiInsertPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/idcinsertpage" exact component={IDCInsertPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/indusinsertpage" exact component={IndusInsertPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/lmldcinsertpage" exact component={LMLDCInsertPage} isAuthenticated={isAuthenticated}/>
+        <Route path="/labhome" exact component={LabsHome} />
+        <Route path="/alliedlab" exact component={AlliedLab} />
+        <Route path="/alnoorlab" exact component={AlnoorLab} />
+        <Route path="/chughtailab" exact component={ChughtaiLab}/>
+        <Route path="/excellab" exact component={ExcelLab}/>
+        <Route path="/idclab" exact component={IDCLab}/>
+        <Route path="/induslab" exact component={IndusLab}/>
+        <Route path="/lahoremdc" exact component={LahoreMDC}/>
+        <Route path="/alliedinsertpage" exact component={AlliedInsertPage}/>
+        <Route path="/alnoorinsertpage" exact component={AlnoorInsertPage}/>
+        <Route path="/excelinsertpage" exact component={ExcelInsertPage}/>
+        <Route path="/chugtaiinsertpage" exact component={ChugtaiInsertPage}/>
+        <Route path="/idcinsertpage" exact component={IDCInsertPage}/>
+        <Route path="/indusinsertpage" exact component={IndusInsertPage}/>
+        <Route path="/lmldcinsertpage" exact component={LMLDCInsertPage}/>
+        
         {/* Charity Screens */}
-        <PrivateRoute path="/homecharity" exact component={Homecharity} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/partner" exact component={Partner} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/charityORG" exact component={CharityORG} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/charityinsert" exact component={CharityForm} isAuthenticated={isAuthenticated}/>
+        <Route path="/homecharity" exact component={Homecharity} />
+        <Route path="/partner" exact component={Partner} />
+        <Route path="/charityORG" exact component={CharityORG} />
+        <Route path="/charityinsert" exact component={CharityForm}/>
       </Switch>
     </>
   );
