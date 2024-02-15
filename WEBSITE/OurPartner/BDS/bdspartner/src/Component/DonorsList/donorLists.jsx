@@ -69,7 +69,30 @@ function DonorLists() {
       [name]: value,
     }));
   };
+  const handleDelete = async (recipient) => {
+    try {
+      const filteredQuery = query(
+        collection(database, "BDS Recipient"),
+        where("FullName", "==", recipient.FullName), // Assuming FullName is unique
+        where("Age", "==", recipient.Age),
+        where("BloodType", "==", recipient.BloodType),
+        where("City", "==", recipient.City),
+        where("Email", "==", recipient.Email),
+        where("Phone", "==", recipient.Phone),
+        where("Province", "==", recipient.Province)
+      );
+      
+      const querySnapshot = await getDocs(filteredQuery);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
 
+      // Refresh data after deletion
+      getData();
+    } catch (error) {
+      console.error("Error deleting recipient: ", error);
+    }
+  };
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
@@ -156,6 +179,7 @@ function DonorLists() {
         <th className='px-4 py-2 text-white'>Email</th>
         <th className='px-4 py-2 text-white'>Phone</th>
         <th className='px-4 py-2 text-white'>Province</th>
+        <th className='px-4 py-2 text-white'>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -170,6 +194,7 @@ function DonorLists() {
           </td>
           <td className='px-4 py-2'>{donor.Phone}</td>
           <td className='px-4 py-2'>{donor.Province}</td>
+          <td className='px-4 py-2'> <button onClick={() => handleDelete(donor)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button></td>
         </tr>
       ))}
     </tbody>
