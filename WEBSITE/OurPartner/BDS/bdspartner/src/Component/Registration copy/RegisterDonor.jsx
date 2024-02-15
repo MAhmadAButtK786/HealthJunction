@@ -80,7 +80,7 @@ function AddDonorPage() {
         Phone: "",
         Province: "",
       });
-    // history.push("/donors"); 
+  // history.push("/donors"); 
     } catch (error) {
       console.error("Error adding donor: ", error);
       alert("Failed to add donor. Please try again.");
