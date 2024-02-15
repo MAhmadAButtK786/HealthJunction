@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, deleteDoc } from "firebase/firestore"
 import { database } from "../../../firebase";
 import {Link} from "react-router-dom";
 function DonorLists() {
@@ -68,7 +68,37 @@ function DonorLists() {
       [name]: value,
     }));
   };
- 
+  const handleDelete = (donor) => {
+    if (window.confirm(`Are you sure you want to delete ${donor.FullName}?`)) {
+      deleteDonor(donor);
+    }
+  };
+
+  const deleteDonor = async (donor) => {
+    try {
+      const filteredQuery = query(
+        collection(database, "Donors"),
+        where("FullName", "==", donor.FullName), // Assuming FullName is unique
+        where("Age", "==", donor.Age),
+        where("BloodType", "==", donor.BloodType),
+        where("City", "==", donor.City),
+        where("Email", "==", donor.Email),
+        where("Phone", "==", donor.Phone),
+        where("Province", "==", donor.Province)
+      );
+      
+      const querySnapshot = await getDocs(filteredQuery);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+
+      // Refresh data after deletion
+      getData();
+      alert(`${donor.FullName} has been deleted successfully.`);
+    } catch (error) {
+      console.error("Error deleting donor: ", error);
+    }
+  };
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
@@ -160,6 +190,7 @@ function DonorLists() {
         <th className='px-4 py-2 text-white'>Email</th>
         <th className='px-4 py-2 text-white'>Phone</th>
         <th className='px-4 py-2 text-white'>Province</th>
+        <th className='px-4 py-2 text-white'>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -174,7 +205,7 @@ function DonorLists() {
           </td>
           <td className='px-4 py-2'>{donor.Phone}</td>
           <td className='px-4 py-2'>{donor.Province}</td>
-        
+          <td className='px-4 py-2'> <button onClick={() => handleDelete(donor)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button></td>
         </tr>
       ))}
     </tbody>
