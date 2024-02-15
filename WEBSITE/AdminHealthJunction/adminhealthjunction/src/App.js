@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Switch, Route } from "react-router-dom";
+import React, { useState, useEffect } from 'react'; 
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from "./components/Admin Home/home";
 import Contact from "./components/aboutUs/contact";
 import LoginAdmin from "./components/loginadmin";
@@ -34,45 +34,72 @@ import Homecharity from "./components/charity/CharityHome/homecharity";
 import CharityORG from "./components/charity/Charitable ORG Data/charityORG";
 import Partner from "./components/charity/our Partner/partner";
 import CharityForm from "./components/charity/Charitable ORG Data/charityinsertForm";
-import PrivateRoute from "./components/PrivateRoute";
-  function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false); // Define isAuthenticated state
+import { auth } from './firebase'; // Import Firebase auth module
+// Initialize Firebase
+const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        isAuthenticated ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      }
+    />
+  );
+};
+
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check authentication status
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+    });
+  }, []);
   return (
     <>
       <Switch>
-        <PrivateRoute path="/home" exact component={Home} isAuthenticated={isAuthenticated} />
-        <PrivateRoute  path="/contact" exact component={Contact} isAuthenticated={isAuthenticated}/>
-        <Route path="/" exact component={LoginAdmin}  />
+        <PrivateRoute path="/home" exact component={Home}  isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/contact" exact component={Contact} isAuthenticated={isAuthenticated}/>
+        <Route path="/login" exact component={LoginAdmin} />
         {/* Blood Banks Screens */}
-        <PrivateRoute  path="/bloodbank" exact component={bloodbank} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/donor" exact component={Donor} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/privateBB" exact component={PrivateBB} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/publicBB" exact component={PublicBB} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/recipients" exact component={Recipients} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/insertsrecipients" exact component={AddRecipientPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/insertsdonor" exact component={AddDonorPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/insertsPrivateBB" exact component={AddPrivateBB} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/insertsPublicBB" exact component={AddPublicBB} isAuthenticated={isAuthenticated} />
+        <PrivateRoute path="/bloodbank" exact component={bloodbank} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/donor" exact component={Donor} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/privateBB" exact component={PrivateBB} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/publicBB" exact component={PublicBB} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/recipients" exact component={Recipients} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/insertsrecipients" exact component={AddRecipientPage} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/insertsdonor" exact component={AddDonorPage} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/insertsPrivateBB" exact component={AddPrivateBB} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/insertsPublicBB" exact component={AddPublicBB} isAuthenticated={isAuthenticated}/>
         {/* Lab Screens */}
-        <PrivateRoute  path="/labhome" exact component={LabsHome} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/alliedlab" exact component={AlliedLab} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/alnoorlab" exact component={AlnoorLab} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/chughtailab" exact component={ChughtaiLab} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/excellab" exact component={ExcelLab} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/labhome" exact component={LabsHome} isAuthenticated={isAuthenticated}/>
+       < PrivateRoute  path="/alliedlab" exact component={AlliedLab} isAuthenticated={isAuthenticated}/>
+       < PrivateRoute  path="/alnoorlab" exact component={AlnoorLab} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/chughtailab" exact component={ChughtaiLab} isAuthenticated={isAuthenticated}/>
+       < PrivateRoute  path="/excellab" exact component={ExcelLab} isAuthenticated={isAuthenticated}/>
         <PrivateRoute  path="/idclab" exact component={IDCLab} isAuthenticated={isAuthenticated}/>
         <PrivateRoute  path="/induslab" exact component={IndusLab} isAuthenticated={isAuthenticated}/>
         <PrivateRoute  path="/lahoremdc" exact component={LahoreMDC} isAuthenticated={isAuthenticated}/>
         <PrivateRoute  path="/alliedinsertpage" exact component={AlliedInsertPage} isAuthenticated={isAuthenticated}/>
         <PrivateRoute  path="/alnoorinsertpage" exact component={AlnoorInsertPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/excelinsertpage" exact component={ExcelInsertPage} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute  path="/excelinsertpage" exact component={ExcelInsertPage}isAuthenticated={isAuthenticated} />
         <PrivateRoute  path="/chugtaiinsertpage" exact component={ChugtaiInsertPage} isAuthenticated={isAuthenticated}/>
         <PrivateRoute  path="/idcinsertpage" exact component={IDCInsertPage} isAuthenticated={isAuthenticated}/>
         <PrivateRoute  path="/indusinsertpage" exact component={IndusInsertPage} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/lmldcinsertpage" exact component={LMLDCInsertPage} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/lmldcinsertpage" exact component={LMLDCInsertPage} isAuthenticated={isAuthenticated}/>
         {/* Charity Screens */}
-        <PrivateRoute  path="/homecharity" exact component={Homecharity} isAuthenticated={isAuthenticated} />
-        <PrivateRoute  path="/partner" exact component={Partner} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute  path="/charityORG" exact component={CharityORG} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/homecharity" exact component={Homecharity} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/partner" exact component={Partner} isAuthenticated={isAuthenticated}/>
+        <PrivateRoute path="/charityORG" exact component={CharityORG} isAuthenticated={isAuthenticated}/>
         <PrivateRoute path="/charityinsert" exact component={CharityForm} isAuthenticated={isAuthenticated}/>
       </Switch>
     </>

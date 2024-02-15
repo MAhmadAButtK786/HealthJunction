@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IoMdMail, IoMdLock } from 'react-icons/io';
-import { auth, database } from "../firebase";
+import {  database } from "../firebase";
 import { query, collection, where, getDocs } from 'firebase/firestore';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+
 
 const LoginAdmin = () => {
   const [username, setUsername] = useState('');
