@@ -14,8 +14,8 @@ function App() {
       <Route path="/home" exact component={BDSHome} />
       <Route path="/donorReg" exact component={AddDonorPage} />
       <Route path="/recipientReg" exact component={AddRecipientPage} />
-      <Route path="/donorlistBDS" exact component={Donor} />
-      <Route path="/recipientlistBDS" exact component={Recipients} />
+      <Route path="/donorlistORG" exact component={Donor} />
+      <Route path="/recipientlistORG" exact component={Recipients} />
       </Switch>
     </>
     
