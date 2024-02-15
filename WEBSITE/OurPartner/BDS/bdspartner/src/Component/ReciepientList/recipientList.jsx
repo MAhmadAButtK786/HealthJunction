@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, deleteDoc } from "firebase/firestore";
 import { database } from "../../firebase";
+import { useHistory } from "react-router-dom";
 
 function RecipientList() {
   const [donorsData, setDonorsData] = useState([]);
@@ -11,6 +12,8 @@ function RecipientList() {
     city: "",
     bloodGroup: "",
   });
+
+  const history = useHistory(); // Initialize useHistory hook
 
   useEffect(() => {
     getData();
@@ -70,10 +73,42 @@ function RecipientList() {
     }));
   };
 
+  const handleDelete = async (recipient) => {
+    try {
+      const filteredQuery = query(
+        collection(database, "BDS Recipient"),
+        where("FullName", "==", recipient.FullName), // Assuming FullName is unique
+        where("Age", "==", recipient.Age),
+        where("BloodType", "==", recipient.BloodType),
+        where("City", "==", recipient.City),
+        where("Email", "==", recipient.Email),
+        where("Phone", "==", recipient.Phone),
+        where("Province", "==", recipient.Province)
+      );
+      
+      const querySnapshot = await getDocs(filteredQuery);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+
+      // Refresh data after deletion
+      getData();
+    } catch (error) {
+      console.error("Error deleting recipient: ", error);
+    }
+  };
+
+  const handleUpdate = (recipient) => {
+    history.push({
+      pathname: '/updaterecipient',
+      state: { recipient: recipient }
+    });
+  };
+
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
-      <div className="text-center pb-7">
+        <div className="text-center pb-7">
           <h1 className="text-5xl font-bold text-red-600">Registered recipient in Our Platform</h1>
         </div>
         <div className="flex flex-col items-center justify-center mb-4 md:flex-row">
@@ -146,35 +181,42 @@ function RecipientList() {
           </select>
         </div>
         <div className='overflow-x-auto'>
-  <table className='w-full mt-5 text-center border border-red-400'>
-    <thead className='h-10 bg-red-700 border border-red-400 '>
-      <tr>
-        <th className='px-4 py-2 text-white'>Full Name</th>
-        <th className='px-4 py-2 text-white'>Age</th>
-        <th className='px-4 py-2 text-white'>Blood Type</th>
-        <th className='px-4 py-2 text-white'>City</th>
-        <th className='px-4 py-2 text-white'>Email</th>
-        <th className='px-4 py-2 text-white'>Phone</th>
-        <th className='px-4 py-2 text-white'>Province</th>
-      </tr>
-    </thead>
-    <tbody>
-      {donorsData.map(donor => (
-        <tr key={donor.id} className='h-12 bg-white border-b border-gray-400'>
-          <td className='px-4 py-2'>{donor.FullName}</td>
-          <td className='px-4 py-2'>{donor.Age}</td>
-          <td className='px-4 py-2'>{donor.BloodType}</td>
-          <td className='px-4 py-2'>{donor.City}</td>
-          <td className='px-4 py-2'>
-            <a href={`mailto:${donor.Email}`} className="text-blue-500 underline">{donor.Email}</a>
-          </td>
-          <td className='px-4 py-2'>{donor.Phone}</td>
-          <td className='px-4 py-2'>{donor.Province}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+          <table className='w-full mt-5 text-center border border-red-400'>
+            <thead className='h-10 bg-red-700 border border-red-400 '>
+              <tr>
+                <th className='px-4 py-2 text-white'>Full Name</th>
+                <th className='px-4 py-2 text-white'>Age</th>
+                <th className='px-4 py-2 text-white'>Blood Type</th>
+                <th className='px-4 py-2 text-white'>City</th>
+                <th className='px-4 py-2 text-white'>Email</th>
+                <th className='px-4 py-2 text-white'>Phone</th>
+                <th className='px-4 py-2 text-white'>Province</th>
+                <th className='px-4 py-2 text-white'>Actions</th> 
+                <th className='px-4 py-2 text-white'>Actions</th> 
+              </tr>
+            </thead>
+            <tbody>
+              {donorsData.map(donor => (
+                <tr key={donor.id} className='h-12 bg-white border-b border-gray-400'>
+                  <td className='px-4 py-2'>{donor.FullName}</td>
+                  <td className='px-4 py-2'>{donor.Age}</td>
+                  <td className='px-4 py-2'>{donor.BloodType}</td>
+                  <td className='px-4 py-2'>{donor.City}</td>
+                  <td className='px-4 py-2'>
+                    <a href={`mailto:${donor.Email}`} className="text-blue-500 underline">{donor.Email}</a>
+                  </td>
+                  <td className='px-4 py-2'>{donor.Phone}</td>
+                  <td className='px-4 py-2'>{donor.Province}</td>
+                  <td className='px-4 py-2'>  <button onClick={() => handleUpdate(donor.id)} className="px-3 py-1 mr-2 text-white bg-blue-500 rounded-md">Update</button> </td>
+                  <td className='px-4 py-2'>
+                   
+                    <button onClick={() => handleDelete(donor)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
