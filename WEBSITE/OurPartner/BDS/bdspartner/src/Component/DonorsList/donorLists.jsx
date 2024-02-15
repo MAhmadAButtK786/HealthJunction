@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, deleteDoc } from "firebase/firestore";
 import { database } from "../../firebase";
+import { useHistory } from "react-router-dom";;
 
 function DonorLists() {
   const [donorsData, setDonorsData] = useState([]);
@@ -72,7 +73,7 @@ function DonorLists() {
   const handleDelete = async (recipient) => {
     try {
       const filteredQuery = query(
-        collection(database, "BDS Recipient"),
+        collection(database, "BDS Donors"),
         where("FullName", "==", recipient.FullName), // Assuming FullName is unique
         where("Age", "==", recipient.Age),
         where("BloodType", "==", recipient.BloodType),
