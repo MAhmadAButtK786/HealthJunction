@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 // firebase.js
-import { initializeApp, getApp, getApps } from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from "firebase/storage";
-import { getAuth, GoogleAuthProvider, sendPasswordResetEmail as sendPasswordResetEmailFirebase } from "firebase/auth"; // Rename to avoid conflicts
+import { getAuth, GoogleAuthProvider, sendPasswordResetEmail as sendPasswordResetEmailFirebase } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -16,15 +16,12 @@ const firebaseConfig = {
   measurementId: "G-RLDCY49C88"
 };
 
-// Initialize Firebase
-// Initialize Firebase
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 const storage = getStorage(app);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
-// Export the sendPasswordResetEmail function
 const sendPasswordResetEmail = async (email) => {
   return sendPasswordResetEmailFirebase(auth, email);
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaHospital, FaMapMarkerAlt, FaBuilding, FaCity, FaPhone, FaEnvelope, FaHospitalSymbol, FaBed } from "react-icons/fa";
 import { database } from "../../../firebase";
 import { useHistory } from "react-router-dom";
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc, getDocs } from "firebase/firestore"; 
 const HospitalForm = () => {
   const history = useHistory();
 
@@ -41,28 +41,39 @@ const HospitalForm = () => {
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     // Confirmation dialog
     const isConfirmed = window.confirm("Are you sure you want to submit the form?");
     if (!isConfirmed) {
       return; // If user cancels, do nothing
     }
-
+  
     // Validation: Check if all required fields are filled
     if (!formData.hospitalName || !formData.address || !formData.province || !formData.city || !formData.zipCode || !formData.contactNumber || !formData.email || !formData.departments || !formData.wards) {
       alert("Please fill in all the fields.");
       return;
     }
-
-   
-  try {
-    await addDoc(collection(database, "HospitalData"), formData);
-    console.log("Form data successfully submitted to Firebase.");
-    history.push("/hfcheckbox");
-  } catch (error) {
-    console.error("Error adding document: ", error);
-  }
-};
+  
+    try {
+      // Get the number of existing documents in the collection
+      const querySnapshot = await getDocs(collection(database, "HospitalData"));
+      const numberOfDocs = querySnapshot.size;
+  
+      // Generate the ID (incremental)
+      const id = `H${numberOfDocs+1}`;
+  
+      // Add the ID to the form data
+      const formDataWithId = { ...formData, id };
+  
+      // Add the document to the Firestore collection
+      await addDoc(collection(database, "HospitalData"), formDataWithId);
+      
+      console.log("Form data successfully submitted to Firebase.");
+      history.push("/hfcheckbox");
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
+  };
   return (
     <div className="flex items-center justify-center min-h-screen bg-blue-200">
       <div className="w-full max-w-screen-md p-6 my-10 bg-white rounded-md shadow-md">

@@ -1,12 +1,12 @@
 import React from 'react'
 import HPNavbar from '../../hpNavbar'
 import Footer from '../../../footer'
-import HospitalRegistrationForm from './hpForm'
+import HospitalFormCheckbox from './hpForm'
 function HPRegistrationForm() {
   return (
     <>
     <HPNavbar/>
-    <HospitalRegistrationForm/>
+    <HospitalFormCheckbox/>
     <Footer/>
     </>
   )

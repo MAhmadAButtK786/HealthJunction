@@ -30,6 +30,7 @@ import LahoreMDC from './Component/lab/privateLabs/LabsScreens/LahoreMDC/LahoreM
 import AlnoorLab from './Component/lab/privateLabs/LabsScreens/AlnoorLab/alnoorLab';
 import AddDonorPage from './Component/bloodbanks/Registration/RegisterDonor';
 import AddRecipientPage from './Component/bloodbanks/Registration/RegisterRecipient';
+import Excelsheet from './Component/healthPoints/healthpRegistration/ExcelSheetPart/excelsheet';
 function App() {
   return (
       
@@ -39,6 +40,7 @@ function App() {
           <Route path ="/healthPointHome" exact component={HealthPointHome}/>
           <Route path ="/basicdF" exact component={BasicdF}/>
           <Route path="/hfcheckbox" exact component ={HPRegistrationForm}/>
+          <Route path ="/hospitalformexcelsheet" exact component={Excelsheet}/>
           <Route path ="/guidlines" exact component={Guidlines}/>
 
               {/* Blood Banks Modules Screens */}
