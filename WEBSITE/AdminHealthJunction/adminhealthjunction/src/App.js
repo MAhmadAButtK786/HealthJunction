@@ -34,6 +34,13 @@ import ExcelInsertPage from "./components/lab/privateLabs/LabsScreens/Excel Lab/
 import IDCInsertPage from "./components/lab/privateLabs/LabsScreens/IDC/idcinsert";
 import IndusInsertPage from "./components/lab/privateLabs/LabsScreens/Indus Lab/indusinsert";
 import LMLDCInsertPage from "./components/lab/privateLabs/LabsScreens/LahoreMDC/lahoremdcinsert";
+import UpdateAlliedLabPage from './components/lab/privateLabs/LabsScreens/Allied Lab/updatealliedlab';
+import UpdateAlnoorLabPage from './components/lab/privateLabs/LabsScreens/AlnoorLab/updatealnoor';
+import UpdateChughtaiLabPage from './components/lab/privateLabs/LabsScreens/ChughtaiLab/updatechughtailab';
+import UpdateExcelLabPage from './components/lab/privateLabs/LabsScreens/Excel Lab/updateexcel';
+import UpdateIDCLabPage from './components/lab/privateLabs/LabsScreens/IDC/update idc';
+import UpdateIndusLabPage from './components/lab/privateLabs/LabsScreens/Indus Lab/updateindus';
+import UpdateLahoreMDCDPage from './components/lab/privateLabs/LabsScreens/LahoreMDC/updateLahoreMDC';
 // Charity Links
 import Homecharity from "./components/charity/CharityHome/homecharity";
 import CharityORG from "./components/charity/Charitable ORG Data/charityORG";
@@ -115,7 +122,13 @@ const App = () => {
         <Route path="/idcinsertpage" exact component={IDCInsertPage}/>
         <Route path="/indusinsertpage" exact component={IndusInsertPage}/>
         <Route path="/lmldcinsertpage" exact component={LMLDCInsertPage}/>
-        
+        <Route path="/updateAlliedPage/:id" exact component={UpdateAlliedLabPage}/>
+        <Route path="/updateAlnoorPage/:id" exact component={UpdateAlnoorLabPage}/>
+        <Route path="/updateChughtaiPage/:id" exact component={UpdateChughtaiLabPage}/>
+        <Route path="/updateExcelPage/:id" exact component={UpdateExcelLabPage}/>
+        <Route path="/updateIDCPage/:id" exact component={UpdateIDCLabPage}/>
+        <Route path="/updateIndusPage/:id" exact component={UpdateIndusLabPage}/>
+        <Route path="/updateLMDCPage/:id" exact component={UpdateLahoreMDCDPage}/>
         {/* Charity Screens */}
         <Route path="/homecharity" exact component={Homecharity} />
         <Route path="/partner" exact component={Partner} />

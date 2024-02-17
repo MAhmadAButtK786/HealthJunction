@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs, deleteDoc,doc } from "firebase/firestore";
 import { database } from "../../../../../firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'; // Added faTrash for delete icon
+import { faSearch, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'; // Added faTrash for delete icon
 import { Link } from "react-router-dom";
 function Excel() {
   const [testsData, setTestsData] = useState([]);
@@ -80,6 +80,7 @@ function Excel() {
               <th className="px-4 py-3 text-xl font-bold">Test Name</th>
                 <th className="px-4 py-3 text-xl font-bold">Price</th>
                 <th className="px-4 py-3 text-xl font-bold">Action</th>
+                <th className="px-4 py-3 text-xl font-bold">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -91,6 +92,13 @@ function Excel() {
                     <button onClick={() => handleDelete(test)} className="text-red-500 hover:text-red-700">
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
+                  </td>
+                  <td className="px-4 py-2 border">
+                    <Link to ={`/updateExcelPage/${test.id}`}>
+                    <button className="text-green-500 hover:text-green-700">
+                      <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    </Link>
                   </td>
                 </tr>
               ))}

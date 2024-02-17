@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs, deleteDoc,doc } from "firebase/firestore";
 import { database } from "../../../../../firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'; // Added faTrash for delete icon
+import { faSearch, faTrash , faEdit} from '@fortawesome/free-solid-svg-icons'; // Added faTrash for delete icon
 import { Link } from "react-router-dom";
 function Indus() {
   const [testsData, setTestsData] = useState([]);
@@ -91,6 +91,7 @@ function Indus() {
                 <th className="px-4 py-3 text-xl font-bold">Reporting Time</th>
                 <th className="px-4 py-3 text-xl font-bold">Sample Required</th>
                 <th className="px-4 py-3 text-xl font-bold">Action</th>
+                <th className="px-4 py-3 text-xl font-bold">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -110,6 +111,13 @@ function Indus() {
                     <button onClick={() => handleDelete(test)} className="text-red-500 hover:text-red-700">
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
+                  </td>
+                  <td className="px-4 py-2 border">
+                    <Link to ={`/updateIndusPage/${test.id}`}>
+                    <button className="text-green-500 hover:text-green-700">
+                      <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                    </Link>
                   </td>
                 </tr>
               ))}
