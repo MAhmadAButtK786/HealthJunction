@@ -160,12 +160,12 @@ const Navbar = () => {
               </div>
             </div>
             <a
-              href="#"
+              href="/eventuploader"
               className="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-gray-700 hover:text-white"
             >
               <i class="fa fa-info" aria-hidden="true">
                 {" "}
-                About Us
+                Upload Event
               </i>
             </a>
           </div>

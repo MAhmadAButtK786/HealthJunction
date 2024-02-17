@@ -7,6 +7,7 @@ import AddRecipientPage from "./Component/Registration copy/RegisterRecipient";
 import Donor from "./Component/DonorsList/donor";
 import Recipients from "./Component/ReciepientList/recipient";
 import UpdateRecipient from "./Component/ReciepientList/updaterecipient";
+import EventUploader from "./Component/events/eventuploaderpage";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
       <Route path="/donorlistORG" exact component={Donor} />
       <Route path="/recipientlistORG" exact component={Recipients} />
       <Route path="/updaterecipient" component={UpdateRecipient} />
+      <Route path="/eventuploader" component={EventUploader} />
       </Switch>
     </>
     

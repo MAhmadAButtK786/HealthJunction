@@ -29,4 +29,4 @@ const sendPasswordResetEmail = async (email) => {
   return sendPasswordResetEmailFirebase(auth, email);
 };
 
-export { app, database, storage, auth, googleProvider, sendPasswordResetEmail };
+export { app, database, storage, auth, googleProvider, sendPasswordResetEmail};
