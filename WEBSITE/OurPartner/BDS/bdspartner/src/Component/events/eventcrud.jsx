@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { collection, getDocs, deleteDoc } from 'firebase/firestore';
-import { database } from '../../firebase';
-import {Link} from "react-router-dom";
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import './EventPage.css'; // Import CSS file for styling
+import React, { useEffect, useState } from "react";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { database } from "../../firebase";
+import { Link } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import "./EventPage.css";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const eventsCollection = collection(database, 'Event');
+      const eventsCollection = collection(database, "Event");
       const eventsSnapshot = await getDocs(eventsCollection);
-      const eventsData = eventsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const eventsData = eventsSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       setEvents(eventsData);
     };
 
@@ -21,18 +24,20 @@ const EventPage = () => {
 
   const handleDelete = async (eventId) => {
     try {
-      await deleteDoc(collection(database, 'Event', eventId));
-      setEvents(prevEvents => prevEvents.filter(event => event.id !== eventId));
-      alert('Event deleted successfully');
+      await deleteDoc(doc(database, "Event", eventId)); // Fixed the deleteDoc invocation
+      setEvents((prevEvents) =>
+        prevEvents.filter((event) => event.id !== eventId)
+      );
+      alert("Event deleted successfully");
     } catch (error) {
-      console.error('Error deleting event:', error);
-      alert('Failed to delete event');
+      console.error("Error deleting event:", error);
+      alert("Failed to delete event");
     }
   };
 
   return (
-    <div>
-      <h1>Event Details</h1>
+    <div className="event-page">
+      <h1 className="event-page-title">Event Details</h1>
       <table className="event-table">
         <thead>
           <tr>
@@ -45,20 +50,30 @@ const EventPage = () => {
           </tr>
         </thead>
         <TransitionGroup component="tbody">
-          {events.map(event => (
+          {events.map((event) => (
             <CSSTransition key={event.id} classNames="fade" timeout={300}>
               <tr>
                 <td>{event.eventName}</td>
                 <td>{event.description}</td>
                 <td>{event.date}</td>
                 <td>{event.time}</td>
-                <td><img src={event.imageUrl} alt="Event" style={{ maxWidth: '200px' }} /></td>
                 <td>
-                  <button onClick={() => handleDelete(event.id)}>Delete</button>
-                  {/* Add update button here */}
-                 <Link to="/updateEventPage">
-                 <button>Update</button>
-                 </Link>
+                  <img
+                    src={event.imageUrl}
+                    alt="Event"
+                    className="event-image"
+                  />
+                </td>
+                <td>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDelete(event.id)}
+                  >
+                    Delete
+                  </button>
+                  <Link to={`/updateEventPage/${event.id}`}>
+                    <button   className="update-button">Update</button>
+                  </Link>
                 </td>
               </tr>
             </CSSTransition>

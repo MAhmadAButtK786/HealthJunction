@@ -23,7 +23,8 @@ function App() {
       <Route path="/updaterecipient" exact component={UpdateRecipient} />
       <Route path="/eventuploader" exact component={EventUploader} />
       <Route path="/eventupdatedelete" exact component={EventCR} />
-      <Route path="/updateEventPage" exact component={UpdateEventPage} />
+      <Route path="/updateEventPage/:id" component={UpdateEventPage} />
+
       </Switch>
     </>
     
