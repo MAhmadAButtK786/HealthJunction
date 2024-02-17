@@ -78,6 +78,7 @@ function PrivateBBL() {
                 <th className="px-4 py-2 text-white">License Number</th>
                 <th className="px-4 py-2 text-white">Sector</th>
                 <th className="px-4 py-2 text-white">Action</th>
+                <th className="px-4 py-2 text-white">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -102,6 +103,9 @@ function PrivateBBL() {
                   <td className="px-4 py-2">{recipient.Secter}</td>
                   <td className='px-4 py-2'>
                     <button onClick={() => handleDelete(recipient)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button>
+                  </td>
+                  <td className='px-4 py-2'>
+                    <Link to ={`/updatePrivateBBPage/${recipient.id}`}><button className="px-3 py-1 text-white bg-green-500 rounded-md">Update</button></Link>
                   </td>
                 </tr>
               ))}
