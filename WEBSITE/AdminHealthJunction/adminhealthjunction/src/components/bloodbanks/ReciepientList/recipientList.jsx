@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where, deleteDoc } from "firebase/firestore"
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  deleteDoc,
+} from "firebase/firestore";
 import { database } from "../../../firebase";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom"; 
 
 function RecipientList() {
   const [recipientData, setDonorsData] = useState([]);
@@ -13,10 +19,7 @@ function RecipientList() {
     bloodGroup: "",
   });
 
-  useEffect(() => {
-    getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const history = useHistory(); // Initialize history here
 
   useEffect(() => {
     getData();
@@ -75,7 +78,9 @@ function RecipientList() {
     }));
   };
   const handleDelete = (recipient) => {
-    if (window.confirm(`Are you sure you want to delete ${recipient.FullName}?`)) {
+    if (
+      window.confirm(`Are you sure you want to delete ${recipient.FullName}?`)
+    ) {
       deleteRecipient(recipient);
     }
   };
@@ -92,7 +97,7 @@ function RecipientList() {
         where("Phone", "==", recipient.Phone),
         where("Province", "==", recipient.Province)
       );
-      
+
       const querySnapshot = await getDocs(filteredQuery);
       querySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
@@ -104,6 +109,10 @@ function RecipientList() {
     } catch (error) {
       console.error("Error deleting donor: ", error);
     }
+  };
+  const handleUpdate = (recipient) => {
+    const recipientData = encodeURIComponent(JSON.stringify(recipient));
+    history.push(`/updateRecipientPage?recipient=${recipientData}`);
   };
   return (
     <div className="w-full px-4 pt-10 mx-auto">
@@ -199,12 +208,13 @@ function RecipientList() {
                 <th className="px-4 py-2 text-white">Phone</th>
                 <th className="px-4 py-2 text-white">Province</th>
                 <th className="px-4 py-2 text-white">Actions</th>
+                <th className="px-4 py-2 text-white">Actions</th>
               </tr>
             </thead>
             <tbody>
               {recipientData.map((recipient, index) => (
                 <tr
-                  key={recipient.id || index}
+                  key={index}
                   className="h-12 bg-white border-b border-gray-400"
                 >
                   <td className="px-4 py-2">{recipient.FullName}</td>
@@ -221,7 +231,31 @@ function RecipientList() {
                   </td>
                   <td className="px-4 py-2">{recipient.Phone}</td>
                   <td className="px-4 py-2">{recipient.Province}</td>
-                  <td className='px-4 py-2'> <button onClick={() => handleDelete(recipient)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button></td>
+                  <td className="px-4 py-2">
+                    {" "}
+                    <button
+                      onClick={() => handleDelete(recipient)}
+                      className="px-3 py-1 text-white bg-red-500 rounded-md"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                  <td className="px-4 py-2">
+                    {recipient.id ? (
+                      <Link to={`/updateRecipientPage/${recipient.id}`}>
+                        <button className="px-3 py-1 text-white bg-green-500 rounded-md">
+                          Update
+                        </button>
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => handleUpdate(recipient)}
+                        className="px-3 py-1 text-white bg-green-500 rounded-md"
+                      >
+                        Update
+                      </button>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
