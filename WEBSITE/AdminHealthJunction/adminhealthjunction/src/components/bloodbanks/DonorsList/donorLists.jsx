@@ -5,7 +5,6 @@ import {
   query,
   where,
   deleteDoc,
-  doc
 } from "firebase/firestore";
 import { database } from "../../../firebase";
 import { Link } from "react-router-dom";
@@ -55,11 +54,12 @@ function DonorLists() {
     }
     const querySnapshot = await getDocs(filteredQuery);
     const data = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
+      docId: doc.id, // Add the document id as a new field
       ...doc.data(),
     }));
-    setDonorsData(data);};
 
+    setDonorsData(data);
+  };
   const handleSearch = () => {
     getData();
   };
@@ -230,9 +230,7 @@ function DonorLists() {
                     </button>
                   </td>
                   <td className="px-4 py-2">
-                  <Link to={`/updateDonorPage/${doc.id}`}>
-
-
+                    <Link to={`/updateDonorPage/${donor.docId}`}>
                       <button className="px-3 py-1 text-white bg-green-500 rounded-md">
                         Update
                       </button>
