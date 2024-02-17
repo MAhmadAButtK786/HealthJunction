@@ -10,6 +10,7 @@ import UpdateRecipient from "./Component/ReciepientList/updaterecipient";
 import EventUploader from "./Component/events/eventuploaderpage";
 import EventCR from "./Component/events/eventCR";
 import UpdateEventPage from "./Component/events/update";
+import UpdateDonorPage from "./Component/DonorsList/updateDonor";
 function App() {
   return (
     <>
@@ -24,7 +25,7 @@ function App() {
       <Route path="/eventuploader" exact component={EventUploader} />
       <Route path="/eventupdatedelete" exact component={EventCR} />
       <Route path="/updateEventPage/:id" component={UpdateEventPage} />
-
+      <Route path="/updateDonorPage/:id" component={UpdateDonorPage} />
       </Switch>
     </>
     
