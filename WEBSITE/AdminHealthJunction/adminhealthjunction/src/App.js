@@ -17,6 +17,7 @@ import AddPublicBB from "./components/bloodbanks/PublicBB/insertpublicBB";
 import UpdateDonorPage from './components/bloodbanks/DonorsList/updateDonor';
 import UpdateRecipientPage from './components/bloodbanks/ReciepientList/updaterecipient';
 import UpdatePrivateBBLPage from './components/bloodbanks/PrivateBB/updateprivatebb';
+import UpdatePublicBBLPage from './components/bloodbanks/PublicBB/updatepublicBB';
 // Labs
 import LabsHome from "./components/lab/LabHome/LabHome";
 import AlliedLab from "./components/lab/privateLabs/LabsScreens/Allied Lab/alliedLab";
@@ -97,6 +98,7 @@ const App = () => {
         <Route path="/updateDonorPage/:id" exact component={UpdateDonorPage}/>
         <Route path="/updateRecipientPage/:id" exact component={UpdateRecipientPage}/>
         <Route path="/updatePrivateBBPage/:id" exact component={UpdatePrivateBBLPage}/>
+        <Route path="/updatePublicBBPage/:id" exact component={UpdatePublicBBLPage}/>
         {/* Lab Screens */}
         <Route path="/labhome" exact component={LabsHome} />
         <Route path="/alliedlab" exact component={AlliedLab} />
