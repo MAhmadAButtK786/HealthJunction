@@ -1,0 +1,35 @@
+/* EventPage.css */
+.fade-enter {
+    opacity: 0;
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in-out;
+  }
+  
+  .fade-exit {
+    opacity: 1;
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+  }
+  
+  .event-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .event-table th,
+  .event-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .event-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  

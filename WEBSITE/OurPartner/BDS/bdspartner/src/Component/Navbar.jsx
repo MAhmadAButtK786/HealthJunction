@@ -168,6 +168,15 @@ const Navbar = () => {
                 Upload Event
               </i>
             </a>
+            <a
+              href="/eventupdatedelete"
+              className="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-gray-700 hover:text-white"
+            >
+              <i class="fa fa-info" aria-hidden="true">
+                {" "}
+                Events 
+              </i>
+            </a>
           </div>
         </div>
       </div>
