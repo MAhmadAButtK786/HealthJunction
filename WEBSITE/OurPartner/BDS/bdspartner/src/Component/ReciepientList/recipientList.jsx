@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, query, where, deleteDoc } from "firebase/firestore";
 import { database } from "../../firebase";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function RecipientList() {
   const [donorsData, setDonorsData] = useState([]);
@@ -98,12 +98,7 @@ function RecipientList() {
     }
   };
 
-  const handleUpdate = (recipient) => {
-    history.push({
-      pathname: '/updaterecipient',
-      state: { recipient: recipient }
-    });
-  };
+  
 
   return (
     <div className="w-full px-4 pt-10 mx-auto">
@@ -207,7 +202,7 @@ function RecipientList() {
                   </td>
                   <td className='px-4 py-2'>{donor.Phone}</td>
                   <td className='px-4 py-2'>{donor.Province}</td>
-                  <td className='px-4 py-2'>  <button onClick={() => handleUpdate(donor.id)} className="px-3 py-1 mr-2 text-white bg-blue-500 rounded-md">Update</button> </td>
+                  <td className='px-4 py-2'> <Link to={`/updaterecipientPage/${donor.id}`}> <button  className="px-3 py-1 mr-2 text-white bg-blue-500 rounded-md">Update</button></Link> </td>
                   <td className='px-4 py-2'>
                    
                     <button onClick={() => handleDelete(donor)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button>
