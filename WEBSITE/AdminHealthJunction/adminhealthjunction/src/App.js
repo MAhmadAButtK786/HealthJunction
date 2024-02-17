@@ -94,7 +94,7 @@ const App = () => {
         <Route path="/insertsPrivateBB" exact component={AddPrivateBB} />
         <Route path="/insertsPublicBB" exact component={AddPublicBB}/>
         <Route path="/updateDonorPage/:id" exact component={UpdateDonorPage}/>
-        <Route path="/updateRecipientPage" exact component={UpdateRecipientPage}/>
+        <Route path="/updateRecipientPage/:id" exact component={UpdateRecipientPage}/>
         {/* Lab Screens */}
         <Route path="/labhome" exact component={LabsHome} />
         <Route path="/alliedlab" exact component={AlliedLab} />

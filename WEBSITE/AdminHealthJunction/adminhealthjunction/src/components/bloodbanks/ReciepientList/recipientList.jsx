@@ -56,9 +56,10 @@ function RecipientList() {
     }
     const querySnapshot = await getDocs(filteredQuery);
     const data = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
+      docId: doc.id, // Add the document id as a new field
       ...doc.data(),
     }));
+    
     setDonorsData(data);
   };
 
@@ -241,20 +242,12 @@ function RecipientList() {
                     </button>
                   </td>
                   <td className="px-4 py-2">
-                    {recipient.id ? (
-                      <Link to={`/updateRecipientPage/${recipient.id}`}>
-                        <button className="px-3 py-1 text-white bg-green-500 rounded-md">
-                          Update
-                        </button>
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={() => handleUpdate(recipient)}
-                        className="px-3 py-1 text-white bg-green-500 rounded-md"
-                      >
-                        Update
-                      </button>
-                    )}
+                  <Link to={`/updateRecipientPage/${recipient.docId}`}>
+  <button className="px-3 py-1 text-white bg-green-500 rounded-md">
+    Update
+  </button>
+</Link>
+                
                   </td>
                 </tr>
               ))}
