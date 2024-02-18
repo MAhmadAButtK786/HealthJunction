@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -6,7 +5,7 @@ import {
   updateProfile,
   signInWithPopup,
 } from "firebase/auth";
-import { collection, addDoc, getDocs, query, where, setDoc, doc } from "firebase/firestore";
+import { collection, getDocs, query, where, setDoc, doc } from "firebase/firestore";
 import { auth, googleProvider, database } from "./firebase";
 
 const Register = () => {
@@ -35,7 +34,7 @@ const Register = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      console.error("Passwords do not match.");
+      alert("Passwords do not match.");
       return;
     }
 
@@ -47,7 +46,7 @@ const Register = () => {
       const emailSnapshot = await getDocs(emailQuery);
 
       if (emailSnapshot.size > 0) {
-        console.error("Email is already in use. Please use a different email.");
+        alert("Email is already in use. Please use a different email.");
         return;
       }
 
@@ -60,17 +59,33 @@ const Register = () => {
 
       await updateProfile(user, { displayName: username });
 
-      // Store user data including password in Firestore (not recommended)
+      // Store user data excluding password in Firestore (not recommended)
       await setDoc(doc(database, "Users", user.uid), {
         email: user.email,
         username: username,
-        password: password,
       });
 
       // Redirect to the home page after successful registration
       history.push("/home");
+
+      // Show success message
+      alert("User registered successfully!");
     } catch (error) {
-      console.error(`Registration Error: ${error.message}`);
+      alert(`Registration Error: ${error.message}`);
+    }
+  };
+
+  // Toggles password visibility
+  const togglePasswordVisibility = () => {
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmPassword");
+    
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      confirmPasswordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+      confirmPasswordInput.type = "password";
     }
   };
   return (

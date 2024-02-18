@@ -31,18 +31,20 @@ import AlnoorLab from './Component/lab/privateLabs/LabsScreens/AlnoorLab/alnoorL
 import AddDonorPage from './Component/bloodbanks/Registration/RegisterDonor';
 import AddRecipientPage from './Component/bloodbanks/Registration/RegisterRecipient';
 import Excelsheet from './Component/healthPoints/healthpRegistration/ExcelSheetPart/excelsheet';
+import Eventmain from './Component/events/eventmain';
 function App() {
   return (
       
         <Switch>
           <Route path="/home" exact component={Home} />
+          <Route path ="/eventpage" exact component={Eventmain}/>
           {/* Health Points */}
           <Route path ="/healthPointHome" exact component={HealthPointHome}/>
           <Route path ="/basicdF" exact component={BasicdF}/>
           <Route path="/hfcheckbox" exact component ={HPRegistrationForm}/>
           <Route path ="/hospitalformexcelsheet" exact component={Excelsheet}/>
           <Route path ="/guidlines" exact component={Guidlines}/>
-
+    
               {/* Blood Banks Modules Screens */}
           {/* Blood Banks Home*/}
           <Route path="/bloodbank" exact component ={bloodbank}/>

@@ -1,0 +1,42 @@
+.event-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  .event-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .event-image {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .event-details {
+    padding: 20px;
+  }
+  
+  .event-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .event-description {
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 10px;
+  }
+  
+  .event-date-time {
+    font-size: 0.875rem;
+    color: #999999;
+  }
+  

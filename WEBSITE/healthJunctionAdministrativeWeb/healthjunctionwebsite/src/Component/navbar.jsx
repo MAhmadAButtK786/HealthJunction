@@ -35,6 +35,9 @@ const Navbar = () => {
               </div>
             )}
           </div>
+          <Link to="/eventpage" className="border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600">
+            Events
+          </Link>
           <Link to="/contact" className="border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600">
             About Us
           </Link>
