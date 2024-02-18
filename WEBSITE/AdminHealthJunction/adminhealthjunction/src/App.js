@@ -4,6 +4,9 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from "./components/Admin Home/home";
 import Contact from "./components/aboutUs/contact";
 import LoginAdmin from "./components/loginadmin";
+import EventCR from './components/events/eventCR';
+import EventUploader from './components/events/eventuploaderpage';
+import UpdateEventPage from './components/events/update';
 // Blood Banks
 import bloodbank from "./components/bloodbanks/bbHome/bloodbank";
 import Donor from "./components/bloodbanks/DonorsList/donor";
@@ -88,10 +91,13 @@ const App = () => {
       {/* Switch to render only one route at a time */}
       <Switch>
         {/* Routes */}
-        <PrivateRoute path="/home" exact component={Home} isAuthenticated={isAuthenticated}/>
-        <PrivateRoute path="/contact" exact component={Contact} isAuthenticated={isAuthenticated}/>
+        <Route path="/home" exact component={Home} />
+        <Route path="/contact" exact component={Contact}/>
         <Route path="/" exact component={LoginAdmin} />
-        
+        {/* Event Update Page */}
+        <Route path="/event" exact component={EventCR} />
+        <Route path="/eventuploader" exact component={EventUploader} />
+        <Route path="/updateEventPage/:id" exact component={UpdateEventPage}/>
         {/* Blood Banks Screens */}
         <Route path="/bloodbank" exact component={bloodbank} />
         <Route path="/donor" exact component={Donor} />

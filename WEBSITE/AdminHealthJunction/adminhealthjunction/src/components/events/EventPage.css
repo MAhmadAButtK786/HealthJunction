@@ -1,0 +1,70 @@
+.fade-enter {
+    opacity: 0;
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in-out;
+  }
+  
+  .fade-exit {
+    opacity: 1;
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+  }
+  
+  .event-page {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .event-page-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .event-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .event-table th,
+  .event-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .event-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .event-table button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+  }
+  
+  .delete-button {
+    background-color: #f44336;
+  }
+  
+  .update-button {
+    background-color: #4caf50;
+  }
+  
+  .event-table button:hover {
+    opacity: 0.8;
+  }
+  
+  .event-image {
+    max-width: 200px;
+  }
+  
