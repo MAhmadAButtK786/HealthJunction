@@ -207,7 +207,23 @@ class _RecipientListState extends State<RecipientList> {
                 String fullName = recipient['FullName'] ?? 'No Name';
                 String email = recipient['Email'] ?? 'No Email';
                 String bloodType = recipient['BloodType'] ?? 'No Blood Type';
-                double age = recipient['Age'] ?? 0.0;
+                dynamic ageData = recipient['Age'];
+                int age;
+
+                if (ageData is int) {
+                  // If 'Age' is already an integer, assign it directly
+                  age = ageData;
+                } else if (ageData is double) {
+                  // If 'Age' is a double, convert it to an integer
+                  age = ageData.toInt();
+                } else if (ageData is String) {
+                  // If 'Age' is a string, try parsing it to an integer
+                  age = int.tryParse(ageData) ?? 0;
+                } else {
+                  // If 'Age' is of any other type or null, default age to 0
+                  age = 0;
+                }
+
                 String phoneNumber = recipient['Phone'] ?? 'No Phone Number';
                 String city = recipient['City'] ?? 'No City Added';
                 String province = recipient['Province'] ?? 'No Province Added';
