@@ -34,27 +34,50 @@ class _PunjabLabsState extends State<PunjabLabs> {
   Future<void> exportData() async {
     try {
       final CollectionReference alliedlab =
-          FirebaseFirestore.instance.collection("Govt Registered Labs");
+          FirebaseFirestore.instance.collection("Punjab Register Lab");
 
       final ByteData data1 =
-          await rootBundle.load('assets/dataSets/Registered Labs.csv');
+          await rootBundle.load('assets/dataSets/PHC LAB.csv');
       final List<int> bytes = data1.buffer.asUint8List();
       final String csvContent = utf8.decode(bytes,
           allowMalformed: true); // Use ISO-8859-1 if necessary
 
-      List<List<dynamic>> csvdata = CsvToListConverter().convert(csvContent);
+      List<List<dynamic>> csvdata =
+          const CsvToListConverter().convert(csvContent);
       List<List<dynamic>> data = csvdata;
+      var batch = FirebaseFirestore.instance.batch();
+
+      // Create a set to store unique serial numbers
+      Set<String> serialNumbers = {};
+
       for (var i = 1; i < data.length; i++) {
-        var record = {
-          "Serial Number": data[i][0],
-          "District": data[i][1],
-          "Lab Name": data[i][2],
-          "Location": data[i][3],
-        };
-        await alliedlab.add(record);
+        var serialNumber = data[i][0].toString();
+
+        // Check if the serial number already exists
+        if (!serialNumbers.contains(serialNumber)) {
+          serialNumbers.add(serialNumber);
+
+          var record = {
+            "Serial Number": serialNumber,
+            "District": data[i][1],
+            "Lab Name": data[i][2],
+            "Location": data[i][3],
+            "Phone Number": data[i][4],
+          };
+
+          var docRef = alliedlab.doc(); // Automatically generate document ID
+          batch.set(docRef, record);
+
+          print("Added document with Serial Number: $serialNumber");
+        } else {
+          print("Skipped duplicate Serial Number: $serialNumber");
+        }
       }
+
+      await batch.commit();
+      print("Data added successfully!");
     } catch (e) {
-      print("Error while adding Data $e");
+      print("Error while adding Data: $e");
     }
   }
 }

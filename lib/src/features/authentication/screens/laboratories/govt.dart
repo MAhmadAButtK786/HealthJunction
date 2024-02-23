@@ -42,7 +42,7 @@ class _GovtState extends State<Govt> {
         //   headerText: "Government Based Labs",
         // ),
         appBar: AppBar(
-          title: Text("Government Based Lab"),
+          title: Text("Registered Labs in Punjab"),
           actions: [
             IconButton(
               icon: Icon(Icons.search),
@@ -70,7 +70,7 @@ class _GovtState extends State<Govt> {
             ),
             StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
-                  .collection('Govt Registered Labs')
+                  .collection('Punjab Register Lab')
                   .orderBy("Serial Number")
                   .snapshots(),
               builder: (context, snapshot) {

@@ -80,3 +80,5 @@ const String cc1 = "assets/images/cc.png";
 const String bappoint = "assets/images/bookappointment.jpg";
 const String cappoint = "assets/images/check appointment.jpg";
 const String bbbackground = "assets/images/bbcard background.png";
+const String events = "assets/images/event.png";
+const String nutriFit = "assets/images/nutrifit.jpg";

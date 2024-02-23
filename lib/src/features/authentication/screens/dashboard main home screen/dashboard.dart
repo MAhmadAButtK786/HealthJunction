@@ -1,31 +1,21 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_import, unused_import, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:healthjunction/main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/charity/charity.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/Healthpoints/healthpointshome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankhomescreens/BloodBankHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicmain.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicuser.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/hospitalhomeScreens/HospitalUserHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/hospitalhomeScreens/hospitalmain.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/patient/patientdashboard.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/laboratories.dart';
-import 'package:healthjunction/src/features/authentication/screens/laboratories/labsmainscreen.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
-import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_screen/profile_screen.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Dashboard extends StatefulWidget {
   @override
-  _AnihomebothState createState() => _AnihomebothState();
+  _DashboardState createState() => _DashboardState();
 }
 
-class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
+class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
   late AnimationController _healthJunctionController;
   late Animation<double> _healthJunctionOpacityAnimation;
 
@@ -39,7 +29,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
     // Health Junction Animation
     _healthJunctionController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     );
     _healthJunctionOpacityAnimation =
         Tween<double>(begin: 0.0, end: 1.0).animate(_healthJunctionController);
@@ -48,7 +38,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
     // Innovative App Animation
     _innovativeAppController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 13),
+      duration: const Duration(seconds: 13),
     );
     _innovativeAppOpacityAnimation =
         Tween<double>(begin: 0.0, end: 1.0).animate(_innovativeAppController);
@@ -62,13 +52,13 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  var height, width;
-
-  List imgData = [patient, hosp, frontB, med, cc, l1];
+  List imgData = [patient, hosp, frontB, events, nutriFit, med, cc, l1];
   List titles = [
     "Patient",
     "HealthPoints",
     "Blood Bank",
+    "Events",
+    "NutriMeter",
     "Medicine",
     "Charity",
     "Laboratories",
@@ -77,15 +67,17 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
     Colors.teal, // Text color for Patient
     Colors.blue, // Text color for HealthZone
     Colors.red, // Text color for Blood Bank
+    Colors.pinkAccent, // Text Colors For Events
+    Colors.brown, //Text Color for NutriMeter
     Colors.green, // Text color for Medicine
     const Color.fromARGB(255, 185, 23, 214), // Text color for Charity
-    Color.fromARGB(255, 61, 189, 224), // Text color for Laboratories
+    const Color.fromARGB(255, 61, 189, 224), // Text color for Laboratories
   ];
-
   @override
   Widget build(BuildContext context) {
-    height = MediaQuery.of(context).size.height;
-    width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -95,23 +87,22 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
         ),
         body: SingleChildScrollView(
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(back),
-                fit: BoxFit.cover, // Adjust the fit as needed
+                fit: BoxFit.cover,
               ),
             ),
             child: Column(
               children: [
                 Container(
-                  decoration: BoxDecoration(),
                   height: height * 0.25,
                   width: width,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           top: 35,
                           left: 20,
                           right: 20,
@@ -124,7 +115,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                 onTap: () {
                                   Scaffold.of(context).openDrawer();
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.menu,
                                   color: Colors.blue,
                                   size: 30,
@@ -133,9 +124,9 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                             ),
                             IconButton(
                               onPressed: () {
-                                Get.to(() => ProfileMainPage());
+                                Get.to(() => const ProfileMainPage());
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.person,
                                 color: Colors.blue,
                                 size: 30,
@@ -145,7 +136,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           top: 20,
                           left: 30,
                         ),
@@ -154,25 +145,25 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                           children: [
                             FadeTransition(
                               opacity: _healthJunctionOpacityAnimation,
-                              child: Text(
+                              child: const Text(
                                 " Health Junction",
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 36,
                                   color: Colors.blue,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.bold,
                                   letterSpacing: 1,
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              height: 5,
+                            const SizedBox(
+                              height: 4,
                             ),
                             FadeTransition(
                               opacity: _innovativeAppOpacityAnimation,
-                              child: Text(
+                              child: const Text(
                                 " Innovative App for Health Care",
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 17,
                                   color: Colors.blue,
                                   letterSpacing: 1,
                                 ),
@@ -185,7 +176,7 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
@@ -193,21 +184,20 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                     ),
                     image: DecorationImage(
                       image: AssetImage(back),
-                      fit: BoxFit.cover, // Adjust the fit as needed
+                      fit: BoxFit.cover,
                     ),
                   ),
                   height: height * 0.75,
                   width: width,
                   child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.8,
-                        mainAxisSpacing: 45,
-                        crossAxisSpacing: 20),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.8,
+                            mainAxisSpacing: 45,
+                            crossAxisSpacing: 20),
                     shrinkWrap: true,
-                    //physics: NeverScrollableScrollPhysics(),
-                    physics: ScrollPhysics(),
-
+                    physics: const ScrollPhysics(),
                     itemCount: imgData.length,
                     itemBuilder: (context, index) {
                       return InkWell(
@@ -218,21 +208,21 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                             Get.to(() => HealthPointsmain());
                           } else if (index == 2) {
                             Get.to(() => BloodBankhome());
-                          } else if (index == 3) {
-                            Get.to(() => Medicinehome());
-                          } else if (index == 4) {
-                            Get.to(() => CharityScreen());
                           } else if (index == 5) {
+                            Get.to(() => Medicinehome());
+                          } else if (index == 6) {
+                            Get.to(() => CharityScreen());
+                          } else if (index == 7) {
                             Get.to(() => Laboratoriesmain());
                           }
                         },
                         child: Container(
-                          margin:
-                              EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 8, horizontal: 20),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.black26,
                                 spreadRadius: 7,
@@ -247,12 +237,14 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
                                 imgData[index],
                                 width: 130,
                               ),
-                              Text(titles[index],
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: textColors[index],
-                                  ))
+                              Text(
+                                titles[index],
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: textColors[index],
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -266,9 +258,5 @@ class _AnihomebothState extends State<Dashboard> with TickerProviderStateMixin {
         ),
       ),
     );
-  }
-
-  State<StatefulWidget> createState() {
-    throw UnimplementedError();
   }
 }
