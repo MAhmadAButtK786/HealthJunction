@@ -6,11 +6,14 @@ import 'package:healthjunction/src/features/authentication/screens/dashboard%20m
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankhomescreens/BloodBankHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/patient/patientdashboard.dart';
+import 'package:healthjunction/src/features/authentication/screens/events/event.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/laboratories.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Dashboard extends StatefulWidget {
+  const Dashboard({super.key});
+
   @override
   _DashboardState createState() => _DashboardState();
 }
@@ -95,7 +98,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
             ),
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: height * 0.25,
                   width: width,
                   child: Column(
@@ -208,6 +211,8 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                             Get.to(() => HealthPointsmain());
                           } else if (index == 2) {
                             Get.to(() => BloodBankhome());
+                          } else if (index == 3) {
+                            Get.to(() =>  Event());
                           } else if (index == 5) {
                             Get.to(() => Medicinehome());
                           } else if (index == 6) {
@@ -241,7 +246,6 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                                 titles[index],
                                 style: TextStyle(
                                   fontSize: 20,
-                                  
                                   fontWeight: FontWeight.bold,
                                   color: textColors[index],
                                 ),
