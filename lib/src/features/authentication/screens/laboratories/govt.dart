@@ -117,11 +117,24 @@ class _GovtState extends State<Govt> {
                               ),
                               ListTile(
                                 leading: Icon(
+                                  Icons.phone,
+                                  color: Colors.white,
+                                ),
+                                title: Text(
+                                  "${data['Phone Number']}",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                 onTap: () {
+                                launch("tel://${data['Phone Number']}");
+                              },
+                              ),
+                              ListTile(
+                                leading: Icon(
                                   Icons.location_on,
                                   color: Colors.white,
                                 ),
                                 title: Text(
-                                  "Address:${data['Location']}",
+                                  "${data['Location']}",
                                   style: TextStyle(
                                     color: Colors.white,
                                   ),
