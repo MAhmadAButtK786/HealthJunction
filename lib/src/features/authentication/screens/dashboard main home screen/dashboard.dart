@@ -241,6 +241,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                                 titles[index],
                                 style: TextStyle(
                                   fontSize: 20,
+                                  
                                   fontWeight: FontWeight.bold,
                                   color: textColors[index],
                                 ),
