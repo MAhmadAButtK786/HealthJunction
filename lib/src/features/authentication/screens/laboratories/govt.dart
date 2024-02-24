@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, library_private_types_in_public_api, prefer_const_constructors, avoid_print
+// ignore_for_file: unused_import, library_private_types_in_public_api, prefer_const_constructors, avoid_print, deprecated_member_use
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -97,7 +97,7 @@ class _GovtState extends State<Govt> {
                               .contains(searchTerm) ||
                           data['Lab Name'].toLowerCase().contains(searchTerm)) {
                         final labinfo = Card(
-                          color: Colors.green,
+                          color: Colors.green.shade500,
                           child: ExpansionTile(
                             title: Text(
                               "${data['Lab Name']}",
@@ -116,31 +116,28 @@ class _GovtState extends State<Govt> {
                                 ),
                               ),
                               ListTile(
-                                leading: Icon(
-                                  Icons.phone,
-                                  color: Colors.white,
-                                ),
+                                leading: Icon(Icons.phone,
+                                    color: Colors.white, size: 30),
                                 title: Text(
-                                  "${data['Phone Number']}",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                 onTap: () {
-                                launch("tel://${data['Phone Number']}");
-                              },
-                              ),
-                              ListTile(
-                                leading: Icon(
-                                  Icons.location_on,
-                                  color: Colors.white,
-                                ),
-                                title: Text(
-                                  "${data['Location']}",
+                                  "Contact: ${data['Phone Number']}",
                                   style: TextStyle(
-                                    color: Colors.white,
-                                  ),
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 onTap: () {
-                                  // ignore: deprecated_member_use
+                                  launch("tel://${data['Phone Number']}");
+                                },
+                              ),
+                              ListTile(
+                                leading: Icon(Icons.location_on,
+                                    color: Colors.white, size: 30),
+                                title: Text(
+                                  "Location: ${data['Location']}",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                onTap: () {
                                   launch(
                                       "https://www.google.com/maps/search/?api=1&query=${data['Location']}");
                                 },
