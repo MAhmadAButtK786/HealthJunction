@@ -124,64 +124,8 @@ class SignupFooterWidget extends StatelessWidget {
     }
   }
 
-  // Twitter(X) Authentication
-  // Future<UserCredential?> _signInWithTwitter() async {
-  //   try {
-  //     // Create a TwitterLogin instance
-  //     final twitterLogin = TwitterLogin(
-  //       apiKey: '0PGJRuluVJPiCJbbpTQsbsVvQ',
-  //       apiSecretKey: 'hrSawbTfy6kndShUMG89DLdk7DqYA4McmEOlZcFlWOH5pWm7Fx',
-  //       redirectURI:
-  //           'https://health-junction-675ff.firebaseapp.com/__/auth/handler',
-  //     );
-
-  //     // Trigger the sign-in flow
-  //     final authResult = await twitterLogin.login();
-  //     if (authResult == null) {
-  //       print('User cancelled the sign-in process');
-  //       return null;
-  //     }
-
-  //     // Create a Twitter auth credential from the access token
-  //     final OAuthCredential twitterAuthCredential =
-  //         TwitterAuthProvider.credential(
-  //       accessToken: authResult.authToken!,
-  //       secret: authResult.authTokenSecret!,
-  //     );
-
-  //     // Sign in to Firebase with the Twitter auth credential
-  //     UserCredential userCredential = await FirebaseAuth.instance
-  //         .signInWithCredential(twitterAuthCredential);
-
-  //     // User is signed in. You can handle the signed-in user here.
-  //     print("User signed in: ${userCredential.user!.displayName}");
-
-  //     // Update user details in Firestore
-  //     String? email = userCredential.user!.email;
-  //     String id = userCredential.user!.uid;
-  //     String? fullName = userCredential.user!.displayName;
-  //     String? password = '';
-  //     String? phoneNumber = '';
-
-  //     // Store user data in Firestore
-  //     await FirebaseFirestore.instance.collection('Users').doc(id).set({
-  //       'id': id,
-  //       'fullName': fullName,
-  //       'email': email,
-  //       'phoneNumber': phoneNumber,
-  //       'password': password,
-  //     });
-
-  //     // Once signed in and profile is updated, return the UserCredential
-  //     return userCredential;
-  //   } catch (e) {
-  //     // Handle authentication errors
-  //     print("Error Signing In with Twitter: $e");
-  //     return null;
-  //   }
-  // }
-
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Align(
       alignment: Alignment.center,
       child: Column(
@@ -197,20 +141,25 @@ class SignupFooterWidget extends StatelessWidget {
           Text(
             "Sign Up with",
             style: GoogleFonts.montserrat(
-                fontSize: 16, fontWeight: FontWeight.bold, color: apptextColor),
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: apptextColor,
+            ),
           ),
           SizedBox(
             height: 7,
           ),
           SizedBox(
             height: 50,
-            width: 100,
+            width: screenWidth * 0.8, // Adjusted width based on screen width
             child: Align(
               alignment: Alignment.center,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // Changed to center
                 children: [
-                  //Google Button
+                  // Google Button
                   IconButton(
                     icon: Image(
                       image: AssetImage(googleLogo),
@@ -219,16 +168,13 @@ class SignupFooterWidget extends StatelessWidget {
                     onPressed: () async {
                       UserCredential? userCredential = await signInWithGoogle();
                       if (userCredential != null) {
-                        // User signed in successfully, you can handle the user data here
                         print(
                             'User signed in with Google: ${userCredential.user}');
                         Get.to(() => Dashboard()); // Navigate to Dashboard
                       }
                     },
                   ),
-
-                  //Facebook Button
-
+                  // Facebook Button
                   IconButton(
                     icon: Image(
                       image: AssetImage(facbook),
@@ -238,30 +184,12 @@ class SignupFooterWidget extends StatelessWidget {
                       UserCredential? userCredential =
                           await _signInWithFacebook();
                       if (userCredential != null) {
-                        // User signed in successfully, you can handle the user data here
                         print(
                             'User signed in with Facebook: ${userCredential.user}');
                         Get.to(() => Dashboard()); // Navigate to Dashboard
                       }
                     },
                   ),
-                  //X(Twitter) Button
-
-                  // IconButton(
-                  //   icon: Image(
-                  //     image: AssetImage(twitterX),
-                  //     width: 30.0,
-                  //   ),
-                  //   onPressed: () async {
-                  //     UserCredential? userCredential =
-                  //         await _signInWithTwitter();
-                  //     if (userCredential != null) {
-                  //       // User signed in successfully, you can handle the user data here
-                  //       print('User signed in with X: ${userCredential.user}');
-                  //       Get.to(() => Dashboard()); // Navigate to Dashboard
-                  //     }
-                  //   },
-                  // ),
                 ],
               ),
             ),

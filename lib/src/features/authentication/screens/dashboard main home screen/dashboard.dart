@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
@@ -212,7 +214,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                           } else if (index == 2) {
                             Get.to(() => BloodBankhome());
                           } else if (index == 3) {
-                            Get.to(() =>  Event());
+                            Get.to(() => const EventScreen());
                           } else if (index == 5) {
                             Get.to(() => Medicinehome());
                           } else if (index == 6) {
