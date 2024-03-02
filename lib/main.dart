@@ -31,8 +31,10 @@ class HealthJunction extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       getPages: [
-        GetPage(name: '/login', page: () => const LoginScreen()), // Login Screen
-        GetPage(name: '/signup', page: () => const SignupScreen()), //Sign-up Screen
+        GetPage(
+            name: '/login', page: () => const LoginScreen()), // Login Screen
+        GetPage(
+            name: '/signup', page: () => const SignupScreen()), //Sign-up Screen
         GetPage(
             name: '/Forget-Mail',
             page: () => ForgetPasswordViaEmail()), // Mail OTP SEND
