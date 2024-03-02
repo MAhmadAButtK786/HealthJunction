@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'; 
 import { Switch, Route, Redirect } from 'react-router-dom';
 // Importing components
@@ -7,6 +8,7 @@ import LoginAdmin from "./components/loginadmin";
 import EventCR from './components/events/eventCR';
 import EventUploader from './components/events/eventuploaderpage';
 import UpdateEventPage from './components/events/update';
+import Dashboard from './components/Dashboard/Dashboard';
 // Blood Banks
 import bloodbank from "./components/bloodbanks/bbHome/bloodbank";
 import Donor from "./components/bloodbanks/DonorsList/donor";
@@ -91,7 +93,7 @@ const App = () => {
       {/* Switch to render only one route at a time */}
       <Switch>
         {/* Routes */}
-        <Route path="/home" exact component={Home} />
+        <Route path="/home" exact component={Dashboard} />
         <Route path="/contact" exact component={Contact}/>
         <Route path="/" exact component={LoginAdmin} />
         {/* Event Update Page */}
