@@ -3,7 +3,7 @@ import React from 'react';
 
 const Sidebar = () => {
   return (
-    <div className="flex-none w-64 h-full text-white bg-gray-800">
+    <div className="flex-none h-full text-white bg-gray-800 w-60">
       <ul className="p-4">
         <li className="py-2">Dashboard</li>
         <li className="py-2">Users</li>

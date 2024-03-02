@@ -2,7 +2,7 @@
 import React from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { database } from '../../firebase';
-import { FaUser,FaHospital, FaUserInjured, FaHandHoldingHeart, FaMicroscope, FaClinicMedical } from 'react-icons/fa'; // Importing icons from react-icons/fa 
+import { FaUser,FaHospital, FaUserInjured, FaHandHoldingHeart, FaMicroscope, FaClinicMedical,FaHandsHelping } from 'react-icons/fa'; // Importing icons from react-icons/fa 
 
 // Fetch data from Firestore
 const fetchData = async (field) => {
@@ -18,13 +18,14 @@ const fetchData = async (field) => {
 // Fetch data for each field
 const fetchAllData = async () => {
   const fields = [
-    { name: 'Users', correctedName: 'Users', icon: <FaUser size={24} /> },
-    { name: 'PHC Hospitals', correctedName: 'PHC Hospitals', icon: <FaHospital size={24} /> },
-    { name: 'PHC Labs', correctedName: 'Punjab Register Lab', icon: <FaMicroscope size={24} /> },
-    { name: 'Private Blood Banks', correctedName: 'Private Blood Banks', icon: <FaClinicMedical size={24} /> },
-    { name: 'Public Blood Banks', correctedName: 'Public Blood Banks', icon: <FaClinicMedical size={24} /> },
-    { name: 'Recipients', correctedName: 'Recepients', icon: <FaUserInjured size={24} /> },
-    { name: 'Donors', correctedName: 'Donors', icon: <FaHandHoldingHeart size={24} /> },
+    { name: 'Users', correctedName: 'Users', icon: <FaUser size={24} color='blue' /> },
+    { name: 'PHC Hospitals', correctedName: 'PHC Hospitals', icon: <FaHospital size={24}  color='blue'/> },
+    { name: 'PHC Labs', correctedName: 'Punjab Register Lab', icon: <FaMicroscope size={24} color='blue'/> },
+    { name: 'Private Blood Banks', correctedName: 'Private Blood Banks', icon: <FaClinicMedical size={24} color='blue'/> },
+    { name: 'Public Blood Banks', correctedName: 'Public Blood Banks', icon: <FaClinicMedical size={24} color='blue'/> },
+    { name: 'Recipients', correctedName: 'Recepients', icon: <FaUserInjured size={24} color='blue'/> },
+    { name: 'Donors', correctedName: 'Donors', icon: <FaHandHoldingHeart size={24} color='blue'/> },
+    { name: 'Charitable Organization', correctedName: 'NGOs', icon: <FaHandsHelping size={24} color='blue'/> },
   ];
   const data = {};
   for (let field of fields) {
@@ -35,7 +36,7 @@ const fetchAllData = async () => {
 
 // Card component
 const Card = ({ title, count, icon }) => (
-  <div className="flex flex-col items-center justify-center w-full p-1 m-2 text-white transition-shadow duration-300 bg-blue-500 rounded-lg shadow-md md:w-1/5 card hover:shadow-xl">
+  <div className="flex flex-col items-center justify-center w-full p-1 m-2 text-blue-700 transition-shadow duration-300 bg-white rounded-lg shadow-md md:w-1/5 card hover:shadow-xl">
     {icon}
     <h2 className="mt-2 text-lg font-semibold">{title}</h2>
     <p className="text-sm">{count}</p>
