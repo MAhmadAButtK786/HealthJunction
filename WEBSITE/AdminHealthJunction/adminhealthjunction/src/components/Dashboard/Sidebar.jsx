@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronRight, faFlask, faClinicMedical, faUserInjured, faHandsHelping, faCalendar, faDashboard, faHospital, faUserDoctor, faKitMedical, faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faAppleAlt ,faChevronRight, faFlask, faClinicMedical, faUserInjured, faHandsHelping, faCalendar, faDashboard, faHospital, faUserDoctor, faKitMedical, faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -19,9 +19,9 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
-      <nav>
-        <ul className="space-y-1"> {/* Reduced space-y to decrease gap */}
+    <aside className="bg-gray-800 text-white w-64 min-h-screen p-4  ">
+      <nav >
+        <ul className="space-y-2 "> {/* Reduced space-y to decrease gap */}
           {/* Agenda without dropdown */}
           <li>
             <Link to="#" className="flex items-center justify-between p-2 hover:bg-gray-700">
@@ -179,6 +179,14 @@ const Sidebar = () => {
                 </Link>
               </li>
             </ul>
+          </li>
+          <li>
+            <Link to="#" className="flex items-center justify-between p-2 hover:bg-gray-700">
+              <div className="flex items-center">
+                <FontAwesomeIcon icon={faAppleAlt} className="mr-2" />
+                <span>NutriFit</span>
+              </div>
+            </Link>
           </li>
         </ul>
       </nav>

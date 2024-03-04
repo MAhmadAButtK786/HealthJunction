@@ -4,7 +4,8 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
  import MainContent from './maincontext';
 import TodoList from './AdminTodo';
-import BloodTypeChart from './charts';
+
+import BloodTypeChart2 from './charts2Donor';
 function Dashboard() {
   return (
     <div className="flex  bg-blue-200"> 
@@ -13,7 +14,8 @@ function Dashboard() {
         <Navbar />
         <MainContent />
         <TodoList/>
-       <BloodTypeChart/>
+\
+       <BloodTypeChart2/>
       </div>
     </div>
   );
