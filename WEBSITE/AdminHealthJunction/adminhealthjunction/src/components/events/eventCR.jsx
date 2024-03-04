@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../Navbar'
+import EventNavbar from './eventnavbar'
 import EventPage from './eventcrud'
 import Footer from '../Footer'
 function EventCR() {
   return (
     <div>
-      <Navbar/>
+    <EventNavbar/>
       <EventPage/>
       <Footer/>
     </div>

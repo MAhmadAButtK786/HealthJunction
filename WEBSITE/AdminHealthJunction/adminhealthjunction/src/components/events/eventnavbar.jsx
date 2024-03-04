@@ -1,31 +1,27 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-// eslint-disable-next-line no-unused-vars
-import { Bars3Icon, BellIcon, HomeIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, HomeIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Dashboard', href: '/home', current: false },
-  { name: 'Donors', href: '/donor', },
-  { name: 'Recipients', href: '/recipients',  },
-  { name: 'Private Blood Banks', href: '/privateBB',  },
-  { name: 'Public Blood Banks', href: '/publicBB',  },
+  { name: 'Manage Events', href: '/event', current: false },
 ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function BBNavbar() {
+export default function EventNavbar() {
   return (
-    <Disclosure as="nav" className="bg-gradient-to-r from-red-500 via-70% to-orange-500">
+    <Disclosure as="nav" className="bg-gray-500">
       {({ open }) => (
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-white hover:text-red-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -50,7 +46,7 @@ export default function BBNavbar() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-gradient-to-r from-red-300 via-orange-500 to-orange-400 text-white' : 'text-white hover:bg-gradient-to-r from-red-300 via-orange-500 to-orange-400  hover:text-white',
+                          item.current ? 'bg-gradient-to-r from-#8B4513 via-black to-gray-700 text-white' : 'text-white hover:bg-gradient-to-r from-gray-800 via-black to-gray-900 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
@@ -62,16 +58,6 @@ export default function BBNavbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <a href="/faq">
-                <button
-                  type="button"
-                  className="relative p-1 rounded-full focus:outline-none "
-                >
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">View notifications</span>
-                  <QuestionMarkCircleIcon className="w-8 h-8 " aria-hidden="true" color='white' />
-                </button>
-                </a>
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
@@ -94,7 +80,7 @@ export default function BBNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="/home"
+                            href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Home
@@ -104,7 +90,7 @@ export default function BBNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="/contact"
+                            href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             About Us

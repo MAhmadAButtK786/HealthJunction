@@ -41,9 +41,9 @@ const LabNavbar = () => {
         >
           <a
             className="px-4 py-2 mt-2 text-sm font-semibold bg-gray-600 rounded-lg md:mt-0 focus:text-gray-900 focus:outline-none focus:shadow-outline"
-            href="/LabHome"
+            href="/home"
           >
-            Laboratory Home
+            Dashboard
           </a>
           <button
             onClick={() => setOpen(!open)}

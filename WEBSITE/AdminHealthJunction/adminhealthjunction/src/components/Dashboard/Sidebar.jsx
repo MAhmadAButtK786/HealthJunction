@@ -60,7 +60,7 @@ const Sidebar = () => {
           </li>
           {/* Events without dropdown */}
           <li>
-            <Link to="#" className="flex items-center justify-between p-2 hover:bg-gray-700">
+            <Link to="/event" className="flex items-center justify-between p-2 hover:bg-gray-700">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faCalendar} className="mr-2" />
                 <span>Events</span>
@@ -69,7 +69,7 @@ const Sidebar = () => {
           </li>
            {/* NGOs */}
            <li>
-            <Link to="#" className="flex items-center justify-between p-2 hover:bg-gray-700">
+            <Link to="/charityORG" className="flex items-center justify-between p-2 hover:bg-gray-700">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faHandHoldingHeart} className="mr-2" />
                 <span>Manage Charitable Organizations</span>
@@ -78,7 +78,7 @@ const Sidebar = () => {
           </li>
           {/* Donor without dropdown */}
           <li>
-            <Link to="#" className="flex items-center justify-between p-2 hover:bg-gray-700">
+            <Link to="/donor" className="flex items-center justify-between p-2 hover:bg-gray-700">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faHandsHelping} className="mr-2" />
                 <span>Donor</span>
@@ -87,7 +87,7 @@ const Sidebar = () => {
           </li>
           {/* Recipient without dropdown */}
           <li>
-            <Link to="#" className="flex items-center justify-between p-2 hover:bg-gray-700">
+            <Link to="/recipients" className="flex items-center justify-between p-2 hover:bg-gray-700">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faUserInjured} className="mr-2" />
                 <span>Recipient</span>
@@ -106,13 +106,13 @@ const Sidebar = () => {
             {/* Dropdown content */}
             <ul className={`desplegable ml-4 ${dropdowns.bloodBank ? '' : 'hidden'}`}>
             <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/privateBB" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Private BB
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/publicBB" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Public BB
                 </Link>
@@ -131,43 +131,43 @@ const Sidebar = () => {
             {/* Dropdown content */}
             <ul className={`desplegable ml-4 ${dropdowns.labManagement ? '' : 'hidden'}`}>
             <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/alliedlab" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Allied 
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/chughtailab" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Chughtai 
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/alnoorlab" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Alnoor
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/excellab" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Excel
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="idclab" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   IDC
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="lahoremdc" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   LMDC
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="induslab" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Indus 
                 </Link>
