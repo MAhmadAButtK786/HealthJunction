@@ -12,4 +12,4 @@ function HealthZone() {
   )
 }
 
-export default HealthZone;
+export default HealthZone

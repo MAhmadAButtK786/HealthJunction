@@ -32,6 +32,7 @@ import AddDonorPage from './Component/bloodbanks/Registration/RegisterDonor';
 import AddRecipientPage from './Component/bloodbanks/Registration/RegisterRecipient';
 import Excelsheet from './Component/healthPoints/healthpRegistration/ExcelSheetPart/excelsheet';
 import Eventmain from './Component/events/eventmain';
+import HealthZone from './Component/lab/privateLabs/LabsScreens/HealthZone/healthzone';
 function App() {
   return (
       
@@ -90,7 +91,8 @@ function App() {
           <Route path="/IndusLab" exact component={IndusLab}/>
           {/* LMDC */}
           <Route path="/LahoreMDC" exact component={LahoreMDC}/>
-
+             {/* Health Zone */}
+             <Route path="/HealthZone" exact component={HealthZone}/>
           <Route path="/contact" exact component={Contact} />
           <Route path="/" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
