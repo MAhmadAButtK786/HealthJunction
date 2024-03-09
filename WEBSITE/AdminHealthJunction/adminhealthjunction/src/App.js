@@ -27,6 +27,7 @@ import ChughtaiLab from "./components/lab/privateLabs/LabsScreens/ChughtaiLab/ch
 import ExcelLab from "./components/lab/privateLabs/LabsScreens/Excel Lab/excellab";
 import IDCLab from "./components/lab/privateLabs/LabsScreens/IDC/idc";
 import IndusLab from "./components/lab/privateLabs/LabsScreens/Indus Lab/indusLab";
+import HealthZone from './components/lab/privateLabs/LabsScreens/Health Zone/healthzonedata';
 import LahoreMDC from "./components/lab/privateLabs/LabsScreens/LahoreMDC/LahoreMDC";
 import AlliedInsertPage from "./components/lab/privateLabs/LabsScreens/Allied Lab/insertalliedlab";
 import AlnoorInsertPage from "./components/lab/privateLabs/LabsScreens/AlnoorLab/insertalnoorLab";
@@ -35,6 +36,7 @@ import ExcelInsertPage from "./components/lab/privateLabs/LabsScreens/Excel Lab/
 import IDCInsertPage from "./components/lab/privateLabs/LabsScreens/IDC/idcinsert";
 import IndusInsertPage from "./components/lab/privateLabs/LabsScreens/Indus Lab/indusinsert";
 import LMLDCInsertPage from "./components/lab/privateLabs/LabsScreens/LahoreMDC/lahoremdcinsert";
+import healthzoneinsert from './components/lab/privateLabs/LabsScreens/Health Zone/healthzoneinsert';
 import UpdateAlliedLabPage from './components/lab/privateLabs/LabsScreens/Allied Lab/updatealliedlab';
 import UpdateAlnoorLabPage from './components/lab/privateLabs/LabsScreens/AlnoorLab/updatealnoor';
 import UpdateChughtaiLabPage from './components/lab/privateLabs/LabsScreens/ChughtaiLab/updatechughtailab';
@@ -42,6 +44,7 @@ import UpdateExcelLabPage from './components/lab/privateLabs/LabsScreens/Excel L
 import UpdateIDCLabPage from './components/lab/privateLabs/LabsScreens/IDC/update idc';
 import UpdateIndusLabPage from './components/lab/privateLabs/LabsScreens/Indus Lab/updateindus';
 import UpdateLahoreMDCDPage from './components/lab/privateLabs/LabsScreens/LahoreMDC/updateLahoreMDC';
+import UpdateHealthZoneLabPage from './components/lab/privateLabs/LabsScreens/Health Zone/updatehealthzone';
 // Charity Links
 import CharityORG from "./components/charity/Charitable ORG Data/charityORG";
 import CharityForm from "./components/charity/Charitable ORG Data/charityinsertForm";
@@ -107,7 +110,7 @@ const App = () => {
         <Route path="/updatePrivateBBPage/:id" exact component={UpdatePrivateBBLPage}/>
         <Route path="/updatePublicBBPage/:id" exact component={UpdatePublicBBLPage}/>
         {/* Lab Screens */}
-       
+        <Route path="/healthzonelab" exact component={HealthZone} />
         <Route path="/alliedlab" exact component={AlliedLab} />
         <Route path="/alnoorlab" exact component={AlnoorLab} />
         <Route path="/chughtailab" exact component={ChughtaiLab}/>
@@ -115,6 +118,7 @@ const App = () => {
         <Route path="/idclab" exact component={IDCLab}/>
         <Route path="/induslab" exact component={IndusLab}/>
         <Route path="/lahoremdc" exact component={LahoreMDC}/>
+        <Route path="/healthzoneinsertpage" exact component={healthzoneinsert}/>
         <Route path="/alliedinsertpage" exact component={AlliedInsertPage}/>
         <Route path="/alnoorinsertpage" exact component={AlnoorInsertPage}/>
         <Route path="/excelinsertpage" exact component={ExcelInsertPage}/>
@@ -129,6 +133,7 @@ const App = () => {
         <Route path="/updateIDCPage/:id" exact component={UpdateIDCLabPage}/>
         <Route path="/updateIndusPage/:id" exact component={UpdateIndusLabPage}/>
         <Route path="/updateLMDCPage/:id" exact component={UpdateLahoreMDCDPage}/>
+        <Route path="/updateHealthZonePage/:id" exact component={UpdateHealthZoneLabPage}/>
         {/* Charity Screens */}
         <Route path="/charityORG" exact component={CharityORG} />
         <Route path="/charityinsert" exact component={CharityForm}/>

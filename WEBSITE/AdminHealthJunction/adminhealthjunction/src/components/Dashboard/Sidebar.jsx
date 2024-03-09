@@ -155,19 +155,25 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="idclab" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/idclab" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   IDC
                 </Link>
               </li>
               <li>
-                <Link to="lahoremdc" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/healthzonelab" className="block p-2 hover:bg-gray-700  items-center">
+                  <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
+                  Health Zone
+                </Link>
+              </li>
+              <li>
+                <Link to="/lahoremdc" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   LMDC
                 </Link>
               </li>
               <li>
-                <Link to="induslab" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/induslab" className="block p-2 hover:bg-gray-700  items-center">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Indus 
                 </Link>

@@ -78,9 +78,9 @@ const Navbar = () => {
               </span>
               {showBloodMenu && (
                 <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md shadow-lg">
-                  <Link to="/privatebb" className="block py-2 hover:text-blue-300">Hospitals Management</Link>
-                  <Link to="/publicbb" className="block py-2 hover:text-blue-300">Clinic Management</Link>
-                  <Link to="/recipients" className="block py-2 hover:text-blue-300">Users Management</Link>
+                  <Link to="#" className="block py-2 hover:text-blue-300">Hospitals Management</Link>
+                  <Link to="#" className="block py-2 hover:text-blue-300">Clinic Management</Link>
+                  <Link to="#" className="block py-2 hover:text-blue-300">Users Management</Link>
                 </div>
               )}
             </div>
@@ -114,7 +114,7 @@ const Navbar = () => {
                   <Link to="/induslab" className="block py-2 hover:text-blue-300">Indus Lab</Link>
                   <Link to="/idclab" className="block py-2 hover:text-blue-300">IDC</Link>
                   <Link to="/lahoremdc" className="block py-2 hover:text-blue-300">LMDC</Link>
-                  <Link to="/healthzone" className="block py-2 hover:text-blue-300">Health Zone</Link>
+                  <Link to="/healthzonelab" className="block py-2 hover:text-blue-300">Health Zone</Link>
                   <Link to="/excellab" className="block py-2 hover:text-blue-300">Excel Lab</Link>
                   <Link to="/chughtailab" className="block py-2 hover:text-blue-300">Chughtai Lab</Link>
                   <Link to="/phc" className="block py-2 hover:text-blue-300">PHC Labs</Link>
