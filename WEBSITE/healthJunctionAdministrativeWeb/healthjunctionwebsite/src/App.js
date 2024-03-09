@@ -91,8 +91,8 @@ function App() {
           <Route path="/IndusLab" exact component={IndusLab}/>
           {/* LMDC */}
           <Route path="/LahoreMDC" exact component={LahoreMDC}/>
-             {/* Health Zone */}
-             <Route path="/HealthZone" exact component={HealthZone}/>
+          {/* Health Zone */}
+          <Route path="/HealthZone" exact component={HealthZone}/>
           <Route path="/contact" exact component={Contact} />
           <Route path="/" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
