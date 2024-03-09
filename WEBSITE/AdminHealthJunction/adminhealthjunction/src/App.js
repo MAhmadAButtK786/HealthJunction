@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from 'react'; 
 import { Switch, Route, Redirect } from 'react-router-dom';
 // Importing components
-import LoginAdmin from "./components/loginadmin";
+
 import EventCR from './components/events/eventCR';
 import EventUploader from './components/events/eventuploaderpage';
 import UpdateEventPage from './components/events/update';
+// Importing Dashboard 
 import Dashboard from './components/Dashboard/Dashboard';
+import LoginAdmin from './components/loginadmin';
 // Blood Banks
 import Donor from "./components/bloodbanks/DonorsList/donor";
 import PrivateBB from "./components/bloodbanks/PrivateBB/privateBB";
@@ -36,7 +38,6 @@ import ExcelInsertPage from "./components/lab/privateLabs/LabsScreens/Excel Lab/
 import IDCInsertPage from "./components/lab/privateLabs/LabsScreens/IDC/idcinsert";
 import IndusInsertPage from "./components/lab/privateLabs/LabsScreens/Indus Lab/indusinsert";
 import LMLDCInsertPage from "./components/lab/privateLabs/LabsScreens/LahoreMDC/lahoremdcinsert";
-import healthzoneinsert from './components/lab/privateLabs/LabsScreens/Health Zone/healthzoneinsert';
 import UpdateAlliedLabPage from './components/lab/privateLabs/LabsScreens/Allied Lab/updatealliedlab';
 import UpdateAlnoorLabPage from './components/lab/privateLabs/LabsScreens/AlnoorLab/updatealnoor';
 import UpdateChughtaiLabPage from './components/lab/privateLabs/LabsScreens/ChughtaiLab/updatechughtailab';
@@ -118,7 +119,6 @@ const App = () => {
         <Route path="/idclab" exact component={IDCLab}/>
         <Route path="/induslab" exact component={IndusLab}/>
         <Route path="/lahoremdc" exact component={LahoreMDC}/>
-        <Route path="/healthzoneinsertpage" exact component={healthzoneinsert}/>
         <Route path="/alliedinsertpage" exact component={AlliedInsertPage}/>
         <Route path="/alnoorinsertpage" exact component={AlnoorInsertPage}/>
         <Route path="/excelinsertpage" exact component={ExcelInsertPage}/>
