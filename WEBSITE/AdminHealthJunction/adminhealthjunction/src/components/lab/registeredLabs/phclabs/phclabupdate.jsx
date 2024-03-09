@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { doc, updateDoc } from "firebase/firestore";
-import { database } from "../../../firebase";
+import { database } from "../../../../firebase";
 
 function UpdateLabPage() {
   const { id } = useParams();
