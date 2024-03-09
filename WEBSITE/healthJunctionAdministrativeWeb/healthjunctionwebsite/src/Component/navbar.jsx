@@ -32,12 +32,11 @@ const Navbar = () => {
                 <Link to="/bloodbank" className="block py-1 hover:text-blue-300">BloodBank</Link>
                 <Link to="/homecharity" className="block py-1 hover:text-blue-300">Charity</Link>
                 <Link to="/LabHome" className="block py-1 hover:text-blue-300">Laboratories</Link>
+                <Link to="/eventpage" className="block py-1 hover:text-blue-300">Events</Link>
               </div>
             )}
           </div>
-          <Link to="/eventpage" className="border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600">
-            Events
-          </Link>
+         
           <Link to="/contact" className="border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600">
             About Us
           </Link>
