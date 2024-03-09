@@ -52,6 +52,7 @@ import InsertLabPage from './components/lab/registeredLabs/phclabs/phclabinsert'
 // Charity Links
 import CharityORG from "./components/charity/Charitable ORG Data/charityORG";
 import CharityForm from "./components/charity/Charitable ORG Data/charityinsertForm";
+import UpdateCharityForm from './components/charity/Charitable ORG Data/updatecharity';
 // Import Firebase auth module
 import { auth } from './firebase';
 
@@ -144,6 +145,7 @@ const App = () => {
         {/* Charity Screens */}
         <Route path="/charityORG" exact component={CharityORG} />
         <Route path="/charityinsert" exact component={CharityForm}/>
+        <Route path="/NGOupdate/:id" exact component={UpdateCharityForm}/>
       </Switch>
     </>
   );
