@@ -1,11 +1,11 @@
 import React from 'react'
-import BBNavbar from '../BBNavbar';
+import Navbar from '../../Navbar';
 import PrivateBBL from './privateBBL';
 import Footer from '../../Footer';
 function PrivateBB() {
   return (
   <>
-  <BBNavbar/>
+  <Navbar/>
   <PrivateBBL/>
   <Footer/>
   </>

@@ -8,7 +8,6 @@ import EventUploader from './components/events/eventuploaderpage';
 import UpdateEventPage from './components/events/update';
 import Dashboard from './components/Dashboard/Dashboard';
 // Blood Banks
-import bloodbank from "./components/bloodbanks/bbHome/bloodbank";
 import Donor from "./components/bloodbanks/DonorsList/donor";
 import PrivateBB from "./components/bloodbanks/PrivateBB/privateBB";
 import PublicBB from "./components/bloodbanks/PublicBB/publicBB";
@@ -44,9 +43,7 @@ import UpdateIDCLabPage from './components/lab/privateLabs/LabsScreens/IDC/updat
 import UpdateIndusLabPage from './components/lab/privateLabs/LabsScreens/Indus Lab/updateindus';
 import UpdateLahoreMDCDPage from './components/lab/privateLabs/LabsScreens/LahoreMDC/updateLahoreMDC';
 // Charity Links
-import Homecharity from "./components/charity/CharityHome/homecharity";
 import CharityORG from "./components/charity/Charitable ORG Data/charityORG";
-import Partner from "./components/charity/our Partner/partner";
 import CharityForm from "./components/charity/Charitable ORG Data/charityinsertForm";
 // Import Firebase auth module
 import { auth } from './firebase';
@@ -97,7 +94,6 @@ const App = () => {
         <Route path="/eventuploader" exact component={EventUploader} />
         <Route path="/updateEventPage/:id" exact component={UpdateEventPage}/>
         {/* Blood Banks Screens */}
-        <Route path="/bloodbank" exact component={bloodbank} />
         <Route path="/donor" exact component={Donor} />
         <Route path="/privateBB" exact component={PrivateBB} />
         <Route path="/publicBB" exact component={PublicBB} />
@@ -134,8 +130,6 @@ const App = () => {
         <Route path="/updateIndusPage/:id" exact component={UpdateIndusLabPage}/>
         <Route path="/updateLMDCPage/:id" exact component={UpdateLahoreMDCDPage}/>
         {/* Charity Screens */}
-        <Route path="/homecharity" exact component={Homecharity} />
-        <Route path="/partner" exact component={Partner} />
         <Route path="/charityORG" exact component={CharityORG} />
         <Route path="/charityinsert" exact component={CharityForm}/>
       </Switch>

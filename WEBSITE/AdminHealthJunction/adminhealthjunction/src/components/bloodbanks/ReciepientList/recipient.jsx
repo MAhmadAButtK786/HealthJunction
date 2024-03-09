@@ -1,11 +1,11 @@
 import React from 'react'
-import BBNavbar from '../BBNavbar'
+import Navbar from '../../Navbar'
 import RecipientList from './recipientList'
 import Footer from '../../Footer'
 function Recipients() {
   return (
     <>
-    <BBNavbar/>
+    <Navbar/>
     <RecipientList/>
     <Footer/>
     </>
