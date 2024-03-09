@@ -1,123 +1,148 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { doc, updateDoc } from "firebase/firestore";
+import { useParams, useHistory } from "react-router-dom";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { database } from "../../../../firebase";
 
 function UpdateLabPage() {
   const { id } = useParams();
+  const history = useHistory();
   const [labData, setLabData] = useState({});
-  const [updatedLabData, setUpdatedLabData] = useState({
+  const [formData, setFormData] = useState({
     "Lab Name": "",
     Location: "",
     District: "",
     "Phone Number": "",
     "Serial Number": ""
   });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    if (database) {
-      getLabData();
-    }
-  }, []);
-
-  const getLabData = async () => {
-    try {
-      const docRef = doc(database, "Punjab Register Lab", id);
-      const docSnap = await docRef.get();
-      if (docSnap.exists()) {
-        setLabData(docSnap.data());
-        setUpdatedLabData(docSnap.data());
+    const fetchLabData = async () => {
+      const labDoc = doc(database, "Punjab Register Lab", id);
+      const labSnapshot = await getDoc(labDoc);
+      if (labSnapshot.exists()) {
+        const data = labSnapshot.data();
+        setLabData(data);
+        setFormData(data); // Set form data with lab data
       } else {
         console.log("No such document!");
       }
-    } catch (error) {
-      console.error("Error fetching data:", error);
+    };
+    fetchLabData();
+  }, [id]);
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validateForm = () => {
+    let valid = true;
+    let errors = {};
+    if (!formData["Lab Name"]) {
+      errors["Lab Name"] = "Lab Name is required";
+      valid = false;
     }
+    if (!formData.Location) {
+      errors["Location"] = "Location is required";
+      valid = false;
+    }
+    if (!formData.District) {
+      errors["District"] = "District is required";
+      valid = false;
+    }
+    setErrors(errors);
+    return valid;
   };
 
-  const handleInputChange = event => {
-    const { name, value } = event.target;
-    setUpdatedLabData({ ...updatedLabData, [name]: value });
-  };
-
-  const handleUpdateLab = async () => {
-    try {
-      await updateDoc(doc(database, "Punjab Register Lab", id), updatedLabData);
-      alert("Lab updated successfully!");
-      // You can redirect the user to another page after successful update
-    } catch (error) {
-      console.error("Error updating lab:", error);
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      const labDoc = doc(database, "Punjab Register Lab", id);
+      await updateDoc(labDoc, formData);
+      alert("Lab updated successfully");
+      // Redirect to lab list page after update
+      history.push("/PHCLabs");
     }
   };
 
   return (
-    <div className="w-full px-4 pt-10 mx-auto">
-      <div className="max-w-6xl mx-auto mb-4">
-        <div className="text-center pb-7">
-          <h1 className="text-5xl font-bold text-red-600">Update Lab</h1>
-        </div>
-        <div className="mt-5">
-          <div className="mb-4">
-            <label htmlFor="labName" className="block mb-1 font-medium text-gray-600">Lab Name</label>
-            <input
-              type="text"
-              id="labName"
-              name="Lab Name"
-              value={updatedLabData["Lab Name"]}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
+    <div className="flex items-center justify-center min-h-screen p-6 bg-gradient-to-r from-gray-500 to-gray-400">
+      <div className="w-full max-w-lg p-8 m-4 bg-white rounded-lg shadow-md">
+        <h1 className="mb-4 text-3xl font-bold text-center">Update Lab Information</h1>
+        <form onSubmit={handleUpdate}>
+          <div className="grid grid-cols-1 gap-y-4">
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                Lab Name:
+                <input
+                  type="text"
+                  name="Lab Name"
+                  value={formData["Lab Name"]}
+                  onChange={handleInputChange}
+                  className={`block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 ${errors["Lab Name"] ? "border-red-500" : ""}`}
+                />
+                {errors["Lab Name"] && <p className="mt-1 text-sm text-red-500">{errors["Lab Name"]}</p>}
+              </label>
+            </div>
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                Location:
+                <input
+                  type="text"
+                  name="Location"
+                  value={formData.Location}
+                  onChange={handleInputChange}
+                  className={`block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 ${errors["Location"] ? "border-red-500" : ""}`}
+                />
+                {errors["Location"] && <p className="mt-1 text-sm text-red-500">{errors["Location"]}</p>}
+              </label>
+            </div>
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                District:
+                <input
+                  type="text"
+                  name="District"
+                  value={formData.District}
+                  onChange={handleInputChange}
+                  className={`block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 ${errors["District"] ? "border-red-500" : ""}`}
+                />
+                {errors["District"] && <p className="mt-1 text-sm text-red-500">{errors["District"]}</p>}
+              </label>
+            </div>
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                Phone Number:
+                <input
+                  type="text"
+                  name="Phone Number"
+                  value={formData["Phone Number"]}
+                  onChange={handleInputChange}
+                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                />
+              </label>
+            </div>
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                Serial Number:
+                <input
+                  type="text"
+                  name="Serial Number"
+                  value={formData["Serial Number"]}
+                  onChange={handleInputChange}
+                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                />
+              </label>
+            </div>
           </div>
-          <div className="mb-4">
-            <label htmlFor="location" className="block mb-1 font-medium text-gray-600">Location</label>
-            <input
-              type="text"
-              id="location"
-              name="Location"
-              value={updatedLabData.Location}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="district" className="block mb-1 font-medium text-gray-600">District</label>
-            <input
-              type="text"
-              id="district"
-              name="District"
-              value={updatedLabData.District}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="phoneNumber" className="block mb-1 font-medium text-gray-600">Phone Number</label>
-            <input
-              type="text"
-              id="phoneNumber"
-              name="Phone Number"
-              value={updatedLabData["Phone Number"]}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="serialNumber" className="block mb-1 font-medium text-gray-600">Serial Number</label>
-            <input
-              type="text"
-              id="serialNumber"
-              name="Serial Number"
-              value={updatedLabData["Serial Number"]}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
-          </div>
-          <button onClick={handleUpdateLab} className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
+          <button
+            type="submit"
+            className="w-full px-4 py-2 mt-4 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
+          >
             Update Lab
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

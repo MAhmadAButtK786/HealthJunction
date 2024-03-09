@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { database } from "../../../firebase";
+import { database } from "../../../../firebase";
+import { useHistory } from "react-router-dom";
 
 function InsertLabPage() {
+  const history = useHistory();
   const [newLabData, setNewLabData] = useState({
     "Lab Name": "",
     Location: "",
@@ -10,88 +13,128 @@ function InsertLabPage() {
     "Phone Number": "",
     "Serial Number": ""
   });
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = event => {
-    const { name, value } = event.target;
-    setNewLabData({ ...newLabData, [name]: value });
+    setNewLabData({ ...newLabData, [event.target.name]: event.target.value });
+  };
+
+  const validateForm = () => {
+    let valid = true;
+    let errors = {};
+    if (!newLabData["Lab Name"]) {
+      errors["Lab Name"] = "Lab Name is required";
+      valid = false;
+    }
+    if (!newLabData.Location) {
+      errors["Location"] = "Location is required";
+      valid = false;
+    }
+    if (!newLabData.District) {
+      errors["District"] = "District is required";
+      valid = false;
+    }
+    if (!/^\d{10}$/.test(newLabData["Phone Number"])) {
+      errors["Phone Number"] = "Phone Number should be a 10-digit number";
+      valid = false;
+    }
+    setErrors(errors);
+    return valid;
   };
 
   const handleInsertLab = async () => {
-    try {
-      await addDoc(collection(database, "Punjab Register Lab"), newLabData);
-      alert("Lab inserted successfully!");
-      // You can redirect the user to another page after successful insertion
-    } catch (error) {
-      console.error("Error inserting lab:", error);
+    if (validateForm()) {
+      try {
+        await addDoc(collection(database, "Punjab Register Lab"), newLabData);
+        alert("Lab inserted successfully!");
+        // Redirect the user to the PHCLab page after successful insertion
+        history.push("/PHCLab");
+      } catch (error) {
+        console.error("Error inserting lab:", error);
+      }
     }
   };
 
   return (
-    <div className="w-full px-4 pt-10 mx-auto">
-      <div className="max-w-6xl mx-auto mb-4">
-        <div className="text-center pb-7">
-          <h1 className="text-5xl font-bold text-red-600">Insert New Lab</h1>
-        </div>
-        <div className="mt-5">
-          <div className="mb-4">
-            <label htmlFor="labName" className="block mb-1 font-medium text-gray-600">Lab Name</label>
-            <input
-              type="text"
-              id="labName"
-              name="Lab Name"
-              value={newLabData["Lab Name"]}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
+    <div className="flex items-center justify-center min-h-screen p-6 bg-gradient-to-r from-gray-500 to-gray-400">
+      <div className="w-full max-w-lg p-8 m-4 bg-white rounded-lg shadow-md">
+        <h1 className="mb-4 text-3xl font-bold text-center">Insert New Lab</h1>
+        <form>
+          <div className="grid grid-cols-1 gap-y-4">
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                Lab Name:
+                <input
+                  type="text"
+                  name="Lab Name"
+                  value={newLabData["Lab Name"]}
+                  onChange={handleInputChange}
+                  className={`block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 ${errors["Lab Name"] ? "border-red-500" : ""}`}
+                />
+                {errors["Lab Name"] && <p className="mt-1 text-sm text-red-500">{errors["Lab Name"]}</p>}
+              </label>
+            </div>
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                Location:
+                <input
+                  type="text"
+                  name="Location"
+                  value={newLabData.Location}
+                  onChange={handleInputChange}
+                  className={`block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 ${errors["Location"] ? "border-red-500" : ""}`}
+                />
+                {errors["Location"] && <p className="mt-1 text-sm text-red-500">{errors["Location"]}</p>}
+                <p className="mt-1 text-sm text-gray-500">Please enter the location or pin it on Google Maps.</p>
+              </label>
+            </div>
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                District:
+                <input
+                  type="text"
+                  name="District"
+                  value={newLabData.District}
+                  onChange={handleInputChange}
+                  className={`block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 ${errors["District"] ? "border-red-500" : ""}`}
+                />
+                {errors["District"] && <p className="mt-1 text-sm text-red-500">{errors["District"]}</p>}
+              </label>
+            </div>
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                Phone Number:
+                <input
+                  type="text"
+                  name="Phone Number"
+                  value={newLabData["Phone Number"]}
+                  onChange={handleInputChange}
+                  className={`block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 ${errors["Phone Number"] ? "border-red-500" : ""}`}
+                />
+                {errors["Phone Number"] && <p className="mt-1 text-sm text-red-500">{errors["Phone Number"]}</p>}
+              </label>
+            </div>
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">
+                Serial Number:
+                <input
+                  type="text"
+                  name="Serial Number"
+                  value={newLabData["Serial Number"]}
+                  onChange={handleInputChange}
+                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                />
+              </label>
+            </div>
           </div>
-          <div className="mb-4">
-            <label htmlFor="location" className="block mb-1 font-medium text-gray-600">Location</label>
-            <input
-              type="text"
-              id="location"
-              name="Location"
-              value={newLabData.Location}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="district" className="block mb-1 font-medium text-gray-600">District</label>
-            <input
-              type="text"
-              id="district"
-              name="District"
-              value={newLabData.District}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="phoneNumber" className="block mb-1 font-medium text-gray-600">Phone Number</label>
-            <input
-              type="text"
-              id="phoneNumber"
-              name="Phone Number"
-              value={newLabData["Phone Number"]}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="serialNumber" className="block mb-1 font-medium text-gray-600">Serial Number</label>
-            <input
-              type="text"
-              id="serialNumber"
-              name="Serial Number"
-              value={newLabData["Serial Number"]}
-              onChange={handleInputChange}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
-            />
-          </div>
-          <button onClick={handleInsertLab} className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
+          <button
+            type="button"
+            onClick={handleInsertLab}
+            className="w-full px-4 py-2 mt-4 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600"
+          >
             Insert Lab
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

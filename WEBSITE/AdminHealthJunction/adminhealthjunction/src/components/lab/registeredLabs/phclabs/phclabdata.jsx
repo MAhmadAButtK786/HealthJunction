@@ -55,7 +55,7 @@ function PHCLab() {
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
         <div className="text-center pb-7">
-          <h1 className="text-5xl font-bold text-red-600">Punjab Register Labs</h1>
+          <h1 className="text-5xl font-bold text-gray-700">Punjab Register Labs</h1>
         </div>
         <div className="">
           <div className="flex justify-center mb-4">
@@ -67,8 +67,15 @@ function PHCLab() {
               onChange={handleSearch}
             />
           </div>
+          <div className="mb-4 text-center">
+            <Link to="/insertPHCLab">
+              <button className="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700">
+                Add New Lab
+              </button>
+            </Link>
+          </div>
           <table className="w-full mt-5 text-center border border-red-500">
-            <thead className="h-10 bg-red-700 border-b border-red-500">
+            <thead className="h-10 bg-gray-700 border-b border-gray-500">
               <tr>
                 <th className="px-4 py-2 text-white">Lab Name</th>
                 <th className="px-4 py-2 text-white">Location</th>
@@ -92,7 +99,7 @@ function PHCLab() {
                   <td className="px-4 py-2">{lab["Serial Number"]}</td>
                   <td className='px-4 py-2'> <FaTrash onClick={() => handleDelete(lab)} className="text-red-500 cursor-pointer" /></td>
                   <td className='px-4 py-2'>
-                    <Link to={`/updateLabPage/${lab.id}`}><FaEdit className="text-green-500 cursor-pointer" /></Link>
+                    <Link to={`/updatePHCLabs/${lab.id}`}><FaEdit className="text-green-500 cursor-pointer" /></Link>
                   </td>
                 </tr>
               ))}
