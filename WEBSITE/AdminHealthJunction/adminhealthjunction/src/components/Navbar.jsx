@@ -50,18 +50,18 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-gray-800 text-white">
-      <div className="container mx-auto flex justify-between items-center py-4">
+    <header className="text-white bg-gray-800">
+      <div className="container flex items-center justify-between py-4 mx-auto">
         <div className="flex items-center text-2xl font-semibold">
           <img
             src="images/hjlogo.png"
-            className="h-12 w-12 rounded-full mr-2"
+            className="w-12 h-12 mr-2 rounded-full"
             alt="logo"
           />
           HJ Admin
         </div>
         <button
-          className="lg:hidden text-white focus:outline-none p-2"
+          className="p-2 text-white lg:hidden focus:outline-none"
           onClick={toggleMenu}
           aria-label={showMenu ? "Close Menu" : "Open Menu"}
         >
@@ -71,7 +71,7 @@ const Navbar = () => {
           <div className="flex flex-col lg:flex-row lg:ml-auto">
           <div className="relative">
               <span
-                className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 py-4 lg:py-0"
+                className="py-4 mx-4 border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600 lg:py-0"
                 onClick={toggleBloodMenu}
               >
                 <FontAwesomeIcon icon={faHospital} className="mr-2" /> HealthPoints 
@@ -86,7 +86,7 @@ const Navbar = () => {
             </div>
             <div className="relative">
               <span
-                className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 py-4 lg:py-0"
+                className="py-4 mx-4 border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600 lg:py-0"
                 onClick={toggleBloodMenu}
               >
                 <FontAwesomeIcon icon={faTint} className="mr-2" /> Blood Management
@@ -102,7 +102,7 @@ const Navbar = () => {
             </div>
             <div className="relative">
               <span
-                className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 py-4 lg:py-0"
+                className="py-4 mx-4 border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600 lg:py-0"
                 onClick={toggleLabMenu}
               >
                 <FontAwesomeIcon icon={faFlask} className="mr-2" /> Labs Management
@@ -117,13 +117,13 @@ const Navbar = () => {
                   <Link to="/healthzonelab" className="block py-2 hover:text-blue-300">Health Zone</Link>
                   <Link to="/excellab" className="block py-2 hover:text-blue-300">Excel Lab</Link>
                   <Link to="/chughtailab" className="block py-2 hover:text-blue-300">Chughtai Lab</Link>
-                  <Link to="/phc" className="block py-2 hover:text-blue-300">PHC Labs</Link>
+                  <Link to="/PHCLabs" className="block py-2 hover:text-blue-300">PHC Labs</Link>
                 </div>
               )}
             </div>
             <div className="relative">
               <span
-                className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 py-4 lg:py-0"
+                className="py-4 mx-4 border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600 lg:py-0"
                 onClick={toggleCharitableMenu}
               >
                 <FontAwesomeIcon icon={faHandsHelping} className="mr-2" /> Beneficiary Programs
@@ -139,7 +139,7 @@ const Navbar = () => {
             </div>
           </div>
           <div>
-            <button onClick={handleLogout} className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 flex items-center py-4 lg:py-0">
+            <button onClick={handleLogout} className="flex items-center py-4 mx-4 border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600 lg:py-0">
               <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
               Logout
             </button>

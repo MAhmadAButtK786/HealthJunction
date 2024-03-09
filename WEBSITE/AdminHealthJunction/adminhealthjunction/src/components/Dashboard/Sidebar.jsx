@@ -19,7 +19,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="bg-gray-800 text-white w-64 min-h-screen p-4  ">
+    <aside className="w-64 min-h-screen p-4 text-white bg-gray-800 ">
       <nav >
         <ul className="space-y-2 "> {/* Reduced space-y to decrease gap */}
           {/* Agenda without dropdown */}
@@ -106,13 +106,13 @@ const Sidebar = () => {
             {/* Dropdown content */}
             <ul className={`desplegable ml-4 ${dropdowns.bloodBank ? '' : 'hidden'}`}>
             <li>
-                <Link to="/privateBB" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/privateBB" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Private BB
                 </Link>
               </li>
               <li>
-                <Link to="/publicBB" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/publicBB" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Public BB
                 </Link>
@@ -131,55 +131,55 @@ const Sidebar = () => {
             {/* Dropdown content */}
             <ul className={`desplegable ml-4 ${dropdowns.labManagement ? '' : 'hidden'}`}>
             <li>
-                <Link to="/alliedlab" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/alliedlab" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Allied 
                 </Link>
               </li>
               <li>
-                <Link to="/chughtailab" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/chughtailab" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Chughtai 
                 </Link>
               </li>
               <li>
-                <Link to="/alnoorlab" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/alnoorlab" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Alnoor
                 </Link>
               </li>
               <li>
-                <Link to="/excellab" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/excellab" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Excel
                 </Link>
               </li>
               <li>
-                <Link to="/idclab" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/idclab" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   IDC
                 </Link>
               </li>
               <li>
-                <Link to="/healthzonelab" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/healthzonelab" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Health Zone
                 </Link>
               </li>
               <li>
-                <Link to="/lahoremdc" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/lahoremdc" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   LMDC
                 </Link>
               </li>
               <li>
-                <Link to="/induslab" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/induslab" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                   Indus 
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block p-2 hover:bg-gray-700  items-center">
+                <Link to="/PHCLabs" className="items-center block p-2 hover:bg-gray-700">
                   <FontAwesomeIcon icon={faChevronRight} className="mr-2 text-xs" />
                  PHC Labs
                 </Link>
