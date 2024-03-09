@@ -1,11 +1,11 @@
 import React from 'react'
-import LabNavbar from '../../../labNavbar'
+import Navbar from '../../../../Navbar'
 import LahoreMDCD from './LahoreMDCL'
 import Footer from '../../../../Footer'
 function LahoreMDC() {
   return (
     <>
-    <LabNavbar/>
+    <Navbar/>
     <LahoreMDCD/>
     <Footer/>
     </>

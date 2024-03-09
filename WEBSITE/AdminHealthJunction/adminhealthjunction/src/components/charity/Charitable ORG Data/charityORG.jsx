@@ -1,11 +1,11 @@
 import React from 'react'
-import CharityNavbar from '../charityNavbar'
+import Navbar from '../../Navbar'
 import Footer from '../../Footer'
 import CharityORGL from './charityORGList'
 function CharityORG() {
   return (
     <div >
-      <CharityNavbar/>
+      <Navbar/>
       <CharityORGL/>
       <Footer/>
     </div>

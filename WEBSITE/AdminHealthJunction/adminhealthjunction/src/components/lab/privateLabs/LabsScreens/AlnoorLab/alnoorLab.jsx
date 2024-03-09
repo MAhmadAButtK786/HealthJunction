@@ -1,11 +1,11 @@
 import React from 'react'
-import LabNavbar from '../../../labNavbar'
+import Navbar from '../../../../Navbar'
 import Alnoor from './alnoorLabData'
 import Footer from '../../../../Footer'
 function AlnoorLab() {
   return (
     <>
-    <LabNavbar/>
+    <Navbar/>
     <Alnoor/>
     <Footer/>
     </>

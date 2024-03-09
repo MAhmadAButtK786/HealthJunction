@@ -1,11 +1,11 @@
 import React from 'react'
-import LabNavbar from '../../../labNavbar'
+import Navbar from '../../../../Navbar'
 import Indus from './indusLData'
 import Footer from '../../../../Footer'
 function IndusLab() {
   return (
   <>
-  <LabNavbar/>
+  <Navbar/>
   <Indus/>
   <Footer/>
   </>

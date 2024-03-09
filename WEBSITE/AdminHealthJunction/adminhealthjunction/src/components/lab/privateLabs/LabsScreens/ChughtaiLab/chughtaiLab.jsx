@@ -1,11 +1,11 @@
 import React from 'react'
-import LabNavbar from '../../../labNavbar'
+import Navbar from '../../../../Navbar'
 import Chughtai from './chughtaiLdata'
 import Footer from '../../../../Footer'
 function ChughtaiLab() {
   return (
   <>
-  <LabNavbar/>
+  <Navbar/>
   <Chughtai/>
   <Footer/>
   </>

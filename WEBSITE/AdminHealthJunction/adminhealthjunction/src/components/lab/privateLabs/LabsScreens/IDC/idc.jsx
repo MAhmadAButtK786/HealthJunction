@@ -1,11 +1,11 @@
 import React from 'react'
-import LabNavbar from '../../../labNavbar'
 import IDC from './idcData'
 import Footer from '../../../../Footer'
+import Navbar from '../../../../Navbar'
 function IDCLab() {
   return (
   <>
-  <LabNavbar/>
+  <Navbar/>
   <IDC/>
   <Footer/>
   </>

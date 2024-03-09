@@ -1,11 +1,11 @@
 import React from 'react'
-import LabNavbar from '../../../labNavbar'
+import Navbar from '../../../../Navbar'
 import Allied from './alliedLabData'
 import Footer from '../../../../Footer'
 const AlliedLab = () => {
   return (
     <div>
-<LabNavbar/>
+<Navbar/>
 <Allied/>
 <Footer/>
     </div>

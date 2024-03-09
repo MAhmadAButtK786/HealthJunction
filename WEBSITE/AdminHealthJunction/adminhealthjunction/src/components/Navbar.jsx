@@ -1,84 +1,150 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt, faBars, faTimes,faFlask, faTint, faHandsHelping, faHospital } from '@fortawesome/free-solid-svg-icons';
+import { auth } from '../firebase'; // Import your Firebase authentication instance
 
 const Navbar = () => {
-  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
-  const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showBloodMenu, setShowBloodMenu] = useState(false);
+  const [showLabMenu, setShowLabMenu] = useState(false);
+  const [showCharitableMenu, setShowCharitableMenu] = useState(false);
+  const history = useHistory();
 
-  const toggleServicesDropdown = () => {
-    setShowServicesDropdown(!showServicesDropdown);
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+    setShowBloodMenu(false);
+    setShowLabMenu(false);
+    setShowCharitableMenu(false);
   };
 
-  const toggleUserMenu = () => {
-    setShowUserMenu(!showUserMenu);
+  const toggleBloodMenu = () => {
+    setShowBloodMenu(!showBloodMenu);
+    setShowLabMenu(false);
+    setShowCharitableMenu(false);
+  };
+
+  const toggleLabMenu = () => {
+    setShowLabMenu(!showLabMenu);
+    setShowBloodMenu(false);
+    setShowCharitableMenu(false);
+  };
+
+  const toggleCharitableMenu = () => {
+    setShowCharitableMenu(!showCharitableMenu);
+    setShowBloodMenu(false);
+    setShowLabMenu(false);
+  };
+
+  const handleLogout = async () => {
+    try {
+      // Sign out the user from Firebase
+      await auth.signOut();
+      console.log('User logged out');
+      
+      // Redirect to the login page after logout
+      history.push('/');
+    } catch (error) {
+      console.error('Error logging out:', error.message);
+    }
   };
 
   return (
-    <header className="w-full text-gray-100 bg-gray-900 shadow body-font">
-      <div className="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row">
-        <nav className="flex flex-wrap items-center text-base lg:w-2/5 md:ml-auto">
-          <Link to="/healthPointHome" className="border-b border-transparent cursor-pointer mr-7 hover:text-blue-300 hover:border-indigo-600">
-            Health Points
-          </Link>
-          <div className="relative">
-            <span
-              className="border-b border-transparent cursor-pointer mr-7 hover:text-blue-300 hover:border-indigo-600"
-              onClick={toggleServicesDropdown}
-            >
-              Services
-            </span>
-            {showServicesDropdown && (
-              <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md top-full">
-                <Link to="/bloodbank" className="block py-1 hover:text-blue-300">BloodBank</Link>
-                <Link to="/homecharity" className="block py-1 hover:text-blue-300">Charity</Link>
-                <Link to="/LabHome" className="block py-1 hover:text-blue-300">Laboratories</Link>
-                <Link to="/event" className="block py-1 hover:text-blue-300">Events</Link>
-              </div>
-            )}
-          </div>
-          <Link to="/contact" className="border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600">
-            About Us
-          </Link>
-        </nav>
-        <Link to="/" className="flex items-center order-first mb-4 font-medium lg:order-none lg:w-1/5 title-font lg:items-center lg:justify-center md:mb-0">
+    <header className="bg-gray-800 text-white">
+      <div className="container mx-auto flex justify-between items-center py-4">
+        <div className="flex items-center text-2xl font-semibold">
           <img
             src="images/hjlogo.png"
-            style={{ height: 50, marginTop: 10, marginBottom: 10, borderRadius: '50%', backgroundColor: 'blue' }}
+            className="h-12 w-12 rounded-full mr-2"
             alt="logo"
           />
-          <span className="ml-3 text-xl">Health Junction</span>
-        </Link>
-        <div className="inline-flex mt-4 ml-5 lg:w-2/5 lg:justify-end lg:ml-0 lg:mt-0">
-          {/* Updated User menu design with a different icon */}
-          <div className="relative">
-            <button
-              className="px-3 py-2 text-white bg-indigo-700 rounded-lg hover:bg-indigo-500 focus:outline-none"
-              onClick={toggleUserMenu}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 15v-3m0 0v-3m0 3h3m-3 0h-3m-3 3h3m0 0h3m0-3v3m0 0v3m0-3h-3m3 0z"
-                />
-              </svg>
-            </button>
-            {showUserMenu && (
-              <div className="absolute right-0 mt-2 text-gray-100 bg-gray-900 rounded-md">
-                <Link to="/login" className="block px-4 py-2 hover:text-blue-300">Login</Link>
-                <Link to="/settings" className="block px-4 py-2 hover:text-blue-300">Settings</Link>
-                <Link to="/logout" className="block px-4 py-2 hover:text-blue-300">Logout</Link>
-              </div>
-            )}
-          </div>
+          HJ Admin
         </div>
+        <button
+          className="lg:hidden text-white focus:outline-none p-2"
+          onClick={toggleMenu}
+          aria-label={showMenu ? "Close Menu" : "Open Menu"}
+        >
+          <FontAwesomeIcon icon={showMenu ? faTimes : faBars} />
+        </button>
+        <nav className={`lg:flex flex-grow items-center justify-between mt-4 lg:mt-0 ${showMenu ? '' : 'hidden'}`}>
+          <div className="flex flex-col lg:flex-row lg:ml-auto">
+          <div className="relative">
+              <span
+                className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 py-4 lg:py-0"
+                onClick={toggleBloodMenu}
+              >
+                <FontAwesomeIcon icon={faHospital} className="mr-2" /> HealthPoints 
+              </span>
+              {showBloodMenu && (
+                <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md shadow-lg">
+                  <Link to="/privatebb" className="block py-2 hover:text-blue-300">Hospitals Management</Link>
+                  <Link to="/publicbb" className="block py-2 hover:text-blue-300">Clinic Management</Link>
+                  <Link to="/recipients" className="block py-2 hover:text-blue-300">Users Management</Link>
+                </div>
+              )}
+            </div>
+            <div className="relative">
+              <span
+                className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 py-4 lg:py-0"
+                onClick={toggleBloodMenu}
+              >
+                <FontAwesomeIcon icon={faTint} className="mr-2" /> Blood Management
+              </span>
+              {showBloodMenu && (
+                <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md shadow-lg">
+                  <Link to="/privatebb" className="block py-2 hover:text-blue-300">Private Blood Banks</Link>
+                  <Link to="/publicbb" className="block py-2 hover:text-blue-300">Public Blood Banks</Link>
+                  <Link to="/recipients" className="block py-2 hover:text-blue-300">Recipients</Link>
+                  <Link to="/donor" className="block py-2 hover:text-blue-300">Donors</Link>
+                </div>
+              )}
+            </div>
+            <div className="relative">
+              <span
+                className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 py-4 lg:py-0"
+                onClick={toggleLabMenu}
+              >
+                <FontAwesomeIcon icon={faFlask} className="mr-2" /> Labs Management
+              </span>
+              {showLabMenu && (
+                <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md shadow-lg">
+                  <Link to="/alliedlab" className="block py-2 hover:text-blue-300">Allied Lab</Link>
+                  <Link to="/alnoorlab" className="block py-2 hover:text-blue-300">Alnoor Diagnostic Center</Link>
+                  <Link to="/induslab" className="block py-2 hover:text-blue-300">Indus Lab</Link>
+                  <Link to="/idclab" className="block py-2 hover:text-blue-300">IDC</Link>
+                  <Link to="/lahoremdc" className="block py-2 hover:text-blue-300">LMDC</Link>
+                  <Link to="/healthzone" className="block py-2 hover:text-blue-300">Health Zone</Link>
+                  <Link to="/excellab" className="block py-2 hover:text-blue-300">Excel Lab</Link>
+                  <Link to="/chughtailab" className="block py-2 hover:text-blue-300">Chughtai Lab</Link>
+                  <Link to="/phc" className="block py-2 hover:text-blue-300">PHC Labs</Link>
+                </div>
+              )}
+            </div>
+            <div className="relative">
+              <span
+                className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 py-4 lg:py-0"
+                onClick={toggleCharitableMenu}
+              >
+                <FontAwesomeIcon icon={faHandsHelping} className="mr-2" /> Beneficiary Programs
+              </span>
+              {showCharitableMenu && (
+                <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md shadow-lg">
+                  <Link to="/charityORG" className="block py-2 hover:text-blue-300">NGOs Management</Link>
+                  <Link to="/event" className="block py-2 hover:text-blue-300">Events Management</Link>
+                  <Link to="/nutrifit" className="block py-2 hover:text-blue-300">NutriFit Management</Link>
+                  <Link to="/medicine" className="block py-2 hover:text-blue-300">Medicine Management</Link>
+                </div>
+              )}
+            </div>
+          </div>
+          <div>
+            <button onClick={handleLogout} className="border-b border-transparent cursor-pointer mx-4 hover:text-blue-300 hover:border-indigo-600 flex items-center py-4 lg:py-0">
+              <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
+              Logout
+            </button>
+          </div>
+        </nav>
       </div>
     </header>
   );

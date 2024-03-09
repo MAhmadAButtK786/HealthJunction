@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { Switch, Route, Redirect } from 'react-router-dom';
 // Importing components
-import Home from "./components/Admin Home/home";
-import Contact from "./components/aboutUs/contact";
 import LoginAdmin from "./components/loginadmin";
 import EventCR from './components/events/eventCR';
 import EventUploader from './components/events/eventuploaderpage';
@@ -24,7 +22,6 @@ import UpdateRecipientPage from './components/bloodbanks/ReciepientList/updatere
 import UpdatePrivateBBLPage from './components/bloodbanks/PrivateBB/updateprivatebb';
 import UpdatePublicBBLPage from './components/bloodbanks/PublicBB/updatepublicBB';
 // Labs
-import LabsHome from "./components/lab/LabHome/LabHome";
 import AlliedLab from "./components/lab/privateLabs/LabsScreens/Allied Lab/alliedLab";
 import AlnoorLab from "./components/lab/privateLabs/LabsScreens/AlnoorLab/alnoorLab";
 import ChughtaiLab from "./components/lab/privateLabs/LabsScreens/ChughtaiLab/chughtaiLab";
@@ -94,7 +91,6 @@ const App = () => {
       <Switch>
         {/* Routes */}
         <Route path="/home" exact component={Dashboard} />
-        <Route path="/contact" exact component={Contact}/>
         <Route path="/" exact component={LoginAdmin} />
         {/* Event Update Page */}
         <Route path="/event" exact component={EventCR} />
@@ -115,7 +111,7 @@ const App = () => {
         <Route path="/updatePrivateBBPage/:id" exact component={UpdatePrivateBBLPage}/>
         <Route path="/updatePublicBBPage/:id" exact component={UpdatePublicBBLPage}/>
         {/* Lab Screens */}
-        <Route path="/labhome" exact component={LabsHome} />
+       
         <Route path="/alliedlab" exact component={AlliedLab} />
         <Route path="/alnoorlab" exact component={AlnoorLab} />
         <Route path="/chughtailab" exact component={ChughtaiLab}/>

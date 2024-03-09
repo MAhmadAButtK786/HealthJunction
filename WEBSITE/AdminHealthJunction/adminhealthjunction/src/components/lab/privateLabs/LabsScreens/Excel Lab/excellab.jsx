@@ -1,11 +1,11 @@
 import React from 'react'
-import LabNavbar from '../../../labNavbar'
+import Navbar from '../../../../Navbar'
 import Excel from './excellData'
 import Footer from '../../../../Footer'
 function ExcelLab() {
   return (
   <>
-  <LabNavbar/>
+  <Navbar/>
   <Excel/>
   <Footer/>
   </>
