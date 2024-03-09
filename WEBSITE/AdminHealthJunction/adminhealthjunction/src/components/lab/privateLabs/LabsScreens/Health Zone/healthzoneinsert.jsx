@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { database } from "../../../../../firebase";
 
-function InsertHZL(){
+function InsertHealthZonePage(){
   const [formData, setFormData] = useState({
     "Test Name": "",
     "Code": "",
@@ -66,4 +66,4 @@ function InsertHZL(){
   );
 }
 
-export default InsertHZL();
+export default InsertHealthZonePage();

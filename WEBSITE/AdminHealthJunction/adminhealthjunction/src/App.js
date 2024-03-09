@@ -125,6 +125,7 @@ const App = () => {
         <Route path="/idcinsertpage" exact component={IDCInsertPage}/>
         <Route path="/indusinsertpage" exact component={IndusInsertPage}/>
         <Route path="/lmldcinsertpage" exact component={LMLDCInsertPage}/>
+        
         <Route path="/updateAlliedPage/:id" exact component={UpdateAlliedLabPage}/>
         <Route path="/updateAlnoorPage/:id" exact component={UpdateAlnoorLabPage}/>
         <Route path="/updateChughtaiPage/:id" exact component={UpdateChughtaiLabPage}/>
