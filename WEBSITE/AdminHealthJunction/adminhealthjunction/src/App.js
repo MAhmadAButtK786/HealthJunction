@@ -45,6 +45,7 @@ import UpdateIDCLabPage from './components/lab/privateLabs/LabsScreens/IDC/updat
 import UpdateIndusLabPage from './components/lab/privateLabs/LabsScreens/Indus Lab/updateindus';
 import UpdateLahoreMDCDPage from './components/lab/privateLabs/LabsScreens/LahoreMDC/updateLahoreMDC';
 import UpdateHealthZoneLabPage from './components/lab/privateLabs/LabsScreens/Health Zone/updatehealthzone';
+import  HealthZoneInsertPage from './components/lab/privateLabs/LabsScreens/Health Zone/healthzoneinsert';
 // Charity Links
 import CharityORG from "./components/charity/Charitable ORG Data/charityORG";
 import CharityForm from "./components/charity/Charitable ORG Data/charityinsertForm";
@@ -125,7 +126,7 @@ const App = () => {
         <Route path="/idcinsertpage" exact component={IDCInsertPage}/>
         <Route path="/indusinsertpage" exact component={IndusInsertPage}/>
         <Route path="/lmldcinsertpage" exact component={LMLDCInsertPage}/>
-        
+        <Route path="/HealthZoneInsert" exact component={HealthZoneInsertPage}/>
         <Route path="/updateAlliedPage/:id" exact component={UpdateAlliedLabPage}/>
         <Route path="/updateAlnoorPage/:id" exact component={UpdateAlnoorLabPage}/>
         <Route path="/updateChughtaiPage/:id" exact component={UpdateChughtaiLabPage}/>

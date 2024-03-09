@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { database } from "../../../../../firebase";
 
-function InsertHealthZonePage(){
+function HealthZoneInsertPage() {
   const [formData, setFormData] = useState({
     "Test Name": "",
     "Code": "",
@@ -36,7 +36,7 @@ function InsertHealthZonePage(){
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <form onSubmit={handleSubmit} className="w-full max-w-md mt-5 bg-white rounded-lg shadow-md">
         <div className="px-6 py-4 font-bold text-center text-white bg-gray-600">
-          Add Test Data For Health Zone
+          Add Test Data For Health Zone Lab
         </div>
         <div className="px-6 py-8">
           <div className="mb-4">
@@ -66,4 +66,4 @@ function InsertHealthZonePage(){
   );
 }
 
-export default InsertHealthZonePage();
+export default HealthZoneInsertPage;
