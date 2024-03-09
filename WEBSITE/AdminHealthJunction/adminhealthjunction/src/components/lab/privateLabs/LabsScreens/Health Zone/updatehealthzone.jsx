@@ -37,11 +37,11 @@ function UpdateHealthZoneLabPage() {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const alliedLabDoc = doc(database, "Allied Lab", id);
+    const alliedLabDoc = doc(database, "Health Zone Lab", id);
     await updateDoc(alliedLabDoc, formData);
-    alert("Allied Lab test updated successfully");
+    alert("Health Zone Lab test updated successfully");
     // Redirect to Allied Lab list page after update
-    history.push("/allied");
+    history.push("/healthzonelab");
   };
 
   return (

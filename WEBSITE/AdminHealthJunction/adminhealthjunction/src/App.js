@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { Switch, Route, Redirect } from 'react-router-dom';
 // Importing components
-
 import EventCR from './components/events/eventCR';
 import EventUploader from './components/events/eventuploaderpage';
 import UpdateEventPage from './components/events/update';

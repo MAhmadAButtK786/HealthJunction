@@ -57,7 +57,7 @@ function HealthZone() {
         <img src="images/img/Lab/AlliedLabs.png" alt="" className="mx-auto rounded-full w-52 h-52" />
       </div>
       <div className="px-8">
-        <Link to="">
+        <Link to="/">
           <button className="px-6 py-2 font-semibold text-white transition duration-300 ease-in-out bg-gray-400 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
             Insert Test
           </button>
@@ -103,7 +103,7 @@ function HealthZone() {
                     </button>
                   </td>
                   <td className="px-4 py-2 border">
-                    <Link to ={`/updateAlliedPage/${test.id}`}>
+                    <Link to ={`/updateHealthZonePage/${test.id}`}>
                     <button className="text-green-500 hover:text-green-700">
                       <FontAwesomeIcon icon={faEdit} />
                     </button>
