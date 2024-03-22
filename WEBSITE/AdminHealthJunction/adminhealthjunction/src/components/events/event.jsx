@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
@@ -98,7 +99,7 @@ const Page = () => {
       </form>
       <button
         className="mt-4 text-blue-500 underline hover:text-blue-600"
-        onClick={() => history.push("/home")}
+        onClick={() => history.push("/event")}
       >
         Back
       </button>

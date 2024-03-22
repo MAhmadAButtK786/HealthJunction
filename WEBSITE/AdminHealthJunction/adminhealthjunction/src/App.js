@@ -53,6 +53,10 @@ import InsertLabPage from './components/lab/registeredLabs/phclabs/phclabinsert'
 import CharityORG from "./components/charity/Charitable ORG Data/charityORG";
 import CharityForm from "./components/charity/Charitable ORG Data/charityinsertForm";
 import UpdateCharityForm from './components/charity/Charitable ORG Data/updatecharity';
+// NutriFit
+import DietShow from './components/nutrifit/diets/diet';
+import DietInsertPage from './components/nutrifit/diets/dietdatainsert';
+import UpdateDietPage from './components/nutrifit/diets/dietdataupdate';
 // Import Firebase auth module
 import { auth } from './firebase';
 
@@ -101,6 +105,10 @@ const App = () => {
         <Route path="/event" exact component={EventCR} />
         <Route path="/eventuploader" exact component={EventUploader} />
         <Route path="/updateEventPage/:id" exact component={UpdateEventPage}/>
+        {/* NutriFit */}
+        <Route path="/diet" exact component={DietInsertPage} />
+        <Route path="/nutrifit" exact component={DietShow} />
+        <Route path="/updatedietPage/:id" exact component={UpdateDietPage}/>
         {/* Blood Banks Screens */}
         <Route path="/donor" exact component={Donor} />
         <Route path="/privateBB" exact component={PrivateBB} />
