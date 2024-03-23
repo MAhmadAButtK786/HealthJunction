@@ -1,124 +1,115 @@
-/* DietDetailsPage.css */
-.diet-details-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f3f4f6;
-  }
-  
-  .diet-details-title {
-    font-size: 32px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
-  }
-  
-  .insert-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-  }
-  
-  .insert-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .diet-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 0 20px;
-  }
-  
-  .diet-item {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .diet-item:hover {
-    transform: translateY(-5px);
-  }
-  
-  .diet-name {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .diet-description {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  .diet-info {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 5px;
-  }
-  
-  .diet-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .diet-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .update-button,
-  .delete-button {
-    padding: 8px 16px;
-    font-size: 16px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .update-button {
-    background-color: #28a745;
-  }
-  
-  .delete-button {
-    background-color: #dc3545;
-  }
-  
-  .update-button:hover,
-  .delete-button:hover {
-    filter: brightness(0.9);
-  }
-  
-  .back-button {
-    margin-top: 30px;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .back-button:hover {
-    background-color: #0056b3;
-  }
-  
+.header {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: #000; /* Black text color */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.search-input {
+  border: 1px solid #ccc;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  margin-right: 0.5em;
+  color: #000; /* Black text color */
+  background-color: #fff; /* White background color */
+}
+
+.search-button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  margin-right: 0.5em;
+}
+
+.reset-button {
+  background-color: #ccc;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+}
+
+.insert-button {
+  background-color: #28a745;
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+}
+
+.diet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1em;
+}
+
+.diet-card {
+  border-radius: 0.5em;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+}
+
+.diet-header {
+  padding: 1em;
+  color: white;
+  cursor: pointer;
+}
+
+.diet-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color:red
+}
+
+.diet-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.expand-icon {
+  font-size: 0.8em;
+}
+
+.diet-details {
+  font-size: 0.8em;
+  color: #000; /* Black text color */
+  background-color: #fff; /* White background color */
+}
+
+.diet-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5em;
+  margin-top: 1em;
+}
+
+.diet-actions {
+  padding: 1em;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
