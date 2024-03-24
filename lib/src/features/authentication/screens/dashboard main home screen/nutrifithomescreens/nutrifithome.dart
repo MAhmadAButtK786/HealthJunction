@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/hospitalhomeScreens/HospitalUserHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/nutrifithomescreens/dietshome.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hositalscreen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen1.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen2.dart';
@@ -31,7 +32,7 @@ class Nutrifitmain extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.brown,
+          color:const Color.fromARGB(255, 170, 117, 98),
           child: Column(
             children: [
               // Improved Header Design
@@ -187,7 +188,7 @@ class Nutrifitmain extends StatelessWidget {
             children: [
               Image.asset(
                 imgData[index],
-                width: 140,
+                width: 150,
               ),
               Text(
                 titles[index],
@@ -208,7 +209,7 @@ class Nutrifitmain extends StatelessWidget {
   void handleGridItemClick(int index) {
     switch (index) {
       case 0:
-        // Get.to(() => Hospitalhome());
+         Get.to(() => DietMainScreen());
         break;
       case 1:
         // Get.to(() => HospitalRegistration());

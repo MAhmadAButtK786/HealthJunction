@@ -45,7 +45,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {
             Get.to(() => ProfileMainPage());
           },
-          icon: const Icon(Icons.person),
+          icon: const Icon(Icons.person, color: Colors.white,),
         ),
       ],
       backgroundColor: color,
