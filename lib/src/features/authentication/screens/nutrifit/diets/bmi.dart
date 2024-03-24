@@ -88,8 +88,8 @@ class _BMICalculatorState extends State<BMICalculator> {
                     controller: wtController,
                     decoration: InputDecoration(
                       labelText: "Enter Your Weight",
-                      labelStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(Icons.line_weight, color: Colors.white),
+                      labelStyle: const TextStyle(color: Colors.white),
+                      prefixIcon: const Icon(Icons.line_weight, color: Colors.white),
                       border: OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
                     ),
                     style: const TextStyle(color: Colors.white), // Set text color to white
@@ -132,8 +132,8 @@ class _BMICalculatorState extends State<BMICalculator> {
                     controller: ftController,
                     decoration: InputDecoration(
                       labelText: "Enter Your Height",
-                      labelStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(Icons.height, color: Colors.white),
+                      labelStyle: const TextStyle(color: Colors.white),
+                      prefixIcon: const Icon(Icons.height, color: Colors.white),
                       border: OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
                     ),
                     style: const TextStyle(color: Colors.white), // Set text color to white
@@ -144,8 +144,8 @@ class _BMICalculatorState extends State<BMICalculator> {
                     controller: inController,
                     decoration: InputDecoration(
                       labelText: "Enter Your Height (in Inches)",
-                      labelStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(Icons.height_sharp, color: Colors.white),
+                      labelStyle: const TextStyle(color: Colors.white),
+                      prefixIcon: const Icon(Icons.height_sharp, color: Colors.white),
                       border: OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
                     ),
                     style: const TextStyle(color: Colors.white), // Set text color to white
@@ -158,7 +158,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                       var feet = double.tryParse(ftController.text) ?? 0;
                       var inches = double.tryParse(inController.text) ?? 0;
 
-                      var height;
+                      double height;
                       if (heightUnit == 'ft') {
                         height = feet + (inches / 12);
                       } else {
