@@ -7,6 +7,7 @@ import 'package:healthjunction/src/features/authentication/screens/charity/chari
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/Healthpoints/healthpointshome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/bloodbankhomescreens/BloodBankHome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/MedicineHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/nutrifithomescreens/nutrifithome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/patient/patientdashboard.dart';
 import 'package:healthjunction/src/features/authentication/screens/events/event.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/laboratories.dart';
@@ -63,7 +64,7 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
     "HealthPoints",
     "Blood Bank",
     "Events",
-    "NutriMeter",
+    "NutriFit",
     "Medicine",
     "Charity",
     "Laboratories",
@@ -215,7 +216,9 @@ class _DashboardState extends State<Dashboard> with TickerProviderStateMixin {
                             Get.to(() => BloodBankhome());
                           } else if (index == 3) {
                             Get.to(() => const EventScreen());
-                          } else if (index == 5) {
+                          } else if (index == 4) {
+                            Get.to(() =>  Nutrifitmain());
+                          }else if (index == 5) {
                             Get.to(() => Medicinehome());
                           } else if (index == 6) {
                             Get.to(() => CharityScreen());
