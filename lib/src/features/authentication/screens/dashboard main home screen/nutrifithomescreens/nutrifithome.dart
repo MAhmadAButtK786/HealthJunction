@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/hospitalhomeScreens/HospitalUserHome.dart';
+import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/nutrifithomescreens/calculatorhome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/nutrifithomescreens/dietshome.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hositalscreen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen1.dart';
@@ -212,7 +213,7 @@ class Nutrifitmain extends StatelessWidget {
          Get.to(() => DietMainScreen());
         break;
       case 1:
-        // Get.to(() => HospitalRegistration());
+        Get.to(() => CalculatorMainScreen());
         break;
     }
   }

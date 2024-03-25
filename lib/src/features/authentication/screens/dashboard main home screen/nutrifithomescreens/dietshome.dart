@@ -9,6 +9,7 @@ class DietMainScreen extends StatelessWidget {
 
   DietMainScreen({Key? key}) : super(key: key);
 
+  
   final List<DietCardData> dietCardData = [
     DietCardData(title: keto, image: ketoi),
     DietCardData(title: paleo, image: peleoi),
@@ -23,7 +24,6 @@ class DietMainScreen extends StatelessWidget {
     DietCardData(title: atkins, image: atkinsi),
     DietCardData(title: weightWatchers, image: wwi),
   ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,11 +32,11 @@ class DietMainScreen extends StatelessWidget {
         key: scaffoldKey,
         drawer: ReusableDrawerSideBar(
           color: const Color.fromARGB(255, 209, 169, 142), // Darker brown
-          headerText: "Diets",
+          headerText: "Nutrition & Meal Plan",
         ),
         appBar: Navbar(
           color: const Color.fromARGB(255, 209, 169, 142), // Darker brown
-          textNav: "Diets",
+          textNav: "Nutrition & Meal Plan",
           onMenuPressed: () {
             scaffoldKey.currentState?.openDrawer();
           },
@@ -66,7 +66,7 @@ class DietCardData {
 class DietCard extends StatelessWidget {
   final DietCardData data;
 
-  DietCard({required this.data});
+  const DietCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
