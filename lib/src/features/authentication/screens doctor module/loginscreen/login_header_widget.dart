@@ -7,8 +7,8 @@ import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_form_widget.dart';
 
-class LoginHeaderWidget extends StatelessWidget {
-  const LoginHeaderWidget({
+class DocLoginHeaderWidget extends StatelessWidget {
+  const DocLoginHeaderWidget({
     super.key,
     required this.size,
   });
@@ -34,15 +34,15 @@ class LoginHeaderWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 8,
         ),
         Text(
-          tWelcomeB,
+          "Welcome Back Doctor",
           style: TextStyle(
-              color: apptextColor, fontSize: 30, fontWeight: FontWeight.bold),
+              color: apptextColor, fontSize: 24, fontWeight: FontWeight.bold),
         ),
         SizedBox(
-          height: 7,
+          height: 4,
         ),
         Text(
           tLogin,

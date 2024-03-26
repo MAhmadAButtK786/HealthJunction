@@ -8,6 +8,7 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/signupscreen/signup.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_form_widget.dart';
@@ -19,8 +20,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:twitter_login/twitter_login.dart';
 
-class LoginFooterWidget extends StatelessWidget {
-  const LoginFooterWidget({
+class DocLoginFooterWidget extends StatelessWidget {
+  const DocLoginFooterWidget({
     super.key,
   });
 
@@ -63,7 +64,7 @@ class LoginFooterWidget extends StatelessWidget {
       String? password = '';
       String? phoneNumber = '';
       // Store user data in Firestore
-      await FirebaseFirestore.instance.collection('Users').doc(id).set({
+      await FirebaseFirestore.instance.collection('DoctorsReg').doc(id).set({
         'id': id,
         'fullName': fullName,
         'email': email,
@@ -110,7 +111,7 @@ class LoginFooterWidget extends StatelessWidget {
       String? password = '';
       String? phoneNumber = '';
       // Store user data in Firestore
-      await FirebaseFirestore.instance.collection('Users').doc(id).set({
+      await FirebaseFirestore.instance.collection('DoctorsReg').doc(id).set({
         'id': id,
         'fullName': fullName,
         'email': email,
@@ -271,7 +272,7 @@ class LoginFooterWidget extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Get.to(() => SignupScreen());
+              Get.to(() => DocSignupScreen());
             },
             child: Text.rich(
               TextSpan(
@@ -290,11 +291,11 @@ class LoginFooterWidget extends StatelessWidget {
           ),
             TextButton(
             onPressed: () {
-              // Get.to(() => SignupScreen());
+               Get.to(() => LoginScreen());
             },
             child: Text.rich(
               TextSpan(
-                text: "Login as Doctor? ",
+                text: "Login as User? ",
                 style: TextStyle(color: tDarkColor),
                 children: [
                   TextSpan(

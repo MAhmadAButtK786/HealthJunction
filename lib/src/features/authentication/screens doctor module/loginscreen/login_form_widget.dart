@@ -10,12 +10,12 @@ import "package:healthjunction/src/features/authentication/controllers/signup_co
 import "package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart";
 import "package:healthjunction/src/features/authentication/screens/forget_password/forget_password_option/forget_password_model_bottom_sheet.dart";
 
-class LoginForm extends StatefulWidget {
+class DocLoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginFormState extends State<DocLoginForm> {
   final _formKey = GlobalKey<FormState>();
   final _emailFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();

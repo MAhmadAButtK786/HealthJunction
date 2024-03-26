@@ -7,8 +7,8 @@ import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_form_widget.dart';
 
-class SignupHeaderWidget extends StatelessWidget {
-  const SignupHeaderWidget({
+class DocSignupHeaderWidget extends StatelessWidget {
+  const DocSignupHeaderWidget({
     super.key,
     required this.size,
   });
@@ -29,7 +29,7 @@ class SignupHeaderWidget extends StatelessWidget {
           height: 10,
         ),
         Text(
-          tSignup,
+          "SignUp as a Doctor",
           style: TextStyle(
               color: apptextColor, fontSize: 30, fontWeight: FontWeight.bold),
         ),

@@ -12,13 +12,13 @@ import 'package:healthjunction/src/features/authentication/models/user_model.dar
 import 'package:healthjunction/src/features/authentication/repository/user_repository.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
 
-class SignupForm extends StatefulWidget {
+class DocSignupForm extends StatefulWidget {
   @override
   // ignore: library_private_types_in_public_api
   _SignupFormState createState() => _SignupFormState();
 }
 
-class _SignupFormState extends State<SignupForm> {
+class _SignupFormState extends State<DocSignupForm> {
   final _formKey = GlobalKey<FormState>();
 
   bool _isPasswordVisible = false;
