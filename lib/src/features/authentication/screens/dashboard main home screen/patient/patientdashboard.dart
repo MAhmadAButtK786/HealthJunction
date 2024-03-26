@@ -5,23 +5,28 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/apointmentStatus.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen1.dart';
+import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/phcregisteredhospitals.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class Patientmain extends StatelessWidget {
   var height, width;
 
-  List imgData = [bappoint, cappoint, hospital10];
-  List titles = ["Book Appointment", "Check Appointments", "Hospitals"];
+  List imgData = [govt,bappoint, cappoint, hospital10, ];
+  List titles = ["PHC Registered Hospitals","Book Appointment", "Check Appointments", "Hospitals", ];
   List<Color> cardColors = [
+     Colors.white,
     const Color(0xFFFDE9D9),
     Colors.white,
     Colors.white,
+   
   ];
   List<Color> textColor = [
+      Colors.green,
     Colors.blueGrey,
     Colors.lightBlueAccent,
-    Colors.blue
+    Colors.blue,
+    
   ];
 
   Patientmain({super.key});
@@ -224,15 +229,17 @@ class Patientmain extends StatelessWidget {
 
   void handleGridItemClick(int index) {
     switch (index) {
-      case 0:
+      case 1:
         Get.to(() => clinicpage1());
         break;
-      case 1:
+      case 2:
         Get.to(() => AppointmentStatusScreen());
         break;
-      case 2:
+      case 3:
         Get.to(() => hospitalpage1());
         break;
+      case 0:
+      Get.to(() => const GovtHosp());
     }
   }
 }
