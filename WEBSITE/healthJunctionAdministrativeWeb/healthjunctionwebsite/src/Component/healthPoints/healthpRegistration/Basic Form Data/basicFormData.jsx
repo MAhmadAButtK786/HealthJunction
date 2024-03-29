@@ -1,8 +1,133 @@
-import React, { useState } from "react";
-import { FaHospital, FaMapMarkerAlt, FaBuilding, FaCity, FaPhone, FaEnvelope, FaHospitalSymbol, FaBed } from "react-icons/fa";
-import { database } from "../../../firebase";
-import { useHistory } from "react-router-dom";
-import { collection, addDoc, getDocs } from "firebase/firestore"; 
+import React, { useState } from 'react';
+import { collection, addDoc } from 'firebase/firestore';
+import { database } from '../../../firebase';
+import { useHistory } from 'react-router-dom';
+import { FaHospital, FaMapMarkerAlt, FaBuilding, FaCity, FaPhone, FaEnvelope, FaBed, FaPlusCircle, FaTimesCircle } from "react-icons/fa";
+
+const provinces = [
+  "Punjab",
+  "Sindh",
+  "Balochistan",
+  "Islamabad Capital Territory",
+  "Khyber Pakhtunkhwa",
+  "Azad Jammu and Kashmir",
+  "Gilgit-Baltistan",
+];
+
+const departments = [
+  'Emergency Department',
+  'Inpatient Wards',
+  'Outpatient Clinics',
+  'Operating Rooms',
+  'Diagnostic Imaging',
+  'Laboratory Services',
+  'Pharmacy',
+  'Intensive Care Units',
+  'Maternity And Neonatal Care',
+  'Pediatrics Department',
+  'Cardiology Department',
+  'Neurology Department',
+  'Orthopedics Department',
+  'ENT Department',
+  'Physical Therapy Department',
+  'Occupational Therapy Department',
+  'Speech Therapy Department',
+  'Radiation Oncology Department',
+  'Pulmonology Department',
+  'Gastroenterology Department',
+  'Nephrology Department',
+  'Urology Department',
+  'Anesthesiology Department',
+  'Pathology Department',
+  'Biochemistry Department',
+  'Community Medicine Department',
+  'Psychiatry Department', // Added Psychiatry Department
+  'Dermatology Department', // Added Dermatology Department
+  'Ophthalmology Department', // Added Ophthalmology Department
+  'Oncology Department', // Added Oncology Department
+  'Geriatric Department', // Added Geriatric Department
+  'Endocrinology Department', // Added Endocrinology Department
+  'Hematology Department', // Added Hematology Department
+  'Rheumatology Department', // Added Rheumatology Department
+  'Allergy and Immunology Department', // Added Allergy and Immunology Department
+  'Microbiology Department', // Added Microbiology Department
+  'Forensic Medicine Department', // Added Forensic Medicine Department
+  'Medical Education Department', // Added Medical Education Department
+  'Research and Development Department' // Added Research and Development Department
+];
+
+// Facilities list remains unchanged
+const facilities = [
+  'Emergency Room',
+  'Pharmacy',
+  'Laboratory',
+  'Radiology',
+  'Operating Rooms',
+  'Intensive Care Unit',
+  'Maternity Ward',
+  'Pediatric Ward',
+  'Cafeteria',
+  'Parking',
+  'Ambulance Service',
+  'Gardens/Green Spaces',
+  'Fitness Center',
+  'Wi-Fi Access',
+  'Wheelchair Accessibility',
+  'Interpreter Services',
+  'Family Accommodation',
+  'Counseling Services',
+  'Concierge Services',
+  'Dining Services',
+  'Spiritual Care Services',
+  'Medical Library',
+  'ATM/Banking Services',
+  'Gift Shop'
+];
+
+// Services list remains unchanged
+const services = [
+  'Emergency Services',
+  'Outpatient Services',
+  'Inpatient Services',
+  'Surgery',
+  'Imaging Services',
+  'Laboratory Services',
+  'Pharmacy Services',
+  'Physical Therapy',
+  'Occupational Therapy',
+  'Speech Therapy',
+  'Dietary Services',
+  'Social Work Services',
+  'Palliative Care Services',
+  'Mental Health Services',
+  'Cancer Care Services',
+  'Diabetes Care Services',
+  'Pediatric Services',
+  'Geriatric Services',
+  'Neonatal Services',
+  'Reproductive Health Services',
+  'Travel Medicine Services',
+  'Vaccination Services',
+  'Dental Services',
+  'Eye Care Services',
+  'Digestive Health Services',
+  'Endocrine Services',
+  'Skin Disorder Services',
+  'Respiratory Services',
+  'Wound Care Services',
+  'Rehabilitation Services',
+  'Genetic Counseling Services',
+  'Nutrition Counseling Services',
+  'Stress Management Counseling Services',
+  'Occupational Health Services',
+  'Employee Assistance Programs',
+  'Language Translation Services',
+  'Legal Aid Services',
+  'Financial Counseling Services'
+];
+
+
+
 const HospitalForm = () => {
   const history = useHistory();
 
@@ -14,271 +139,380 @@ const HospitalForm = () => {
     zipCode: "",
     contactNumber: "",
     email: "",
-    departments: "",
+    numberOfDepartments: "",
+    departments: [],
     wards: "",
     additionalInfo: "",
+    facilities: [],
+    services: [],
+    visitingHours: [],
+    insuranceAccepted: "Yes",
+    sector: "Public",
+    zakat: "Yes"
   });
 
-  // List of provinces
-  const provinces = [
-    "Punjab",
-    "Sindh",
-    "Balochistan",
-    "Islamabad Capital Territory",
-    "Khyber Pakhtunkhwa",
-    "Azad Jammu and Kashmir",
-    "Gilgit-Baltistan",
-  ];
-
-  // Function to handle form field changes
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value, type, checked } = e.target;
+    if (name === 'visitingHours') {
+      const hours = [...formData.visitingHours];
+      const index = parseInt(e.target.getAttribute('data-index'));
+      const field = e.target.getAttribute('data-field');
+      hours[index][field] = value;
+      setFormData(prevState => ({ ...prevState, visitingHours: hours }));
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: type === 'checkbox' ? (checked ? [...prevState[name], value] : prevState[name].filter(item => item !== value)) : value
+      }));
+    }
   };
 
-  // Function to handle form submission
+  const handleAddVisitingHours = () => {
+    setFormData(prevState => ({
+      ...prevState,
+      visitingHours: [...prevState.visitingHours, { start: "", end: "" }]
+    }));
+  };
+
+  const handleRemoveVisitingHours = (index) => {
+    const hours = [...formData.visitingHours];
+    hours.splice(index, 1);
+    setFormData(prevState => ({ ...prevState, visitingHours: hours }));
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Confirmation dialog
-    const isConfirmed = window.confirm("Are you sure you want to submit the form?");
-    if (!isConfirmed) {
-      return; // If user cancels, do nothing
-    }
-  
-    // Validation: Check if all required fields are filled
-    if (!formData.hospitalName || !formData.address || !formData.province || !formData.city || !formData.zipCode || !formData.contactNumber || !formData.email || !formData.departments || !formData.wards) {
-      alert("Please fill in all the fields.");
+    if (!validateForm()) {
       return;
     }
   
     try {
-      // Get the number of existing documents in the collection
-      const querySnapshot = await getDocs(collection(database, "HospitalData"));
-      const numberOfDocs = querySnapshot.size;
-  
-      // Generate the ID (incremental)
-      const id = `H${numberOfDocs+1}`;
-  
-      // Add the ID to the form data
-      const formDataWithId = { ...formData, id };
-  
-      // Add the document to the Firestore collection
-      await addDoc(collection(database, "HospitalData"), formDataWithId);
-      
-      console.log("Form data successfully submitted to Firebase.");
-      history.push("/hfcheckbox");
+      await addDoc(collection(database, "HospitalData"), formData);
+      alert("Form data successfully submitted to Firebase.");
+      history.push("/hospitalformexcelsheet");
     } catch (error) {
       console.error("Error adding document: ", error);
     }
   };
+  
+  const validateForm = () => {
+    const requiredFields = ['hospitalName', 'address', 'province', 'city', 'zipCode', 'contactNumber', 'email', 'numberOfDepartments', 'wards'];
+    const emptyFields = requiredFields.filter(field => !formData[field]);
+    if (emptyFields.length > 0) {
+      alert(`Please fill in all the fields: ${emptyFields.join(', ')}`);
+      return false;
+    }
+  
+    if (formData.facilities.length === 0) {
+      alert("Please select at least one facility.");
+      return false;
+    }
+  
+    if (formData.services.length === 0) {
+      alert("Please select at least one service.");
+      return false;
+    }
+  
+    if (formData.departments.length === 0) {
+      alert("Please select at least one department.");
+      return false;
+    }
+  
+    if (formData.visitingHours.length === 0) {
+      alert("Please Add Visiting Hours.");
+      return false;
+    }
+    return true;
+  };
+  
+ 
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-blue-200">
       <div className="w-full max-w-screen-md p-6 my-10 bg-white rounded-md shadow-md">
         <h2 className="mb-6 text-4xl font-bold text-blue-800">
+          <FaHospital className="inline-block mr-2" />
           Hospital Information
         </h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {/* Hospital Name */}
+
+          {/* Hospital Information Section */}
+          <div>
+            <h3 className="mb-2 text-2xl font-semibold">Hospital Information</h3>
+            <div className="grid grid-cols-1 gap-4">
+              <div className="relative">
+                <FaHospital className="absolute transform -translate-y-1/2 left-3 top-1/2" />
+                <input
+                  type="text"
+                  className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="Enter Hospital Name"
+                  name="hospitalName"
+                  value={formData.hospitalName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="relative">
+                <FaMapMarkerAlt className="absolute transform -translate-y-1/2 left-3 top-1/2" />
+                <input
+                  type="text"
+                  className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="Enter Address"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="relative">
+                <FaBuilding className="absolute transform -translate-y-1/2 left-3 top-1/2" />
+                <select
+                  className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  name="province"
+                  value={formData.province}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" disabled>Select Province</option>
+                  {provinces.map((province, index) => (
+                    <option key={index} value={province}>{province}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="relative">
+                <FaCity className="absolute transform -translate-y-1/2 left-3 top-1/2" />
+                <input
+                  type="text"
+                  className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="Enter City"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="relative">
+                <FaBed className="absolute transform -translate-y-1/2 left-3 top-1/2" />
+                <input
+                  type="number"
+                  className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="Enter Zip Code"
+                  name="zipCode"
+                  value={formData.zipCode}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="relative">
+                <FaPhone className="absolute transform -translate-y-1/2 left-3 top-1/2" />
+                <input
+                  type="tel"
+                  pattern="^(\+92|0)\d{10}$"
+                  className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="Enter Contact Number"
+                  name="contactNumber"
+                  value={formData.contactNumber}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="relative">
+                <FaEnvelope className="absolute transform -translate-y-1/2 left-3 top-1/2" />
+                <input
+                  type="email"
+                  className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="Enter Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="relative">
+                <FaBed className="absolute transform -translate-y-1/2 left-3 top-1/2" />
+                <input
+                  type="number"
+                  className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="Enter Number of Wards"
+                  name="wards"
+                  value={formData.wards}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+                {/* Facilities */}
           <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Hospital Name</label>
-            <div className="relative">
-              <span className="absolute transform -translate-y-1/2 left-3 top-1/2">
-                <FaHospital />
-              </span>
-              <input
-                type="text"
-                className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="Enter Hospital Name"
-                name="hospitalName"
-                value={formData.hospitalName}
-                onChange={handleChange}
-                required
-              />
+            <label className="block mb-1 text-gray-600">Facilities</label>
+            {facilities.map((facility, index) => (
+              <div key={index} className="flex items-center">
+                <input
+                  type="checkbox"
+                  name="facilities"
+                  id={facility}
+                  value={facility}
+                  checked={formData.facilities.includes(facility)}
+                  onChange={handleChange}
+                  className="mr-2 appearance-none focus:ring-2 focus:ring-blue-500"
+                />
+                <label htmlFor={facility}>{facility}</label>
+              </div>
+            ))}
+          </div>
+
+          {/* Services */}
+          <div className="mb-6">
+            <label className="block mb-1 text-gray-600">Services</label>
+            {services.map((service, index) => (
+              <div key={index} className="flex items-center">
+                <input
+                  type="checkbox"
+                  name="services"
+                  id={service}
+                  value={service}
+                  checked={formData.services.includes(service)}
+                  onChange={handleChange}
+                 
+                  className="mr-2 appearance-none focus:ring-2 focus:ring-blue-500"
+                />
+                <label htmlFor={service}>{service}</label>
+              </div>
+            ))}
+          </div>
             </div>
           </div>
 
-          {/* Hospital Address */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Hospital Address</label>
-            <div className="relative">
-              <span className="absolute transform -translate-y-1/2 left-3 top-1/2">
-                <FaMapMarkerAlt />
-              </span>
-              <input
-                type="text"
-                className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="Enter Hospital Address"
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Province Selection */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Province</label>
-            <div className="relative">
-              <span className="absolute transform -translate-y-1/2 left-3 top-1/2">
-                <FaBuilding />
-              </span>
-              <select
-                className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                name="province"
-                value={formData.province}
-                onChange={handleChange}
-                required
-              >
-                <option value="" disabled>
-                  Select Province
-                </option>
-                {provinces.map((province) => (
-                  <option key={province} value={province}>
-                    {province}
-                  </option>
+          {/* Additional Information Section */}
+          <div>
+            <h3 className="mb-2 text-2xl font-semibold">Additional Information</h3>
+            <div className="grid grid-cols-1 gap-4">
+              <div className="relative">
+                <FaBed className="absolute transform -translate-y-1/2 left-3 top-1/2" />
+                <input
+                  type="number"
+                  className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="Enter Number of Departments"
+                  name="numberOfDepartments"
+                  value={formData.numberOfDepartments}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div>
+                <h4 className="mb-2 text-lg font-semibold">Departments</h4>
+                {departments.map((dept, index) => (
+                  <div key={index} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="departments"
+                      id={dept}
+                      value={dept}
+                      checked={formData.departments.includes(dept)}
+                      onChange={handleChange}
+                      className="mr-2 appearance-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <label htmlFor={dept}>{dept}</label>
+                  </div>
                 ))}
-              </select>
+              </div>
+              <div className="relative">
+                
+                {formData.visitingHours.map((hour, index) => (
+                  <div key={index} className="flex items-center">
+                    <input
+                      type="time"
+                      className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                      placeholder="Start Time"
+                      name="visitingHours"
+                      data-index={index}
+                      data-field="start"
+                      value={hour.start}
+                      onChange={handleChange}
+                      required
+                    />
+                    <input
+                      type="time"
+                      className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                      placeholder="End Time"
+                      name="visitingHours"
+                      data-index={index}
+                      data-field="end"
+                      value={hour.end}
+                      onChange={handleChange}
+                      required
+                    />
+                    {index > 0 && (
+                      <FaTimesCircle
+                        className="ml-2 text-red-500 cursor-pointer"
+                        onClick={() => handleRemoveVisitingHours(index)}
+                      />
+                    )}
+                  </div>
+                ))}
+                <div className="flex items-center">
+                  <FaPlusCircle
+                    className="text-blue-500 cursor-pointer"
+                    onClick={handleAddVisitingHours}
+                  />
+                  <span className="ml-2">Add Visiting Hours</span>
+                </div>
+              </div>
+              <div className="relative">
+                <label className="block mb-1 text-gray-600">Insurance Accepted</label>
+                <select
+                  className="w-full py-2 pl-2 pr-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  name="insuranceAccepted"
+                  value={formData.insuranceAccepted}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div className="relative">
+                <label className="block mb-1 text-gray-600">Sector</label>
+                <select
+                  className="w-full py-2 pl-2 pr-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  name="sector"
+                  value={formData.sector}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="Public">Public</option>
+                  <option value="Private">Private</option>
+                </select>
+              </div>
+              <div className="relative">
+                <label className="block mb-1 text-gray-600">Treat Patient with Zakat</label>
+                <select
+                  className="w-full py-2 pl-2 pr-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  name="zakat"
+                  value={formData.zakat}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div className="relative">
+                <label className="block mb-1 text-gray-600">Additional Information</label>
+                <textarea
+                  className="w-full h-24 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                  placeholder="Enter any additional information here..."
+                  name="additionalInfo"
+                  value={formData.additionalInfo}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-          </div>
-
-          {/* City */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">City</label>
-            <div className="relative">
-              <span className="absolute transform -translate-y-1/2 left-3 top-1/2">
-                <FaCity />
-              </span>
-              <input
-                type="text"
-                className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="Enter City"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Zip Code */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Zip Code</label>
-            <div className="relative">
-              <span className="absolute transform -translate-y-1/2 left-3 top-1/2">
-                <FaHospitalSymbol />
-              </span>
-              <input
-                type="number"
-                className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="Enter Zip Code"
-                name="zipCode"
-                value={formData.zipCode}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Contact Number */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Contact Number</label>
-            <div className="relative">
-              <span className="absolute transform -translate-y-1/2 left-3 top-1/2">
-                <FaPhone />
-              </span>
-              <input
-                 type="tel"
-                 pattern="^(\+92|0)\d{10}$"
-                 className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                 placeholder="Enter Contact Number"
-                 name="contactNumber"
-                 value={formData.contactNumber}
-                 onChange={handleChange}
-                 required
-              />
-            </div>
-          </div>
-
-          {/* Email */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Email</label>
-            <div className="relative">
-              <span className="absolute transform -translate-y-1/2 left-3 top-1/2">
-                <FaEnvelope />
-              </span>
-              <input
-                type="email"
-                className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="Enter Email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Number Of Departments */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">
-              Number Of Departments
-            </label>
-            <div className="relative">
-              <span className="absolute transform -translate-y-1/2 left-3 top-1/2">
-                <FaBuilding />
-              </span>
-              <input
-                type="number"
-                className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="Enter Number Of Departments"
-                name="departments"
-                value={formData.departments}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Number Of Wards */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Number Of Wards</label>
-            <div className="relative">
-              <span className="absolute transform -translate-y-1/2 left-3 top-1/2">
-                <FaBed />
-              </span>
-              <input
-                type="number"
-                className="w-full py-2 pl-10 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="Enter Number Of Wards"
-                name="wards"
-                value={formData.wards}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Additional Information */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Additional Information</label>
-            <textarea
-              className="w-full h-24 px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-              placeholder="Enter Additional Information"
-              name="additionalInfo"
-              value={formData.additionalInfo}
-              onChange={handleChange}
-            ></textarea>
           </div>
 
           {/* Submit Button */}
-          <div className="mb-6">
+          <div className="col-span-2">
             <button
               type="submit"
-              className="px-4 py-2 text-white bg-blue-500 rounded-md"
+              className="w-full py-2 text-xl text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
             >
               Submit
             </button>

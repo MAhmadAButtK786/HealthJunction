@@ -15,7 +15,6 @@ import Guidlines from './Component/healthPoints/our Guidlines/guidlines';
 import Partner from './Component/charity/our Partner/partner';
 import ForgetPassword from './Component/forgetPassword';
 import BasicdF from './Component/healthPoints/healthpRegistration/Basic Form Data/basicdF';
-import HPRegistrationForm from './Component/healthPoints/healthpRegistration/CheckBox Part/hfcheckbox';
 import PrivateBB from './Component/bloodbanks/PrivateBB/privateBB';
 import PublicBB from './Component/bloodbanks/PublicBB/publicBB';
 import Recipients from './Component/bloodbanks/ReciepientList/recipient';
@@ -30,7 +29,7 @@ import LahoreMDC from './Component/lab/privateLabs/LabsScreens/LahoreMDC/LahoreM
 import AlnoorLab from './Component/lab/privateLabs/LabsScreens/AlnoorLab/alnoorLab';
 import AddDonorPage from './Component/bloodbanks/Registration/RegisterDonor';
 import AddRecipientPage from './Component/bloodbanks/Registration/RegisterRecipient';
-import Excelsheet from './Component/healthPoints/healthpRegistration/ExcelSheetPart/excelsheet';
+
 import Eventmain from './Component/events/eventmain';
 import HealthZone from './Component/lab/privateLabs/LabsScreens/HealthZone/healthzone';
 import PHCLAB from './Component/lab/RegisteredLabs/phclab';
@@ -43,8 +42,8 @@ function App() {
           {/* Health Points */}
           <Route path ="/healthPointHome" exact component={HealthPointHome}/>
           <Route path ="/basicdF" exact component={BasicdF}/>
-          <Route path="/hfcheckbox" exact component ={HPRegistrationForm}/>
-          <Route path ="/hospitalformexcelsheet" exact component={Excelsheet}/>
+        
+        
           <Route path ="/guidlines" exact component={Guidlines}/>
     
               {/* Blood Banks Modules Screens */}
