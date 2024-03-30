@@ -12,12 +12,15 @@ import UpdateEventPage from "./Component/events/update";
 import UpdateDonorPage from "./Component/DonorsList/updateDonor";
 import UpdateRecipientPage from "./Component/ReciepientList/recipientupdate";
 import WelcomeS from "./Component/dashboard/welcomescren";
+import TeamManagement from "./Component/teamManagement/teammanagement";
+import AddTeamMemberPage from "./Component/teamManagement/teaminsert";
 function App() {
   return (
     <>
     <Switch>
       <Route path="/" exact component={LoginBDS} />
       <Route path="/home" exact component={BDSHome} />
+
       <Route path="/welcome" exact component={WelcomeS} />
       <Route path="/donorReg" exact component={AddDonorPage} />
       <Route path="/recipientReg" exact component={AddRecipientPage} />
@@ -28,6 +31,8 @@ function App() {
       <Route path="/eventupdatedelete" exact component={EventCR} />
       <Route path="/updateEventPage/:id" component={UpdateEventPage} />
       <Route path="/updateDonorPage/:id" component={UpdateDonorPage} />
+      <Route path="/insertteammember" exact component={AddTeamMemberPage} />
+      <Route path="/teammanagement" exact component={TeamManagement} />
       </Switch>
     </>
     

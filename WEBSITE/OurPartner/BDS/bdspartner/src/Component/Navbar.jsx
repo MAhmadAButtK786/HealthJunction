@@ -54,8 +54,7 @@ const Navbar = () => {
                       >
                         Recipient Data
                       </a>
-                      <a
-                        href="#"
+                      <a  href="/insertteammember"
                         className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
                       >
                         Team Data
@@ -211,8 +210,7 @@ const Navbar = () => {
                         >
                           Recipient Data
                         </a>
-                        <a
-                          href="#"
+                        <a href="/insertteammember"
                           className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
                         >
                           Team Data
@@ -262,7 +260,7 @@ const Navbar = () => {
                 </Transition>
               </div>
               <a
-                href=""
+                href="/insertteammember"
                 className="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-gray-700 hover:text-white"
               >
                 Team

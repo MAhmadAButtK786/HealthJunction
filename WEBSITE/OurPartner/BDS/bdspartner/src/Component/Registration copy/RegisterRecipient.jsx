@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"; // Import useHistory
 import { collection, addDoc } from "firebase/firestore";
 import { database } from "../../firebase";
 
 function AddRecipientPage() {
+  const history = useHistory(); // Initialize useHistory
   const [recipientData, setRecipientData] = useState({
     FullName: "",
     Age: "",
@@ -81,13 +82,12 @@ function AddRecipientPage() {
         Phone: "",
         Province: "",
       });
-      // history.push("/recipient");
+      history.push("/recipient"); // Use history to navigate to "/recipient" after adding recipient
     } catch (error) {
       console.error("Error adding recipient: ", error);
       alert("Failed to add recipient. Please try again.");
     }
   };
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-red-600 via-yellow-400 to-orange-500">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
