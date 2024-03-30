@@ -58,7 +58,7 @@ function AddTeamMemberPage() {
     }
 
     // Regular expression for phone number validation
-    const phonePattern = /^[0-9]{10}$/;
+    const phonePattern = /^(?:\+92|0)\d{10}$/
     if (!phonePattern.test(memberData.phone)) {
       alert("Please enter a valid phone number.");
       return;
@@ -79,7 +79,7 @@ function AddTeamMemberPage() {
         phone: "",
         bio: "",
       });
-      history.push("/team"); // Navigate to the team page after adding a member
+      history.push("/teammanagement"); // Navigate to the team page after adding a member
     } catch (error) {
       console.error("Error adding team member: ", error);
       alert("Failed to add team member. Please try again.");

@@ -14,6 +14,7 @@ import UpdateRecipientPage from "./Component/ReciepientList/recipientupdate";
 import WelcomeS from "./Component/dashboard/welcomescren";
 import TeamManagement from "./Component/teamManagement/teammanagement";
 import AddTeamMemberPage from "./Component/teamManagement/teaminsert";
+import UpdateTeamMemberPage from "./Component/teamManagement/teamupdate";
 function App() {
   return (
     <>
@@ -33,6 +34,7 @@ function App() {
       <Route path="/updateDonorPage/:id" component={UpdateDonorPage} />
       <Route path="/insertteammember" exact component={AddTeamMemberPage} />
       <Route path="/teammanagement" exact component={TeamManagement} />
+      <Route path="/updateteammemberpage/:id" component={UpdateTeamMemberPage} />
       </Switch>
     </>
     
