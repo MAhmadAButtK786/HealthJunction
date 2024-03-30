@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,14 +9,119 @@ const Navbar = () => {
   const [isDropdown2Open, setIsDropdown2Open] = useState(false);
 
   return (
-    <nav className="bg-blue-600">
-      <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-16">
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+    <nav className="bg-gradient-to-r from-blue-500 to-purple-500">
+      <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <a href="/" className="text-2xl font-bold text-white">
+              <i className="fa fa-dashboard" aria-hidden="true"></i> Dashboard
+            </a>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden space-x-4 md:flex">
+            <div className="relative">
+              <button
+                className="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white focus:outline-none"
+                onClick={() => setIsDropdown1Open(!isDropdown1Open)}
+              >
+                <i className="fa fa-building" aria-hidden="true"></i> Organization Data
+              </button>
+              <Transition
+                show={isDropdown1Open}
+                enter="transition ease-out duration-200 transform"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="transition ease-in duration-150 transform"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                {(ref) => (
+                  <div
+                    ref={ref}
+                    className="absolute right-0 w-56 mt-2 origin-top-right bg-gray-700 divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
+                  >
+                    <div className="py-1">
+                      <a
+                        href="/donorlistORG"
+                        className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
+                      >
+                        Donor Data
+                      </a>
+                      <a
+                        href="/recipientlistORG"
+                        className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
+                      >
+                        Recipient Data
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
+                      >
+                        Team Data
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </Transition>
+            </div>
+            <div className="relative">
+              <button
+                className="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white focus:outline-none"
+                onClick={() => setIsDropdown2Open(!isDropdown2Open)}
+              >
+                <i className="fa fa-database" aria-hidden="true"></i> Add Data
+              </button>
+              <Transition
+                show={isDropdown2Open}
+                enter="transition ease-out duration-200 transform"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="transition ease-in duration-150 transform"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                {(ref) => (
+                  <div
+                    ref={ref}
+                    className="absolute right-0 w-56 mt-2 origin-top-right bg-gray-700 divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
+                  >
+                    <div className="py-1">
+                      <a
+                        href="/recipientReg"
+                        className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
+                      >
+                        Insert Recipient
+                      </a>
+                      <a
+                        href="/donorReg"
+                        className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
+                      >
+                        Insert Donor
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </Transition>
+            </div>
+            <a
+              href="/eventuploader"
+              className="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white focus:outline-none"
+            >
+              <i className="fa fa-info" aria-hidden="true"></i> Upload Event
+            </a>
+            <a
+              href="/eventupdatedelete"
+              className="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white focus:outline-none"
+            >
+              <i className="fa fa-info" aria-hidden="true"></i> Events
+            </a>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="flex items-center md:hidden">
             <button
-              type="button"
-              className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              aria-controls="mobile-menu"
+              className="p-2 text-white rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded="false"
               onClick={() => setIsOpen(!isOpen)}
             >
@@ -30,7 +137,7 @@ const Navbar = () => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth="2"
                   d="M4 6h16M4 12h16m-7 6h7"
                 />
               </svg>
@@ -45,143 +152,16 @@ const Navbar = () => {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
             </button>
           </div>
-          {/* Navbar items */}
-          <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
-            {/* Home link */}
-            <a href="#" className="flex items-center flex-shrink-0 text-white">
-              <h1>
-                <i class="fa fa-dashboard" aria-hidden="true">
-                  {" "}
-                  Dashboard
-                </i>
-              </h1>
-            </a>
-
-            <div className="hidden sm:block sm:ml-6">
-              <div className="flex space-x-4">
-                {/* Dropdown 1 */}
-                <div className="relative">
-                  <button
-                    className="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white focus:outline-none"
-                    onClick={() => setIsDropdown1Open(!isDropdown1Open)}
-                  >
-                    <i class="fa fa-building" aria-hidden="true">
-                      {" "}
-                      Organization Data
-                    </i>
-                  </button>
-                  <Transition
-                    show={isDropdown1Open}
-                    enter="transition ease-out duration-100 transform"
-                    enterFrom="opacity-0 scale-95"
-                    enterTo="opacity-100 scale-100"
-                    leave="transition ease-in duration-75 transform"
-                    leaveFrom="opacity-100 scale-100"
-                    leaveTo="opacity-0 scale-95"
-                  >
-                    {(ref) => (
-                      <div
-                        ref={ref}
-                        className="absolute right-0 w-56 mt-2 origin-top-right bg-gray-700 divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
-                      >
-                        <div className="py-1">
-                          <a
-                            href="/donorlistORG"
-                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
-                          >
-                            Donor Data
-                          </a>
-                          <a
-                            href="/recipientlistORG"
-                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
-                          >
-                            Recipient Data
-                          </a>
-                          <a
-                            href="#"
-                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
-                          >
-                            Team Data
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </Transition>
-                </div>
-                {/* Dropdown 2 */}
-                <div className="relative">
-                  <button
-                    className="px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-gray-700 hover:text-white focus:outline-none"
-                    onClick={() => setIsDropdown2Open(!isDropdown2Open)}
-                  >
-                    <i class="fa fa-database" aria-hidden="true">
-                      {" "}
-                      Add Data
-                    </i>
-                  </button>
-                  <Transition
-                    show={isDropdown2Open}
-                    enter="transition ease-out duration-100 transform"
-                    enterFrom="opacity-0 scale-95"
-                    enterTo="opacity-100 scale-100"
-                    leave="transition ease-in duration-75 transform"
-                    leaveFrom="opacity-100 scale-100"
-                    leaveTo="opacity-0 scale-95"
-                  >
-                    {(ref) => (
-                      <div
-                        ref={ref}
-                        className="absolute right-0 w-56 mt-2 origin-top-right bg-gray-700 divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
-                      >
-                        <div className="py-1">
-                          <a
-                            href="/recipientReg"
-                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
-                          >
-                            Insert Recipient
-                          </a>
-                          <a
-                            href="/donorReg"
-                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
-                          >
-                            Insert Donor
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </Transition>
-                </div>
-              </div>
-            </div>
-            <a
-              href="/eventuploader"
-              className="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-gray-700 hover:text-white"
-            >
-              <i class="fa fa-info" aria-hidden="true">
-                {" "}
-                Upload Event
-              </i>
-            </a>
-            <a
-              href="/eventupdatedelete"
-              className="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-gray-700 hover:text-white"
-            >
-              <i class="fa fa-info" aria-hidden="true">
-                {" "}
-                Events 
-              </i>
-            </a>
-          </div>
         </div>
       </div>
 
-      {/* Mobile menu, toggle classes based on menu state */}
+      {/* Mobile menu, show/hide based on menu state */}
       <Transition
         show={isOpen}
         enter="duration-200 ease-out"
@@ -193,8 +173,7 @@ const Navbar = () => {
       >
         {(ref) => (
           <div
-            className={`${isOpen ? "block" : "hidden"} sm:hidden`}
-            id="mobile-menu"
+            className={`${isOpen ? "block" : "hidden"} md:hidden`}
             ref={ref}
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
@@ -207,17 +186,17 @@ const Navbar = () => {
                 </button>
                 <Transition
                   show={isDropdown1Open}
-                  enter="transition ease-out duration-100 transform"
+                  enter="transition ease-out duration-200 transform"
                   enterFrom="opacity-0 scale-95"
                   enterTo="opacity-100 scale-100"
-                  leave="transition ease-in duration-75 transform"
+                  leave="transition ease-in duration-150 transform"
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
                   {(ref) => (
                     <div
                       ref={ref}
-                      className="absolute right-0 w-56 mt-2 origin-top-right bg-gray-700 divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
+                      className="absolute right-0 w-full mt-2 origin-top-right bg-gray-700 divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
                     >
                       <div className="py-1">
                         <a
@@ -245,34 +224,34 @@ const Navbar = () => {
               </div>
               <div className="relative">
                 <button
-                  className="w-full px-3 py-2 text-sm font-medium text-left text-gray-300 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none"
+                  className="w-full px-3 py-2 text-sm font-medium text-left text-white rounded-md hover:bg-gray-700 hover:text-white focus:outline-none"
                   onClick={() => setIsDropdown2Open(!isDropdown2Open)}
                 >
                   Insert Data
                 </button>
                 <Transition
                   show={isDropdown2Open}
-                  enter="transition ease-out duration-100 transform"
+                  enter="transition ease-out duration-200 transform"
                   enterFrom="opacity-0 scale-95"
                   enterTo="opacity-100 scale-100"
-                  leave="transition ease-in duration-75 transform"
+                  leave="transition ease-in duration-150 transform"
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
                   {(ref) => (
                     <div
                       ref={ref}
-                      className="absolute right-0 w-56 mt-2 origin-top-right bg-gray-700 divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
+                      className="absolute right-0 w-full mt-2 origin-top-right bg-gray-700 divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
                     >
                       <div className="py-1">
                         <a
-                          href="#"
+                          href="/donorlistORG"
                           className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
                         >
                           Add Donor
                         </a>
                         <a
-                          href="#"
+                          href="/recipientlistORG"
                           className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
                         >
                           Add Recipient
@@ -283,22 +262,16 @@ const Navbar = () => {
                 </Transition>
               </div>
               <a
-                href="#"
-                className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                href=""
+                className="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-gray-700 hover:text-white"
               >
-                Home
+                Team
               </a>
               <a
-                href="#"
-                className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                href="/eventupdatedelete"
+                className="block px-3 py-2 text-base font-medium text-white rounded-md hover:bg-gray-700 hover:text-white"
               >
-                About
-              </a>
-              <a
-                href="#"
-                className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-              >
-                Contact
+                Event
               </a>
             </div>
           </div>

@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { IoMdMail, IoMdLock } from 'react-icons/io';
 import { auth, database } from "../firebase";
 import { query, collection, where, getDocs } from 'firebase/firestore';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const LoginBDS = () => {
   const [username, setUsername] = useState('');
@@ -28,7 +27,7 @@ const LoginBDS = () => {
           if (userData.Password === password) {
             // Password is correct, proceed with authentication
             setLoading(false);
-            history.push('/home');
+            history.push('/welcome');
             alert('Successfully logged in!');
           } else {
             // Password is incorrect
