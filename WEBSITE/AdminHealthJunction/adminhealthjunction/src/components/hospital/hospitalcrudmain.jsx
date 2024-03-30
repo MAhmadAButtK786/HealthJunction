@@ -40,7 +40,10 @@ const HospitalCRUD = () => {
       }
     }
   };
-
+  const handleUpdate = (id) => {
+    // Redirect to the update page with the specific ID
+    window.location.href = `/updatethospitalPage/${id}`;
+  };
   const sortedHospitals = hospitals.sort((a, b) => a.hospitalName.localeCompare(b.hospitalName));
 
   return (
@@ -93,7 +96,7 @@ const HospitalCRUD = () => {
                 </button>
                 <button
                   className="flex items-center px-4 py-2 font-medium text-green-500 bg-transparent border border-green-500 rounded-full focus:outline-none hover:text-green-700"
-                  onClick={() => {} /* Handle update functionality */}
+                  onClick={() => handleUpdate(hospital.id)} 
                 >
                   <FontAwesomeIcon icon={faEdit} className="w-5 h-5 mr-1" />
                   Update

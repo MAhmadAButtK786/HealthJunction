@@ -60,6 +60,7 @@ import UpdateDietPage from './components/nutrifit/diets/dietdataupdate';
 //Hospital
 import HospitalcrudM from './components/hospital/hospitalcrud';
 import HospitalInsertForm from './components/hospital/hospitalinsertform';
+import HospitalUpdateForm from './components/hospital/hospitalupdate';
 // Import Firebase auth module
 import { auth } from './firebase';
 
@@ -111,6 +112,7 @@ const App = () => {
         {/* Hospital */}
         <Route path="/hospitalcrud" exact component={HospitalcrudM}/>
         <Route path="/hospitalinsertform" exact component={HospitalInsertForm}/>
+        <Route path="/updatethospitalPage/:id" exact component={HospitalUpdateForm}/>
         {/* NutriFit */}
         <Route path="/diet" exact component={DietInsertPage} />
         <Route path="/nutrifit" exact component={DietShow} />
