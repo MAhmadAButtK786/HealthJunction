@@ -57,6 +57,9 @@ import UpdateCharityForm from './components/charity/Charitable ORG Data/updatech
 import DietShow from './components/nutrifit/diets/diet';
 import DietInsertPage from './components/nutrifit/diets/dietdatainsert';
 import UpdateDietPage from './components/nutrifit/diets/dietdataupdate';
+//Hospital
+import HospitalcrudM from './components/hospital/hospitalcrud';
+import HospitalInsertForm from './components/hospital/hospitalinsertform';
 // Import Firebase auth module
 import { auth } from './firebase';
 
@@ -105,6 +108,9 @@ const App = () => {
         <Route path="/event" exact component={EventCR} />
         <Route path="/eventuploader" exact component={EventUploader} />
         <Route path="/updateEventPage/:id" exact component={UpdateEventPage}/>
+        {/* Hospital */}
+        <Route path="/hospitalcrud" exact component={HospitalcrudM}/>
+        <Route path="/hospitalinsertform" exact component={HospitalInsertForm}/>
         {/* NutriFit */}
         <Route path="/diet" exact component={DietInsertPage} />
         <Route path="/nutrifit" exact component={DietShow} />

@@ -78,7 +78,7 @@ const Navbar = () => {
               </span>
               {showBloodMenu && (
                 <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md shadow-lg">
-                  <Link to="#" className="block py-2 hover:text-blue-300">Hospitals Management</Link>
+                  <Link to="/hospitalcrud" className="block py-2 hover:text-blue-300">Hospitals Management</Link>
                   <Link to="#" className="block py-2 hover:text-blue-300">Clinic Management</Link>
                   <Link to="#" className="block py-2 hover:text-blue-300">Users Management</Link>
                 </div>

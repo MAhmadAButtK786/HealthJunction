@@ -33,7 +33,7 @@ const Sidebar = () => {
           </li>
           {/* Hospials */}
           <li>
-            <Link to="#" className="flex items-center justify-between p-2 hover:bg-gray-700">
+            <Link to="/hospitalcrud" className="flex items-center justify-between p-2 hover:bg-gray-700">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faHospital} className="mr-2" />
                 <span>Hospital Mangement</span>
