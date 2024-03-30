@@ -5,7 +5,7 @@ import { Bars3Icon, HomeIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Home', href: '/healthPointHome',  },
-  { name: 'Hospitals', href: '#',  },
+  { name: 'Hospitals', href: '/hospitallist',  },
   { name: 'Clinics', href: '#',},
   { name: 'Register Your Hospital', href: '/basicdf',  },
   { name: 'Our Guidelines', href: '/guidlines',  },

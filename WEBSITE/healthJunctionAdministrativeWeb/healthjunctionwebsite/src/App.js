@@ -29,10 +29,11 @@ import LahoreMDC from './Component/lab/privateLabs/LabsScreens/LahoreMDC/LahoreM
 import AlnoorLab from './Component/lab/privateLabs/LabsScreens/AlnoorLab/alnoorLab';
 import AddDonorPage from './Component/bloodbanks/Registration/RegisterDonor';
 import AddRecipientPage from './Component/bloodbanks/Registration/RegisterRecipient';
-
 import Eventmain from './Component/events/eventmain';
 import HealthZone from './Component/lab/privateLabs/LabsScreens/HealthZone/healthzone';
 import PHCLAB from './Component/lab/RegisteredLabs/phclab';
+import Hosplist from './Component/healthPoints/showreghospitals/hosplist';
+
 function App() {
   return (
       
@@ -42,8 +43,7 @@ function App() {
           {/* Health Points */}
           <Route path ="/healthPointHome" exact component={HealthPointHome}/>
           <Route path ="/basicdF" exact component={BasicdF}/>
-        
-        
+          <Route path ="/hospitallist" exact component={Hosplist}/>
           <Route path ="/guidlines" exact component={Guidlines}/>
     
               {/* Blood Banks Modules Screens */}

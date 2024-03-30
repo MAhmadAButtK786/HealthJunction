@@ -189,7 +189,7 @@ const HospitalForm = () => {
     try {
       await addDoc(collection(database, "HospitalData"), formData);
       alert("Form data successfully submitted to Firebase.");
-      history.push("/hospitalformexcelsheet");
+      history.push("/hospitallist");
     } catch (error) {
       console.error("Error adding document: ", error);
     }
