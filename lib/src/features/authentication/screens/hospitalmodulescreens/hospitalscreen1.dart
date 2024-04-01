@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-
-// Import for HospitalDetailScreen (assuming it's in a separate file)
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitaldetailsscreen.dart';
 
 class HospitalPage1 extends StatefulWidget {
