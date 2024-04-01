@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitaldetailsscreen.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 class HospitalPage1 extends StatefulWidget {
   const HospitalPage1({Key? key}) : super(key: key);
