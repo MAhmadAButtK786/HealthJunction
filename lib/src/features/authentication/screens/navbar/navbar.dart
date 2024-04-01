@@ -29,7 +29,8 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: onMenuPressed,
         icon: const Icon(
           Icons.menu,
-          color: tWhiteColor,
+         
+          color: Colors.white,
         ),
       ),
       title: Text(

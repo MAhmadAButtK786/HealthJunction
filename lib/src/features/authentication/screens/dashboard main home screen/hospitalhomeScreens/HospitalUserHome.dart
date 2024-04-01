@@ -206,7 +206,7 @@ class Hospitalhome extends StatelessWidget {
   void handleGridItemClick(int index) {
     switch (index) {
       case 0:
-        Get.to(() => hospitalpage1());
+        Get.to(() => HospitalPage1());
         break;
     }
   }

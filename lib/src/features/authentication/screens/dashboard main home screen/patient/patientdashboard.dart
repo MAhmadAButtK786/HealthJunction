@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, must_be_immutable
+// ignore_for_file: prefer_const_literals_to_create_immutables, must_be_immutable, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
@@ -236,7 +236,7 @@ class Patientmain extends StatelessWidget {
         Get.to(() => AppointmentStatusScreen());
         break;
       case 3:
-        Get.to(() => hospitalpage1());
+        Get.to(() => const HospitalPage1());
         break;
       case 0:
       Get.to(() => const GovtHosp());
