@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HospitalPage1 extends StatefulWidget {
@@ -11,7 +12,11 @@ class HospitalPage1 extends StatefulWidget {
   @override
   _HospitalPage1State createState() => _HospitalPage1State();
 }
+final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
+void _handleMenuPressed() {
+  scaffoldKey.currentState?.openDrawer();
+}
 class _HospitalPage1State extends State<HospitalPage1> {
   List<String> facilitiesList = [];
   List<String> servicesList = [];
@@ -235,11 +240,14 @@ class HospitalDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       key: scaffoldKey,
+      drawer: ReusableDrawerSideBar2(color: Colors.blueAccent, headerText: "Hospitals"),
       appBar: AppBar(
-        title: const Text('Hospital Details'),
-        backgroundColor: Colors.blue.shade800,
-      ),
-      body: FutureBuilder<DocumentSnapshot>(
+        backgroundColor: Colors.blueAccent,
+        title: const Text("Find Your Perfect Care", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      
+      ),),
+        body: FutureBuilder<DocumentSnapshot>(
         future: FirebaseFirestore.instance.collection('HospitalData').doc(docId).get(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
