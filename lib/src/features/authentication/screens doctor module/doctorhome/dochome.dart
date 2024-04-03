@@ -1,8 +1,9 @@
-// ignore_for_file: deprecated_member_use, avoid_unnecessary_containers
+// ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/hospitalRegistration/hospitalreg.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
@@ -23,6 +24,14 @@ class DoctorHome extends StatelessWidget {
           headerText: "Doctors",
         ),
         body: Container(
+          height: height,
+          width: width,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(docback),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: Column(
             children: [
               Container(
@@ -44,30 +53,34 @@ class DoctorHome extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Scaffold.of(context).openDrawer();
-                          },
-                          icon: const Icon(
-                            Icons.menu,
-                            color: Colors.white,
-                            size: 30,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Builder(
+                              builder: (context) => InkWell(
+                                    onTap: () {
+                                      Scaffold.of(context).openDrawer();
+                                    },
+                                    child: const Icon(
+                                      Icons.menu,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
+                                  )),
+                          IconButton(
+                            onPressed: () {
+                              Get.to(() => const ProfileMainPage());
+                            },
+                            icon: const Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              size: 30,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            Get.to(() => const ProfileMainPage());
-                          },
-                          icon: const Icon(
-                            Icons.person,
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 20),
                     const Text(
@@ -131,6 +144,8 @@ class DoctorHome extends StatelessWidget {
             ],
           ),
         ),
+        backgroundColor: Colors.transparent,
+       
       ),
     );
   }
