@@ -6,7 +6,6 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
-import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/docregistration.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/Govtlabs.dart';
 import 'package:healthjunction/src/features/authentication/screens/laboratories/labsmainscreen.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
@@ -16,6 +15,7 @@ class Laboratoriesmain extends StatelessWidget {
   var height, width;
 
   // List of images and titles
+  
   List imgData = [ppLab, ppLab];
   List titles = ["Public Labs", "Private Labs"];
 
