@@ -4,6 +4,7 @@ import 'package:healthjunction/firebase_options.dart';
 import 'package:healthjunction/src/features/authentication/repository/donor_repository.dart';
 import 'package:healthjunction/src/features/authentication/repository/recipient_repository.dart';
 import 'package:healthjunction/src/features/authentication/repository/user_repository.dart';
+import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/hospitalRegistration/hospitalreg.dart';
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_mail/forget_password_mail.dart';
 import 'package:healthjunction/src/features/authentication/screens/forget_password/forget_password_phone/forget_password_phone.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
@@ -47,7 +48,7 @@ class HealthJunction extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home:  const Welcome(),
+      home:   DoctorRegistrationForm(),
     );
   }
 }
