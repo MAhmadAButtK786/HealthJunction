@@ -7,12 +7,11 @@ import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreeen3.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/clinicscreen1.dart';
 import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/docregistration.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/Healthpoints/healthclinichome.dart';
-import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/Healthpoints/hospitalregisterhome.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicdoc.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/clinichomescreens/clinicuser.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitalscreen1.dart';
 import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/hospitareg.dart';
+import 'package:healthjunction/src/features/authentication/screens/hospitalmodulescreens/phcregisteredhospitals.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
@@ -20,8 +19,20 @@ class HealthPointsmain extends StatelessWidget {
   var height, width;
 
   // List of images and titles
-  List imgData = [hospital10, clinic3];
-  List titles = ["Hospitals ", "Clinics"];
+  List imgData = [govt, hospitalmain ,hospital3];
+  List titles = ["PHC Registered Hospitals","Hospitals","Hospitals Registration"];
+  List<Color> cardColors = [
+     Colors.white,
+    Colors.white,
+    Colors.white,
+   
+  ];
+  List<Color> textColor = [
+      Colors.green,
+    Colors.blueAccent,
+    Colors.blue,
+    
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -175,55 +186,64 @@ class HealthPointsmain extends StatelessWidget {
 
   // Method to build a Blood Bank Item in the Grid
   Widget buildBloodBankItem(int index) {
-    return InkWell(
+   return InkWell(
       onTap: () => handleGridItemClick(index),
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
+          color: cardColors[index], // Assigning specific color to the card
           boxShadow: [
-            BoxShadow(
+            const BoxShadow(
               color: Colors.black26,
               spreadRadius: 7,
               blurRadius: 9,
             ),
           ],
         ),
-        // Apply Hero Animation for smooth image transition
-        child: Hero(
-          tag: 'bloodBankHero$index',
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(
-                imgData[index],
-                width: 150,
-              ),
-              Text(
-                titles[index],
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue, // Improved Color Combination
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Hero(
+                tag: 'bloodBankHero$index',
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image.asset(
+                      imgData[index],
+                      width: 150,
+                    ),
+                    Text(
+                      titles[index],
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: textColor[index],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  // Method to handle grid item click
   void handleGridItemClick(int index) {
     switch (index) {
-      case 0:
-        Get.to(() => HealthRegmain());
+      case 2:
+        Get.to(() => HospitalRegistration());
         break;
+     
       case 1:
-        Get.to(() => HealthClinicRegmain());
+        Get.to(() => const HospitalPage1());
         break;
+      case 0:
+      Get.to(() => const GovtHosp());
     }
   }
 }

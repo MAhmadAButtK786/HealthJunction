@@ -112,3 +112,4 @@ const String weightlosscal= "assets/images/weightlosscal.png";
 const String tinycal= "assets/images/tinycal.jpg";
 const String weghtgain = "assets/images/weightgaincal.png";
 const String exercisecalburn = "assets/images/exercisecalburn.png";
+const String hospitalmain ="assets/images/hospitalmain.jpg";
