@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faBars, faTimes,faFlask, faTint, faHandsHelping, faHospital } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faBars, faTimes, faFlask, faTint, faHandsHelping, faHospital } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../firebase'; // Import your Firebase authentication instance
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showHealthPointsMenu, setShowHealthPointsMenu] = useState(false);
   const [showBloodMenu, setShowBloodMenu] = useState(false);
   const [showLabMenu, setShowLabMenu] = useState(false);
   const [showCharitableMenu, setShowCharitableMenu] = useState(false);
@@ -13,6 +14,14 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
+    setShowHealthPointsMenu(false);
+    setShowBloodMenu(false);
+    setShowLabMenu(false);
+    setShowCharitableMenu(false);
+  };
+
+  const toggleHealthPointsMenu = () => {
+    setShowHealthPointsMenu(!showHealthPointsMenu);
     setShowBloodMenu(false);
     setShowLabMenu(false);
     setShowCharitableMenu(false);
@@ -20,18 +29,21 @@ const Navbar = () => {
 
   const toggleBloodMenu = () => {
     setShowBloodMenu(!showBloodMenu);
+    setShowHealthPointsMenu(false);
     setShowLabMenu(false);
     setShowCharitableMenu(false);
   };
 
   const toggleLabMenu = () => {
     setShowLabMenu(!showLabMenu);
+    setShowHealthPointsMenu(false);
     setShowBloodMenu(false);
     setShowCharitableMenu(false);
   };
 
   const toggleCharitableMenu = () => {
     setShowCharitableMenu(!showCharitableMenu);
+    setShowHealthPointsMenu(false);
     setShowBloodMenu(false);
     setShowLabMenu(false);
   };
@@ -69,18 +81,17 @@ const Navbar = () => {
         </button>
         <nav className={`lg:flex flex-grow items-center justify-between mt-4 lg:mt-0 ${showMenu ? '' : 'hidden'}`}>
           <div className="flex flex-col lg:flex-row lg:ml-auto">
-          <div className="relative">
+            <div className="relative">
               <span
                 className="py-4 mx-4 border-b border-transparent cursor-pointer hover:text-blue-300 hover:border-indigo-600 lg:py-0"
-                onClick={toggleBloodMenu}
+                onClick={toggleHealthPointsMenu}
               >
                 <FontAwesomeIcon icon={faHospital} className="mr-2" /> HealthPoints 
               </span>
-              {showBloodMenu && (
+              {showHealthPointsMenu && (
                 <div className="absolute left-0 z-10 p-2 mt-2 text-gray-100 bg-gray-900 rounded-md shadow-lg">
                   <Link to="/hospitalcrud" className="block py-2 hover:text-blue-300">Hospitals Management</Link>
-                  <Link to="#" className="block py-2 hover:text-blue-300">Clinic Management</Link>
-                  <Link to="#" className="block py-2 hover:text-blue-300">Users Management</Link>
+                  <Link to="/doctorsmanagement" className="block py-2 hover:text-blue-300">Doctors Management</Link>
                 </div>
               )}
             </div>

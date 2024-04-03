@@ -42,10 +42,10 @@ const Sidebar = () => {
           </li>
            {/* Clinics */}
            <li>
-            <Link to="#" className="flex items-center justify-between p-2 hover:bg-gray-700">
+            <Link to="/doctorsmanagement" className="flex items-center justify-between p-2 hover:bg-gray-700">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faUserDoctor} className="mr-2" />
-                <span>Clinic Mangement</span>
+                <span>Doctors Mangement</span>
               </div>
             </Link>
           </li>
