@@ -7,7 +7,7 @@ import "package:healthjunction/src/constants/colors.dart";
 import "package:healthjunction/src/constants/sizes.dart";
 import "package:healthjunction/src/constants/text_string.dart";
 import "package:healthjunction/src/features/authentication/controllers/signup_controller.dart";
-import "package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart";
+import "package:healthjunction/src/features/authentication/screens%20doctor%20module/doctorhome/dochome.dart";
 import "package:healthjunction/src/features/authentication/screens/forget_password/forget_password_option/forget_password_model_bottom_sheet.dart";
 
 class DocLoginForm extends StatefulWidget {
@@ -40,7 +40,7 @@ class _LoginFormState extends State<DocLoginForm> {
       if (userCredential.user != null) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('Login Successful')));
-        Get.to(() => Dashboard());
+        Get.to(() => DoctorHome());
       }
     } on FirebaseAuthException catch (e) {
       String errorMessage;

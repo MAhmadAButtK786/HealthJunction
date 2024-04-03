@@ -8,6 +8,7 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/loginscreen/login.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login_form_widget.dart';
@@ -290,7 +291,7 @@ class LoginFooterWidget extends StatelessWidget {
           ),
             TextButton(
             onPressed: () {
-              // Get.to(() => SignupScreen());
+              Get.to(() => DocLoginScreen());
             },
             child: Text.rich(
               TextSpan(
