@@ -30,12 +30,17 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _experienceController = TextEditingController();
   final TextEditingController _workingHoursController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
+  final TextEditingController _priceController = TextEditingController();
   String? _gender;
   DateTime _dateOfBirth = DateTime.now();
   TimeOfDay? _startTime;
   TimeOfDay? _endTime;
   List<bool> _selectedDays = List.generate(7, (_) => false);
   final List<String> _daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  final List<String> _provinces = ['Punjab', 'Sindh', 'Khyber Pakhtunkhwa', 'Balochistan', 'Gilgit-Baltistan', 'Azad Kashmir'];
+  String? _selectedProvince;
 
   Future<void> _pickImage() async {
     final XFile? pickedImage = await _picker.pickImage(source: ImageSource.gallery);
@@ -57,53 +62,61 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
     _downloadUrl = await reference.getDownloadURL();
   }
 
- Future<void> _saveForm() async {
-  if (_formKey.currentState!.validate()) {
-    await _uploadImage();
-    final doctorData = {
-      'fullName': _fullNameController.text,
-      'email': _emailController.text,
-      'phoneNumber': _phoneController.text,
-      'licenseNumber': _licenseController.text,
-      'specialty': _specialtyController.text,
-      'bio': _bioController.text,
-      'experience': int.parse(_experienceController.text),
-      'workingHours': _workingHoursController.text,
-      'availableDays': _selectedDays,
-      'profilePicture': _downloadUrl,
-      'gender': _gender,
-      'dateOfBirth': _dateOfBirth.toIso8601String(),
-    };
+  Future<void> _saveForm() async {
+    if (_formKey.currentState!.validate()) {
+      await _uploadImage();
+      final doctorData = {
+        'fullName': _fullNameController.text,
+        'email': _emailController.text,
+        'phoneNumber': _phoneController.text,
+        'licenseNumber': _licenseController.text,
+        'specialty': _specialtyController.text,
+        'bio': _bioController.text,
+        'experience': int.parse(_experienceController.text),
+        'workingHours': _workingHoursController.text,
+        'availableDays': _selectedDays,
+        'profilePicture': _downloadUrl,
+        'gender': _gender,
+        'dateOfBirth': _dateOfBirth.toIso8601String(),
+        'address': _addressController.text,
+        'city': _cityController.text,
+        'province': _selectedProvince,
+        'pricePerVisit': double.parse(_priceController.text),
+      };
 
-    await FirebaseFirestore.instance.collection('doctors').add(doctorData);
+      await FirebaseFirestore.instance.collection('doctors').add(doctorData);
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Doctor registration successful!'),
-        backgroundColor: Colors.green,
-      ),
-    );
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Doctor registration successful!'),
+          backgroundColor: Colors.green,
+        ),
+      );
 
-    _formKey.currentState!.reset();
-    _fullNameController.clear();
-    _emailController.clear();
-    _phoneController.clear();
-    _licenseController.clear();
-    _specialtyController.clear();
-    _bioController.clear();
-    _experienceController.clear();
-    _workingHoursController.clear();
-    setState(() {
-      _image = null;
-      _downloadUrl = null;
-      _startTime = null;
-      _endTime = null;
-      _selectedDays = List.generate(7, (_) => false);
-      _gender = null;
-      _dateOfBirth = DateTime.now();
-    });
+      _formKey.currentState!.reset();
+      _fullNameController.clear();
+      _emailController.clear();
+      _phoneController.clear();
+      _licenseController.clear();
+      _specialtyController.clear();
+      _bioController.clear();
+      _experienceController.clear();
+      _workingHoursController.clear();
+      _addressController.clear();
+      _cityController.clear();
+      _priceController.clear();
+      setState(() {
+        _image = null;
+        _downloadUrl = null;
+        _startTime = null;
+        _endTime = null;
+        _selectedDays = List.generate(7, (_) => false);
+        _gender = null;
+        _dateOfBirth = DateTime.now();
+        _selectedProvince = null;
+      });
+    }
   }
-}
 
   String? _validateField(String? value) {
     if (value!.isEmpty) {
@@ -205,12 +218,7 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'This field cannot be empty';
-                  }
-                  return null;
-                },
+                validator: _validateField,
               ),
               const SizedBox(height: 10.0),
               TextFormField(
@@ -226,7 +234,7 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
                 keyboardType: TextInputType.phone,
                 validator: _validateField,
               ),
-               const SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               const Text('Gender:', style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
               const SizedBox(height: 10.0),
               Row(
@@ -267,7 +275,6 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
               const SizedBox(height: 10.0),
               const Text('Date of Birth:', style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
               const SizedBox(height: 10.0),
-              
               TextButton(
                 onPressed: () async {
                   final DateTime? selectedDate = await showDatePicker(
@@ -285,6 +292,59 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
                   style: const TextStyle(fontSize: 16.0),
                 ),
               ),
+              const SizedBox(height: 10.0),
+              DropdownButtonFormField<String>(
+                value: _selectedProvince,
+                decoration: InputDecoration(
+                  labelText: 'Province',
+                  prefixIcon: const Icon(Icons.location_city_outlined),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(color: secondaryColor),
+                  ),
+                ),
+                items: _provinces.map((String province) {
+                  return DropdownMenuItem<String>(
+                    value: province,
+                    child: Text(province),
+                  );
+                }).toList(),
+                onChanged: (String? value) {
+                  setState(() {
+                    _selectedProvince = value;
+                  });
+                },
+                validator: _validateField,
+              ),
+               const SizedBox(height: 10.0),
+              TextFormField(
+                controller: _cityController,
+                decoration: InputDecoration(
+                  labelText: 'City',
+                  prefixIcon: const Icon(Icons.location_city_outlined),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(color: secondaryColor),
+                  ),
+                ),
+                validator: _validateField,
+              ),
+              
+              const SizedBox(height: 10.0),
+              
+              TextFormField(
+                controller: _addressController,
+                decoration: InputDecoration(
+                  labelText: 'Address',
+                  prefixIcon: const Icon(Icons.home),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(color: secondaryColor),
+                  ),
+                ),
+                validator: _validateField,
+              ),
+             
               const SizedBox(height: 10.0,),
               TextFormField(
                 controller: _licenseController,
@@ -314,7 +374,6 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
                 validator: _validateField,
               ),
               const SizedBox(height: 10.0),
-              
               TextFormField(
                 controller: _experienceController,
                 decoration: InputDecoration(
@@ -376,8 +435,21 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
                   ),
                 ],
               ),
-             
+            
               const SizedBox(height: 10.0),
+              TextFormField(
+                controller: _priceController,
+                decoration: InputDecoration(
+                  labelText: 'Price per Visit (PKR)',
+                  prefixIcon: const Icon(Icons.attach_money),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(color: secondaryColor),
+                  ),
+                ),
+                keyboardType: TextInputType.number,
+                validator: _validateField,
+              ),
               const SizedBox(height: 10.0),
               const Text('Available Days:', style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
               const SizedBox(height: 10.0),
@@ -411,7 +483,6 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
                   ),
                 ),
               ),
-            
               const SizedBox(height: 10.0),
               ElevatedButton(
                 onPressed: _saveForm,
