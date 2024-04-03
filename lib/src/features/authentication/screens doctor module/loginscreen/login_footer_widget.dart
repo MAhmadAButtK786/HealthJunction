@@ -8,6 +8,7 @@ import 'package:healthjunction/src/constants/colors.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/sizes.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
+import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/doctorhome/dochome.dart';
 import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/signupscreen/signup.dart';
 import 'package:healthjunction/src/features/authentication/screens/dashboard%20main%20home%20screen/dashboard.dart';
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
@@ -226,7 +227,7 @@ class DocLoginFooterWidget extends StatelessWidget {
                         // User signed in successfully, you can handle the user data here
                         print(
                             'User signed in with Google: ${userCredential.user}');
-                        Get.to(() => Dashboard());
+                        Get.to(() => DoctorHome());
                       }
                     },
                   ),
@@ -245,7 +246,7 @@ class DocLoginFooterWidget extends StatelessWidget {
                         // User signed in successfully, you can handle the user data here
                         print(
                             'User signed in with Facebook: ${userCredential.user}');
-                        Get.to(() => Dashboard()); // Navigate to Dashboard
+                        Get.to(() => DoctorHome()); // Navigate to Dashboard
                       }
                     },
                   ),
