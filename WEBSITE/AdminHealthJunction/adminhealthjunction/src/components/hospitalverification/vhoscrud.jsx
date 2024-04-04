@@ -54,14 +54,7 @@ const VerifiedHospitalCRUD = () => {
         <h2 className="text-4xl font-bold text-center text-teal-600">Find Your Perfect Care Haven!</h2>
       </div>
 
-      <button
-        className="px-4 py-2 mb-4 font-medium text-white bg-green-500 rounded-full focus:outline-none hover:bg-green-700"
-        onClick={() => {
-            window.location.href = "/hospitalinsertform";
-        } }
-      >
-        Insert Hospital
-      </button>
+      
 
       <ul className="overflow-hidden border-teal-200 divide-y rounded-lg">
         {sortedHospitals.map(hospital => (
