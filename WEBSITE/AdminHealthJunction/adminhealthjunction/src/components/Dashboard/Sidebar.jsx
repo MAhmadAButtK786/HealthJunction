@@ -41,7 +41,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to="" className="flex items-center justify-between p-2 hover:bg-gray-700">
+            <Link to="/verifiedhospitals" className="flex items-center justify-between p-2 hover:bg-gray-700">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faCheck} className="mr-2" />
                 <span>Verified Hospitals</span>

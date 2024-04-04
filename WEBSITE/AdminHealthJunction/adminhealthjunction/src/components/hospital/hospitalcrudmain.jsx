@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc,addDoc } from 'firebase/firestore';
 import { database } from '../../firebase';
-import { faChevronUp, faChevronDown, faMapMarkerAlt, faPhone, faEnvelope, faUser, faBriefcase, faMoneyBillAlt, faRupeeSign, faClipboardCheck, faHome, faIdBadge, faBalanceScale, faClock, faFileAlt, faUsers, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp,faCheck, faChevronDown, faMapMarkerAlt, faPhone, faEnvelope, faUser, faBriefcase, faMoneyBillAlt, faRupeeSign, faClipboardCheck, faHome, faIdBadge, faBalanceScale, faClock, faFileAlt, faUsers, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const HospitalCRUD = () => {
@@ -38,6 +38,14 @@ const HospitalCRUD = () => {
       } catch (error) {
         console.error('Error deleting hospital:', error);
       }
+    }
+  };
+  const handlePushToNewCollection = async (hospital) => {
+    try {
+      await addDoc(collection(database, 'VerifiedHospitalData'), hospital);
+      alert('Hospital Varified!');
+    } catch (error) {
+      console.error('Error while Verifing to data:', error);
     }
   };
   const handleUpdate = (id) => {
@@ -100,6 +108,13 @@ const HospitalCRUD = () => {
                 >
                   <FontAwesomeIcon icon={faEdit} className="w-5 h-5 mr-1" />
                   Update
+                </button>
+                <button
+                  className="flex items-center px-4 py-2 font-medium text-green-500 bg-transparent border border-green-500 rounded-full focus:outline-none hover:text-green-700"
+                  onClick={() => handlePushToNewCollection(hospital)}
+                >
+                  <FontAwesomeIcon icon={faCheck} className="w-5 h-5 mr-1" />
+                  Hospital Verification
                 </button>
               </div>
             </div>

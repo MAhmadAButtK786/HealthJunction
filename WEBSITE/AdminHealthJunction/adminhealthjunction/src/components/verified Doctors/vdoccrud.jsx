@@ -47,7 +47,7 @@ const VerifiedDoctorCRUD = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this doctor?")) {
       try {
-        await deleteDoc(doc(database, 'doctors', id));
+        await deleteDoc(doc(database, 'userdoctor', id));
         setDoctors(doctors.filter(doctor => doctor.id !== id));
         alert('Doctor deleted successfully!');
       } catch (error) {
