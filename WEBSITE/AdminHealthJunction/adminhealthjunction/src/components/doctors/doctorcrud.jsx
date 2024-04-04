@@ -56,9 +56,9 @@ const DoctorCRUD = () => {
     }
   };
 
-  const handleEdit = async (doctor) => {
-    // Handle edit functionality here, you can open a modal or navigate to another page for editing
-    console.log('Edit doctor:', doctor);
+  const handleEdit = (id) => {
+    
+    window.location.href = `/doctorupdate/${id}`;
   };
 
   const handlePushToNewCollection = async (doctor) => {
@@ -129,7 +129,8 @@ const DoctorCRUD = () => {
                 </button>
                 <button
                   className="flex items-center px-4 py-2 mr-2 font-medium text-blue-500 bg-transparent border border-blue-500 rounded-full focus:outline-none hover:text-blue-700"
-                  onClick={() => handleEdit(doctor)}
+                  onClick={() => handleEdit(doctor.id)}
+                  
                 >
                   <FontAwesomeIcon icon={faEdit} className="w-5 h-5 mr-1" />
                   Edit

@@ -64,6 +64,7 @@ import HospitalUpdateForm from './components/hospital/hospitalupdate';
 // Doctors
 import Doctorsmain from './components/doctors/doctorsmain';
 import DoctorRegistrationForm from './components/doctors/doctorinsert';
+import DoctorUpdateForm from './components/doctors/doctorupdate';
 // Import Firebase auth module
 import { auth } from './firebase';
 
@@ -168,6 +169,7 @@ const App = () => {
         {/* Doctor */}
         <Route path="/doctorsmanagement" exact component={Doctorsmain}/>
         <Route path="/doctorsinsert" exact component={DoctorRegistrationForm}/>
+        <Route path="/doctorupdate/:id" exact component={DoctorUpdateForm}/>
       </Switch>
     </>
   );
