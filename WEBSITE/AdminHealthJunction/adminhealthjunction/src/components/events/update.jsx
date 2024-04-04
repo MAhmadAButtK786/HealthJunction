@@ -52,7 +52,7 @@ const UpdateEventPage = () => {
         await updateEventData(eventData); // Update event data without changing the image
       }
       alert('Event updated successfully'); // Show success message
-      history.push('/eventPage'); // Redirect to event page
+      history.push('/event'); // Redirect to event page
     } catch (error) {
       console.error('Error updating event:', error);
       alert('Failed to update event'); // Show error message
@@ -83,19 +83,19 @@ const UpdateEventPage = () => {
   // Render form for updating event data
   return (
     <div className='flex flex-col items-center justify-center h-screen'>
-      <form className='flex flex-col items-center justify-center w-4/12 gap-4 px-10 py-5 bg-gray-400' onSubmit={handleUpdate}>
+      <form className='flex flex-col items-center justify-center w-full max-w-md gap-4 px-10 py-5 bg-gray-400' onSubmit={handleUpdate}>
         <h2 className='text-xl font-bold'>Edit Details</h2>
         <input 
           type="text" 
           placeholder='Enter Event Name' 
-          className='w-full px-4 py-1 border-none outline-none' 
+          className='w-full px-4 py-2 border border-gray-300 rounded-md outline-none' 
           value={eventData.eventName}
           name="eventName"
           onChange={handleChange}
         />
         <textarea 
           placeholder='Enter Description' 
-          className='w-full px-4 py-1 border-none outline-none' 
+          className='w-full px-4 py-2 border border-gray-300 rounded-md outline-none' 
           value={eventData.description}
           name="description"
           onChange={handleChange}
@@ -103,7 +103,7 @@ const UpdateEventPage = () => {
         <input 
           type="date" 
           placeholder='Enter Date' 
-          className='w-full px-4 py-1 border-none outline-none' 
+          className='w-full px-4 py-2 border border-gray-300 rounded-md outline-none' 
           value={eventData.date}
           name="date"
           onChange={handleChange}
@@ -111,7 +111,7 @@ const UpdateEventPage = () => {
         <input 
           type="time" 
           placeholder='Enter Time' 
-          className='w-full px-4 py-1 border-none outline-none' 
+          className='w-full px-4 py-2 border border-gray-300 rounded-md outline-none' 
           value={eventData.time}
           name="time"
           onChange={handleChange}
@@ -121,10 +121,17 @@ const UpdateEventPage = () => {
           onChange={handleImageChange}
         />
         {imageFile && <img src={URL.createObjectURL(imageFile)} alt="Preview" style={{ width: '100px' }} />}
-        <button 
-          type='submit'
-          className='w-full p-2 text-white bg-blue-500 rounded-full'
-        >Update</button>
+        <div className="flex justify-between w-full">
+          <button 
+            type='submit'
+            className='w-full p-2 text-white bg-blue-500 rounded-full'
+          >Update</button>
+          <button 
+            type='button'
+            className='w-full p-2 text-white bg-gray-500 rounded-full'
+            onClick={() => history.goBack()}
+          >Back</button>
+        </div>
       </form>
     </div>
   );

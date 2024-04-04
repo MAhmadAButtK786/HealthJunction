@@ -1,132 +1,9 @@
 import React, { useState } from 'react';
-import { collection, addDoc } from 'firebase/firestore';
-import { database } from '../../firebase';
-import { useHistory } from 'react-router-dom';
 import { FaHospital, FaMapMarkerAlt, FaBuilding, FaCity, FaPhone, FaEnvelope, FaBed, FaPlusCircle, FaTimesCircle } from "react-icons/fa";
-
-const provinces = [
-  "Punjab",
-  "Sindh",
-  "Balochistan",
-  "Islamabad Capital Territory",
-  "Khyber Pakhtunkhwa",
-  "Azad Jammu and Kashmir",
-  "Gilgit-Baltistan",
-];
-
-const departments = [
-  'Emergency Department',
-  'Inpatient Wards',
-  'Outpatient Clinics',
-  'Operating Rooms',
-  'Diagnostic Imaging',
-  'Laboratory Services',
-  'Pharmacy',
-  'Intensive Care Units',
-  'Maternity And Neonatal Care',
-  'Pediatrics Department',
-  'Cardiology Department',
-  'Neurology Department',
-  'Orthopedics Department',
-  'ENT Department',
-  'Physical Therapy Department',
-  'Occupational Therapy Department',
-  'Speech Therapy Department',
-  'Radiation Oncology Department',
-  'Pulmonology Department',
-  'Gastroenterology Department',
-  'Nephrology Department',
-  'Urology Department',
-  'Anesthesiology Department',
-  'Pathology Department',
-  'Biochemistry Department',
-  'Community Medicine Department',
-  'Psychiatry Department', // Added Psychiatry Department
-  'Dermatology Department', // Added Dermatology Department
-  'Ophthalmology Department', // Added Ophthalmology Department
-  'Oncology Department', // Added Oncology Department
-  'Geriatric Department', // Added Geriatric Department
-  'Endocrinology Department', // Added Endocrinology Department
-  'Hematology Department', // Added Hematology Department
-  'Rheumatology Department', // Added Rheumatology Department
-  'Allergy and Immunology Department', // Added Allergy and Immunology Department
-  'Microbiology Department', // Added Microbiology Department
-  'Forensic Medicine Department', // Added Forensic Medicine Department
-  'Medical Education Department', // Added Medical Education Department
-  'Research and Development Department' // Added Research and Development Department
-];
-
-// Facilities list remains unchanged
-const facilities = [
-  'Emergency Room',
-  'Pharmacy',
-  'Laboratory',
-  'Radiology',
-  'Operating Rooms',
-  'Intensive Care Unit',
-  'Maternity Ward',
-  'Pediatric Ward',
-  'Cafeteria',
-  'Parking',
-  'Ambulance Service',
-  'Gardens/Green Spaces',
-  'Fitness Center',
-  'Wi-Fi Access',
-  'Wheelchair Accessibility',
-  'Interpreter Services',
-  'Family Accommodation',
-  'Counseling Services',
-  'Concierge Services',
-  'Dining Services',
-  'Spiritual Care Services',
-  'Medical Library',
-  'ATM/Banking Services',
-  'Gift Shop'
-];
-
-// Services list remains unchanged
-const services = [
-  'Emergency Services',
-  'Outpatient Services',
-  'Inpatient Services',
-  'Surgery',
-  'Imaging Services',
-  'Laboratory Services',
-  'Pharmacy Services',
-  'Physical Therapy',
-  'Occupational Therapy',
-  'Speech Therapy',
-  'Dietary Services',
-  'Social Work Services',
-  'Palliative Care Services',
-  'Mental Health Services',
-  'Cancer Care Services',
-  'Diabetes Care Services',
-  'Pediatric Services',
-  'Geriatric Services',
-  'Neonatal Services',
-  'Reproductive Health Services',
-  'Travel Medicine Services',
-  'Vaccination Services',
-  'Dental Services',
-  'Eye Care Services',
-  'Digestive Health Services',
-  'Endocrine Services',
-  'Skin Disorder Services',
-  'Respiratory Services',
-  'Wound Care Services',
-  'Rehabilitation Services',
-  'Genetic Counseling Services',
-  'Nutrition Counseling Services',
-  'Stress Management Counseling Services',
-  'Occupational Health Services',
-  'Employee Assistance Programs',
-  'Language Translation Services',
-  'Legal Aid Services',
-  'Financial Counseling Services'
-];
-
-
+import { useHistory } from 'react-router-dom';
+import { addDoc, collection } from 'firebase/firestore';
+import { database } from '../../firebase';
+import { provinces, departments, facilities, services } from './data'; // Importing data from separate file
 
 const HospitalInsertForm = () => {
   const history = useHistory();
@@ -179,6 +56,7 @@ const HospitalInsertForm = () => {
     hours.splice(index, 1);
     setFormData(prevState => ({ ...prevState, visitingHours: hours }));
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -224,15 +102,13 @@ const HospitalInsertForm = () => {
     }
     return true;
   };
-  
- 
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-blue-200">
       <div className="w-full max-w-screen-md p-6 my-10 bg-white rounded-md shadow-md">
         <h2 className="mb-6 text-4xl font-bold text-blue-800">
           <FaHospital className="inline-block mr-2" />
-         Insert Hospital 
+          Insert Hospital
         </h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 md:grid-cols-2">
 
@@ -340,44 +216,44 @@ const HospitalInsertForm = () => {
                   required
                 />
               </div>
-                {/* Facilities */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Facilities</label>
-            {facilities.map((facility, index) => (
-              <div key={index} className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="facilities"
-                  id={facility}
-                  value={facility}
-                  checked={formData.facilities.includes(facility)}
-                  onChange={handleChange}
-                  className="mr-2 appearance-none focus:ring-2 focus:ring-blue-500"
-                />
-                <label htmlFor={facility}>{facility}</label>
-              </div>
-            ))}
-          </div>
 
-          {/* Services */}
-          <div className="mb-6">
-            <label className="block mb-1 text-gray-600">Services</label>
-            {services.map((service, index) => (
-              <div key={index} className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="services"
-                  id={service}
-                  value={service}
-                  checked={formData.services.includes(service)}
-                  onChange={handleChange}
-                 
-                  className="mr-2 appearance-none focus:ring-2 focus:ring-blue-500"
-                />
-                <label htmlFor={service}>{service}</label>
+              {/* Facilities */}
+              <div className="mb-6">
+                <label className="block mb-1 text-gray-600">Facilities</label>
+                {facilities.map((facility, index) => (
+                  <div key={index} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="facilities"
+                      id={facility}
+                      value={facility}
+                      checked={formData.facilities.includes(facility)}
+                      onChange={handleChange}
+                      className="mr-2 appearance-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <label htmlFor={facility}>{facility}</label>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+
+              {/* Services */}
+              <div className="mb-6">
+                <label className="block mb-1 text-gray-600">Services</label>
+                {services.map((service, index) => (
+                  <div key={index} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="services"
+                      id={service}
+                      value={service}
+                      checked={formData.services.includes(service)}
+                      onChange={handleChange}
+                      className="mr-2 appearance-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <label htmlFor={service}>{service}</label>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -397,6 +273,8 @@ const HospitalInsertForm = () => {
                   required
                 />
               </div>
+
+              {/* Departments */}
               <div>
                 <h4 className="mb-2 text-lg font-semibold">Departments</h4>
                 {departments.map((dept, index) => (
@@ -414,8 +292,9 @@ const HospitalInsertForm = () => {
                   </div>
                 ))}
               </div>
+
+              {/* Visiting Hours */}
               <div className="relative">
-                
                 {formData.visitingHours.map((hour, index) => (
                   <div key={index} className="flex items-center">
                     <input
@@ -456,6 +335,8 @@ const HospitalInsertForm = () => {
                   <span className="ml-2">Add Visiting Hours</span>
                 </div>
               </div>
+
+              {/* Other Additional Information */}
               <div className="relative">
                 <label className="block mb-1 text-gray-600">Insurance Accepted</label>
                 <select
@@ -499,24 +380,17 @@ const HospitalInsertForm = () => {
                 <label className="block mb-1 text-gray-600">Additional Information</label>
                 <textarea
                   className="w-full h-24 p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                  placeholder="Enter any additional information here..."
+                  placeholder="Enter any additional information..."
                   name="additionalInfo"
                   value={formData.additionalInfo}
                   onChange={handleChange}
-                />
+                ></textarea>
               </div>
             </div>
           </div>
-
-          {/* Submit Button */}
-          <div className="col-span-2">
-            <button
-              type="submit"
-              className="w-full py-2 text-xl text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
-            >
-              Submit
-            </button>
-          </div>
+          <button type="submit" className="w-full py-3 mt-6 font-medium text-white uppercase bg-blue-500 rounded-md focus:outline-none hover:bg-blue-600">
+            Submit
+          </button>
         </form>
       </div>
     </div>

@@ -15,6 +15,7 @@ const EventPage = () => {
       const eventsData = eventsSnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
+        isOpen: false, // Adding isOpen property for toggle functionality
       }));
       setEvents(eventsData);
     };
@@ -24,7 +25,7 @@ const EventPage = () => {
 
   const handleDelete = async (eventId) => {
     try {
-      await deleteDoc(doc(database, "Event", eventId)); // Fixed the deleteDoc invocation
+      await deleteDoc(doc(database, "Event", eventId));
       setEvents((prevEvents) =>
         prevEvents.filter((event) => event.id !== eventId)
       );
@@ -35,58 +36,48 @@ const EventPage = () => {
     }
   };
 
+  const toggleEvent = (id) => {
+    setEvents((prevEvents) =>
+      prevEvents.map((event) =>
+        event.id === id ? { ...event, isOpen: !event.isOpen } : event
+      )
+    );
+  };
+
   return (
     <div className="event-page">
       <h1 className="event-page-title">Event Details</h1>
-      <div className="px-8 py-6">
+      <div className="button-container">
         <Link to="/eventuploader">
-          <button className="px-6 py-2 font-semibold text-white transition duration-300 ease-in-out bg-blue-600 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
-            Insert Test
-          </button>
+          <button className="insert-button">Insert Event</button>
         </Link>
       </div>
-      <table className="event-table">
-        <thead>
-          <tr>
-            <th>Event Name</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Image</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <TransitionGroup component="tbody">
-          {events.map((event) => (
-            <CSSTransition key={event.id} classNames="fade" timeout={300}>
-              <tr>
-                <td>{event.eventName}</td>
-                <td>{event.description}</td>
-                <td>{event.date}</td>
-                <td>{event.time}</td>
-                <td>
-                  <img
-                    src={event.imageUrl}
-                    alt="Event"
-                    className="event-image"
-                  />
-                </td>
-                <td>
-                  <button
-                    className="delete-button"
-                    onClick={() => handleDelete(event.id)}
-                  >
-                    Delete
-                  </button>
-                  <Link to={`/updateEventPage/${event.id}`}>
-                    <button   className="update-button">Update</button>
-                  </Link>
-                </td>
-              </tr>
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
-      </table>
+      <TransitionGroup component="div">
+        {events.map((event) => (
+          <CSSTransition key={event.id} classNames="fade" timeout={300}>
+            <div className="event-card">
+              <div className="event-card-header" onClick={() => toggleEvent(event.id)}>
+                <h2 className="event-card-title">{event.eventName}</h2>
+                <button className="toggle-button">{event.isOpen ? 'Close' : 'Open'}</button>
+              </div>
+              {event.isOpen && (
+                <div className="event-card-body">
+                  <p>Description: {event.description}</p>
+                  <p>Date: {event.date}</p>
+                  <p>Time: {event.time}</p>
+                  <p>Image: <img src={event.imageUrl} alt="Event" className="event-image" /></p>
+                  <div className="button-container">
+                    <button className="delete-button" onClick={() => handleDelete(event.id)}>Delete</button>
+                    <Link to={`/updateEventPage/${event.id}`}>
+                      <button className="update-button">Update</button>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
     </div>
   );
 };

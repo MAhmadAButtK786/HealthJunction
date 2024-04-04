@@ -1,70 +1,114 @@
+/* CSS for EventPage Component */
+
+/* CSS for transitions */
 .fade-enter {
-    opacity: 0;
-  }
-  
-  .fade-enter-active {
-    opacity: 1;
-    transition: opacity 300ms ease-in-out;
-  }
-  
-  .fade-exit {
-    opacity: 1;
-  }
-  
-  .fade-exit-active {
-    opacity: 0;
-    transition: opacity 300ms ease-in-out;
-  }
-  
-  .event-page {
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .event-page-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .event-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .event-table th,
-  .event-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .event-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .event-table button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
-    border: none;
-    color: #fff;
-  }
-  
-  .delete-button {
-    background-color: #f44336;
-  }
-  
-  .update-button {
-    background-color: #4caf50;
-  }
-  
-  .event-table button:hover {
-    opacity: 0.8;
-  }
-  
-  .event-image {
-    max-width: 200px;
-  }
-  
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* CSS for event page */
+.event-page {
+  padding: 20px;
+}
+
+.event-page-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center buttons vertically */
+  margin-bottom: 20px;
+}
+
+.insert-button,
+.delete-button,
+.update-button {
+  padding: 12px 24px; /* Increased padding for better touch target */
+  font-size: 19px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for color change */
+}
+
+.insert-button {
+  background-color: #007bff; /* Blue */
+  color: white;
+}
+
+.delete-button {
+  background-color: #ff4500; /* Orange */
+  color: white;
+  margin-right: 10px; 
+  width: 100px;
+  height: 51px;
+  /* Added margin to separate the buttons */
+}
+
+.update-button {
+  background-color: #228b22; /* Green */
+  color: white;
+  width: 100px;
+
+}
+
+/* Hover effect for buttons */
+.insert-button:hover,
+.delete-button:hover,
+.update-button:hover {
+  filter: brightness(0.9); /* Darken the button on hover */
+}
+
+/* Card styles */
+.event-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.event-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.event-card-title {
+  margin: 0;
+}
+
+.toggle-button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.event-card-body {
+  padding: 10px;
+}
+
+/* Additional styles */
+.event-image {
+  max-width: 100px;
+}
