@@ -42,8 +42,7 @@ const VerifiedHospitalCRUD = () => {
   };
 
   const handleUpdate = (id) => {
-    // Redirect to the update page with the specific ID
-    window.location.href = `/verifiedhospitalupdation/${id}`;
+    window.location.href = `/verifiedHospitalsupdate/${id}`;
   };
   const sortedHospitals = hospitals.sort((a, b) => a.hospitalName.localeCompare(b.hospitalName));
 

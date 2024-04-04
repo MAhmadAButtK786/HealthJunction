@@ -93,7 +93,7 @@ const Navbar = () => {
                   <Link to="/hospitalcrud" className="block py-2 hover:text-blue-300">Hospitals Management</Link>
                   <Link to="/doctorsmanagement" className="block py-2 hover:text-blue-300">Doctors Management</Link>
                   <Link to="/verifieddoctorsmanagement" className="block py-2 hover:text-blue-300">Verified Doctors</Link>
-                  <Link to="/verifiedhospitals" className="block py-2 hover:text-blue-300">Verified Hospitals</Link>
+                  <Link to="/verifiedHospitalsmanagement" className="block py-2 hover:text-blue-300">Verified Hospitals</Link>
                   
                 </div>
               )}

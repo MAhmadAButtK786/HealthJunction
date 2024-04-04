@@ -69,8 +69,8 @@ import DoctorUpdateForm from './components/doctors/doctorupdate';
 import Verificationdocmain from './components/verifiedDoctors/vdocmain';
 import VerifiedDoctorUpdateForm from './components/verifiedDoctors/vdocupdate';
 // Verified Hospitals
-import VerifiedHospitalUpdateForm from './components/hospitalverification/updatevhos';
-import VerifiedHospitals from './components/hospitalverification/vjospmain';
+import VerifiedHospitalUpdateForm from './components/hospitalsverification/hospitalverificationupdate';
+import VerifiedHospitals from './components/hospitalsverification/hospitalverificationmain';
 // Import Firebase auth module
 import { auth } from './firebase';
 
@@ -180,8 +180,8 @@ const App = () => {
         <Route path="/verifieddoctorsmanagement" exact component={Verificationdocmain}/>
         <Route path="/verifiedDoctors/:id" exact component={VerifiedDoctorUpdateForm}/>
         {/* Verified Hospitals */}
-        <Route path="/verifiedhospitals" exact component={VerifiedHospitals}/>
-        <Route path="/verifiedhospitalupdation/:id" exact component={VerifiedHospitalUpdateForm}/>
+        <Route path="/verifiedHospitalsmanagement" exact component={VerifiedHospitals}/>
+        <Route path="/verifiedHospitalsupdate/:id" exact component={VerifiedHospitalUpdateForm}/>
       </Switch>
     </>
   );

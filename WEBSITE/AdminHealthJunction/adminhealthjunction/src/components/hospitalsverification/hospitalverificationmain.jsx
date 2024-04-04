@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../Navbar'
-import VerifiedHospitalCRUD from './vhoscrud'
+import VerifiedHospitalCRUD from './hospitalverificationcrud'
 import Footer from '../Footer'
 function VerifiedHospitals() {
   return (
