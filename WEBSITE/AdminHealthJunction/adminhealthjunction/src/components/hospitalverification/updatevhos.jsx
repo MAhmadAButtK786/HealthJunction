@@ -156,7 +156,7 @@ const VerifiedHospitalUpdateForm = () => {
       try {
         const docRef = doc(database, 'VerifiedHospitalData', id);
         const docSnap = await getDoc(docRef);
-
+  
         if (docSnap.exists()) {
           setFormData(docSnap.data());
         } else {
@@ -166,7 +166,7 @@ const VerifiedHospitalUpdateForm = () => {
         console.error("Error fetching document:", error);
       }
     };
-
+  
     fetchHospitalData();
   }, [id]);
 
@@ -203,10 +203,10 @@ const VerifiedHospitalUpdateForm = () => {
     e.preventDefault();
 
     try {
-      const docRef = doc(database, 'HospitalData', id);
+      const docRef = doc(database, 'VerifiedHospitalData', id);
       await updateDoc(docRef, formData);
       alert("Hospital data successfully updated!");
-      history.push("/hospitalcrud");
+      history.push("/verifiedhospitals");
     } catch (error) {
       console.error("Error updating document:", error);
     }
@@ -217,7 +217,7 @@ const VerifiedHospitalUpdateForm = () => {
       <div className="w-full max-w-screen-md p-6 my-10 bg-white rounded-md shadow-md">
         <h2 className="mb-6 text-4xl font-bold text-blue-800">
           <FaHospital className="inline-block mr-2" />
-         Insert Hospital 
+         Update Hospital 
         </h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 md:grid-cols-2">
 

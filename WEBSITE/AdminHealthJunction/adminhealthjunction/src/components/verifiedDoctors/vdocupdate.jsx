@@ -4,7 +4,10 @@ import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { database, storage } from "../../firebase";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
-const VerifiedDoctorUpdateForm = () => {
+import TimePicker from 'react-time-picker';
+import 'react-time-picker/dist/TimePicker.css';
+
+const DoctorUpdateForm = () => {
   const { id } = useParams();
   const history = useHistory();
 
@@ -20,13 +23,14 @@ const VerifiedDoctorUpdateForm = () => {
     licenseNumber: '',
     specialty: '',
     experience: '',
+    workingHours: '',
     pricePerVisit: '',
     profilePicture: null,
-    profilePictureUrl: '',
+    profilePictureUrl: '', // New state to store the previous picture URL
     bio: '',
     availableDays: [false, false, false, false, false, false, false],
-    startTime: '09:30',
-    endTime: '15:30'
+    startTime: '09:00',
+    endTime: '18:00'
   });
 
   useEffect(() => {
@@ -35,13 +39,10 @@ const VerifiedDoctorUpdateForm = () => {
         const doctorDoc = await getDoc(doc(collection(database, 'userdoctor'), id));
         if (doctorDoc.exists()) {
           const doctorData = doctorDoc.data();
-          const [startTime, endTime] = doctorData.workingHours.split(' - ');
           setFormData({
             ...doctorData,
             availableDays: doctorData.availableDays.map(day => !!day),
-            profilePictureUrl: doctorData.profilePicture || '',
-            startTime,
-            endTime
+            profilePictureUrl: doctorData.profilePicture || '' // Set the previous picture URL
           });
         } else {
           console.log('No such document!');
@@ -62,7 +63,11 @@ const VerifiedDoctorUpdateForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const docRef = doc(collection(database, 'doctors'), id);
+      const docRef = doc(collection(database, 'userdoctor'), id);
+      
+      // Concatenate start time and end time to create working hours format
+      const workingHours = `${formData.startTime} - ${formData.endTime}`;
+  
       const updatedData = {
         fullName: formData.fullName,
         email: formData.email,
@@ -78,13 +83,10 @@ const VerifiedDoctorUpdateForm = () => {
         pricePerVisit: formData.pricePerVisit,
         bio: formData.bio,
         availableDays: formData.availableDays,
-        workingHours: `${formData.startTime} - ${formData.endTime}`
+        workingHours: workingHours // Updated working hours field
       };
   
-      // Update doctor data in Firestore
-      await updateDoc(docRef, updatedData);
-  
-      // Handle profile picture update
+      // Check if a new profile picture is uploaded
       if (formData.profilePicture) {
         const storageRef = ref(storage, `doctorimages/doctor_profiles/${formData.profilePicture.name}`);
         await uploadBytes(storageRef, formData.profilePicture);
@@ -93,8 +95,14 @@ const VerifiedDoctorUpdateForm = () => {
         const profilePictureUrl = await getDownloadURL(storageRef);
   
         // Update profile picture URL in Firestore
-        await updateDoc(docRef, { profilePicture: profilePictureUrl });
+        updatedData.profilePicture = profilePictureUrl;
+      } else {
+        // Use existing profile picture URL if no new picture is uploaded
+        updatedData.profilePicture = formData.profilePictureUrl;
       }
+  
+      // Update doctor data in Firestore
+      await updateDoc(docRef, updatedData);
   
       // Redirect after successful update
       history.push('/verifieddoctorsmanagement');
@@ -102,6 +110,7 @@ const VerifiedDoctorUpdateForm = () => {
       console.error('Error updating doctor data: ', error);
     }
   };
+  
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -114,18 +123,22 @@ const VerifiedDoctorUpdateForm = () => {
     setFormData({ ...formData, availableDays: updatedDays });
   };
 
+  const handleStartTimeChange = (time) => {
+    setFormData({ ...formData, startTime: time });
+  };
+
+  const handleEndTimeChange = (time) => {
+    setFormData({ ...formData, endTime: time });
+  };
+
   return (
     <div className="container p-4 mx-auto">
-      <h1 className="mb-8 text-3xl font-bold text-center text-teal-600">
-        Update Doctor
-      </h1>
+      <h1 className="mb-8 text-3xl font-bold text-center text-teal-600">Update Doctor</h1>
       <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Full Name */}
           <div>
-            <label className="block text-gray-700" htmlFor="fullName">
-              Full Name
-            </label>
+            <label className="block text-gray-700" htmlFor="fullName">Full Name</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="text"
@@ -138,9 +151,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Email */}
           <div>
-            <label className="block text-gray-700" htmlFor="email">
-              Email
-            </label>
+            <label className="block text-gray-700" htmlFor="email">Email</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="email"
@@ -153,9 +164,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Phone Number */}
           <div>
-            <label className="block text-gray-700" htmlFor="phoneNumber">
-              Phone Number
-            </label>
+            <label className="block text-gray-700" htmlFor="phoneNumber">Phone Number</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="tel"
@@ -168,9 +177,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Gender */}
           <div>
-            <label className="block text-gray-700" htmlFor="gender">
-              Gender
-            </label>
+            <label className="block text-gray-700" htmlFor="gender">Gender</label>
             <select
               className="block w-full mt-1 border-gray-300 rounded-md form-select focus:outline-none focus:border-teal-500"
               id="gender"
@@ -187,9 +194,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Date of Birth */}
           <div>
-            <label className="block text-gray-700" htmlFor="dateOfBirth">
-              Date of Birth
-            </label>
+            <label className="block text-gray-700" htmlFor="dateOfBirth">Date of Birth</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="date"
@@ -202,9 +207,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Province */}
           <div>
-            <label className="block text-gray-700" htmlFor="province">
-              Province
-            </label>
+            <label className="block text-gray-700" htmlFor="province">Province</label>
             <select
               className="block w-full mt-1 border-gray-300 rounded-md form-select focus:outline-none focus:border-teal-500"
               id="province"
@@ -224,9 +227,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* City */}
           <div>
-            <label className="block text-gray-700" htmlFor="city">
-              City
-            </label>
+            <label className="block text-gray-700" htmlFor="city">City</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="text"
@@ -239,9 +240,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Address */}
           <div className="col-span-2">
-            <label className="block text-gray-700" htmlFor="address">
-              Address
-            </label>
+            <label className="block text-gray-700" htmlFor="address">Address</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="text"
@@ -254,9 +253,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Medical License Number */}
           <div>
-            <label className="block text-gray-700" htmlFor="licenseNumber">
-              Medical License Number
-            </label>
+            <label className="block text-gray-700" htmlFor="licenseNumber">Medical License Number</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="text"
@@ -269,9 +266,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Specialty */}
           <div>
-            <label className="block text-gray-700" htmlFor="specialty">
-              Specialty
-            </label>
+            <label className="block text-gray-700" htmlFor="specialty">Specialty</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="text"
@@ -284,9 +279,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Years of Experience */}
           <div>
-            <label className="block text-gray-700" htmlFor="experience">
-              Years of Experience
-            </label>
+            <label className="block text-gray-700" htmlFor="experience">Years of Experience</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="number"
@@ -298,37 +291,32 @@ const VerifiedDoctorUpdateForm = () => {
             />
           </div>
           {/* Working Hours */}
-             {/* Working Hours */}
-             <div className="col-span-2">
+          <div className="col-span-2">
             <label className="block text-gray-700">Working Hours:</label>
             <div className="flex items-center mt-1">
               <div className="mr-4">
                 <span className="text-gray-700">Start Time</span>
-                <input
-                  type="time"
+                <TimePicker
+                  onChange={handleStartTimeChange}
                   value={formData.startTime}
-                  onChange={handleChange}
-                  name="startTime"
                   className="mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
+                  showSecond={false}
                 />
               </div>
               <div>
                 <span className="text-gray-700">End Time</span>
-                <input
-                  type="time"
+                <TimePicker
+                  onChange={handleEndTimeChange}
                   value={formData.endTime}
-                  onChange={handleChange}
-                  name="endTime"
                   className="mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
+                  showSecond={false}
                 />
               </div>
             </div>
           </div>
           {/* Price per Visit */}
           <div>
-            <label className="block text-gray-700" htmlFor="pricePerVisit">
-              Price per Visit (PKR)
-            </label>
+            <label className="block text-gray-700" htmlFor="pricePerVisit">Price per Visit (PKR)</label>
             <input
               className="block w-full mt-1 border-gray-300 rounded-md form-input focus:outline-none focus:border-teal-500"
               type="number"
@@ -341,9 +329,7 @@ const VerifiedDoctorUpdateForm = () => {
           </div>
           {/* Profile Picture */}
           <div className="col-span-2">
-            <label className="block text-gray-700" htmlFor="profilePicture">
-              Profile Picture
-            </label>
+            <label className="block text-gray-700" htmlFor="profilePicture">Profile Picture</label>
             <div className="flex items-center mt-1">
               <input
                 type="file"
@@ -353,11 +339,8 @@ const VerifiedDoctorUpdateForm = () => {
                 onChange={handleFileChange}
                 className="hidden"
               />
-              <label
-                htmlFor="profilePicture"
-                className="px-4 py-2 text-gray-700 bg-gray-200 rounded-md cursor-pointer hover:bg-gray-300"
-              >
-                {formData.profilePicture ? "Change Picture" : "Upload Picture"}
+              <label htmlFor="profilePicture" className="px-4 py-2 text-gray-700 bg-gray-200 rounded-md cursor-pointer hover:bg-gray-300">
+                {formData.profilePicture ? 'Change Picture' : 'Upload Picture'}
               </label>
               {/* Show previous picture */}
               {formData.profilePictureUrl && (
@@ -371,24 +354,21 @@ const VerifiedDoctorUpdateForm = () => {
                 </div>
               )}
               {/* Show newly selected picture */}
-              {formData.profilePicture &&
-                formData.profilePicture instanceof File && (
-                  <div className="flex items-center ml-4">
-                    <img
-                      src={URL.createObjectURL(formData.profilePicture)}
-                      alt="New Profile"
-                      className="object-cover w-20 h-20 rounded-full"
-                    />
-                    <span className="ml-2 text-gray-500">New Picture</span>
-                  </div>
-                )}
+              {formData.profilePicture && formData.profilePicture instanceof File && (
+                <div className="flex items-center ml-4">
+                  <img
+                    src={URL.createObjectURL(formData.profilePicture)}
+                    alt="New Profile"
+                    className="object-cover w-20 h-20 rounded-full"
+                  />
+                  <span className="ml-2 text-gray-500">New Picture</span>
+                </div>
+              )}
             </div>
           </div>
           {/* Bio */}
           <div className="col-span-2">
-            <label className="block text-gray-700" htmlFor="bio">
-              Bio (Optional)
-            </label>
+            <label className="block text-gray-700" htmlFor="bio">Bio (Optional)</label>
             <textarea
               className="block w-full mt-1 border-gray-300 rounded-md form-textarea focus:outline-none focus:border-teal-500"
               id="bio"
@@ -411,24 +391,17 @@ const VerifiedDoctorUpdateForm = () => {
                     onChange={() => handleCheckboxChange(index)}
                     className="w-5 h-5 text-indigo-600 form-checkbox focus:outline-none focus:border-teal-500"
                   />
-                  <label htmlFor={`day${index}`} className="ml-2 text-gray-700">
-                    {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][index]}
-                  </label>
+                  <label htmlFor={`day${index}`} className="ml-2 text-gray-700">{['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][index]}</label>
                 </div>
               ))}
             </div>
           </div>
         </div>
         {/* Submit button */}
-        <button
-          type="submit"
-          className="w-full px-4 py-2 mt-6 text-white bg-teal-500 rounded-md hover:bg-teal-600 focus:outline-none focus:bg-teal-600"
-        >
-          Update
-        </button>
+        <button type="submit" className="w-full px-4 py-2 mt-6 text-white bg-teal-500 rounded-md hover:bg-teal-600 focus:outline-none focus:bg-teal-600">Update</button>
       </form>
     </div>
   );
 };
 
-export default VerifiedDoctorUpdateForm;
+export default DoctorUpdateForm;

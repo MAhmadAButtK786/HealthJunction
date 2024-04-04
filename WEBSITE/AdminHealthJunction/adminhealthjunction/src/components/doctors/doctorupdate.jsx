@@ -64,6 +64,10 @@ const DoctorUpdateForm = () => {
     e.preventDefault();
     try {
       const docRef = doc(collection(database, 'doctors'), id);
+      
+      // Concatenate start time and end time to create working hours format
+      const workingHours = `${formData.startTime} - ${formData.endTime}`;
+  
       const updatedData = {
         fullName: formData.fullName,
         email: formData.email,
@@ -79,14 +83,10 @@ const DoctorUpdateForm = () => {
         pricePerVisit: formData.pricePerVisit,
         bio: formData.bio,
         availableDays: formData.availableDays,
-        startTime: formData.startTime,
-        endTime: formData.endTime
+        workingHours: workingHours // Updated working hours field
       };
   
-      // Update doctor data in Firestore
-      await updateDoc(docRef, updatedData);
-  
-      // Handle profile picture update
+      // Check if a new profile picture is uploaded
       if (formData.profilePicture) {
         const storageRef = ref(storage, `doctorimages/doctor_profiles/${formData.profilePicture.name}`);
         await uploadBytes(storageRef, formData.profilePicture);
@@ -95,8 +95,14 @@ const DoctorUpdateForm = () => {
         const profilePictureUrl = await getDownloadURL(storageRef);
   
         // Update profile picture URL in Firestore
-        await updateDoc(docRef, { profilePicture: profilePictureUrl });
+        updatedData.profilePicture = profilePictureUrl;
+      } else {
+        // Use existing profile picture URL if no new picture is uploaded
+        updatedData.profilePicture = formData.profilePictureUrl;
       }
+  
+      // Update doctor data in Firestore
+      await updateDoc(docRef, updatedData);
   
       // Redirect after successful update
       history.push('/doctorsmanagement');
@@ -104,6 +110,7 @@ const DoctorUpdateForm = () => {
       console.error('Error updating doctor data: ', error);
     }
   };
+  
   
   const handleChange = (e) => {
     const { name, value } = e.target;

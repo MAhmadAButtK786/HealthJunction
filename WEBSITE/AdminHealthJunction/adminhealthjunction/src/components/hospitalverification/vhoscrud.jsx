@@ -40,9 +40,10 @@ const VerifiedHospitalCRUD = () => {
       }
     }
   };
+
   const handleUpdate = (id) => {
     // Redirect to the update page with the specific ID
-    window.location.href = `/verifiedHospitaltorupdate/${id}`;
+    window.location.href = `/verifiedHospitaltupdate/${id}`;
   };
   const sortedHospitals = hospitals.sort((a, b) => a.hospitalName.localeCompare(b.hospitalName));
 
@@ -50,9 +51,17 @@ const VerifiedHospitalCRUD = () => {
     <div className="container py-8 mx-auto">
       <div className="flex items-center justify-center mb-6">
         <img src="images/hopitallogo.png" alt="Hospital Logo" className="h-auto mr-2 w-34" />
-        <h2 className="text-4xl font-bold text-center text-teal-600">Verified Hospitals</h2>
+        <h2 className="text-4xl font-bold text-center text-teal-600">Find Your Perfect Care Haven!</h2>
       </div>
 
+      <button
+        className="px-4 py-2 mb-4 font-medium text-white bg-green-500 rounded-full focus:outline-none hover:bg-green-700"
+        onClick={() => {
+            window.location.href = "/hospitalinsertform";
+        } }
+      >
+        Insert Hospital
+      </button>
 
       <ul className="overflow-hidden border-teal-200 divide-y rounded-lg">
         {sortedHospitals.map(hospital => (
@@ -93,6 +102,7 @@ const VerifiedHospitalCRUD = () => {
                   <FontAwesomeIcon icon={faEdit} className="w-5 h-5 mr-1" />
                   Update
                 </button>
+               
               </div>
             </div>
             {expandedId === hospital.id && (

@@ -58,7 +58,7 @@ const VerifiedDoctorCRUD = () => {
 
   const handleEdit = (id) => {
     
-    window.location.href = `/doctorupdate/${id}`;
+    window.location.href = `/verifieddoctorupdate/${id}`;
   };
 
  
