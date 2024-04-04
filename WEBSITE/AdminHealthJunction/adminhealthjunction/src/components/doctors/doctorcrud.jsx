@@ -1,9 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, deleteDoc, doc, addDoc } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc, addDoc, updateDoc } from 'firebase/firestore';
 import { database } from '../../firebase';
-import { faChevronUp, faChevronDown, faMoneyBill, faPhone, faEnvelope, faUser, faClipboardCheck, faMapMarkerAlt, faCity, faBalanceScale, faClock, faFileAlt, faUsers, faEdit, faTrashAlt, faPlus, faMap } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown, faMoneyBill,faCheck, faPhone, faEnvelope, faUser, faClipboardCheck, faMapMarkerAlt, faCity, faBalanceScale, faClock, faFileAlt, faUsers, faEdit, faTrashAlt, faPlus, faMap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 const DoctorCRUD = () => {
   const [doctors, setDoctors] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
@@ -56,28 +56,17 @@ const DoctorCRUD = () => {
     }
   };
 
-  const handleInsert = async () => {
+  const handleEdit = async (doctor) => {
+    // Handle edit functionality here, you can open a modal or navigate to another page for editing
+    console.log('Edit doctor:', doctor);
+  };
+
+  const handlePushToNewCollection = async (doctor) => {
     try {
-      await addDoc(collection(database, 'doctors'), newDoctor);
-      setDoctors([...doctors, newDoctor]);
-      alert('Doctor inserted successfully!');
-      setNewDoctor({
-        fullName: '',
-        email: '',
-        phoneNumber: '',
-        city: '',
-        address: '',
-        licenseNumber: '',
-        gender: '',
-        experience: '',
-        workingHours: '',
-        specialty: '',
-        pricePerVisit: '',
-        availableDays: [false, false, false, false, false, false, false],
-        profilePicture: ''
-      });
+      await addDoc(collection(database, 'userdoctor'), doctor);
+      alert('Doctor Varified!');
     } catch (error) {
-      console.error('Error inserting doctor:', error);
+      console.error('Error pushing doctor to new collection:', error);
     }
   };
 
@@ -94,7 +83,9 @@ const DoctorCRUD = () => {
       <div className="flex justify-end mb-4">
         <button
           className="flex items-center px-4 py-2 font-medium text-green-500 bg-transparent border border-green-500 rounded-full focus:outline-none hover:text-green-700"
-          onClick={handleInsert}
+          onClick={() => {
+            window.location.href = "/doctorsinsert";
+        } }
         >
           <FontAwesomeIcon icon={faPlus} className="w-5 h-5 mr-2" />
           Insert Doctor
@@ -137,22 +128,29 @@ const DoctorCRUD = () => {
                   Delete
                 </button>
                 <button
-                  className="flex items-center px-4 py-2 font-medium text-green-500 bg-transparent border border-green-500 rounded-full focus:outline-none hover:text-green-700"
-                  //onClick={() => handleUpdate(doctor.id)} 
+                  className="flex items-center px-4 py-2 mr-2 font-medium text-blue-500 bg-transparent border border-blue-500 rounded-full focus:outline-none hover:text-blue-700"
+                  onClick={() => handleEdit(doctor)}
                 >
                   <FontAwesomeIcon icon={faEdit} className="w-5 h-5 mr-1" />
-                  Update
+                  Edit
+                </button>
+                <button
+                  className="flex items-center px-4 py-2 font-medium text-green-500 bg-transparent border border-green-500 rounded-full focus:outline-none hover:text-green-700"
+                  onClick={() => handlePushToNewCollection(doctor)}
+                >
+                  <FontAwesomeIcon icon={faCheck} className="w-5 h-5 mr-1" />
+                  Doctor Verification
                 </button>
               </div>
             </div>
             {expandedId === doctor.id && (
               <div className="px-6 py-4 pt-4 mt-4 border-t border-teal-200 rounded-lg">
                 {/* Doctor details */}
-                <p onClick={() => window.open(`mailto:${doctor.email}`)} className="cursor-pointer">
-                  <FontAwesomeIcon icon={faEnvelope} className="inline-block w-5 h-5 mr-2 text-teal-800" /> Email: {doctor.email}
+                <p onClick={() => window.open(`mailto:${doctor.email}`)} className="text-xl text-blue-700 cursor-pointer">
+                  <FontAwesomeIcon icon={faEnvelope} className="inline-block w-5 h-5 mr-2 text-xl text-blue-800" /> Email: {doctor.email}
                 </p>
-                <p onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${doctor.address}`)} className="cursor-pointer">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} className="inline-block w-5 h-5 mr-2 text-teal-800" /> Location: {doctor.address}
+                <p onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${doctor.address}`)} className="text-xl text-blue-700 cursor-pointer">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="inline-block w-5 h-5 mr-2 text-xl text-blue-800" /> Location: {doctor.address}
                 </p>
                 <p><FontAwesomeIcon icon={faPhone} className="inline-block w-5 h-5 mr-2 text-teal-800" /> Phone Number: {doctor.phoneNumber}</p>
                 <p><FontAwesomeIcon icon={faMap} className="inline-block w-5 h-5 mr-2 text-teal-800" /> Province: {doctor.province}</p>

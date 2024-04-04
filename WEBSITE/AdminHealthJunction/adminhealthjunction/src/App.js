@@ -63,6 +63,7 @@ import HospitalInsertForm from './components/hospital/hospitalinsertform';
 import HospitalUpdateForm from './components/hospital/hospitalupdate';
 // Doctors
 import Doctorsmain from './components/doctors/doctorsmain';
+import DoctorRegistrationForm from './components/doctors/doctorinsert';
 // Import Firebase auth module
 import { auth } from './firebase';
 
@@ -166,6 +167,7 @@ const App = () => {
         <Route path="/NGOupdate/:id" exact component={UpdateCharityForm}/>
         {/* Doctor */}
         <Route path="/doctorsmanagement" exact component={Doctorsmain}/>
+        <Route path="/doctorsinsert" exact component={DoctorRegistrationForm}/>
       </Switch>
     </>
   );
