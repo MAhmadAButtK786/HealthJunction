@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faAppleAlt ,faChevronRight, faFlask, faClinicMedical, faUserInjured, faHandsHelping, faCalendar, faDashboard, faHospital, faUserDoctor, faKitMedical, faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faAppleAlt ,faChevronRight, faFlask, faClinicMedical, faUserInjured, faHandsHelping, faCalendar, faDashboard, faHospital, faUserDoctor, faKitMedical, faHandHoldingHeart, faCheck, faCheckDouble } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -40,12 +40,28 @@ const Sidebar = () => {
               </div>
             </Link>
           </li>
+          <li>
+            <Link to="" className="flex items-center justify-between p-2 hover:bg-gray-700">
+              <div className="flex items-center">
+                <FontAwesomeIcon icon={faCheck} className="mr-2" />
+                <span>Verified Hospitals</span>
+              </div>
+            </Link>
+          </li>
            {/* Clinics */}
            <li>
             <Link to="/doctorsmanagement" className="flex items-center justify-between p-2 hover:bg-gray-700">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faUserDoctor} className="mr-2" />
                 <span>Doctors Mangement</span>
+              </div>
+            </Link>
+          </li>
+          <li>
+            <Link to="/verifieddoctorsmanagement" className="flex items-center justify-between p-2 hover:bg-gray-700">
+              <div className="flex items-center">
+                <FontAwesomeIcon icon={faCheckDouble} className="mr-2" />
+                <span>Verified Doctors</span>
               </div>
             </Link>
           </li>
