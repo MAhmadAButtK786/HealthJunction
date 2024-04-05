@@ -12,11 +12,13 @@ class HospitalPage1 extends StatefulWidget {
   @override
   _HospitalPage1State createState() => _HospitalPage1State();
 }
+
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
 void _handleMenuPressed() {
   scaffoldKey.currentState?.openDrawer();
 }
+
 class _HospitalPage1State extends State<HospitalPage1> {
   List<String> facilitiesList = [];
   List<String> servicesList = [];
@@ -74,8 +76,8 @@ class _HospitalPage1State extends State<HospitalPage1> {
                   _buildExpansionTile(
                       'Services', servicesList, Icons.medical_services),
                   const SizedBox(height: 10.0),
-                  _buildExpansionTile('Departments', departmentsList,
-                      Icons.local_hospital),
+                  _buildExpansionTile(
+                      'Departments', departmentsList, Icons.local_hospital),
                 ],
               ),
             ),
@@ -202,7 +204,7 @@ class HospitalCard extends StatelessWidget {
         ),
         trailing: const Icon(Icons.keyboard_arrow_right),
         onTap: () {
-          Get.to(()=>(HospitalDetailScreen(docId: docId)));
+          Get.to(() => (HospitalDetailScreen(docId: docId)));
         },
       ),
     );
@@ -240,15 +242,21 @@ class HospitalDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       key: scaffoldKey,
-      drawer: ReusableDrawerSideBar2(color: Colors.blueAccent, headerText: "Hospitals"),
+      key: scaffoldKey,
+      drawer: ReusableDrawerSideBar2(
+          color: Colors.blueAccent, headerText: "Hospitals"),
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        title: const Text("Find Your Perfect Care", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-      
-      ),),
-        body: FutureBuilder<DocumentSnapshot>(
-        future: FirebaseFirestore.instance.collection('HospitalData').doc(docId).get(),
+        title: const Text(
+          "Find Your Perfect Care",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: FutureBuilder<DocumentSnapshot>(
+        future: FirebaseFirestore.instance
+            .collection('HospitalData')
+            .doc(docId)
+            .get(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
@@ -275,12 +283,63 @@ class HospitalDetailScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10.0),
                 Text(
-                  hospitalData['additionalInfo'] ?? 'No additional information provided',
-                  style: const TextStyle(color: Color.fromARGB(255, 25, 118, 210)),
+                  hospitalData['additionalInfo'] ??
+                      'No additional information provided',
+                  style:
+                      const TextStyle(color: Color.fromARGB(255, 25, 118, 210)),
                 ),
-
+                
+                Padding(
+                  padding: const EdgeInsets.only(left: 50.0  ),
+                  child: Row(
+                    children: [
+                      IconButton(
+                          onPressed: () async {
+                            final url = 'tel:${hospitalData['contactNumber']}';
+                            if (await canLaunch(url)) {
+                              await launch(url);
+                            } else {
+                              throw 'Could not launch $url';
+                            }
+                          },
+                          icon: const Icon(Icons.phone, color: Colors.indigo,size: 40,)),
+                          const SizedBox(width: 19,),
+                      IconButton(
+                          onPressed: () async {
+                            final url =
+                                'https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(hospitalData['address'] ?? '')}';
+                            if (await canLaunch(url)) {
+                              await launch(url);
+                            } else {
+                              throw 'Could not launch $url';
+                            }
+                          },
+                          icon: const Icon(Icons.map_outlined,color: Colors.indigo,size: 40)),
+                          const SizedBox(width: 19,),
+                      IconButton(
+                          onPressed: () async {
+                            final Uri emailLaunchUri = Uri(
+                              scheme: 'mailto',
+                              path: hospitalData['email'],
+                              queryParameters: {
+                                'subject': 'Query About""',
+                                'body':
+                                    'I hope you will find this mail at the best of your health,'
+                              },
+                            );
+                            String uri = emailLaunchUri.toString();
+                            if (await canLaunch(uri)) {
+                              await launch(uri);
+                            } else {
+                              throw 'Could not launch $uri';
+                            }
+                          },
+                          icon: const Icon(Icons.email,color: Colors.indigo,size: 40)),
+                    ],
+                  ),
+                ),
                 const SizedBox(height: 10.0),
-               _buildBasicInfoSection(hospitalData),
+                _buildBasicInfoSection(hospitalData),
                 _buildOtherFieldsCard(hospitalData),
               ],
             ),
@@ -289,173 +348,179 @@ class HospitalDetailScreen extends StatelessWidget {
       ),
     );
   }
-Widget _buildBasicInfoRow({
-  IconData? icon,
-  required String label,
-  required String text,
-  required Color color,
-  Function()? onTap,
-}) {
-  return InkWell(
-    onTap: onTap,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 16.0),
-      child: Row(
-        children: [
-          if (icon != null) ...[
-            Icon(icon, color: color),
-            const SizedBox(width: 10.0),
-          ],
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  label,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                    color: Colors.black,
+
+  Widget _buildBasicInfoRow({
+    IconData? icon,
+    required String label,
+    required String text,
+    required Color color,
+    Function()? onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 16.0),
+        child: Row(
+          children: [
+            if (icon != null) ...[
+              Icon(icon, color: color),
+              const SizedBox(width: 10.0),
+            ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
+                  Text(
+                    text,
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      color: Color.fromARGB(255, 25, 118, 210),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBasicInfoSection(Map<String, dynamic> hospitalData) {
+    return Card(
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Row(
+              children: [
+                Icon(Icons.info),
                 Text(
-                  text,
-                  style: const TextStyle(
-                    fontSize: 14.0,
-                    color: Color.fromARGB(255, 25, 118, 210),
+                  'Basic Information',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
-Widget _buildBasicInfoSection(Map<String, dynamic> hospitalData) {
-  return Card(
-    elevation: 2,
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Row(children: [
-            Icon(Icons.info),
-           Text(
-            'Basic Information',
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
+            const SizedBox(height: 10.0),
+            _buildBasicInfoRow(
+              icon: Icons.location_city,
+              label: 'Sector:',
+              text: ' ${hospitalData['sector'] ?? 'No data available'}',
+              color: Colors.blue.shade600,
             ),
-          ),
-          ],),
-          
-          const SizedBox(height: 10.0),
-           _buildBasicInfoRow(
-            icon: Icons.location_city,
-            label: 'Sector:',
-            text: ' ${hospitalData['sector'] ?? 'No data available'}',
-            color: Colors.blue.shade600,
-          ),
-          _buildBasicInfoRow(
-            icon: Icons.map_outlined,
-            label: 'Address:',
-            text: hospitalData['address'] ?? 'No address provided',
-            color: Colors.blue.shade600,
-            onTap: () async {
-              final url = 'https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(hospitalData['address'] ?? '')}';
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-        
-          _buildBasicInfoRow(
-            icon: Icons.phone,
-            label: 'Contact Number:',
-            text: hospitalData['contactNumber'] ?? 'No contact number provided',
-            color: Colors.blue.shade600,
-            onTap: () async {
-              final url = 'tel:${hospitalData['contactNumber']}';
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-          _buildBasicInfoRow(
-            icon: Icons.email,
-            label: 'Email Address:',
-            text: hospitalData['email'] ?? 'No email address provided',
-            color: Colors.blue.shade600,
-            onTap: () async {
-              final url = 'mailto:${hospitalData['email']}';
-              if (await canLaunch(url)) {
-                await launch(url);
-              } else {
-                throw 'Could not launch $url';
-              }
-            },
-          ),
-              _buildBasicInfoRow(
-            icon: Icons.location_on,
-            label: 'Provice:',
-            text: ' ${hospitalData['province'] ?? 'No data available'}',
-            color: Colors.blue.shade600,
-          ),
             _buildBasicInfoRow(
-            icon: Icons.location_city,
-            label: 'City:',
-            text: ' ${hospitalData['city'] ?? 'No data available'}',
-            color: Colors.blue.shade600,
-          ),
+              icon: Icons.map_outlined,
+              label: 'Address:',
+              text: hospitalData['address'] ?? 'No address provided',
+              color: Colors.blue.shade600,
+              onTap: () async {
+                final url =
+                    'https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(hospitalData['address'] ?? '')}';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
+            ),
             _buildBasicInfoRow(
-            icon: Icons.code_outlined,
-            label: 'Zip Code:',
-            text: ' ${hospitalData['zipCode'] ?? 'No data available'} ',
-            color: Colors.blue.shade600,
-          ),
-          _buildBasicInfoRow(
-            icon: Icons.personal_injury_outlined,
-            label: 'Number of Departments:',
-            text: ' ${hospitalData['numberOfDepartments'] ?? 'No data available'}',
-            color: Colors.blue.shade600,
-          ),
-          _buildBasicInfoRow(
-            icon: Icons.wheelchair_pickup,
-            label: 'Number of Wards:',
-            text: ' ${hospitalData['wards'] ?? 'No data available'}',
-            color: Colors.blue.shade600,
-          ),
-          _buildBasicInfoRow(
-            icon: Icons.money,
-            label: 'Zakat Accepted:',
-            text: ' ${hospitalData['zakat'] ?? 'No data available'}',
-            color: Colors.blue.shade600,
-          ),
-          _buildBasicInfoRow(
-            icon: Icons.monetization_on,
-            label: 'Insurance Accepted:',
-            text: ' ${hospitalData['insuranceAccepted'] ?? 'No data available'}',
-            color: Colors.blue.shade600,
-          ),
-          _buildBasicInfoRow(
-            icon: Icons.layers,
-            label: 'Number of Departments:',
-            text: ' ${hospitalData['numberOfDepartments'] ?? 'No data available'}',
-            color: Colors.blue.shade600,
-          ),
-        ],
+              icon: Icons.phone,
+              label: 'Contact Number:',
+              text:
+                  hospitalData['contactNumber'] ?? 'No contact number provided',
+              color: Colors.blue.shade600,
+              onTap: () async {
+                final url = 'tel:${hospitalData['contactNumber']}';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
+            ),
+            _buildBasicInfoRow(
+              icon: Icons.email,
+              label: 'Email Address:',
+              text: hospitalData['email'] ?? 'No email address provided',
+              color: Colors.blue.shade600,
+              onTap: () async {
+                final url = 'mailto:${hospitalData['email']}';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
+            ),
+            _buildBasicInfoRow(
+              icon: Icons.location_on,
+              label: 'Provice:',
+              text: ' ${hospitalData['province'] ?? 'No data available'}',
+              color: Colors.blue.shade600,
+            ),
+            _buildBasicInfoRow(
+              icon: Icons.location_city,
+              label: 'City:',
+              text: ' ${hospitalData['city'] ?? 'No data available'}',
+              color: Colors.blue.shade600,
+            ),
+            _buildBasicInfoRow(
+              icon: Icons.code_outlined,
+              label: 'Zip Code:',
+              text: ' ${hospitalData['zipCode'] ?? 'No data available'} ',
+              color: Colors.blue.shade600,
+            ),
+            _buildBasicInfoRow(
+              icon: Icons.personal_injury_outlined,
+              label: 'Number of Departments:',
+              text:
+                  ' ${hospitalData['numberOfDepartments'] ?? 'No data available'}',
+              color: Colors.blue.shade600,
+            ),
+            _buildBasicInfoRow(
+              icon: Icons.wheelchair_pickup,
+              label: 'Number of Wards:',
+              text: ' ${hospitalData['wards'] ?? 'No data available'}',
+              color: Colors.blue.shade600,
+            ),
+            _buildBasicInfoRow(
+              icon: Icons.money,
+              label: 'Zakat Accepted:',
+              text: ' ${hospitalData['zakat'] ?? 'No data available'}',
+              color: Colors.blue.shade600,
+            ),
+            _buildBasicInfoRow(
+              icon: Icons.monetization_on,
+              label: 'Insurance Accepted:',
+              text:
+                  ' ${hospitalData['insuranceAccepted'] ?? 'No data available'}',
+              color: Colors.blue.shade600,
+            ),
+            _buildBasicInfoRow(
+              icon: Icons.layers,
+              label: 'Number of Departments:',
+              text:
+                  ' ${hospitalData['numberOfDepartments'] ?? 'No data available'}',
+              color: Colors.blue.shade600,
+            ),
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   Widget _buildOtherFieldsCard(Map<String, dynamic> hospitalData) {
     return Card(
@@ -494,7 +559,10 @@ Widget _buildBasicInfoSection(Map<String, dynamic> hospitalData) {
     );
   }
 
-  Widget _buildExpansionCard({required String title, required List<dynamic> data, required IconData icon}) {
+  Widget _buildExpansionCard(
+      {required String title,
+      required List<dynamic> data,
+      required IconData icon}) {
     return Card(
       elevation: 2,
       child: ExpansionTile(
@@ -515,7 +583,8 @@ Widget _buildBasicInfoSection(Map<String, dynamic> hospitalData) {
           if (item is Map<String, dynamic>) {
             String startTime = item['start'] ?? '';
             String endTime = item['end'] ?? '';
-            return _buildInfoRow(null, '$startTime - $endTime', Colors.blue.shade600);
+            return _buildInfoRow(
+                null, '$startTime - $endTime', Colors.blue.shade600);
           }
           return _buildInfoRow(null, item.toString(), Colors.blue.shade600);
         }).toList(),
@@ -537,7 +606,8 @@ Widget _buildBasicInfoSection(Map<String, dynamic> hospitalData) {
             Expanded(
               child: Text(
                 text,
-                style: const TextStyle(fontSize: 16.0, color: Color.fromARGB(255, 25, 118, 210)),
+                style: const TextStyle(
+                    fontSize: 16.0, color: Color.fromARGB(255, 25, 118, 210)),
               ),
             ),
           ],
