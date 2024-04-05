@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { database } from '../../firebase';
 import { FaHospital, FaMapMarkerAlt, FaBuilding, FaCity, FaPhone, FaEnvelope, FaBed, FaPlusCircle, FaTimesCircle } from "react-icons/fa";
-import { provinces, departments, facilities, services } from './data2'; // Importing data from data.js
+import { provinces, departments, facilities, services } from './data2'; 
 
 const VerifiedHospitalUpdateForm = () => {
   const { id } = useParams();
