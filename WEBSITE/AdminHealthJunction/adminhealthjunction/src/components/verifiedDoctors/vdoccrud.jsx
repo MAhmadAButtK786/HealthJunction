@@ -26,7 +26,7 @@ const VerifiedDoctorCRUD = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const querySnapshot = await getDocs(collection(database, 'userdoctor'));
+        const querySnapshot = await getDocs(collection(database, 'Verified Doctors'));
         const doctorData = [];
         querySnapshot.forEach(doc => {
           doctorData.push({ id: doc.id, ...doc.data() });
@@ -47,7 +47,7 @@ const VerifiedDoctorCRUD = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this doctor?")) {
       try {
-        await deleteDoc(doc(database, 'userdoctor', id));
+        await deleteDoc(doc(database, 'Verified Doctors', id));
         setDoctors(doctors.filter(doctor => doctor.id !== id));
         alert('Doctor deleted successfully!');
       } catch (error) {

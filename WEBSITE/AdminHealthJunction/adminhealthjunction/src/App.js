@@ -69,8 +69,8 @@ import DoctorUpdateForm from './components/doctors/doctorupdate';
 import Verificationdocmain from './components/verifiedDoctors/vdocmain';
 import VerifiedDoctorUpdateForm from './components/verifiedDoctors/vdocupdate';
 // Verified Hospitals
-import VerifiedHospitalUpdateForm from './components/hospitalsverification/hospitalverificationupdate';
 import VerifiedHospitals from './components/hospitalsverification/hospitalverificationmain';
+import VerifiedHospitalUpdateForm from './components/hospitalsverification/hospitalverificationupdate';
 // Import Firebase auth module
 import { auth } from './firebase';
 

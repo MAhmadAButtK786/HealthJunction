@@ -41,18 +41,18 @@ const UpdateEventPage = () => {
   // Event handler for updating event data
   const handleUpdate = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-    setLoading(true); // Set loading indicator to true
+    setLoading(true);
     try {
-      if (imageFile) { // Check if there's a new image file
-        const storageRef = ref(storage, `eventImages/${imageFile.name}`); // Reference to storage location
-        await uploadBytesResumable(storageRef, imageFile); // Upload image file to storage
-        const imageUrl = await getDownloadURL(storageRef); // Get download URL for uploaded image
-        await updateEventData({ ...eventData, imageUrl }); // Update event data with new image URL
+      if (imageFile) { 
+        const storageRef = ref(storage, `eventImages/${imageFile.name}`); 
+        await uploadBytesResumable(storageRef, imageFile); 
+        const imageUrl = await getDownloadURL(storageRef); 
+        await updateEventData({ ...eventData, imageUrl }); 
       } else {
-        await updateEventData(eventData); // Update event data without changing the image
+        await updateEventData(eventData); 
       }
       alert('Event updated successfully'); // Show success message
-      history.push('/event'); // Redirect to event page
+      history.push('/event'); 
     } catch (error) {
       console.error('Error updating event:', error);
       alert('Failed to update event'); // Show error message

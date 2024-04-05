@@ -36,7 +36,7 @@ const DoctorUpdateForm = () => {
   useEffect(() => {
     const fetchDoctorToUpdate = async () => {
       try {
-        const doctorDoc = await getDoc(doc(collection(database, 'userdoctor'), id));
+        const doctorDoc = await getDoc(doc(collection(database, 'Verified Doctors'), id));
         if (doctorDoc.exists()) {
           const doctorData = doctorDoc.data();
           setFormData({
@@ -63,7 +63,7 @@ const DoctorUpdateForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const docRef = doc(collection(database, 'userdoctor'), id);
+      const docRef = doc(collection(database, 'Verified Doctors'), id);
       
       // Concatenate start time and end time to create working hours format
       const workingHours = `${formData.startTime} - ${formData.endTime}`;
