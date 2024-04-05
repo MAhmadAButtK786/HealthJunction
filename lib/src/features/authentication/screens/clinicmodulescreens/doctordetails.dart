@@ -3,10 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/bookappointment.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DoctorDetailScreen extends StatefulWidget {
@@ -242,7 +239,6 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                 const SizedBox(height: 20.0),
                 ElevatedButton.icon(
                   onPressed: () {
-                     Get.to(() => BookAppointmentPage(docId: widget.docId));
                   },
                   icon: const Icon(Icons.book, color: Colors.white,),
                   label: Text(
