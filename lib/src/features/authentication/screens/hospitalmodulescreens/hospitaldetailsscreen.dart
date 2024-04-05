@@ -321,11 +321,7 @@ class HospitalDetailScreen extends StatelessWidget {
                             final Uri emailLaunchUri = Uri(
                               scheme: 'mailto',
                               path: hospitalData['email'],
-                              queryParameters: {
-                                'subject': 'Query About""',
-                                'body':
-                                    'I hope you will find this mail at the best of your health,'
-                              },
+                            
                             );
                             String uri = emailLaunchUri.toString();
                             if (await canLaunch(uri)) {

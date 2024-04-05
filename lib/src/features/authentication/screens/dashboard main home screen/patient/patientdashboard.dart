@@ -228,7 +228,7 @@ class Patientmain extends StatelessWidget {
   void handleGridItemClick(int index) {
     switch (index) {
       case 0:
-        Get.to(() => clinicpage1());
+        Get.to(() => const DoctorPage1());
         break;
       case 1:
         Get.to(() => AppointmentStatusScreen());
