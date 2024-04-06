@@ -78,7 +78,8 @@ class AppointmentCard extends StatelessWidget {
   final String appointmentType;
   final VoidCallback onCancel;
 
-  const AppointmentCard({super.key, 
+  const AppointmentCard({
+    super.key, 
     required this.doctorName,
     required this.selectedDate,
     required this.selectedTime,
@@ -94,6 +95,9 @@ class AppointmentCard extends StatelessWidget {
     final formattedTime = _formatTime(dateTime);
 
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -110,20 +114,26 @@ class AppointmentCard extends StatelessWidget {
             Text('Payment Method: $paymentMethod'),
             Text('Appointment Type: $appointmentType'),
             const SizedBox(height: 8),
-            ElevatedButton(
-              onPressed: onCancel,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-               
-                elevation: 0,
-              ),
-              child: const Row(
-                children: [
-                   Icon(Icons.cancel_outlined, color: Colors.white,),
-                  Text('Cancel Appointment',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16),),
-                ],
-              ),
-            ),
+           ElevatedButton(
+  onPressed: onCancel,
+  style: ElevatedButton.styleFrom(
+    backgroundColor: Colors.red,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(32.0),
+    ),
+    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+    textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+  ),    
+  child: const Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      Icon(Icons.cancel_outlined, color: Colors.white,),
+      SizedBox(width: 10),  // gives some space between the icon and the text
+      Text('Cancel Appointment', style: TextStyle(color: Colors.white),),
+    ],
+  ),
+),
+
           ],
         ),
       ),
