@@ -231,7 +231,7 @@ class Patientmain extends StatelessWidget {
         Get.to(() => const DoctorPage1());
         break;
       case 1:
-        Get.to(() => AppointmentStatusScreen());
+        Get.to(() => UserAppointmentsScreen());
         break;
     
     }

@@ -245,7 +245,7 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                       doctorName: fullName,
                       availableDays: availableDays!.map((day) => day.toString()).toList(),
                       doctorId: widget.docId,
-                      availableTimes: [], 
+                     
                     ));
                   },
                   icon: const Icon(Icons.book, color: Colors.white,),

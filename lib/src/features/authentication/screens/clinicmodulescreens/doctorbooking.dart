@@ -6,15 +6,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 class BookingDateTimeScreen extends StatefulWidget {
   final String doctorName;
   final String doctorId;
-  final List<String> availableDays;
-  final List<String> availableTimes;
 
   const BookingDateTimeScreen({
     Key? key,
     required this.doctorName,
-    required this.doctorId,
-    required this.availableDays,
-    required this.availableTimes,
+    required this.doctorId, required List<String> availableDays,
   }) : super(key: key);
 
   @override
@@ -28,6 +24,8 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
   final TextEditingController _ageController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  String _selectedAppointmentType = '';
+  String _selectedPaymentMethod = '';
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -58,33 +56,49 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
   Future<void> _bookAppointment() async {
     final User? user = _auth.currentUser;
     if (user != null) {
+      if (_nameController.text.isEmpty ||
+          _ageController.text.isEmpty ||
+          _selectedAppointmentType.isEmpty ||
+          _selectedPaymentMethod.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Please fill in all fields'),
+          backgroundColor: Colors.red, // Error color
+        ));
+        return;
+      }
+
       await showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Confirm Appointment'),
+            title: const Text('Confirm Appointment'),
             content: Text('Are you sure you want to book an appointment with ${widget.doctorName}?'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Cancel'),
+                child: const Text('Cancel'),
               ),
               TextButton(
                 onPressed: () async {
                   await _firestore.collection('appointments').add({
                     'userId': user.uid,
                     'doctorId': widget.doctorId,
+                    'doctorName': widget.doctorName,
                     'patientName': _nameController.text,
                     'patientAge': _ageController.text,
                     'selectedDate': selectedDate,
                     'selectedTime': selectedTime.format(context),
+                    'appointmentType': _selectedAppointmentType,
+                    'paymentMethod': _selectedPaymentMethod,
                   });
-                  Get.snackbar('Success', 'Appointment booked successfully');
+                  Get.snackbar('Success', 'Appointment booked successfully',
+                      backgroundColor: Colors.green, // Success color
+                      colorText: Colors.white); // Text color
                   Navigator.of(context).pop();
                 },
-                child: Text('Confirm'),
+                child: const Text('Confirm'),
               ),
             ],
           );
@@ -98,15 +112,19 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Book Appointment with ${widget.doctorName}'),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.teal, // Teal color
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Text(
+                'Patient Information',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
               TextField(
                 controller: _nameController,
                 decoration: const InputDecoration(
@@ -124,28 +142,81 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 20),
+              const Text(
+                'Select Appointment Date and Time',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () => _selectDate(context),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
+                  backgroundColor: Colors.teal, // Teal color
                 ),
-                child: const Text('Select Date'),
+                child: const Text('Select Date',),
               ),
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () => _selectTime(context),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
+                  backgroundColor: Colors.teal, // Teal color
                 ),
                 child: const Text('Select Time'),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Select Appointment Type',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                value: _selectedAppointmentType.isNotEmpty ? _selectedAppointmentType : null,
+                onChanged: (newValue) {
+                  setState(() {
+                    _selectedAppointmentType = newValue!;
+                  });
+                },
+                items: ['Visit Clinic', 'Zoom Meeting'].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Appointment Type',
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Select Payment Method',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              DropdownButtonFormField<String>(
+                value: _selectedPaymentMethod.isNotEmpty ? _selectedPaymentMethod : null,
+                onChanged: (newValue) {
+                  setState(() {
+                    _selectedPaymentMethod = newValue!;
+                  });
+                },
+                items: ['Charity', 'Cash on Visit'].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Payment Method',
+                ),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _bookAppointment,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
+                  backgroundColor: Colors.green, // Green color
                 ),
-                child: const Text('Book Appointment'),
+                child: const Text('Book Appointment', style: TextStyle(color: Colors.white),),
               ),
             ],
           ),
@@ -183,17 +254,22 @@ class UserAppointmentsScreen extends StatelessWidget {
           itemCount: snapshot.data!.docs.length,
           itemBuilder: (context, index) {
             final doc = snapshot.data!.docs[index];
-            return ListTile(
-              title: Text('Appointment with ${doc['doctorName']}'),
-              subtitle: Text('Date: ${doc['selectedDate']} Time: ${doc['selectedTime']}'),
-              trailing: IconButton(
-                icon: const Icon(Icons.cancel),
-                onPressed: () async {
-                  await FirebaseFirestore.instance.runTransaction((transaction) async {
-                    transaction.delete(doc.reference);
-                  });
-                },
-              ),
+            return Column(
+              children: [
+                ListTile(
+                  title: Text('Appointment with ${doc['doctorName']}'),
+                  subtitle: Text('Date: ${doc['selectedDate']} Time: ${doc['selectedTime']}'),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.cancel),
+                    onPressed: () async {
+                      await FirebaseFirestore.instance.runTransaction((transaction) async {
+                        transaction.delete(doc.reference);
+                      });
+                    },
+                  ),
+                ),
+                const Divider(),
+              ],
             );
           },
         );
