@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthjunction/src/features/authentication/screens/clinicmodulescreens/doctorbooking.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DoctorDetailScreen extends StatefulWidget {
@@ -227,7 +229,7 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                   Icons.money,
                   color: const Color.fromARGB(255, 0, 121, 107),
                 ),
-               const SizedBox(height: 3,),
+                const SizedBox(height: 3,),
                 Row(
                   children: [
                     const Icon(Icons.calendar_today_sharp,color: Color.fromARGB(255, 0, 121, 107),),
@@ -239,6 +241,12 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                 const SizedBox(height: 20.0),
                 ElevatedButton.icon(
                   onPressed: () {
+                    Get.to(() => BookingDateTimeScreen(
+                      doctorName: fullName,
+                      availableDays: availableDays!.map((day) => day.toString()).toList(),
+                      doctorId: widget.docId,
+                      availableTimes: [], 
+                    ));
                   },
                   icon: const Icon(Icons.book, color: Colors.white,),
                   label: Text(
@@ -305,7 +313,6 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
     }
 
     final daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    final availability = List.generate(7, (index) => availableDays[index] ?? false);
 
     return GridView.builder(
       shrinkWrap: true,
@@ -319,7 +326,7 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
       itemCount: daysOfWeek.length,
       itemBuilder: (context, index) {
         final day = daysOfWeek[index];
-        final isAvailable = availability[index];
+        final isAvailable = availableDays[index] as bool;
         return Container(
           decoration: BoxDecoration(
             color: isAvailable ? Colors.green[200] : Colors.red[200],
