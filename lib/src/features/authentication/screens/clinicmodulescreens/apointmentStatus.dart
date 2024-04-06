@@ -69,7 +69,6 @@ UserAppointmentsScreen({super.key});
     );
   }
 }
-
 class AppointmentCard extends StatelessWidget {
   final String doctorName;
   final Timestamp selectedDate;
@@ -79,7 +78,7 @@ class AppointmentCard extends StatelessWidget {
   final VoidCallback onCancel;
 
   const AppointmentCard({
-    super.key, 
+    Key? key, 
     required this.doctorName,
     required this.selectedDate,
     required this.selectedTime,
@@ -114,26 +113,66 @@ class AppointmentCard extends StatelessWidget {
             Text('Payment Method: $paymentMethod'),
             Text('Appointment Type: $appointmentType'),
             const SizedBox(height: 8),
-           ElevatedButton(
-  onPressed: onCancel,
-  style: ElevatedButton.styleFrom(
-    backgroundColor: Colors.red,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(32.0),
-    ),
-    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-    textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
-  ),    
-  child: const Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Icon(Icons.cancel_outlined, color: Colors.white,),
-      SizedBox(width: 10),  // gives some space between the icon and the text
-      Text('Cancel Appointment', style: TextStyle(color: Colors.white),),
-    ],
-  ),
-),
-
+            ElevatedButton(
+              onPressed: () async {
+                // Show an alert dialog for confirmation
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text('Confirm Cancel'),
+                      content: const Text('Are you sure you want to cancel this appointment?'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () async {
+                            // Close the alert dialog
+                            Navigator.of(context).pop();
+                            // Show a scaffold message
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Cancelling appointment...'),
+                              ),
+                            );
+                            // Call the onCancel function
+                            onCancel();
+                            // Show a scaffold message after cancellation
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Appointment cancelled successfully.'),
+                              ),
+                            );
+                          },
+                          child: const Text('Yes'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            // Close the alert dialog
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text('No'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+              ),    
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(Icons.cancel_outlined, color: Colors.white,),
+                  SizedBox(width: 10),  // gives some space between the icon and the text
+                  Text('Cancel Appointment', style: TextStyle(color: Colors.white),),
+                ],
+              ),
+            ),
           ],
         ),
       ),
