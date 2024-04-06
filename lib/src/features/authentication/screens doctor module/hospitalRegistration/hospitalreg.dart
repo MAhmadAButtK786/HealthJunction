@@ -2,6 +2,8 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/hospitalRegistration/confirmationpage.dart';
 import 'package:intl/intl.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -39,7 +41,7 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
   TimeOfDay? _endTime;
   List<bool> _selectedDays = List.generate(7, (_) => false);
   final List<String> _daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  final List<String> _provinces = ['Punjab', 'Sindh', 'Khyber Pakhtunkhwa', 'Balochistan', 'Gilgit-Baltistan', 'Azad Kashmir'];
+  final List<String> _provinces = ['Punjab', 'Sindh', 'Khyber Pakhtunkhwa', 'Balochistan', 'Gilgit-Baltistan', 'Azad Kashmir','Islamabad Capital Territory'];
   String? _selectedProvince;
 
   Future<void> _pickImage() async {
@@ -91,6 +93,8 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
           content: Text('Doctor registration successful!'),
           backgroundColor: Colors.green,
         ),
+        
+       
       );
 
       _formKey.currentState!.reset();
@@ -116,6 +120,7 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
         _selectedProvince = null;
       });
     }
+     Get.to(() => const ConfirmationMessageScreen ());
   }
 
   String? _validateField(String? value) {
@@ -492,6 +497,7 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
                 ),
                 child: const Text('Register',style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 20),),
               ),
+              
             ],
           ),
         ),

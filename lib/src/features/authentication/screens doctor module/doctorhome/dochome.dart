@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/hospitalRegistration/hospitalreg.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
+import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class DoctorHome extends StatelessWidget {
   const DoctorHome({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class DoctorHome extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        drawer: ReusableDrawerSideBar2(
+        drawer: ReusableDrawerSideBar(
           color: Colors.teal,
           headerText: "Doctors",
         ),
@@ -30,6 +30,7 @@ class DoctorHome extends StatelessWidget {
             image: DecorationImage(
               image: AssetImage(docback),
               fit: BoxFit.cover,
+              opacity: 0.9
             ),
           ),
           child: Column(
@@ -132,6 +133,22 @@ class DoctorHome extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.teal,
+                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                      const SizedBox(height: 20),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        // Get.to(() => const ());
+                      },
+                      icon: const Icon(FontAwesomeIcons.pen),
+                      label: const Text("Write Blogs and Articles"),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.teal,
+                        backgroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
