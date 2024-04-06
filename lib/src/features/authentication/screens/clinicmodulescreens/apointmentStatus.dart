@@ -133,9 +133,9 @@ class AppointmentCard extends StatelessWidget {
                                 content: Text('Cancelling appointment...'),
                               ),
                             );
-                            // Call the onCancel function
+                            
                             onCancel();
-                            // Show a scaffold message after cancellation
+                       
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Appointment cancelled successfully.'),

@@ -1,9 +1,11 @@
 // ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BookingDateTimeScreen extends StatefulWidget {
   final String doctorName;
@@ -129,7 +131,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
     return Scaffold(
       
       appBar: AppBar(
-        title: Text('Book  ${widget.doctorName}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        title: const Text('Book Appointment', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.teal, // Teal color
       ),
       body: SingleChildScrollView(
@@ -139,15 +141,25 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Patient Information',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+              Center(child: Text("Book Appointment with ${widget.doctorName}",style: GoogleFonts.montserrat(fontWeight:FontWeight.bold,fontSize:25,color:Colors.teal),),),
+             const SizedBox(height: 14,),
+              const Row(
+                children: [
+                  Icon(FontAwesomeIcons.userInjured, color: Colors.teal,),
+                  SizedBox(width: 5,),
+                  Text(
+                    'Patient Information',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                  ),
+                ],
               ),
               const SizedBox(height: 10),
               TextField(
                 controller: _nameController,
                 decoration: const InputDecoration(
                   labelText: 'Enter Patient Name',
+                  prefixIcon: Icon(FontAwesomeIcons.idCard),
+                
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -156,14 +168,21 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                 controller: _ageController,
                 decoration: const InputDecoration(
                   labelText: 'Enter Patient Age',
+                 prefixIcon: Icon(Icons.date_range),
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Select Appointment Date and Time',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+              const Row(
+                children: [
+                  Icon(FontAwesomeIcons.calendar,color: Colors.teal,),
+                  SizedBox(width: 5,),
+                  Text(
+                    'Select Date and Time',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                  ),
+                ],
               ),
               const SizedBox(height: 10),
               ElevatedButton(
@@ -193,9 +212,15 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
               style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade700),
             ),
               const SizedBox(height: 20),
-              const Text(
-                'Select Appointment Type',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+              const Row(
+                children: [
+                  Icon(FontAwesomeIcons.check,color: Colors.teal,),   
+                   SizedBox(width: 5,),  
+                  Text(
+                    'Select Appointment Type',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                  ),
+                ],
               ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
@@ -217,9 +242,15 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Select Payment Method',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+              const Row(
+                children: [
+                  Icon(FontAwesomeIcons.wallet,color: Colors.teal,),   
+                   SizedBox(width: 5,),  
+                   Text(
+                    'Select Payment Method',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                  ),
+                ],
               ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
@@ -241,12 +272,25 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _bookAppointment,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green, // Green color
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _bookAppointment,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green, // Green color
+                  ),
+                  child: const Center(
+                    child: Row(
+                      children: [
+                        SizedBox(width: 36,),
+                        Icon(FontAwesomeIcons.bookMedical,color: Colors.white,),
+                        SizedBox(width: 5,),
+                       
+                        Text('Book Appointment', style: TextStyle(color: Colors.white,fontSize: 20),),
+                      ],
+                    ),
+                  ),
                 ),
-                child: const Text('Book Appointment', style: TextStyle(color: Colors.white),),
               ),
             ],
           ),
