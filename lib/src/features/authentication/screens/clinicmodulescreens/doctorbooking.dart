@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -65,7 +67,18 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
           backgroundColor: Colors.red, // Error color
         ));
         return;
+
       }
+        setState(() {
+    _nameController.clear();
+    _ageController.clear();
+    selectedDate = DateTime.now();
+    selectedTime = TimeOfDay.now();
+    // _selectedAppointmentType = '';
+    // _selectedPaymentMethod = '';
+  });
+
+ 
 
       await showDialog(
         context: context,
@@ -80,6 +93,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                 },
                 child: const Text('Cancel'),
               ),
+              
               TextButton(
                 onPressed: () async {
                   await _firestore.collection('appointments').add({
@@ -97,12 +111,15 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                       backgroundColor: Colors.green, // Success color
                       colorText: Colors.white); // Text color
                   Navigator.of(context).pop();
+                
                 },
                 child: const Text('Confirm'),
               ),
+              
             ],
           );
         },
+        
       );
     }
   }
@@ -110,11 +127,13 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: Text('Book  ${widget.doctorName}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.teal, // Teal color
       ),
       body: SingleChildScrollView(
+        
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -168,7 +187,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                 ),
                 child: const Text('Select Time', style: TextStyle(color: Colors.white)),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
                Text(
               'Selected Time: ${selectedTime.hour}:${selectedTime.minute}',
               style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade700),
@@ -186,7 +205,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                     _selectedAppointmentType = newValue!;
                   });
                 },
-                items: ['Visit Clinic', 'Zoom Meeting'].map<DropdownMenuItem<String>>((String value) {
+                items: ['Visit Clinic', 'Online Meeting'].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -210,7 +229,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                     _selectedPaymentMethod = newValue!;
                   });
                 },
-                items: ['Charity', 'Cash on Visit'].map<DropdownMenuItem<String>>((String value) {
+                items: ['Charity', 'Cash on Visit', 'Online Transfer'].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -239,6 +258,8 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
 
 class UserAppointmentsScreen extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  UserAppointmentsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
