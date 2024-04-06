@@ -18,8 +18,9 @@ UserAppointmentsScreen({super.key});
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Appointments'),
-        backgroundColor: Colors.blueAccent,
+        title: const Text('Your Appointments', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+        backgroundColor: Colors.teal,
+        centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -101,7 +102,7 @@ class AppointmentCard extends StatelessWidget {
           children: [
             Text(
               'Doctor Name: $doctorName',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.teal),
             ),
             const SizedBox(height: 8),
             Text('Selected Date: $formattedDate'),
@@ -111,7 +112,17 @@ class AppointmentCard extends StatelessWidget {
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: onCancel,
-              child: const Text('Cancel Appointment'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+               
+                elevation: 0,
+              ),
+              child: const Row(
+                children: [
+                   Icon(Icons.cancel_outlined, color: Colors.white,),
+                  Text('Cancel Appointment',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16),),
+                ],
+              ),
             ),
           ],
         ),

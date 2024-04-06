@@ -111,7 +111,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Book Appointment with ${widget.doctorName}'),
+        title: Text('Book  ${widget.doctorName}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.teal, // Teal color
       ),
       body: SingleChildScrollView(
@@ -122,13 +122,13 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
             children: [
               const Text(
                 'Patient Information',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
               ),
               const SizedBox(height: 10),
               TextField(
                 controller: _nameController,
                 decoration: const InputDecoration(
-                  labelText: 'Your Name',
+                  labelText: 'Enter Patient Name',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -136,7 +136,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
               TextField(
                 controller: _ageController,
                 decoration: const InputDecoration(
-                  labelText: 'Your Age',
+                  labelText: 'Enter Patient Age',
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.number,
@@ -144,7 +144,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
               const SizedBox(height: 20),
               const Text(
                 'Select Appointment Date and Time',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
               ),
               const SizedBox(height: 10),
               ElevatedButton(
@@ -152,20 +152,31 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal, // Teal color
                 ),
-                child: const Text('Select Date',),
+                child: const Text('Select Date', style: TextStyle(color: Colors.white)),
               ),
+              const SizedBox(height:10),
+               Text(
+              'Selected Date: ${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
+              style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade700),
+            ),
+              
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () => _selectTime(context),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal, // Teal color
                 ),
-                child: const Text('Select Time'),
+                child: const Text('Select Time', style: TextStyle(color: Colors.white)),
               ),
+              SizedBox(height: 10,),
+               Text(
+              'Selected Time: ${selectedTime.hour}:${selectedTime.minute}',
+              style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade700),
+            ),
               const SizedBox(height: 20),
               const Text(
                 'Select Appointment Type',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
               ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
@@ -189,7 +200,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
               const SizedBox(height: 20),
               const Text(
                 'Select Payment Method',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
               ),
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
