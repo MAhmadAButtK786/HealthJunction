@@ -119,8 +119,9 @@ class _DoctorRegistrationFormState extends State<DoctorRegistrationForm> {
         _dateOfBirth = DateTime.now();
         _selectedProvince = null;
       });
+        Get.to(() => const ConfirmationMessageScreen ());
     }
-     Get.to(() => const ConfirmationMessageScreen ());
+   
   }
 
   String? _validateField(String? value) {
