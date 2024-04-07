@@ -1,5 +1,9 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DoctorAppointmentsScreen extends StatelessWidget {
   final String doctorId;
@@ -13,15 +17,17 @@ class DoctorAppointmentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String doctorName = this.doctorName; // Declare local variable
+
     return Scaffold(
       appBar: AppBar(
-        // ignore: unnecessary_string_interpolations
-        title: Text('$doctorName'),
+        backgroundColor: Colors.teal,
+        title: Text('$doctorName Appointments', style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('appointments')
-            .where('doctorId', isEqualTo: doctorId) 
+            .where('doctorId', isEqualTo: doctorId)
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -43,9 +49,12 @@ class DoctorAppointmentsScreen extends StatelessWidget {
               return AppointmentCard(
                 patientName: appointmentData['patientName'],
                 selectedDate: formattedDate,
-                selectedTime: appointmentData['selectedTime'],
-                paymentMethod: appointmentData['paymentMethod'],
-                appointmentType: appointmentData['appointmentType'],
+                selectedTime: appointmentData['selectedTime'] ,
+                paymentMethod: appointmentData['paymentMethod'] ?? 'N/A',
+                appointmentType: appointmentData['appointmentType'] ?? 'N/A',
+                onDelete: () {
+                  _showCancelConfirmationDialog(context, snapshot.data!.docs[index].id);
+                },
               );
             },
           );
@@ -61,6 +70,46 @@ class DoctorAppointmentsScreen extends StatelessWidget {
     final period = dateTime.hour < 12 ? 'AM' : 'PM';
     return '$hour:$minute $period';
   }
+
+  // Function to delete appointment and show confirmation message
+  // Function to delete appointment and show confirmation message
+void _showCancelConfirmationDialog(BuildContext context, String appointmentId) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Cancel Appointment'),
+        content: const Text('Are you sure you want to cancel this appointment?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('No'),
+          ),
+          TextButton(
+            onPressed: () {
+              _deleteAppointment(context, appointmentId);
+              Navigator.of(context).pop(); // Dismiss the dialog
+            },
+            child: const Text('Yes'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
+  // Function to delete appointment and show confirmation message
+  void _deleteAppointment(BuildContext context, String appointmentId) {
+    FirebaseFirestore.instance.collection('appointments').doc(appointmentId).delete();
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Appointment deleted successfully'),
+      ),
+    );
+  }
 }
 
 class AppointmentCard extends StatelessWidget {
@@ -69,6 +118,7 @@ class AppointmentCard extends StatelessWidget {
   final String selectedTime;
   final String paymentMethod;
   final String appointmentType;
+  final VoidCallback onDelete;
 
   const AppointmentCard({
     Key? key,
@@ -77,6 +127,7 @@ class AppointmentCard extends StatelessWidget {
     required this.selectedTime,
     required this.paymentMethod,
     required this.appointmentType,
+    required this.onDelete,
   }) : super(key: key);
 
   @override
@@ -96,13 +147,76 @@ class AppointmentCard extends StatelessWidget {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.teal),
             ),
             const SizedBox(height: 8),
-            Text('Selected Date: $selectedDate'),
-            Text('Selected Time: $selectedTime'),
+            Text('Appointment Date: $selectedDate'),
+            Text('Appointment Time: $selectedTime'),
             Text('Payment Method: $paymentMethod'),
             Text('Appointment Type: $appointmentType'),
+            const SizedBox(height: 8),
+          Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () {
+                    _setEventInCalendar(selectedDate, selectedTime, patientName);
+                  },
+                  icon: const Icon(Icons.calendar_today),
+                  label: const Text('Add to Calendar'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white, backgroundColor: Colors.teal,
+                  ),
+                ),
+                
+                 ElevatedButton.icon(
+                  onPressed: onDelete,
+                  icon: const Icon(Icons.cancel),
+                  label: const Text('Cancel the Appointment'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white, backgroundColor: Colors.red,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
     );
   }
+Future<void> _setEventInCalendar(String date, String time, String patientName) async {
+  // Parse the date and time components
+  final List<String> dateComponents = date.split('/');
+  final List<String> timeComponents = time.split(':');
+
+  // Extract year, month, day, hour, and minute from date and time components
+  final int year = int.parse(dateComponents[2]);
+  final int month = int.parse(dateComponents[1]);
+  final int day = int.parse(dateComponents[0]);
+  int hour = int.parse(timeComponents[0]);
+  final int minute = int.parse(timeComponents[1].split(' ')[0]); // Extract minute without ' AM' or ' PM'
+
+  // Convert AM/PM time to 24-hour format
+  if (timeComponents[1].contains('PM') && hour < 12) {
+    hour += 12;
+  } else if (timeComponents[1].contains('AM') && hour == 12) {
+    hour = 0;
+  }
+
+  // Create DateTime object
+  final DateTime dateTime = DateTime(year, month, day, hour, minute);
+
+  // Format date and time for the URL
+  final formattedDate = '$year${month.toString().padLeft(2, '0')}${day.toString().padLeft(2, '0')}T' +
+      '${hour.toString().padLeft(2, '0')}${minute.toString().padLeft(2, '0')}00Z';
+
+  final encodedEventName = Uri.encodeComponent('$patientName Appointment');
+
+  // Construct the calendar URL with event details
+  final calendarUrl = 'https://calendar.google.com/calendar/r/eventedit?text=$encodedEventName&dates=$formattedDate/$formattedDate&ctz=UTC';
+
+  // Launch the calendar URL
+  if (await canLaunch(calendarUrl)) {
+    await launch(calendarUrl);
+  } else {
+    throw 'Could not launch $calendarUrl';
+  }
+}
 }
