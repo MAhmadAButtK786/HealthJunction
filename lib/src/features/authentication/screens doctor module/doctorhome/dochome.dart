@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
+import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/bookedappointment/doctorauth.dart';
 import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/hospitalRegistration/hospitalreg.dart';
 import 'package:healthjunction/src/features/authentication/screens/profile_icon_functions/profile_page/profile_main_page.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
@@ -126,7 +127,7 @@ class DoctorHome extends StatelessWidget {
                     const SizedBox(height: 20),
                     ElevatedButton.icon(
                       onPressed: () {
-                        // Get.to(() =>  );
+                        Get.to(() => DoctorVerificationScreen() );
                       },
                       icon: const Icon(Icons.healing),
                       label: const Text("Manage Appointments"),
