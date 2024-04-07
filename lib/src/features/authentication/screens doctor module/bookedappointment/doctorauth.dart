@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/bookedappointment/docappointment.dart';
+import 'package:get/get.dart';
 
 class DoctorVerificationScreen extends StatefulWidget {
   @override
@@ -45,8 +45,15 @@ class _DoctorVerificationScreenState extends State<DoctorVerificationScreen> {
           isLoading = false;
         });
 
-        // Navigate to another screen
-         Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorAppointmentsScreen(doctorId: '', doctorName: '',)));
+        // Extract doctor data
+        String doctorId = querySnapshot.docs[0].id;
+        String doctorName = querySnapshot.docs[0]['fullName'];
+
+        // Navigate to another screen with correct data
+        Get.to(() => DoctorAppointmentsScreen(
+              doctorId: doctorId,
+              doctorName: doctorName,
+            ));
       } else {
         // Data is incorrect
         setState(() {
@@ -55,6 +62,7 @@ class _DoctorVerificationScreenState extends State<DoctorVerificationScreen> {
         });
       }
     } catch (error) {
+      // ignore: avoid_print
       print('Error verifying data: $error');
       // Handle error
       setState(() {
@@ -67,37 +75,37 @@ class _DoctorVerificationScreenState extends State<DoctorVerificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Doctor Verification'),
+        title: const Text('Doctor Verification'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
               controller: doctorNameController,
-              decoration: InputDecoration(labelText: 'Doctor Name'),
+              decoration: const InputDecoration(labelText: 'Doctor Name'),
             ),
             TextField(
               controller: phoneNumberController,
-              decoration: InputDecoration(labelText: 'Phone Number'),
+              decoration: const InputDecoration(labelText: 'Phone Number'),
             ),
             TextField(
               controller: licenseNumberController,
-              decoration: InputDecoration(labelText: 'License Number'),
+              decoration: const InputDecoration(labelText: 'License Number'),
             ),
             TextField(
               controller: emailController,
-              decoration: InputDecoration(labelText: 'Email'),
+              decoration: const InputDecoration(labelText: 'Email'),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: isLoading ? null : verifyDoctorData,
               child: isLoading
-                  ? CircularProgressIndicator()
-                  : Text('Verify'),
+                  ? const CircularProgressIndicator()
+                  : const Text('Verify'),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             if (isDataCorrect != null)
               Text(
                 isDataCorrect!
@@ -116,3 +124,46 @@ class _DoctorVerificationScreenState extends State<DoctorVerificationScreen> {
   }
 }
 
+class DoctorAppointmentsScreen extends StatelessWidget {
+  final String doctorId;
+  final String doctorName;
+
+  const DoctorAppointmentsScreen({
+    Key? key,
+    required this.doctorId,
+    required this.doctorName,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Appointments with $doctorName'),
+      ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('appointments')
+            .where('doctorId', isEqualTo: doctorId)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            return Center(
+                child: Text('No appointments found for $doctorName.'));
+          }
+
+          return ListView.builder(
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) {
+              // Handle data...
+              return const SizedBox.shrink(); // Return appropriate widget for appointment card
+            },
+          );
+        },
+      ),
+    );
+  }
+}
