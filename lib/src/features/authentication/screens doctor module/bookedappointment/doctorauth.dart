@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/bookedappointment/docappointment.dart';
 
 class DoctorVerificationScreen extends StatefulWidget {
   @override
@@ -16,13 +16,12 @@ class _DoctorVerificationScreenState extends State<DoctorVerificationScreen> {
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  List<String> errorMessages = [];
+  bool? isDataCorrect;
   bool isLoading = false;
 
   Future<void> verifyDoctorData() async {
     setState(() {
       isLoading = true;
-      errorMessages.clear();
     });
 
     String providedDoctorName = doctorNameController.text;
@@ -42,38 +41,16 @@ class _DoctorVerificationScreenState extends State<DoctorVerificationScreen> {
       if (querySnapshot.docs.isNotEmpty) {
         // Data is correct
         setState(() {
+          isDataCorrect = true;
           isLoading = false;
         });
 
-        // Show a success message
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('The data you entered is correct. Please wait...'),
-            duration: Duration(seconds: 2),
-          ),
-        );
-
-        // Delay navigation to another screen
-        await Future.delayed(Duration(seconds: 2));
-
         // Navigate to another screen
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentsScreen()));
+         Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorAppointmentsScreen(doctorId: '', doctorName: '',)));
       } else {
         // Data is incorrect
-        if (providedDoctorName.isEmpty) {
-          errorMessages.add('Doctor Name is required.');
-        }
-        if (providedPhoneNumber.isEmpty) {
-          errorMessages.add('Phone Number is required.');
-        }
-        if (providedLicenseNumber.isEmpty) {
-          errorMessages.add('License Number is required.');
-        }
-        if (providedEmail.isEmpty) {
-          errorMessages.add('Email is required.');
-        }
-
         setState(() {
+          isDataCorrect = false;
           isLoading = false;
         });
       }
@@ -90,46 +67,47 @@ class _DoctorVerificationScreenState extends State<DoctorVerificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Doctor Verification'),
+        title: Text('Doctor Verification'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
               controller: doctorNameController,
-              decoration: const InputDecoration(labelText: 'Doctor Name'),
+              decoration: InputDecoration(labelText: 'Doctor Name'),
             ),
             TextField(
               controller: phoneNumberController,
-              decoration: const InputDecoration(labelText: 'Phone Number'),
+              decoration: InputDecoration(labelText: 'Phone Number'),
             ),
             TextField(
               controller: licenseNumberController,
-              decoration: const InputDecoration(labelText: 'License Number'),
+              decoration: InputDecoration(labelText: 'License Number'),
             ),
             TextField(
               controller: emailController,
-              decoration: const InputDecoration(labelText: 'Email'),
+              decoration: InputDecoration(labelText: 'Email'),
             ),
-            const SizedBox(height: 20.0),
+            SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: isLoading ? null : verifyDoctorData,
               child: isLoading
-                  ? const CircularProgressIndicator()
-                  : const Text('Verify'),
+                  ? CircularProgressIndicator()
+                  : Text('Verify'),
             ),
-            const SizedBox(height: 20.0),
-            if (errorMessages.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: errorMessages
-                    .map((message) => Text(
-                          message,
-                          style: const TextStyle(color: Colors.red),
-                        ))
-                    .toList(),
+            SizedBox(height: 20.0),
+            if (isDataCorrect != null)
+              Text(
+                isDataCorrect!
+                    ? 'Data is correct. Navigating to another screen...'
+                    : 'Data is incorrect. Please check your input.',
+                style: TextStyle(
+                  color: isDataCorrect != null
+                      ? (isDataCorrect! ? Colors.green : Colors.red)
+                      : Colors.black,
+                ),
               ),
           ],
         ),
@@ -137,5 +115,4 @@ class _DoctorVerificationScreenState extends State<DoctorVerificationScreen> {
     );
   }
 }
-
 
