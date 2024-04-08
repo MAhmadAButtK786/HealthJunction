@@ -1,120 +1,65 @@
-import React, { useEffect, useState } from "react";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore"
-import { database } from "../../firebase";
-import { Link } from 'react-router-dom';
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
+import { database } from '../../firebase'; // Import the database instance from your firebase.js
 
-function PHChospitals() {
-  const [testsData, setTestsData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+const PHCHospitalDetails = () => {
+  const [hospitals, setHospitals] = useState([]);
 
   useEffect(() => {
-    if (database) {
-      getData();
-    }
+    const fetchData = async () => {
+      try {
+        const snapshot = await database.collection('PHC Hospitals').get();
+        const hospitalData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setHospitals(hospitalData);
+      } catch (error) {
+        console.error('Error fetching hospitals:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const getData = async () => {
+  const handleDelete = async (id) => {
     try {
-      const querySnapshot = await getDocs(collection(database, "PHC Hospitals"));
-      const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setTestsData(data);
+      await database.collection('PHC Hospitals').doc(id).delete();
+      setHospitals(prevHospitals => prevHospitals.filter(hospital => hospital.id !== id));
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error('Error deleting hospital:', error);
     }
   };
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const filteredTests = testsData.filter((test) =>
-    test.Name &&
-    typeof test.Name === 'string' &&
-    test.Name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  const handleDelete = (pbb) => {
-    if (window.confirm(`Are you sure you want to delete ${pbb.Name}?`)) {
-      deleteRecipient(pbb);
-    }
-  };
-
-  const deleteRecipient = async (pbb) => {
+  const handleUpdate = async (id, newData) => {
     try {
-      await deleteDoc(doc(database, "PHC Hospitals", pbb.id));
-  
-      // Refresh data after deletion
-      getData();
-      alert(`${pbb["Hospital Name"]} has been deleted successfully.`);
+      await database.collection('PHC Hospital').doc(id).update(newData);
+      const updatedHospitals = hospitals.map(hospital => {
+        if (hospital.id === id) {
+          return { ...hospital, ...newData };
+        }
+        return hospital;
+      });
+      setHospitals(updatedHospitals);
     } catch (error) {
-      console.error("Error deleting recipient: ", error);
+      console.error('Error updating hospital:', error);
     }
   };
+
   return (
-    <div className="w-full px-4 pt-10 mx-auto">
-      <div className="max-w-6xl mx-auto mb-4">
-        <div className="text-center pb-7">
-          <h1 className="text-5xl font-bold text-blue-600">PHC Registered Hospitals</h1>
-        </div>
-        <div className="">
-          <div className="flex justify-center mb-4">
-            <input
-              type="text"
-              className="px-4 py-2 border border-gray-400 rounded"
-              placeholder="Search by name"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-          </div>
-          <Link to="/insertphc">
-            <button className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700 ">
-              Insert Private Blood Bank
-            </button>
-          </Link>
-          <table className="w-full mt-5 text-center border border-blue-500">
-            <thead className="h-10 bg-blue-700 border-b border-blue-500">
-              <tr>
-                <th className="px-4 py-2 text-white">Name</th>
-                <th className="px-4 py-2 text-white">Address</th>
-                <th className="px-4 py-2 text-white">District</th>
-                <th className="px-4 py-2 text-white">Sector</th>
-                <th className="px-4 py-2 text-white">Action</th>
-                <th className="px-4 py-2 text-white">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredTests.map((recipient) => (
-                <tr
-                  key={recipient.id}
-                  className="h-12 bg-white border-b border-gray-400"
-                >
-                  <td className="px-4 py-2">{recipient["Hospital Name"]}</td>
-                  <td className="px-4 py-2 text-blue-600 underline">
-                    <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                        recipient.Address
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {recipient.Address}
-                    </a>
-                  </td>
-                  <td className="px-4 py-2">{recipient.District}</td>
-                  <td className="px-4 py-2">{recipient.Sector}</td>
-                  <td className='px-4 py-2'>
-                    <button onClick={() => handleDelete(recipient)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button>
-                  </td>
-                  <td className='px-4 py-2'>
-                    <Link to ={`/updateHospitals/${recipient.id}`}><button className="px-3 py-1 text-white bg-green-500 rounded-md">Update</button></Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div>
+      <h1>Hospital Details</h1>
+      <ul>
+        {hospitals.map(hospital => (
+          <li key={hospital.id}>
+            <div>{hospital.HospitalName}</div>
+            <div>{hospital.Address}</div>
+            <div>{hospital.District}</div>
+            <div>{hospital.Sector}</div>
+            <button onClick={() => handleDelete(hospital.id)}>Delete</button>
+           
+          </li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
-export default PHChospitals;
+export default PHCHospitalDetails;
