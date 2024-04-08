@@ -15,9 +15,9 @@ function PHChospitals() {
   const getData = async () => {
     try {
       const querySnapshot = await getDocs(collection(database, "PHC Hospitals"));
-      console.log("Query Snapshot:", querySnapshot.docs);
+    
       const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      console.log("Data:", data);
+    
       setTestsData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
