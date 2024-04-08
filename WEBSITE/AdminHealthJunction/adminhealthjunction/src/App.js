@@ -187,7 +187,7 @@ const App = () => {
         <Route path="/verifiedHospitalsmanagement" exact component={VerifiedHospitals}/>
         <Route path="/verifiedHospitalsupdate/:id" exact component={VerifiedHospitalUpdateForm}/>
         {/* PHC Hospitals */}
-        <Route path="/phcmainscreen" exact component={PHCMainScreen}/>
+        <Route path="/phchospitalsmanagement" exact component={PHCMainScreen}/>
         <Route path="/insertphc" exact component={AddPHC}/>
         <Route path="/updateHospitals/:id" exact component={UpdatePHCHosptalPage}/>
       </Switch>
