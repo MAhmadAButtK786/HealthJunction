@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { database } from "../../firebase";
+import { database } from "../firebase";
 
 function PHChospitals() {
   const [testsData, setTestsData] = useState([]);

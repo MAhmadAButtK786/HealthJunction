@@ -1,7 +1,7 @@
 import React from 'react'
-import HPNavbar from '../hpNavbar'
+import HPNavbar from '../healthPoints/hpNavbar'
 import PHChospitals from './phcshow'
-import Footer from '../../footer'
+import Footer from '../footer'
 function PHCMain() {
   return (
     <>

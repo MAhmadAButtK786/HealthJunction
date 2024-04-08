@@ -53,7 +53,7 @@ function PHChospitals() {
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
         <div className="text-center pb-7">
-          <h1 className="text-5xl font-bold text-red-600">PHC Registered Hospitals</h1>
+          <h1 className="text-5xl font-bold text-blue-600">PHC Registered Hospitals</h1>
         </div>
         <div className="">
           <div className="flex justify-center mb-4">
@@ -65,13 +65,13 @@ function PHChospitals() {
               onChange={handleSearch}
             />
           </div>
-          <Link to="/insertsPrivateBB">
+          <Link to="/insertphc">
             <button className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700 ">
               Insert Private Blood Bank
             </button>
           </Link>
-          <table className="w-full mt-5 text-center border border-red-500">
-            <thead className="h-10 bg-red-700 border-b border-red-500">
+          <table className="w-full mt-5 text-center border border-blue-500">
+            <thead className="h-10 bg-blue-700 border-b border-blue-500">
               <tr>
                 <th className="px-4 py-2 text-white">Name</th>
                 <th className="px-4 py-2 text-white">Address</th>
@@ -87,7 +87,7 @@ function PHChospitals() {
                   key={recipient.id}
                   className="h-12 bg-white border-b border-gray-400"
                 >
-                  <td className="px-4 py-2">{recipient.Name}</td>
+                  <td className="px-4 py-2">{recipient["Hospital Name"]}</td>
                   <td className="px-4 py-2 text-blue-600 underline">
                     <a
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -105,7 +105,7 @@ function PHChospitals() {
                     <button onClick={() => handleDelete(recipient)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button>
                   </td>
                   <td className='px-4 py-2'>
-                    <Link to ={`/updatePrivateBBPage/${recipient.id}`}><button className="px-3 py-1 text-white bg-green-500 rounded-md">Update</button></Link>
+                    <Link to ={`/updateHospitals/${recipient.id}`}><button className="px-3 py-1 text-white bg-green-500 rounded-md">Update</button></Link>
                   </td>
                 </tr>
               ))}
