@@ -71,10 +71,6 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
         return;
 
       }
-  
-
- 
-
       await showDialog(
         context: context,
         builder: (BuildContext context) {
