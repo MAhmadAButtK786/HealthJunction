@@ -115,3 +115,4 @@ const String exercisecalburn = "assets/images/exercisecalburn.png";
 const String hospitalmain ="assets/images/hospitalmain.jpg";
 const String docback ="assets/images/docbackgrounf.jpg";
 const String wb66 ="assets/images/66.jpg";
+const String backver ="assets/images/backveri.jpg";
