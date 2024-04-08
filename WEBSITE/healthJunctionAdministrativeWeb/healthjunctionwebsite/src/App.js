@@ -33,7 +33,7 @@ import Eventmain from './Component/events/eventmain';
 import HealthZone from './Component/lab/privateLabs/LabsScreens/HealthZone/healthzone';
 import PHCLAB from './Component/lab/RegisteredLabs/phclab';
 import Hosplist from './Component/healthPoints/showreghospitals/hosplist';
-
+import DoctorDatamain from './Component/healthPoints/clinics/clinicsdata';
 function App() {
   return (
       
@@ -93,6 +93,7 @@ function App() {
           <Route path="/LahoreMDC" exact component={LahoreMDC}/>
           {/* Health Zone */}
           <Route path="/HealthZone" exact component={HealthZone}/>
+          <Route path="/doctorData" exact component={DoctorDatamain}/>
           <Route path="/PhcLabs" exact component={PHCLAB}/>
           <Route path="/contact" exact component={Contact} />
           <Route path="/" exact component={Login}/>
