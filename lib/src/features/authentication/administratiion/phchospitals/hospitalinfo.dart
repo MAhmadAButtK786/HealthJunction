@@ -30,7 +30,7 @@ class _PHCHospitalsState extends State<PHCHospitals> {
   Future<void> exportData() async {
     try {
       final CollectionReference alliedlab =
-          FirebaseFirestore.instance.collection("PHC Hospitals");
+          FirebaseFirestore.instance.collection("PHC Hospitals Web");
       final phcHospital =
           await rootBundle.loadString('assets/dataSets/PHC Hosp.csv');
       List<List<dynamic>> csvdata = CsvToListConverter().convert(phcHospital);

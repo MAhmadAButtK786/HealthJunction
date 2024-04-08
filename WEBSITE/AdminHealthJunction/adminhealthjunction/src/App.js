@@ -71,6 +71,8 @@ import VerifiedDoctorUpdateForm from './components/verifiedDoctors/vdocupdate';
 // Verified Hospitals
 import VerifiedHospitals from './components/hospitalsverification/hospitalverificationmain';
 import VerifiedHospitalUpdateForm from './components/hospitalsverification/hospitalverificationupdate';
+// PHC Hospitals
+import PHCMainScren from './components/phchospitals/phcmain';
 // Import Firebase auth module
 import { auth } from './firebase';
 
@@ -182,6 +184,8 @@ const App = () => {
         {/* Verified Hospitals */}
         <Route path="/verifiedHospitalsmanagement" exact component={VerifiedHospitals}/>
         <Route path="/verifiedHospitalsupdate/:id" exact component={VerifiedHospitalUpdateForm}/>
+        {/* PHC Hospitals */}
+        <Route path="/phcmainscreen" exact component={PHCMainScren}/>
       </Switch>
     </>
   );

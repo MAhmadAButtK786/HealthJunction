@@ -8,6 +8,7 @@ const navigation = [
   { name: 'Hospitals', href: '/hospitallist',  },
   { name: 'Doctors', href: '/doctorData',},
   { name: 'Register Your Hospital', href: '/basicdf',  },
+  { name: 'PHC Hospitals List', href: '/PHCHospitals',  },
   { name: 'Our Guidelines', href: '/guidlines',  },
   
 ]
@@ -85,7 +86,7 @@ export default function HPNavbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="/"
+                            href="/home"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Home

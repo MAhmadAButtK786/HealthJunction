@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:healthjunction/src/constants/image_string.dart';
 
 class BookingDateTimeScreen extends StatefulWidget {
   final String doctorName;
@@ -125,166 +126,173 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
       ),
       body: SingleChildScrollView(
         
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(child: Text("Book Appointment with ${widget.doctorName}",style: GoogleFonts.montserrat(fontWeight:FontWeight.bold,fontSize:25,color:Colors.teal),),),
-             const SizedBox(height: 14,),
-              const Row(
-                children: [
-                  Icon(FontAwesomeIcons.userInjured, color: Colors.teal,),
-                  SizedBox(width: 5,),
-                  Text(
-                    'Patient Information',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: _nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Enter Patient Name',
-                  prefixIcon: Icon(FontAwesomeIcons.idCard),
-                
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: _ageController,
-                decoration: const InputDecoration(
-                  labelText: 'Enter Patient Age',
-                 prefixIcon: Icon(Icons.date_range),
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.number,
-              ),
-              const SizedBox(height: 20),
-              const Row(
-                children: [
-                  Icon(FontAwesomeIcons.calendar,color: Colors.teal,),
-                  SizedBox(width: 5,),
-                  Text(
-                    'Select Date and Time',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () => _selectDate(context),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal, // Teal color
-                ),
-                child: const Text('Select Date', style: TextStyle(color: Colors.white)),
-              ),
-              const SizedBox(height:10),
-               Text(
-              'Selected Date: ${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
-              style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade700),
+     
+          child: Container(
+             decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(docback),
+              fit: BoxFit.cover,
+              opacity: 0.3
             ),
-              
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () => _selectTime(context),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal, // Teal color
+          ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(child: Text("Book Appointment with ${widget.doctorName}",style: GoogleFonts.montserrat(fontWeight:FontWeight.bold,fontSize:25,color:Colors.teal),),),
+               const SizedBox(height: 14,),
+                const Row(
+                  children: [
+                    Icon(FontAwesomeIcons.userInjured, color: Colors.teal,),
+                    SizedBox(width: 5,),
+                    Text(
+                      'Patient Information',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                    ),
+                  ],
                 ),
-                child: const Text('Select Time', style: TextStyle(color: Colors.white)),
-              ),
-              const SizedBox(height: 10,),
-               Text(
-              'Selected Time: ${selectedTime.hour}:${selectedTime.minute}',
-              style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade700),
-            ),
-              const SizedBox(height: 20),
-              const Row(
-                children: [
-                  Icon(FontAwesomeIcons.check,color: Colors.teal,),   
-                   SizedBox(width: 5,),  
-                  Text(
-                    'Select Appointment Type',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _nameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter Patient Name',
+                    prefixIcon: Icon(FontAwesomeIcons.idCard),
+                  
+                    border: OutlineInputBorder(),
                   ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              DropdownButtonFormField<String>(
-                value: _selectedAppointmentType.isNotEmpty ? _selectedAppointmentType : null,
-                onChanged: (newValue) {
-                  setState(() {
-                    _selectedAppointmentType = newValue!;
-                  });
-                },
-                items: ['Visit Clinic', 'Online Meeting'].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Appointment Type',
                 ),
-              ),
-              const SizedBox(height: 20),
-              const Row(
-                children: [
-                  Icon(FontAwesomeIcons.wallet,color: Colors.teal,),   
-                   SizedBox(width: 5,),  
-                   Text(
-                    'Select Payment Method',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _ageController,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter Patient Age',
+                   prefixIcon: Icon(Icons.date_range),
+                    border: OutlineInputBorder(),
                   ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              DropdownButtonFormField<String>(
-                value: _selectedPaymentMethod.isNotEmpty ? _selectedPaymentMethod : null,
-                onChanged: (newValue) {
-                  setState(() {
-                    _selectedPaymentMethod = newValue!;
-                  });
-                },
-                items: ['Charity', 'Cash on Visit', 'Online Transfer'].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Payment Method',
+                  keyboardType: TextInputType.number,
                 ),
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: _bookAppointment,
+                const SizedBox(height: 20),
+                const Row(
+                  children: [
+                    Icon(FontAwesomeIcons.calendar,color: Colors.teal,),
+                    SizedBox(width: 5,),
+                    Text(
+                      'Select Date and Time',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () => _selectDate(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green, // Green color
+                    backgroundColor: Colors.teal, // Teal color
                   ),
-                  child: const Center(
-                    child: Row(
-                      children: [
-                        SizedBox(width: 36,),
-                        Icon(FontAwesomeIcons.bookMedical,color: Colors.white,),
-                        SizedBox(width: 5,),
-                       
-                        Text('Book Appointment', style: TextStyle(color: Colors.white,fontSize: 20),),
-                      ],
+                  child: const Text('Select Date', style: TextStyle(color: Colors.white)),
+                ),
+                const SizedBox(height:10),
+                 Text(
+                'Selected Date: ${selectedDate.year}-${selectedDate.month}-${selectedDate.day}',
+                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade700),
+              ),
+                
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () => _selectTime(context),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal, // Teal color
+                  ),
+                  child: const Text('Select Time', style: TextStyle(color: Colors.white)),
+                ),
+                const SizedBox(height: 10,),
+                 Text(
+                'Selected Time: ${selectedTime.hour}:${selectedTime.minute}',
+                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green.shade700),
+              ),
+                const SizedBox(height: 20),
+                const Row(
+                  children: [
+                    Icon(FontAwesomeIcons.check,color: Colors.teal,),   
+                     SizedBox(width: 5,),  
+                    Text(
+                      'Select Appointment Type',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                DropdownButtonFormField<String>(
+                  value: _selectedAppointmentType.isNotEmpty ? _selectedAppointmentType : null,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _selectedAppointmentType = newValue!;
+                    });
+                  },
+                  items: ['Visit Clinic', 'Online Meeting'].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Appointment Type',
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Row(
+                  children: [
+                    Icon(FontAwesomeIcons.wallet,color: Colors.teal,),   
+                     SizedBox(width: 5,),  
+                     Text(
+                      'Select Payment Method',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.teal),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                DropdownButtonFormField<String>(
+                  value: _selectedPaymentMethod.isNotEmpty ? _selectedPaymentMethod : null,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _selectedPaymentMethod = newValue!;
+                    });
+                  },
+                  items: ['Charity', 'Cash on Visit', 'Online Transfer'].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Payment Method',
+                  ),
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _bookAppointment,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green, // Green color
+                    ),
+                    child: const Center(
+                      child: Row(
+                        children: [
+                          SizedBox(width: 36,),
+                          Icon(FontAwesomeIcons.bookMedical,color: Colors.white,),
+                          SizedBox(width: 5,),
+                         
+                          Text('Book Appointment', style: TextStyle(color: Colors.white,fontSize: 20),),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
     );
   }
 }

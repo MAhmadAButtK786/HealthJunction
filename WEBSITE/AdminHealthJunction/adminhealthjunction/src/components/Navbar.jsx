@@ -94,7 +94,7 @@ const Navbar = () => {
                   <Link to="/doctorsmanagement" className="block py-2 hover:text-blue-300">Doctors Management</Link>
                   <Link to="/verifieddoctorsmanagement" className="block py-2 hover:text-blue-300">Verified Doctors</Link>
                   <Link to="/verifiedHospitalsmanagement" className="block py-2 hover:text-blue-300">Verified Hospitals</Link>
-                  
+                  <Link to="/phcmainscreen" className="block py-2 hover:text-blue-300">PHC Registered Hospitals</Link>
                 </div>
               )}
             </div>
