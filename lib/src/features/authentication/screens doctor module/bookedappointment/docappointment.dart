@@ -1,8 +1,9 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:healthjunction/src/features/authentication/screens%20doctor%20module/doctorhome/dochome.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DoctorAppointmentsScreen extends StatelessWidget {
@@ -19,46 +20,52 @@ class DoctorAppointmentsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final String doctorName = this.doctorName; // Declare local variable
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: Text('$doctorName Appointments', style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
-      ),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance
-            .collection('appointments')
-            .where('doctorId', isEqualTo: doctorId)
-            .snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text('No appointments found for $doctorName.'));
-          }
-
-          return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) {
-              final appointmentData = snapshot.data!.docs[index].data() as Map<String, dynamic>;
-              final dateTime = (appointmentData['selectedDate'] as Timestamp).toDate();
-              final formattedDate = '${dateTime.day}/${dateTime.month}/${dateTime.year}';
-              _formatTime(dateTime);
-
-              return AppointmentCard(
-                patientName: appointmentData['patientName'],
-                selectedDate: formattedDate,
-                selectedTime: appointmentData['selectedTime'] ,
-                paymentMethod: appointmentData['paymentMethod'] ?? 'N/A',
-                appointmentType: appointmentData['appointmentType'] ?? 'N/A',
-                onDelete: () {
-                  _showCancelConfirmationDialog(context, snapshot.data!.docs[index].id);
-                },
-              );
-            },
-          );
-        },
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.teal,
+          title: Text(' Welcome $doctorName', style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+          actions: [IconButton
+          (onPressed: (){ Get.to(()=> const DoctorHome());}, 
+          icon: const Icon(Icons.home_filled, color: Colors.white,))],
+        ),
+        body: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('appointments')
+              .where('doctorId', isEqualTo: doctorId)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+      
+            if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+              return Center(child: Text('No appointments found for $doctorName.'));
+            }
+      
+            return ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                final appointmentData = snapshot.data!.docs[index].data() as Map<String, dynamic>;
+                final dateTime = (appointmentData['selectedDate'] as Timestamp).toDate();
+                final formattedDate = '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+                _formatTime(dateTime);
+      
+                return AppointmentCard(
+                  patientName: appointmentData['patientName'],
+                  selectedDate: formattedDate,
+                  selectedTime: appointmentData['selectedTime'] ,
+                  paymentMethod: appointmentData['paymentMethod'] ?? 'N/A',
+                  appointmentType: appointmentData['appointmentType'] ?? 'N/A',
+                  onDelete: () {
+                    _showCancelConfirmationDialog(context, snapshot.data!.docs[index].id);
+                  },
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
@@ -71,15 +78,14 @@ class DoctorAppointmentsScreen extends StatelessWidget {
     return '$hour:$minute $period';
   }
 
-  // Function to delete appointment and show confirmation message
-  // Function to delete appointment and show confirmation message
+  
 void _showCancelConfirmationDialog(BuildContext context, String appointmentId) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
         title: const Text('Cancel Appointment'),
-        content: const Text('Are you sure you want to cancel this appointment?'),
+        content: const Text('Are you sure you want to cancel this appointment?',style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),),
         actions: <Widget>[
           TextButton(
             onPressed: () {
@@ -90,7 +96,7 @@ void _showCancelConfirmationDialog(BuildContext context, String appointmentId) {
           TextButton(
             onPressed: () {
               _deleteAppointment(context, appointmentId);
-              Navigator.of(context).pop(); // Dismiss the dialog
+              Navigator.of(context).pop(); 
             },
             child: const Text('Yes'),
           ),
