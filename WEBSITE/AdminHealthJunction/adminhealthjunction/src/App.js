@@ -72,9 +72,7 @@ import VerifiedDoctorUpdateForm from './components/verifiedDoctors/vdocupdate';
 import VerifiedHospitals from './components/hospitalsverification/hospitalverificationmain';
 import VerifiedHospitalUpdateForm from './components/hospitalsverification/hospitalverificationupdate';
 // PHC Hospitals
-import PHCMainScreen from './components/phchospitals/phcmain';
-import AddPHC from './components/phchospitals/insertphc';
-import UpdatePHCHosptalPage from './components/bloodbanks/PrivateBB/updateprivatebb';
+
 // Import Firebase auth module
 import { auth } from './firebase';
 
@@ -187,9 +185,7 @@ const App = () => {
         <Route path="/verifiedHospitalsmanagement" exact component={VerifiedHospitals}/>
         <Route path="/verifiedHospitalsupdate/:id" exact component={VerifiedHospitalUpdateForm}/>
         {/* PHC Hospitals */}
-        <Route path="/phchospitalsmanagement" exact component={PHCMainScreen}/>
-        <Route path="/insertphc" exact component={AddPHC}/>
-        <Route path="/updateHospitals/:id" exact component={UpdatePHCHosptalPage}/>
+     
       </Switch>
     </>
   );

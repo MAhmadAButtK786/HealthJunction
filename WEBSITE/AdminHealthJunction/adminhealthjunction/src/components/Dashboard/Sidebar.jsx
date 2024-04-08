@@ -203,7 +203,7 @@ const Sidebar = () => {
             </ul>
           </li>
           <li>
-            <Link to="#" className="flex items-center justify-between p-2 hover:bg-gray-700">
+            <Link to="/nutrifit" className="flex items-center justify-between p-2 hover:bg-gray-700">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faAppleAlt} className="mr-2" />
                 <span>NutriFit</span>

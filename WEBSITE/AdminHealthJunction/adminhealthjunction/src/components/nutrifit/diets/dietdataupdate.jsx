@@ -3,9 +3,9 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { useHistory, useParams } from 'react-router-dom';
 import { database, storage } from '../../../firebase';
-import { FaUtensils, FaInfo, FaRegClock, FaRegTimesCircle, FaTimesCircle, FaHeart, FaImage, FaHeartbeat } from 'react-icons/fa';
+// Import icons library here if not already imported
 
-function UpdateDietPage() {
+const DietUpdatePage = () => {
   const { id } = useParams();
   const history = useHistory();
   const [dietData, setDietData] = useState({});
@@ -33,7 +33,25 @@ function UpdateDietPage() {
   }, [id]);
 
   const handleInputChange = (e) => {
-    setDietData({ ...dietData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setDietData({ ...dietData, [name]: value });
+  };
+
+  const handleArrayInputChange = (e, index, arrayName) => {
+    const { value } = e.target;
+    const updatedArray = [...dietData[arrayName]];
+    updatedArray[index] = value;
+    setDietData({ ...dietData, [arrayName]: updatedArray });
+  };
+
+  const handleAddItem = (arrayName) => {
+    setDietData({ ...dietData, [arrayName]: [...dietData[arrayName], ''] });
+  };
+
+  const handleRemoveItem = (index, arrayName) => {
+    const updatedArray = [...dietData[arrayName]];
+    updatedArray.splice(index, 1);
+    setDietData({ ...dietData, [arrayName]: updatedArray });
   };
 
   const handleImageChange = (e) => {
@@ -71,129 +89,124 @@ function UpdateDietPage() {
         <form onSubmit={handleUpdate}>
           <div className="grid grid-cols-1 gap-y-4">
             <div className="col-span-1">
-              <label className="block mb-2 font-semibold">
-                <FaUtensils className="inline mr-2 mb-1" />
-                Diet Name:
-                <input
-                  type="text"
-                  name="dietName"
-                  value={dietData.dietName}
-                  onChange={handleInputChange}
-                  placeholder="Enter Diet Name"
-                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </label>
+              <label className="block mb-2 font-semibold">Name:</label>
+              <input
+                type="text"
+                name="dietName"
+                value={dietData.dietName || ''}
+                onChange={handleInputChange}
+                className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
             </div>
             <div className="col-span-1">
-              <label className="block mb-2 font-semibold">
-                <FaInfo className="inline mr-2 mb-1" />
-                Description:
-                <input
-                  type="text"
-                  name="description"
-                  value={dietData.description}
-                  onChange={handleInputChange}
-                  placeholder="Enter Description"
-                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </label>
+              <label className="block mb-2 font-semibold">Description:</label>
+              <textarea
+                rows="4"
+                name="description"
+                value={dietData.description || ''}
+                onChange={handleInputChange}
+                className="block w-full mt-1 border-gray-300 rounded-md form-textarea focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
             </div>
             <div className="col-span-1">
-              <label className="block mb-2 font-semibold">
-                <FaRegClock className="inline mr-2 mb-1" />
-                Recommended Duration:
-                <input
-                  type="text"
-                  name="recommendedDuration"
-                  value={dietData.recommendedDuration}
-                  onChange={handleInputChange}
-                  placeholder="Enter Recommended Duration"
-                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </label>
+              <label className="block mb-2 font-semibold">Advantages:</label>
+              {dietData.advantages && dietData.advantages.map((advantage, index) => (
+                <div key={index} className="flex items-center">
+                  <input
+                    type="text"
+                    value={advantage}
+                    onChange={(e) => handleArrayInputChange(e, index, 'advantages')}
+                    className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                  <button type="button" onClick={() => handleRemoveItem(index, 'advantages')}>
+                    {/* Icon for removing item */}
+                  </button>
+                </div>
+              ))}
+              <button type="button" onClick={() => handleAddItem('advantages')}>
+                {/* Icon for adding item */}
+              </button>
+            </div>
+            {/* Add similar sections for disadvantages, foodsToAvoid, and foodsToEat */}
+            {/* Disadvantages */}
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">Disadvantages:</label>
+              {dietData.disadvantages && dietData.disadvantages.map((disadvantage, index) => (
+                <div key={index} className="flex items-center">
+                  <input
+                    type="text"
+                    value={disadvantage}
+                    onChange={(e) => handleArrayInputChange(e, index, 'disadvantages')}
+                    className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                  <button type="button" onClick={() => handleRemoveItem(index, 'disadvantages')}>
+                    {/* Icon for removing item */}
+                  </button>
+                </div>
+              ))}
+              <button type="button" onClick={() => handleAddItem('disadvantages')}>
+                {/* Icon for adding item */}
+              </button>
+            </div>
+            {/* Foods to Avoid */}
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">Food to Avoid:</label>
+              {dietData.foodsToAvoid && dietData.foodsToAvoid.map((food, index) => (
+                <div key={index} className="flex items-center">
+                  <input
+                    type="text"
+                    value={food}
+                    onChange={(e) => handleArrayInputChange(e, index, 'foodsToAvoid')}
+                    className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                  <button type="button" onClick={() => handleRemoveItem(index, 'foodsToAvoid')}>
+                    {/* Icon for removing item */}
+                  </button>
+                </div>
+              ))}
+              <button type="button" onClick={() => handleAddItem('foodsToAvoid')}>
+                {/* Icon for adding item */}
+              </button>
+            </div>
+            {/* Foods to Eat */}
+            <div className="col-span-1">
+              <label className="block mb-2 font-semibold">Food to Eat:</label>
+              {dietData.foodsToEat && dietData.foodsToEat.map((food, index) => (
+                <div key={index} className="flex items-center">
+                  <input
+                    type="text"
+                    value={food}
+                    onChange={(e) => handleArrayInputChange(e, index, 'foodsToEat')}
+                    className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+                  <button type="button" onClick={() => handleRemoveItem(index, 'foodsToEat')}>
+                    {/* Icon for removing item */}
+                  </button>
+                </div>
+              ))}
+              <button type="button" onClick={() => handleAddItem('foodsToEat')}>
+                {/* Icon for adding item */}
+              </button>
             </div>
             <div className="col-span-1">
-              <label className="block mb-2 font-semibold">
-                <FaRegTimesCircle className="inline mr-2 mb-1" />
-                Meal Frequency:
-                <input
-                  type="text"
-                  name="mealFrequency"
-                  value={dietData.mealFrequency}
-                  onChange={handleInputChange}
-                  placeholder="Enter Meal Frequency"
-                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </label>
+              <label className="block mb-2 font-semibold">Additional Information:</label>
+              <input
+                type="text"
+                name="additionalInfo"
+                value={dietData.additionalInfo || ''}
+                onChange={handleInputChange}
+                className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
             </div>
             <div className="col-span-1">
-              <label className="block mb-2 font-semibold">
-                <FaHeart className="inline mr-2 mb-1" />
-                Foods to Eat:
-                <input
-                  type="text"
-                  name="foodsToEat"
-                  value={dietData.foodsToEat}
-                  onChange={handleInputChange}
-                  placeholder="Enter Foods to Eat"
-                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </label>
-            </div>
-            <div className="col-span-1">
-              <label className="block mb-2 font-semibold">
-                <FaTimesCircle className="inline mr-2 mb-1" />
-                Foods to Avoid:
-                <input
-                  type="text"
-                  name="foodsToAvoid"
-                  value={dietData.foodsToAvoid}
-                  onChange={handleInputChange}
-                  placeholder="Enter Foods to Avoid"
-                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </label>
-            </div>
-            <div className="col-span-1">
-              <label className="block mb-2 font-semibold">
-                <FaHeart className="inline mr-2 mb-1" />
-                Advantages:
-                <input
-                  type="text"
-                  name="advantages"
-                  value={dietData.advantages}
-                  onChange={handleInputChange}
-                  placeholder="Enter Advantages"
-                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </label>
-            </div>
-            <div className="col-span-1">
-              <label className="block mb-2 font-semibold">
-                <FaHeartbeat className="inline mr-2 mb-1" />
-                Disadvantages:
-                <input
-                  type="text"
-                  name="disadvantages"
-                  value={dietData.disadvantages}
-                  onChange={handleInputChange}
-                  placeholder="Enter Disadvantages"
-                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </label>
-            </div>
-            <div className="col-span-1">
-              <label className="block mb-2 font-semibold">
-                <FaImage className="inline mr-2 mb-1" />
-                Image:
-                <input
-                  type="file"
-                  name="imageFile"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-              </label>
+              <label className="block mb-2 font-semibold">Image:</label>
+              <input
+                type="file"
+                name="imageFile"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="block w-full mt-1 border-gray-300 rounded-md form-input focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
               {dietData.imageUrl && (
                 <img src={dietData.imageUrl} alt="Preview" className="block mt-2 rounded-md" style={{ maxWidth: '200px' }} />
               )}
@@ -209,7 +222,6 @@ function UpdateDietPage() {
       </div>
     </div>
   );
-}
+};
 
-export default UpdateDietPage;
-
+export default DietUpdatePage;

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { collection, addDoc } from 'firebase/firestore';
-import { storage, database } from '../../../firebase'; 
+import { storage, database } from '../../../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { FiUploadCloud, FiPlusCircle, FiTrash2 } from 'react-icons/fi';
 
 const DietInsertPage = () => {
   const [dietName, setDietName] = useState('');
   const [description, setDescription] = useState('');
-  const [advantages, setAdvantages] = useState('');
-  const [disadvantages, setDisadvantages] = useState('');
-  const [recommendedDuration, setRecommendedDuration] = useState('');
-  const [mealFrequency, setMealFrequency] = useState('');
-  const [foodsToEat, setFoodsToEat] = useState('');
-  const [foodsToAvoid, setFoodsToAvoid] = useState('');
+  const [advantages, setAdvantages] = useState(['']);
+  const [disadvantages, setDisadvantages] = useState(['']);
+  const [foodsToEat, setFoodsToEat] = useState(['']);
+  const [foodsToAvoid, setFoodsToAvoid] = useState(['']);
+  const [additionalInfo, setAdditionalInfo] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const history = useHistory();
 
@@ -29,22 +29,13 @@ const DietInsertPage = () => {
             description,
             advantages,
             disadvantages,
-            recommendedDuration,
-            mealFrequency,
             foodsToEat,
             foodsToAvoid,
+            additionalInfo,
             imageUrl: downloadURL,
           });
           alert('Data Saved');
-          setDietName('');
-          setDescription('');
-          setAdvantages('');
-          setDisadvantages('');
-          setRecommendedDuration('');
-          setMealFrequency('');
-          setFoodsToEat('');
-          setFoodsToAvoid('');
-          setImageFile(null);
+          clearForm();
         });
       }
     } catch (error) {
@@ -52,89 +43,146 @@ const DietInsertPage = () => {
     }
   };
 
+  const clearForm = () => {
+    setDietName('');
+    setDescription('');
+    setAdvantages(['']);
+    setDisadvantages(['']);
+    setFoodsToEat(['']);
+    setFoodsToAvoid(['']);
+    setAdditionalInfo('');
+    setImageFile(null);
+  };
+
+  const handleAddItem = (setState) => {
+    setState((prevState) => [...prevState, '']);
+  };
+
+  const handleRemoveItem = (index, setState) => {
+    setState((prevState) => {
+      const newState = [...prevState];
+      newState.splice(index, 1);
+      return newState;
+    });
+  };
+
+  const handleChangeItem = (index, value, setState) => {
+    setState((prevState) => {
+      const newState = [...prevState];
+      newState[index] = value;
+      return newState;
+    });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <form className="flex flex-col items-center justify-center w-11/12 gap-4 p-6 bg-white rounded-lg shadow-md md:w-4/12">
-        <h2 className="text-2xl font-semibold text-gray-700">Insert Diet Plan</h2>
-        <input
-          type="text"
-          placeholder="Diet Name"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={dietName}
-          onChange={(e) => setDietName(e.target.value)}
-        />
-        <textarea
-          placeholder="Description"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-        <textarea
-          placeholder="Advantages"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={advantages}
-          onChange={(e) => setAdvantages(e.target.value)}
-        ></textarea>
-        <textarea
-          placeholder="Disadvantages"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={disadvantages}
-          onChange={(e) => setDisadvantages(e.target.value)}
-        ></textarea>
-        <input
-          type="text"
-          placeholder="Recommended Duration"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={recommendedDuration}
-          onChange={(e) => setRecommendedDuration(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Meal Frequency"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={mealFrequency}
-          onChange={(e) => setMealFrequency(e.target.value)}
-        />
-        <textarea
-          placeholder="Foods to Eat"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={foodsToEat}
-          onChange={(e) => setFoodsToEat(e.target.value)}
-        ></textarea>
-        <textarea
-          placeholder="Foods to Avoid"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          value={foodsToAvoid}
-          onChange={(e) => setFoodsToAvoid(e.target.value)}
-        ></textarea>
-        <input
-          required
-          style={{ display: 'none' }}
-          type="file"
-          id="file"
-          onChange={(e) => {
-            const file = e.target.files[0];
-            setImageFile(file);
-          }}
-        />
-        <label htmlFor="file" className="flex items-center gap-2 text-blue-500 cursor-pointer">
-          <i className="fa fa-image" aria-hidden="true"></i>
-          <span>{imageFile ? imageFile.name : 'Add an Image'}</span>
-        </label>
-        <button
-          type="submit"
-          className="w-full p-2 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          onClick={handleSubmit}
-        >
-          Insert
-        </button>
+      <form className="w-full max-w-lg p-6 bg-white rounded-lg shadow-md">
+        <h2 className="mb-6 text-3xl font-semibold text-gray-700">Insert Diet Plan</h2>
+        <div className="grid grid-cols-1 gap-6">
+          <div>
+            <label htmlFor="dietName" className="block mb-1 text-sm font-medium text-gray-700">
+              Diet Name
+            </label>
+            <input
+              id="dietName"
+              type="text"
+              placeholder="Enter Diet Name"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={dietName}
+              onChange={(e) => setDietName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="description" className="block mb-1 text-sm font-medium text-gray-700">
+              Description
+            </label>
+            <textarea
+              id="description"
+              placeholder="Enter Description"
+              className="w-full h-40 px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          {[
+            { title: 'Advantages', state: advantages, setState: setAdvantages },
+            { title: 'Disadvantages', state: disadvantages, setState: setDisadvantages },
+            { title: 'Foods to Eat', state: foodsToEat, setState: setFoodsToEat },
+            { title: 'Foods to Avoid', state: foodsToAvoid, setState: setFoodsToAvoid },
+          ].map((section, sectionIndex) => (
+            <div key={sectionIndex}>
+              <label htmlFor={section.title} className="block mb-1 text-sm font-medium text-gray-700">
+                {section.title}
+              </label>
+              {section.state.map((item, index) => (
+                <div key={index} className="flex items-center mb-2">
+                  <input
+                    type="text"
+                    placeholder={`Enter ${section.title}`}
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={item}
+                    onChange={(e) => handleChangeItem(index, e.target.value, section.setState)}
+                  />
+                  {index === section.state.length - 1 && (
+                    <FiPlusCircle
+                      className="w-6 h-6 ml-2 text-blue-500 cursor-pointer"
+                      onClick={() => handleAddItem(section.setState)}
+                    />
+                  )}
+                  {index !== section.state.length - 1 && (
+                    <FiTrash2
+                      className="w-6 h-6 ml-2 text-red-500 cursor-pointer"
+                      onClick={() => handleRemoveItem(index, section.setState)}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+          <div>
+            <label htmlFor="additionalInfo" className="block mb-1 text-sm font-medium text-gray-700">
+              Information Link
+            </label>
+            <input
+              id="additionalInfo"
+              type="text"
+              placeholder="Enter Information Link"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={additionalInfo}
+              onChange={(e) => setAdditionalInfo(e.target.value)}
+            />
+          </div>
+          <div className="flex items-center space-x-4">
+            <label htmlFor="file" className="block text-sm font-medium text-gray-700 cursor-pointer">
+              <FiUploadCloud className="w-6 h-6 mr-2 text-blue-500" />
+              Upload Image
+            </label>
+            <input
+              required
+              id="file"
+              type="file"
+              onChange={(e) => setImageFile(e.target.files[0])}
+              style={{ display: 'none' }}
+            />
+            <span>{imageFile ? imageFile.name : 'No file chosen'}</span>
+          </div>
+          <div className="flex items-center space-x-4">
+            <button
+              type="submit"
+              className="w-full p-2 text-white bg-blue-500 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onClick={handleSubmit}
+            >
+              Insert
+            </button>
+            <button
+              className="w-full p-2 text-blue-500 border border-blue-500 rounded-full hover:text-blue-600 hover:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onClick={() => history.push('/nutrifit')}
+            >
+              Back
+            </button>
+          </div>
+        </div>
       </form>
-      <button
-        className="mt-4 text-blue-500 underline hover:text-blue-600"
-        onClick={() => history.push('/nutrifit')}
-      >
-        Back
-      </button>
     </div>
   );
 };

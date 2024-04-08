@@ -10,7 +10,6 @@ import {
 } from "firebase/firestore";
 import { database } from "../../../firebase";
 import { FaEdit, FaTrash, FaAngleDown, FaAngleUp } from "react-icons/fa";
-import "./DietDetailsPage.css";
 
 const DietDetailsPage = () => {
   const [diets, setDiets] = useState([]);
@@ -46,7 +45,9 @@ const DietDetailsPage = () => {
       alert("Failed to delete diet plan");
     }
   };
-
+  const handleAdditionalInfoClick = (url) => {
+    window.open(url, "_blank");
+  };
   const handleUpdate = (dietId) => {
     history.push(`/updatedietpage/${dietId}`);
   };
@@ -116,74 +117,122 @@ const DietDetailsPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="header">Diet Plans</h1>
-      <div className="search-bar">
+    <div className="container px-4 py-8 mx-auto">
+      <h1 className="mb-4 text-3xl font-bold text-purple-700">Diet Plans</h1>
+      <div className="flex flex-col items-stretch mb-4 space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4">
         <input
           type="text"
           placeholder="Search Diet"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
+          className="flex-grow px-4 py-2 mb-2 border border-gray-300 rounded-md sm:mb-0"
         />
-        <button onClick={handleSearch} className="search-button">
+        <button
+          onClick={handleSearch}
+          className="px-4 py-2 text-white bg-blue-500 rounded-md"
+        >
           Search
         </button>
-        <button onClick={resetSearch} className="reset-button">
+        <button
+          onClick={resetSearch}
+          className="px-4 py-2 text-gray-700 bg-gray-300 rounded-md"
+        >
           Reset
         </button>
       </div>
-      <button onClick={() => history.push("/diet")} className="insert-button">
+      <button
+        onClick={() => history.push("/diet")}
+        className="px-4 py-2 mb-4 text-white bg-green-500 rounded-md"
+      >
         Insert Diet
       </button>
-      <div className="diet-grid">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {diets.map((diet) => (
-          <div key={diet.id} className="diet-card">
+          <div key={diet.id} className="p-4 bg-gray-100 rounded-lg shadow-md">
             <div
-              className={`diet-header bg-${getRandomColor()}`}
+              className={`flex justify-between items-center bg-${getRandomColor()} text-white px-4 py-2 rounded-t-md cursor-pointer`}
               onClick={() => toggleExpand(diet.id)}
             >
-              <div className="diet-title">
-                <h3 className="diet-name">{diet.dietName}</h3>
-                <p className="expand-icon">
-                  {expandedDietIds.includes(diet.id) ? (
-                    <FaAngleUp />
-                  ) : (
-                    <FaAngleDown />
-                  )}
-                </p>
-              </div>
-              {expandedDietIds.includes(diet.id) && (
-                <div className="diet-details">
-                  <p>Description: {diet.description}</p>
-                  <p>Advantages: {diet.advantages}</p>
-                  <p>Disadvantages: {diet.disadvantages}</p>
-                  <p>Recommended Duration: {diet.recommendedDuration}</p>
-                  <p>Meal Frequency: {diet.mealFrequency}</p>
-                  <p>Foods to Eat: {diet.foodsToEat}</p>
-                  <p>Foods to Avoid: {diet.foodsToAvoid}</p>
-                  {diet.imageUrl && (
-                    <img
-                      src={diet.imageUrl}
-                      alt={diet.dietName}
-                      className="diet-image"
-                    />
-                  )}
-                </div>
-              )}
+              <h3 className="text-xl font-bold text-purple-700">
+                {diet.dietName}
+              </h3>
+              <p className="text-xl">
+                {expandedDietIds.includes(diet.id) ? (
+                  <FaAngleUp color="purple" />
+                ) : (
+                  <FaAngleDown color="purple" />
+                )}
+              </p>
             </div>
-            <div className="diet-actions">
+            {expandedDietIds.includes(diet.id) && (
+              <div className="mt-4">
+                <p>
+                  <strong>Description:</strong> {diet.description}
+                </p>
+                <p>
+                  <strong>Advantages:</strong>
+                </p>
+                <ul>
+                  {diet.advantages.map((advantage, index) => (
+                    <li key={index}>{advantage}</li>
+                  ))}
+                </ul>
+                <p>
+                  <strong>Disadvantages:</strong>
+                </p>
+                <ul>
+                  {diet.disadvantages.map((disadvantage, index) => (
+                    <li key={index}>{disadvantage}</li>
+                  ))}
+                </ul>
+                <br />
+                <button
+                    className="px-3 py-1 text-purple-700 underline transition duration-300 bg-purple-100 rounded-md shadow-md hover:bg-purple-200"
+                  onClick={() => handleAdditionalInfoClick(diet.additionalInfo)}
+                >
+                  Additional Information
+                </button>
+                <br />
+                <br />
+                <p>
+                  <strong>Foods to Eat:</strong>
+                </p>
+                <ul>
+                  {diet.foodsToEat.map((food, index) => (
+                    <li key={index}>{food}</li>
+                  ))}
+                </ul>
+                <p>
+                  <strong>Foods to Avoid:</strong>
+                </p>
+                <ul>
+                  {diet.foodsToAvoid.map((food, index) => (
+                    <li key={index}>{food}</li>
+                  ))}
+                </ul>
+                {diet.imageUrl && (
+                  <img
+                    src={diet.imageUrl}
+                    alt={diet.dietName}
+                    className="w-full h-auto mt-4 rounded-md"
+                  />
+                )}
+              </div>
+            )}
+            <div className="flex justify-between mt-4">
               <button
                 onClick={() => handleUpdate(diet.id)}
-                className="edit-button"
+                className="flex items-center px-4 py-2 text-white bg-blue-500 rounded-md"
               >
-                <FaEdit />
+                <FaEdit className="mr-2" />
+                <span>Edit</span>
               </button>
               <button
                 onClick={() => handleDelete(diet.id)}
-                className="delete-button"
+                className="flex items-center px-4 py-2 text-white bg-red-500 rounded-md"
               >
-                <FaTrash />
+                <FaTrash className="mr-2" />
+                <span>Delete</span>
               </button>
             </div>
           </div>
