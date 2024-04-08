@@ -71,14 +71,7 @@ class _BookingDateTimeScreenState extends State<BookingDateTimeScreen> {
         return;
 
       }
-        setState(() {
-    _nameController.clear();
-    _ageController.clear();
-    selectedDate = DateTime.now();
-    selectedTime = TimeOfDay.now();
-    // _selectedAppointmentType = '';
-    // _selectedPaymentMethod = '';
-  });
+  
 
  
 

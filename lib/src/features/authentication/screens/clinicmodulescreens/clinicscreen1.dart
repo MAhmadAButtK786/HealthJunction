@@ -169,9 +169,12 @@ class DoctorCard extends StatelessWidget {
               children: [
                 const Icon(Icons.local_hospital_outlined, color: Colors.white),
                 const SizedBox(width: 5), // Add some spacing
-                Text(
-                  specialty,
-                  style: const TextStyle(color: Colors.white, fontSize: 16.0),
+                Expanded(
+                  child: Text(
+                    specialty,
+                    style: const TextStyle(color: Colors.white, fontSize: 16.0),
+                    overflow: TextOverflow.ellipsis, // Add ellipsis for long texts
+                  ),
                 ),
               ],
             ),
@@ -197,3 +200,4 @@ class DoctorCard extends StatelessWidget {
     );
   }
 }
+
