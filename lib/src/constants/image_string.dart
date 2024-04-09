@@ -117,3 +117,6 @@ const String docback ="assets/images/docbackgrounf.jpg";
 const String wb66 ="assets/images/66.jpg";
 const String backver ="assets/images/backveri.jpg";
 const String bookingpic ="assets/images/bookingpic.PNG";
+const String back3 ="assets/images/back3.jpg";
+const String back6 ="assets/images/back6.jpg";
+const String wb56 ="assets/images/56.jpg";
