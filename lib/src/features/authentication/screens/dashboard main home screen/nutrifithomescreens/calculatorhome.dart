@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/bmi.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class CalculatorMainScreen extends StatelessWidget {
@@ -10,7 +13,7 @@ class CalculatorMainScreen extends StatelessWidget {
   CalculatorMainScreen({Key? key}) : super(key: key);
 
   final List<CalCardData> calCardData = [
-    CalCardData(title: bmitxt, image: bmi),
+    CalCardData(title: bmitxt, image: bmi, ),
     CalCardData(title: bmrtxt, image: bmr),
     CalCardData(title: dbtcal, image: diabetes),
     CalCardData(title: coles, image: cholestrolcal),
@@ -80,7 +83,7 @@ class CalCard extends StatelessWidget {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: InkWell(
         onTap: () {
-          // Navigate or perform action
+         Get.to(() => BMICalculator() );
         },
         child: Padding(
           padding: const EdgeInsets.all(16.0),

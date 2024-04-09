@@ -45,9 +45,11 @@ const DietDetailsPage = () => {
       alert("Failed to delete diet plan");
     }
   };
+
   const handleAdditionalInfoClick = (url) => {
     window.open(url, "_blank");
   };
+
   const handleUpdate = (dietId) => {
     history.push(`/updatedietpage/${dietId}`);
   };
@@ -107,10 +109,8 @@ const DietDetailsPage = () => {
   const toggleExpand = (dietId) => {
     setExpandedDietIds((prevExpandedDietIds) => {
       if (prevExpandedDietIds.includes(dietId)) {
-        // If the clicked diet is already expanded, remove it from the array
         return prevExpandedDietIds.filter((id) => id !== dietId);
       } else {
-        // Otherwise, add the clicked diet to the array
         return [...prevExpandedDietIds, dietId];
       }
     });
@@ -149,6 +149,13 @@ const DietDetailsPage = () => {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {diets.map((diet) => (
           <div key={diet.id} className="p-4 bg-gray-100 rounded-lg shadow-md">
+            {diet.titleImage && (
+              <img
+                src={diet.titleImage}
+                alt={diet.dietName}
+                className="w-full h-auto rounded-md"
+              />
+            )}
             <div
               className={`flex justify-between items-center bg-${getRandomColor()} text-white px-4 py-2 rounded-t-md cursor-pointer`}
               onClick={() => toggleExpand(diet.id)}
@@ -187,7 +194,7 @@ const DietDetailsPage = () => {
                 </ul>
                 <br />
                 <button
-                    className="px-3 py-1 text-purple-700 underline transition duration-300 bg-purple-100 rounded-md shadow-md hover:bg-purple-200"
+                  className="px-3 py-1 text-purple-700 underline transition duration-300 bg-purple-100 rounded-md shadow-md hover:bg-purple-200"
                   onClick={() => handleAdditionalInfoClick(diet.additionalInfo)}
                 >
                   Additional Information

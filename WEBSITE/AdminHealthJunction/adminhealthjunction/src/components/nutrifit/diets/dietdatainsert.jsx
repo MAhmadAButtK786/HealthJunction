@@ -14,30 +14,41 @@ const DietInsertPage = () => {
   const [foodsToAvoid, setFoodsToAvoid] = useState(['']);
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [imageFile, setImageFile] = useState(null);
+  const [titleImageFile, setTitleImageFile] = useState(null);
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      if (imageFile) {
-        const storageRef = ref(storage, `dietImages/${imageFile.name}`);
-        await uploadBytesResumable(storageRef, imageFile).then(async () => {
-          const downloadURL = await getDownloadURL(storageRef);
-          await addDoc(collection(database, 'diets'), {
-            dietName,
-            description,
-            advantages,
-            disadvantages,
-            foodsToEat,
-            foodsToAvoid,
-            additionalInfo,
-            imageUrl: downloadURL,
-          });
-          alert('Data Saved');
-          clearForm();
-        });
+      let titleImageUrl = '';
+      if (titleImageFile) {
+        const titleImageRef = ref(storage, `titleImages/${titleImageFile.name}`);
+        await uploadBytesResumable(titleImageRef, titleImageFile);
+        titleImageUrl = await getDownloadURL(titleImageRef);
       }
+
+      let imageUrl = '';
+      if (imageFile) {
+        const imageRef = ref(storage, `dietImages/${imageFile.name}`);
+        await uploadBytesResumable(imageRef, imageFile);
+        imageUrl = await getDownloadURL(imageRef);
+      }
+
+      await addDoc(collection(database, 'diets'), {
+        dietName,
+        description,
+        advantages,
+        disadvantages,
+        foodsToEat,
+        foodsToAvoid,
+        additionalInfo,
+        imageUrl,
+        titleImageUrl,
+      });
+
+      alert('Data Saved');
+      clearForm();
     } catch (error) {
       console.error('Error adding document: ', error);
     }
@@ -52,6 +63,7 @@ const DietInsertPage = () => {
     setFoodsToAvoid(['']);
     setAdditionalInfo('');
     setImageFile(null);
+    setTitleImageFile(null);
   };
 
   const handleAddItem = (setState) => {
@@ -151,6 +163,20 @@ const DietInsertPage = () => {
               value={additionalInfo}
               onChange={(e) => setAdditionalInfo(e.target.value)}
             />
+          </div>
+          <div className="flex items-center space-x-4">
+            <label htmlFor="titleFile" className="block text-sm font-medium text-gray-700 cursor-pointer">
+              <FiUploadCloud className="w-6 h-6 mr-2 text-blue-500" />
+              Upload Title Image
+            </label>
+            <input
+              required
+              id="titleFile"
+              type="file"
+              onChange={(e) => setTitleImageFile(e.target.files[0])}
+              style={{ display: 'none' }}
+            />
+            <span>{titleImageFile ? titleImageFile.name : 'No file chosen'}</span>
           </div>
           <div className="flex items-center space-x-4">
             <label htmlFor="file" className="block text-sm font-medium text-gray-700 cursor-pointer">
