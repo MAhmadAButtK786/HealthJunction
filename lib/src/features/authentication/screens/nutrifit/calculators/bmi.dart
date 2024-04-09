@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
-
 class BMICalculator extends StatefulWidget {
-  BMICalculator({super.key});
-
+  BMICalculator({Key? key}) : super(key: key);
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   State<BMICalculator> createState() => _BMICalculatorState();
 }
@@ -25,14 +21,27 @@ class _BMICalculatorState extends State<BMICalculator> {
   var weightUnit = 'kg';
   var heightUnit = 'm';
 
+  bool _showBMIInfo = false;
+
+  void _toggleBMIInfo() {
+    setState(() {
+      _showBMIInfo = !_showBMIInfo;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: widget.scaffoldKey,
-      appBar: Navbar(
-        color: Colors.black,
-        textNav: "BMI Calculator",
-        onMenuPressed: _handleMenuPressed,
+      appBar: AppBar(
+       backgroundColor: const Color.fromARGB(150, 0, 0, 0),
+       
+        title: const Text("BMI Calculator",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+          actions: [
+          IconButton(
+            icon: const Icon(Icons.info, color: Colors.white,),
+            onPressed: _toggleBMIInfo,
+          ),]
       ),
       drawer: ReusableDrawerSideBar2(
         color: Colors.black,
@@ -168,14 +177,17 @@ class _BMICalculatorState extends State<BMICalculator> {
                       if (weight != 0 && height != 0) {
                         var bmi = calculateBMI(weight, height, weightUnit, heightUnit);
                         var msg = "";
-
-                        if (bmi > 25) {
+                        if(bmi>=30){
+                          msg="You are facing obesity!!";
+                          bgColor = Colors.red.shade900;
+                        }
+                        if (bmi >= 25 && bmi<30) {
                           msg = "You're Overweight!!";
                           bgColor = Colors.red;
-                        } else if (bmi < 18) {
+                        } else if (bmi < 18.5) {
                           msg = "You're UnderWeight!!";
                           bgColor = Colors.orange;
-                        } else {
+                        } else if(bmi<=18.5 && bmi <25) {
                           msg = "You're Healthy!!";
                           bgColor = Colors.green;
                         }
@@ -195,6 +207,40 @@ class _BMICalculatorState extends State<BMICalculator> {
                     child: const Text('Calculate'),
                   ),
                   const SizedBox(height: 11),
+                if (_showBMIInfo)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'BMI Categories:',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
+                        const Text('Underweight: BMI < 18.5', style: TextStyle(color: Colors.white)),
+                        const Text('Normal weight: 18.5 <= BMI < 25', style: TextStyle(color: Colors.white)),
+                        const Text('Overweight: 25 <= BMI < 30', style: TextStyle(color: Colors.white)),
+                        const Text('Obesity: BMI >= 30', style: TextStyle(color: Colors.white)),
+                        const SizedBox(height: 8.0),
+                        const Text(
+                          'Note: BMI is calculated using the following formula:',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          'BMI = (Weight in ${weightUnit.toUpperCase()} / (Height in ${heightUnit.toUpperCase()} * Height in ${heightUnit.toUpperCase()}))',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          'For example, if your weight is in ${weightUnit.toUpperCase()} and height is in ${heightUnit.toUpperCase()}, '
+                          'the formula will be applied accordingly.',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
                   Text(
                     result,
                     style: const TextStyle(fontSize: 19, color: Colors.white),

@@ -9,7 +9,6 @@ import 'package:healthjunction/src/features/authentication/screens/forget_passwo
 import 'package:healthjunction/src/features/authentication/screens/loginscreen/login.dart';
 import 'package:healthjunction/src/features/authentication/screens/signupscreen/signup.dart';
 import 'package:healthjunction/src/features/authentication/screens/welcome/welcome.dart';
-import 'package:healthjunction/src/utils/theme/theme.dart';
 import 'package:get/get.dart';
 
 void main() async {
@@ -44,9 +43,7 @@ class HealthJunction extends StatelessWidget {
       ],
       title: 'Health Junction',
       debugShowCheckedModeBanner: false,
-      theme: TAppTheme.lightTheme,
-      darkTheme: TAppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+    
       home:  const Welcome(),
     );
   }

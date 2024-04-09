@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:healthjunction/src/constants/image_string.dart';
 import 'package:healthjunction/src/constants/text_string.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/babybloomcal.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/bmi.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/bmr.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/bp.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/calories.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/cholesterolcak.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/diabates.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/exercisecal.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/herat.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/pragnanc.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/sleep.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/water.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/weightgain.dart';
+import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/weightloss.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class CalculatorMainScreen extends StatelessWidget {
@@ -13,20 +25,21 @@ class CalculatorMainScreen extends StatelessWidget {
   CalculatorMainScreen({Key? key}) : super(key: key);
 
   final List<CalCardData> calCardData = [
-    CalCardData(title: bmitxt, image: bmi, ),
-    CalCardData(title: bmrtxt, image: bmr),
-    CalCardData(title: dbtcal, image: diabetes),
-    CalCardData(title: coles, image: cholestrolcal),
-    CalCardData(title: kcal, image: calories),
-    CalCardData(title: sleepcalcu, image: sleepcal),
-    CalCardData(title: hrtc, image: thr),
-    CalCardData(title: bpg, image: bpcal),
-    CalCardData(title: wateri, image: waterintake),
-    CalCardData(title: wd, image: weightlosscal),
-    CalCardData(title: bt, image: tinycal),
-    CalCardData(title: wi, image: weghtgain),
-    CalCardData(title: pd, image: pddc),
-    CalCardData(title: eb, image: exercisecalburn),
+    CalCardData(title: bmitxt, image: bmi, screen: BMICalculator()),
+    CalCardData(title: bmrtxt, image: bmr, screen: BMRCalculator()),
+    CalCardData(title: dbtcal, image: diabetes, screen: DiabetesCalculator()),
+    CalCardData(title: coles, image: cholestrolcal, screen: CholesterolCalculator()),
+    CalCardData(title: kcal, image: calories, screen: CaloriesCalculator()),
+    CalCardData(title: sleepcalcu, image: sleepcal, screen: SleepCalculator()),
+    CalCardData(title: hrtc, image: thr, screen: HeartRateCalculator()),
+    CalCardData(title: bpg, image: bpcal, screen: BloodPressureCalculator()),
+    CalCardData(title: wateri, image: waterintake, screen: WaterIntakeCalculator()),
+    CalCardData(title: wd, image: weightlosscal, screen: WeightLossCalculator()),
+    CalCardData(title: bt, image: tinycal, screen: BabyBloomCal()),
+    CalCardData(title: wi, image: weghtgain, screen: WeightGainCalculator()),
+    CalCardData(title: pd, image: pddc, screen: PregnancyDueDateCalculator()),
+    CalCardData(title: eb, image: exercisecalburn, screen: ExerciseCalorieBurnCalculator()),
+    // Add other calculators here
   ];
 
   @override
@@ -64,14 +77,15 @@ class CalculatorMainScreen extends StatelessWidget {
 class CalCardData {
   final String title;
   final String image;
+  final Widget screen;
 
-  CalCardData({required this.title, required this.image});
+  CalCardData({required this.title, required this.image, required this.screen});
 }
 
 class CalCard extends StatelessWidget {
   final CalCardData data;
 
-  const CalCard({super.key, required this.data});
+  const CalCard({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +97,7 @@ class CalCard extends StatelessWidget {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: InkWell(
         onTap: () {
-         Get.to(() => BMICalculator() );
+          Get.to( ()=> data.screen);
         },
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -105,7 +119,6 @@ class CalCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              
             ],
           ),
         ),
@@ -113,6 +126,3 @@ class CalCard extends StatelessWidget {
     );
   }
 }
-
-
-
