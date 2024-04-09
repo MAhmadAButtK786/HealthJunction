@@ -8,7 +8,6 @@ import 'package:healthjunction/src/features/authentication/screens/nutrifit/calc
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/bmr.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/bp.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/calories.dart';
-import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/cholesterolcak.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/diabates.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/exercisecal.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/herat.dart';
@@ -28,7 +27,7 @@ class CalculatorMainScreen extends StatelessWidget {
     CalCardData(title: bmitxt, image: bmi, screen: BMICalculator()),
     CalCardData(title: bmrtxt, image: bmr, screen: BMRCalculator()),
     CalCardData(title: dbtcal, image: diabetes, screen: DiabetesCalculator()),
-    CalCardData(title: coles, image: cholestrolcal, screen: CholesterolCalculator()),
+  
     CalCardData(title: kcal, image: calories, screen: CaloriesCalculator()),
     CalCardData(title: sleepcalcu, image: sleepcal, screen: SleepCalculator()),
     CalCardData(title: hrtc, image: thr, screen: HeartRateCalculator()),
@@ -38,7 +37,7 @@ class CalculatorMainScreen extends StatelessWidget {
     CalCardData(title: bt, image: tinycal, screen: BabyBloomCal()),
     CalCardData(title: wi, image: weghtgain, screen: WeightGainCalculator()),
     CalCardData(title: pd, image: pddc, screen: PregnancyDueDateCalculator()),
-    CalCardData(title: eb, image: exercisecalburn, screen: ExerciseCalorieBurnCalculator()),
+    CalCardData(title: eb, image: exercisecalburn, screen: ExerciseCaloriesBurn()),
     // Add other calculators here
   ];
 

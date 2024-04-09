@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
 class BMICalculator extends StatefulWidget {
   BMICalculator({Key? key}) : super(key: key);
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -43,10 +42,7 @@ class _BMICalculatorState extends State<BMICalculator> {
             onPressed: _toggleBMIInfo,
           ),]
       ),
-      drawer: ReusableDrawerSideBar2(
-        color: Colors.black,
-        headerText: "BMI Calculator",
-      ),
+     
       body: Container(
         color: bgColor,
         child: Center(
@@ -243,7 +239,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                     ),
                   Text(
                     result,
-                    style: const TextStyle(fontSize: 19, color: Colors.white),
+                    style: const TextStyle(fontSize: 19, color: Colors.white, fontWeight: FontWeight.bold),
                   )
                 ],
               ),
