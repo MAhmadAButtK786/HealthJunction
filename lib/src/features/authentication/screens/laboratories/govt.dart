@@ -4,8 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthjunction/src/constants/colors.dart';
-import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
-import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Govt extends StatefulWidget {
@@ -36,10 +34,6 @@ class _GovtState extends State<Govt> {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        // drawer: ReusableDrawerSideBar(
-        //   color: clab,
-        //   headerText: "Government Based Labs",
-        // ),
         appBar: AppBar(
           title: Text("Registered Labs in Punjab"),
           actions: [
@@ -140,7 +134,42 @@ class _GovtState extends State<Govt> {
                                   launch(
                                       "https://www.google.com/maps/search/?api=1&query=${data['Location']}");
                                 },
-                              )
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  IconButton(
+                                    icon: Icon(FontAwesomeIcons.whatsapp,
+                                        color: Colors.white, size: 30),
+                                    onPressed: () {
+                                      launch("https://wa.me/${data['Phone Number']}");
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.call,
+                                        color: Colors.white, size: 30),
+                                    onPressed: () {
+                                      launch("tel://${data['Phone Number']}");
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.message,
+                                        color: Colors.white, size: 30),
+                                    onPressed: () {
+                                      launch("sms:${data['Phone Number']}");
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.map,
+                                        color: Colors.white, size: 30),
+                                    onPressed: () {
+                                      launch(
+                                          "https://www.google.com/maps/search/?api=1&query=${data['Location']}");
+                                    },
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         );
