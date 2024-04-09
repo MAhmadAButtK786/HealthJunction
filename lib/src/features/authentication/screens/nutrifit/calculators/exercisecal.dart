@@ -49,6 +49,7 @@ class _ExerciseCaloriesBurnState extends State<ExerciseCaloriesBurn> {
   "Frisbee": 5.0, // 5 calories per minute
   "Racquetball": 9.0, // 9 calories per minute
   "Bowling": 3.0, // 3 calories per minute
+  
 };
 
 
@@ -88,7 +89,7 @@ final List<String> exercises = [
  
 ];
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: widget.scaffoldKey,
@@ -104,77 +105,78 @@ final List<String> exercises = [
         child: Center(
           child: SizedBox(
             width: 300,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Exercise Calories Burn',
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: Colors.white),
-                ),
-                const SizedBox(height: 21),
-                DropdownButtonFormField<String>(
-                  decoration: InputDecoration(
-                    labelText: "Select Exercise",
-                    labelStyle: const TextStyle(color: Colors.white),
-                    border: OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Exercise Calories Burn',
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: Colors.white),
                   ),
-                  dropdownColor: Colors.black,
-                  value: selectedExercise,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedExercise = value;
-                    });
-                  },
-                  items: exercises.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(
-                        value,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    );
-                  }).toList(),
-                ),
-                const SizedBox(height: 11),
-                TextField(
-                  controller: durationController,
-                  decoration: InputDecoration(
-                    labelText: "Duration (in minutes)",
-                    labelStyle: const TextStyle(color: Colors.white),
-                    border: OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
-                  ),
-                  style: const TextStyle(color: Colors.white), // Set text color to white
-                  keyboardType: TextInputType.number,
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    var duration = int.tryParse(durationController.text) ?? 0;
-
-                    if (selectedExercise != null && duration != 0) {
-                      var caloriesBurned = calculateCaloriesBurned(selectedExercise, duration);
+                  const SizedBox(height: 21),
+                  DropdownButtonFormField<String>(
+                    decoration: InputDecoration(
+                      labelText: "Select Exercise",
+                      labelStyle: const TextStyle(color: Colors.white),
+                      border: OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
+                    ),
+                    value: selectedExercise,
+                    onChanged: (value) {
                       setState(() {
-                        result = "Calories Burned: ${caloriesBurned.toStringAsFixed(2)} kcal";
-                        borderColor = Colors.green; // Border color reflects result color
-                        durationController.clear();
+                        selectedExercise = value;
                       });
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Please select an exercise and enter valid duration.'),
+                    },
+                    items: exercises.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value,
+                          style: const TextStyle(color: Colors.black),
                         ),
                       );
-                    }
-                  },
-                  child: const Text('Calculate'),
-                ),
-                const SizedBox(height: 11),
-                Text(
-                  result,
-                  style: const TextStyle(fontSize: 19, color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 45),
-              ],
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 11),
+                  TextField(
+                    controller: durationController,
+                    decoration: InputDecoration(
+                      labelText: "Duration (in minutes)",
+                      labelStyle: const TextStyle(color: Colors.white),
+                      border: OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
+                    ),
+                    style: const TextStyle(color: Colors.white), // Set text color to white
+                    keyboardType: TextInputType.number,
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      var duration = int.tryParse(durationController.text) ?? 0;
+
+                      if (selectedExercise != null && duration != 0) {
+                        var caloriesBurned = calculateCaloriesBurned(selectedExercise, duration);
+                        setState(() {
+                          result = "Calories Burned: ${caloriesBurned.toStringAsFixed(2)} kcal";
+                          borderColor = Colors.green; // Border color reflects result color
+                          durationController.clear();
+                        });
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please select an exercise and enter valid duration.'),
+                          ),
+                        );
+                      }
+                    },
+                    child: const Text('Calculate'),
+                  ),
+                  const SizedBox(height: 11),
+                  Text(
+                    result,
+                    style: const TextStyle(fontSize: 19, color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 45),
+                ],
+              ),
             ),
           ),
         ),
