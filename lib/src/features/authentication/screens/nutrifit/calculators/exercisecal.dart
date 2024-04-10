@@ -87,11 +87,12 @@ class _ExerciseCaloriesBurnCalculatorState
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(150, 0, 0, 0), 
+      
         title: const Text(
           'FitFocus Finder',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
+          backgroundColor: Colors.black,
         actions: [
           IconButton(
             icon: const Icon(Icons.info, color:Colors.white),
