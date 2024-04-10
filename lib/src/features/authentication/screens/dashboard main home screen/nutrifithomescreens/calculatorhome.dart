@@ -27,8 +27,6 @@ class CalculatorMainScreen extends StatelessWidget {
     CalCardData(title: bmitxt, image: bmi, screen: BMICalculator()),
     CalCardData(title: bmrtxt, image: bmr, screen: BMRCalculator()),
     CalCardData(title: dbtcal, image: diabetes, screen: DiabetesCalculator()),
-  
-    CalCardData(title: kcal, image: calories, screen: CaloriesCalculator()),
     CalCardData(title: hrtc, image: thr, screen: HeartRateCalculator()),
     CalCardData(title: bpg, image: bpcal, screen: BloodPressureCalculator()),
     CalCardData(title: wateri, image: waterintake, screen: WaterIntakeCalculator()),
