@@ -25,7 +25,7 @@ class CalculatorMainScreen extends StatelessWidget {
     CalCardData(title: hrtc, image: thr, screen: HeartRateCalculator()),
     CalCardData(title: bpg, image: bpcal, screen: BloodPressureCalculator()),
     CalCardData(title: wateri, image: waterintake, screen: WaterIntakeCalculator()),
-    CalCardData(title: bt, image: tinycal, screen: BabyBloomCal()),
+    CalCardData(title: bt, image: tinycal, screen: GrowthCalculator()),
     CalCardData(title: eb, image: exercisecalburn, screen: ExerciseCaloriesBurnCalculator()),
     // Add other calculators here
   ];
