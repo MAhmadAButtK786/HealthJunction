@@ -7,15 +7,10 @@ import 'package:healthjunction/src/features/authentication/screens/nutrifit/calc
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/bmi.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/bmr.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/bp.dart';
-import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/calories.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/diabates.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/exercisecal.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/herat.dart';
-import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/pragnanc.dart';
-import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/sleep.dart';
 import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/water.dart';
-import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/weightgain.dart';
-import 'package:healthjunction/src/features/authentication/screens/nutrifit/calculators/weightloss.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar.dart';
 
 class CalculatorMainScreen extends StatelessWidget {
@@ -30,10 +25,7 @@ class CalculatorMainScreen extends StatelessWidget {
     CalCardData(title: hrtc, image: thr, screen: HeartRateCalculator()),
     CalCardData(title: bpg, image: bpcal, screen: BloodPressureCalculator()),
     CalCardData(title: wateri, image: waterintake, screen: WaterIntakeCalculator()),
-    CalCardData(title: wd, image: weightlosscal, screen: WeightLossCalculator()),
     CalCardData(title: bt, image: tinycal, screen: BabyBloomCal()),
-    CalCardData(title: wi, image: weghtgain, screen: WeightGainCalculator()),
-    CalCardData(title: pd, image: pddc, screen: PregnancyDueDateCalculator()),
     CalCardData(title: eb, image: exercisecalburn, screen: ExerciseCaloriesBurnCalculator()),
     // Add other calculators here
   ];
