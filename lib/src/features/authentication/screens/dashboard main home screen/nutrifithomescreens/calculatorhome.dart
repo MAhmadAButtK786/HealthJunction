@@ -37,7 +37,7 @@ class CalculatorMainScreen extends StatelessWidget {
     CalCardData(title: bt, image: tinycal, screen: BabyBloomCal()),
     CalCardData(title: wi, image: weghtgain, screen: WeightGainCalculator()),
     CalCardData(title: pd, image: pddc, screen: PregnancyDueDateCalculator()),
-    CalCardData(title: eb, image: exercisecalburn, screen: ExerciseCaloriesBurn()),
+    CalCardData(title: eb, image: exercisecalburn, screen: ExerciseCaloriesBurnCalculator()),
     // Add other calculators here
   ];
 

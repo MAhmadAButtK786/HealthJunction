@@ -1,193 +1,261 @@
 import 'package:flutter/material.dart';
 
-class ExerciseCaloriesBurn extends StatefulWidget {
-  ExerciseCaloriesBurn({Key? key}) : super(key: key);
-
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+class ExerciseCaloriesBurnCalculator extends StatefulWidget {
+  ExerciseCaloriesBurnCalculator({Key? key}) : super(key: key);
 
   @override
-  State<ExerciseCaloriesBurn> createState() => _ExerciseCaloriesBurnState();
+  _ExerciseCaloriesBurnCalculatorState createState() =>
+      _ExerciseCaloriesBurnCalculatorState();
 }
 
-class _ExerciseCaloriesBurnState extends State<ExerciseCaloriesBurn> {
-  var selectedExercise;
-  var durationController = TextEditingController();
-  var result = "";
-  var bgColor = Colors.black;
-  var borderColor = Colors.white;
+class _ExerciseCaloriesBurnCalculatorState
+    extends State<ExerciseCaloriesBurnCalculator> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final Map<String, double> exerciseCalorieBurnRates = {
-  "Running": 10.0, // 10 calories per minute
-  "Cycling": 8.0, // 8 calories per minute
-  "Swimming": 12.0, // 12 calories per minute
-  "Jumping Rope": 15.0, // 15 calories per minute
-  "Walking": 5.0, // 5 calories per minute
-  "Yoga": 3.0, // 3 calories per minute
-  "Weightlifting": 4.0, // 4 calories per minute
-  "Dancing": 7.0, // 7 calories per minute
-  "Hiking": 6.0, // 6 calories per minute
-  "Rowing": 9.0, // 9 calories per minute
-  "Stair Climbing": 11.0, // 11 calories per minute
-  "Pilates": 4.0, // 4 calories per minute
-  "Tai Chi": 3.0, // 3 calories per minute
-  "Soccer": 10.0, // 10 calories per minute
-  "Basketball": 8.0, // 8 calories per minute
-  "Volleyball": 6.0, // 6 calories per minute
-  "Tennis": 7.0, // 7 calories per minute
-  "Gardening": 5.0, // 5 calories per minute
-  "Rock Climbing": 12.0, // 12 calories per minute
-  "Surfing": 9.0, // 9 calories per minute
-  "Martial Arts": 10.0, // 10 calories per minute
-  "Boxing": 13.0, // 13 calories per minute
-  "Golf": 4.0, // 4 calories per minute
-  "Skating": 6.0, // 6 calories per minute
-  "Skiing": 7.0, // 7 calories per minute
-  "Snowboarding": 8.0, // 8 calories per minute
-  "Ice Skating": 10.0, // 10 calories per minute
-  "Kayaking": 8.0, // 8 calories per minute
-  "Paddleboarding": 6.0, // 6 calories per minute
-  "Frisbee": 5.0, // 5 calories per minute
-  "Racquetball": 9.0, // 9 calories per minute
-  "Bowling": 3.0, // 3 calories per minute
-  
-};
+  String selectedExercise = 'Running'; // Default exercise
 
+  TextEditingController timeController = TextEditingController();
 
-final List<String> exercises = [
-  "Running",
-  "Cycling",
-  "Swimming",
-  "Jumping Rope",
-  "Walking",
-  "Yoga",
-  "Weightlifting",
-  "Dancing",
-  "Hiking",
-  "Rowing",
-  "Stair Climbing",
-  "Pilates",
-  "Tai Chi",
-  "Soccer",
-  "Basketball",
-  "Volleyball",
-  "Tennis",
-  "Gardening",
-  "Rock Climbing",
-  "Surfing",
-  "Martial Arts",
-  "Boxing",
-  "Golf",
-  "Skating",
-  "Skiing",
-  "Snowboarding",
-  "Ice Skating",
-  "Kayaking",
-  "Paddleboarding",
-  "Frisbee",
-  "Racquetball",
-  "Bowling",
- 
-];
+  // Map of exercises and their corresponding calories burned per minute
+  Map<String, double> exerciseCaloriesMap = {
+    'Running': 10,
+    'Cycling': 8,
+    'Swimming': 12,
+    'Jumping Rope': 15,
+    'Walking': 5,
+    'Yoga': 4,
+    'Dancing': 7,
+    'Hiking': 9,
+    'Boxing': 14,
+    'Jumping Jacks': 11,
+    'Rowing': 10,
+    'Rock Climbing': 12,
+    'Kickboxing': 13,
+    'Pilates': 6,
+    'Tai Chi': 5,
+    'Zumba': 8,
+    'Soccer': 10,
+    'Basketball': 12,
+    'Tennis': 11,
+    'Volleyball': 8,
+    'Gardening': 5,
+    'Skating': 9,
+    'Skiing': 13,
+    'Snowboarding': 12,
+    'Ice Skating': 10,
+    'Martial Arts': 14,
+    'Surfing': 11,
+    'Racquetball': 12,
+    'Golfing': 6,
+    'High-Intensity Interval Training (HIIT)': 13,
+    'Plyometrics': 14,
+    'CrossFit': 15,
+    'Circuit Training': 10,
+    'Stair Climbing': 12,
+    'Calisthenics': 8,
+    'Bodyweight Exercises': 7,
+    'Barre': 6,
+    'Paddleboarding': 9,
+    'Squash': 13,
+    'Kickball': 10,
+    'Handball': 12,
+    'Ultimate Frisbee': 9,
+    'Rock Climbing (Indoor)': 11,
+    'Bowling': 4,
+  };
+
+  double caloriesBurned = 0;
+
+  bool _showExerciseInfo = false;
+
+  void _toggleExerciseInfo() {
+    setState(() {
+      _showExerciseInfo = !_showExerciseInfo;
+    });
+  }
+
+  void _resetCalculator() {
+    setState(() {
+      selectedExercise = 'Running';
+      timeController.text = '';
+      caloriesBurned = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: widget.scaffoldKey,
+      key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(150, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(150, 0, 0, 0), 
         title: const Text(
-          "Exercise Calories Burn",
+          'FitFocus Finder',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info, color:Colors.white),
+            onPressed: _toggleExerciseInfo,
+          ),
+        ],
       ),
-      body: Container(
-        color: bgColor,
-        child: Center(
-          child: SizedBox(
-            width: 300,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Exercise Calories Burn',
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: Colors.white),
-                  ),
-                  const SizedBox(height: 21),
-                  DropdownButtonFormField<String>(
-                    decoration: InputDecoration(
-                      labelText: "Select Exercise",
-                      labelStyle: const TextStyle(color: Colors.white),
-                      border: OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
-                    ),
-                    value: selectedExercise,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedExercise = value;
-                      });
-                    },
-                    items: exercises.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(
-                          value,
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(height: 11),
-                  TextField(
-                    controller: durationController,
-                    decoration: InputDecoration(
-                      labelText: "Duration (in minutes)",
-                      labelStyle: const TextStyle(color: Colors.white),
-                      border: OutlineInputBorder(borderSide: BorderSide(color: borderColor)),
-                    ),
-                    style: const TextStyle(color: Colors.white), // Set text color to white
-                    keyboardType: TextInputType.number,
-                  ),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      var duration = int.tryParse(durationController.text) ?? 0;
-
-                      if (selectedExercise != null && duration != 0) {
-                        var caloriesBurned = calculateCaloriesBurned(selectedExercise, duration);
-                        setState(() {
-                          result = "Calories Burned: ${caloriesBurned.toStringAsFixed(2)} kcal";
-                          borderColor = Colors.green; // Border color reflects result color
-                          durationController.clear();
-                        });
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Please select an exercise and enter valid duration.'),
-                          ),
-                        );
-                      }
-                    },
-                    child: const Text('Calculate'),
-                  ),
-                  const SizedBox(height: 11),
-                  Text(
-                    result,
-                    style: const TextStyle(fontSize: 19, color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 45),
-                ],
+      backgroundColor: Colors.black, // Set scaffold background color to black
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 30,),
+            const Text(
+              'Welcome to FitFocus Finder!',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Select Exercise:',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
-          ),
+            DropdownButtonFormField<String>(
+              dropdownColor: Colors.black,
+              value: selectedExercise,
+              onChanged: (value) {
+                setState(() {
+                  selectedExercise = value!;
+                });
+              },
+              items: exerciseCaloriesMap.keys.map((exercise) {
+                return DropdownMenuItem<String>(
+                  value: exercise,
+                  child: Text(
+                    exercise,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                );
+              }).toList(),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Enter Time (minutes):',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            TextField(
+              controller: timeController,
+              keyboardType: TextInputType.number,
+              style: const TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                calculateCaloriesBurned();
+              },
+              child: const Text('Calculate',),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Calories Burned: ${caloriesBurned.toStringAsFixed(2)} kcal',
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+            if (_showExerciseInfo)
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Exercise Information:',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    '1. Regular exercise helps improve overall health and fitness.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '2. Aim for at least 150 minutes of moderate-intensity exercise per week.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '3. Exercises like running, swimming, and cycling are great for cardiovascular health.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '4. Strength training exercises help build muscle mass and increase metabolism.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '5. Listen to your body and avoid overexertion or pushing through pain.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '6. Stay hydrated before, during, and after exercising.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '7. Warm up before exercising to prevent injury and cool down afterward to aid recovery.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '8. Incorporate variety into your workout routine to prevent boredom and plateaus.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '9. Consult with a healthcare professional before starting a new exercise program, especially if you have any underlying health conditions.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '10. Have fun and enjoy the process of staying active!',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _resetCalculator,
+        backgroundColor: Colors.white,
+        child: const Icon(Icons.refresh),
       ),
     );
   }
 
-  double calculateCaloriesBurned(String exercise, int duration) {
-    // This function calculates calories burned based on the selected exercise and duration.
-    // We use the predefined calorie burn rates for different exercises.
-    var calorieBurnRate = exerciseCalorieBurnRates[exercise] ?? 5.0; // Default to 5 calories per minute if exercise not found
-    return calorieBurnRate * duration;
+  void calculateCaloriesBurned() {
+    double time = double.tryParse(timeController.text) ?? 0;
+    double caloriesPerMinute = exerciseCaloriesMap[selectedExercise] ?? 0;
+    setState(() {
+      caloriesBurned = time * caloriesPerMinute;
+    });
   }
 }
+
