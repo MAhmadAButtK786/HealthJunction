@@ -23,7 +23,7 @@ class _GrowthCalculatorState extends State<GrowthCalculator> {
     return Scaffold(
  
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 163, 255, 59),
+        backgroundColor: Colors.green,
         title: const Text(
           "BabyBloom Meter",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
@@ -113,7 +113,7 @@ class _GrowthCalculatorState extends State<GrowthCalculator> {
                   const SizedBox(height: 20),
                   Text(
                     result,
-                    style: const TextStyle(fontSize: 18, color: Colors.purple, fontWeight:FontWeight.bold, fontSize:23),
+                    style: const TextStyle(fontSize: 20, color: Colors.black, fontWeight:FontWeight.bold),
                   ),
                   const SizedBox(height: 20),
                   TextButton(
@@ -122,7 +122,7 @@ class _GrowthCalculatorState extends State<GrowthCalculator> {
                     },
                     child: const Text(
                       "View CDC Growth Charts Reference",
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize:25),
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize:25),
                     ),
                   ),
                 ],
