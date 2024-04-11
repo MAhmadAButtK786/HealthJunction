@@ -141,21 +141,7 @@ class DoctorHome extends StatelessWidget {
                       ),
                     ),
                       const SizedBox(height: 20),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        // Get.to(() => const ());
-                      },
-                      icon: const Icon(FontAwesomeIcons.pen),
-                      label: const Text("Write Blogs and Articles"),
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.teal,
-                        backgroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                    ),
+                   
                   ],
                 ),
               ),
