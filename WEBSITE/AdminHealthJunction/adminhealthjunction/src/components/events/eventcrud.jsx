@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { database } from "../../firebase";
 import { Link } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -10,14 +10,32 @@ const EventPage = () => {
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const eventsCollection = collection(database, "Event");
-      const eventsSnapshot = await getDocs(eventsCollection);
-      const eventsData = eventsSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        isOpen: false, // Adding isOpen property for toggle functionality
-      }));
-      setEvents(eventsData);
+      try {
+        const eventCollection = collection(database, "Event");
+        const eventAdminsCollection = collection(database, "EventAdmins");
+
+        const eventSnapshot = await getDocs(eventCollection);
+        const eventAdminsSnapshot = await getDocs(eventAdminsCollection);
+
+        const eventData = eventSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+          isOpen: false, // Adding isOpen property for toggle functionality
+        }));
+
+        const eventAdminsData = eventAdminsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+          isOpen: false, // Adding isOpen property for toggle functionality
+        }));
+
+        // Merge both arrays
+        const mergedEvents = [...eventData, ...eventAdminsData];
+
+        setEvents(mergedEvents);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
     };
 
     fetchEvents();
@@ -26,6 +44,7 @@ const EventPage = () => {
   const handleDelete = async (eventId) => {
     try {
       await deleteDoc(doc(database, "Event", eventId));
+      await deleteDoc(doc(database, "EventAdmins", eventId));
       setEvents((prevEvents) =>
         prevEvents.filter((event) => event.id !== eventId)
       );
@@ -65,6 +84,7 @@ const EventPage = () => {
                   <p>Description: {event.description}</p>
                   <p>Date: {event.date}</p>
                   <p>Time: {event.time}</p>
+                  <p>Location: <a href={`https://www.google.com/maps?q=${encodeURIComponent(event.location)}`} target="_blank" rel="noopener noreferrer">{event.location}</a></p>
                   <p>Image: <img src={event.imageUrl} alt="Event" className="event-image" /></p>
                   <div className="button-container">
                     <button className="delete-button" onClick={() => handleDelete(event.id)}>Delete</button>

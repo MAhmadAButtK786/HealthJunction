@@ -1,86 +1,70 @@
 /* CSS for EventPage Component */
+/* Enhanced CSS for EventPage Component */
 
-/* CSS for transitions */
-.fade-enter {
-  opacity: 0;
-}
+/* Transitions */
+.fade-enter { opacity: 0; }
+.fade-enter-active { opacity: 1; transition: opacity 300ms ease-in-out; }
+.fade-exit { opacity: 1; }
+.fade-exit-active { opacity: 0; transition: opacity 300ms ease-in-out; }
 
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms ease-in-out;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
-}
-
-/* CSS for event page */
+/* Event Page */
 .event-page {
   padding: 20px;
+  background-color: #e3f2fd; /* Light blue background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .event-page-title {
-  font-size: 24px;
+  font-size: 35px;
   margin-bottom: 20px;
+  color: #1976d2; /* Dark blue color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Text shadow for depth */
+  font-weight: bold; /* Bold text */
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  align-items: center; /* Center buttons vertically */
+  align-items: center;
   margin-bottom: 20px;
 }
 
+/* Buttons */
 .insert-button,
 .delete-button,
 .update-button {
-  padding: 12px 24px; /* Increased padding for better touch target */
+  padding: 12px 24px;
   font-size: 19px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition for color change */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transform and shadow transition */
+  font-weight: bold; /* Bold text */
 }
 
-.insert-button {
-  background-color: #007bff; /* Blue */
-  color: white;
-}
-
-.delete-button {
-  background-color: #ff4500; /* Orange */
-  color: white;
-  margin-right: 10px; 
-  width: 100px;
-  height: 51px;
-  /* Added margin to separate the buttons */
-}
-
-.update-button {
-  background-color: #228b22; /* Green */
-  color: white;
-  width: 100px;
-
-}
+.insert-button { background-color: #4caf50; color: white; } /* Green button */
+.delete-button { background-color: #f44336; color: white; margin-right: 10px; } /* Red button */
+.update-button { background-color: #ffeb3b; color: black; } /* Yellow button */
 
 /* Hover effect for buttons */
 .insert-button:hover,
 .delete-button:hover,
 .update-button:hover {
-  filter: brightness(0.9); /* Darken the button on hover */
+  transform: translateY(-2px); /* Slight raise */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow */
 }
 
 /* Card styles */
 .event-card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #bdbdbd; /* Lighter border */
+  border-radius: 8px;
   margin-bottom: 20px;
+  overflow: hidden; /* Contain children within rounded corners */
+  transition: box-shadow 0.3s ease; /* Shadow transition */
 }
+
+.event-card:hover { box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); } /* Hover shadow */
 
 .event-card-header {
   display: flex;
@@ -88,27 +72,27 @@
   justify-content: space-between;
   padding: 10px;
   cursor: pointer;
-  background-color: #f2f2f2;
+  background-color: #90caf9; /* Lighter header background */
+  color: #0d47a1; /* Header text color */
+  font-weight: bold; /* Bold text */
 }
 
-.event-card-title {
-  margin: 0;
-}
+.event-card-title { margin: 0; }
 
 .toggle-button {
-  background-color: blue;
+  background-color: #5c6bc0; /* Purple button */
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 3px;
   cursor: pointer;
+  font-weight: bold; /* Bold text */
 }
 
-.event-card-body {
-  padding: 10px;
-}
+.event-card-body { padding: 10px; }
 
 /* Additional styles */
 .event-image {
   max-width: 100px;
+  border-radius: 4px; /* Rounded image corners */
 }

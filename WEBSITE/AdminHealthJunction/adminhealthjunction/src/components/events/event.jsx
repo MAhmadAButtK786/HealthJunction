@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
@@ -10,6 +9,7 @@ const Page = () => {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [location, setLocation] = useState(""); // Added location state
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const history = useHistory();
@@ -21,11 +21,12 @@ const Page = () => {
       const storageRef = ref(storage, `eventImages/${imageFile.name}`);
       await uploadBytesResumable(storageRef, imageFile).then(async () => {
         const imageUrl = await getDownloadURL(storageRef);
-        await addDoc(collection(database, "Event"), {
+        await addDoc(collection(database, "EventAdmins"), {
           eventName: eventName,
           description: description,
           date: date,
           time: time,
+          location: location, // Save the location
           imageUrl: imageUrl, // Save the image URL
         })
           .then(() => {
@@ -34,6 +35,7 @@ const Page = () => {
             setDescription("");
             setDate("");
             setTime("");
+            setLocation("");
             setImageFile(null);
             setImageUrl("");
           })
@@ -74,6 +76,14 @@ const Page = () => {
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           value={time}
           onChange={(e) => setTime(e.target.value)}
+        />
+        {/* Location input field */}
+        <input
+          type="text"
+          placeholder="Enter Location"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
         />
         <input
           required

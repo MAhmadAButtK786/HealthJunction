@@ -1,47 +1,71 @@
 import React, { useEffect, useState } from 'react';
-import { doc, getDoc, updateDoc } from 'firebase/firestore'; // Import Firestore modules
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'; // Import Storage modules
-import { useHistory, useParams } from 'react-router-dom'; // Import necessary hooks from react-router-dom
-import { database, storage } from '../../firebase'; // Import Firebase configurations
+import { doc, getDoc, updateDoc } from 'firebase/firestore'; 
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'; 
+import { useHistory, useParams } from 'react-router-dom'; 
+import { database, storage } from '../../firebase'; 
 
 const UpdateEventPage = () => {
-  const { id } = useParams(); // Get the ID from URL parameters
-  const history = useHistory(); // Initialize useHistory hook for navigation
-  const [eventData, setEventData] = useState({ // Initialize state variables
+  const { id } = useParams(); 
+  const history = useHistory(); 
+  const [eventData, setEventData] = useState({
     eventName: '',
     description: '',
     date: '',
     time: '',
-    imageUrl: ''
+    imageUrl: '',
+    location: ''
   });
-  const [imageFile, setImageFile] = useState(null); // State variable for storing image file
-  const [loading, setLoading] = useState(false); // State variable for loading indicator
+  const [imageFile, setImageFile] = useState(null); 
+  const [loading, setLoading] = useState(false); 
+  const [error, setError] = useState('');
 
-  // Fetch event data from Firestore based on the provided ID when the component mounts
   useEffect(() => {
     const fetchEvent = async () => {
-      setLoading(true); // Set loading indicator to true
+      setLoading(true); 
       try {
-        const eventDoc = doc(database, 'Event', id); // Get reference to the event document
-        const eventSnapshot = await getDoc(eventDoc); // Get snapshot of the event document
+        const eventDoc = doc(database, 'Event', id); 
+        const eventAdminsDoc = doc(database, 'EventAdmins', id); 
+        const eventSnapshot = await getDoc(eventDoc); 
+        const eventAdminsSnapshot = await getDoc(eventAdminsDoc); 
+        
         if (eventSnapshot.exists()) {
-          setEventData({ id: eventSnapshot.id, ...eventSnapshot.data() }); // Set event data in state
+          const eventData = eventSnapshot.data();
+          setEventData({
+            id: eventSnapshot.id,
+            eventName: eventData.eventName || '',
+            description: eventData.description || '',
+            date: eventData.date || '',
+            time: eventData.time || '',
+            imageUrl: eventData.imageUrl || '',
+            location: eventData.location || ''
+          });
+        } else if (eventAdminsSnapshot.exists()) {
+          const eventAdminsData = eventAdminsSnapshot.data();
+          setEventData({
+            id: eventAdminsSnapshot.id,
+            eventName: eventAdminsData.eventName || '',
+            description: eventAdminsData.description || '',
+            date: eventAdminsData.date || '',
+            time: eventAdminsData.time || '',
+            imageUrl: eventAdminsData.imageUrl || '',
+            location: eventAdminsData.location || ''
+          });
         } else {
-          console.log('No such document!');
+          console.log('No such document in either collection!');
         }
       } catch (error) {
         console.error('Error fetching event:', error);
       }
-      setLoading(false); // Set loading indicator to false
+      setLoading(false); 
     };
+  
+    fetchEvent(); 
+  }, [id]);
+  
 
-    fetchEvent(); // Call fetchEvent function
-  }, [id]); // Run useEffect whenever ID changes
-
-  // Event handler for updating event data
   const handleUpdate = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-    setLoading(true);
+    e.preventDefault(); 
+    setLoading(true); 
     try {
       if (imageFile) { 
         const storageRef = ref(storage, `eventImages/${imageFile.name}`); 
@@ -51,36 +75,41 @@ const UpdateEventPage = () => {
       } else {
         await updateEventData(eventData); 
       }
-      alert('Event updated successfully'); // Show success message
+
+      const eventDoc = doc(database, 'Event', id); 
+      await updateDoc(eventDoc, eventData); 
+
+      const eventAdminsDoc = doc(database, 'EventAdmins', id); 
+      await updateDoc(eventAdminsDoc, eventData); 
+
+      alert('Event updated successfully'); 
       history.push('/event'); 
     } catch (error) {
       console.error('Error updating event:', error);
-      alert('Failed to update event'); // Show error message
+      alert('Failed to update event');
+    } finally {
+      setLoading(false); 
     }
-    setLoading(false); // Set loading indicator to false
   };
 
-  // Helper function to update event data in Firestore
   const updateEventData = async (data) => {
-    const eventDoc = doc(database, 'Event', id); // Get reference to the event document
-    await updateDoc(eventDoc, data); // Update event document with new data
-    setEventData(data); // Update local state with new event data
+    const eventDoc = doc(database, 'Event', id); 
+    await updateDoc(eventDoc, data); 
+    setEventData(data); 
   };
 
-  // Event handler for handling changes in form fields
   const handleChange = (e) => {
-    setEventData({ ...eventData, [e.target.name]: e.target.value }); // Update corresponding state variable
+    setEventData({ ...eventData, [e.target.name]: e.target.value }); 
   };
 
-  // Event handler for handling changes in image file input
   const handleImageChange = (e) => {
-    setImageFile(e.target.files[0]); // Update image file state variable
+    const file = e.target.files[0];
+    setImageFile(file);
+    setEventData({ ...eventData, imageUrl: URL.createObjectURL(file) });
   };
 
-  // Show loading indicator if data is still loading
   if (loading) return <div>Loading...</div>;
 
-  // Render form for updating event data
   return (
     <div className='flex flex-col items-center justify-center h-screen'>
       <form className='flex flex-col items-center justify-center w-full max-w-md gap-4 px-10 py-5 bg-gray-400' onSubmit={handleUpdate}>
@@ -117,10 +146,19 @@ const UpdateEventPage = () => {
           onChange={handleChange}
         />
         <input 
+          type="text" 
+          placeholder='Enter Location' 
+          className='w-full px-4 py-2 border border-gray-300 rounded-md outline-none' 
+          value={eventData.location}
+          name="location"
+          onChange={handleChange}
+        />
+        <input 
           type="file" 
           onChange={handleImageChange}
         />
-        {imageFile && <img src={URL.createObjectURL(imageFile)} alt="Preview" style={{ width: '100px' }} />}
+        {eventData.imageUrl && <img src={eventData.imageUrl} alt="Preview" style={{ width: '100px' }} />}
+        {error && <div className="error-message">{error}</div>} {/* Display error message */}
         <div className="flex justify-between w-full">
           <button 
             type='submit'

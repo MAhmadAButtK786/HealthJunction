@@ -1,42 +1,87 @@
 .event-card {
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #e3f2fd; /* Light blue background */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.event-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.event-image-container {
+  position: relative;
+  width: 100%;
+}
+
+.event-image {
+  width: 100%;
+  height: auto;
+  transition: all 0.5s ease;
+}
+
+.event-image.h-96 {
+  height: 400px; /* Larger size for expanded image */
+}
+
+.event-details {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.event-name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 10px;
+}
+
+.event-description {
+  font-size: 1rem;
+  color: #424242;
+  margin-bottom: 10px;
+}
+
+.event-date-time {
+  font-size: 0.875rem;
+  color: #616161;
+  font-weight: bold;
+}
+
+.event-location {
+  font-size: 0.875rem;
+  color: #616161;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.zoomed-in {
+  transform: scale(2);
+  transition: transform 0.3s ease;
+  cursor: zoom-out;
+}
+
+.zoomed-out {
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .event-card {
+    flex-direction: row;
   }
-  
-  .event-card:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+
+  .event-image-container {
+    width: 50%;
   }
-  
-  .event-image {
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-  
+
   .event-details {
-    padding: 20px;
+    width: 50%;
   }
-  
-  .event-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .event-description {
-    font-size: 1rem;
-    color: #666666;
-    margin-bottom: 10px;
-  }
-  
-  .event-date-time {
-    font-size: 0.875rem;
-    color: #999999;
-  }
-  
+}
