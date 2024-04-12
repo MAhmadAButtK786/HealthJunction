@@ -54,7 +54,7 @@ function HealthZone() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <img src="images/img/Lab/AlliedLabs.png" alt="" className="mx-auto rounded-full w-52 h-52" />
+        <img src="images/img/Lab/healthzone.png" alt="" className="mx-auto" />
       </div>
       <div className="px-8">
         <Link to="/HealthZoneInsert">

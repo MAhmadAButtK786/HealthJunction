@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../../../../Navbar'
 import HealthZone from './healthzonedata'
 import Footer from '../../../../Footer'
-const AlliedLab = () => {
+const HealthZoneLab = () => {
   return (
     <div>
 <Navbar/>
@@ -12,4 +12,4 @@ const AlliedLab = () => {
   )
 }
 
-export default AlliedLab
+export default HealthZoneLab

@@ -29,6 +29,7 @@ import ExcelLab from "./components/lab/privateLabs/LabsScreens/Excel Lab/excella
 import IDCLab from "./components/lab/privateLabs/LabsScreens/IDC/idc";
 import IndusLab from "./components/lab/privateLabs/LabsScreens/Indus Lab/indusLab";
 import HealthZone from './components/lab/privateLabs/LabsScreens/Health Zone/healthzonedata';
+import HealthZoneLab from './components/lab/privateLabs/LabsScreens/Health Zone/healthzonelab';
 import LahoreMDC from "./components/lab/privateLabs/LabsScreens/LahoreMDC/LahoreMDC";
 import AlliedInsertPage from "./components/lab/privateLabs/LabsScreens/Allied Lab/insertalliedlab";
 import AlnoorInsertPage from "./components/lab/privateLabs/LabsScreens/AlnoorLab/insertalnoorLab";
@@ -143,7 +144,7 @@ const App = () => {
         <Route path="/updatePrivateBBPage/:id" exact component={UpdatePrivateBBLPage}/>
         <Route path="/updatePublicBBPage/:id" exact component={UpdatePublicBBLPage}/>
         {/* Lab Screens */}
-        <Route path="/healthzonelab" exact component={HealthZone} />
+        <Route path="/healthzonelab" exact component={HealthZoneLab} />
         <Route path="/alliedlab" exact component={AlliedLab} />
         <Route path="/alnoorlab" exact component={AlnoorLab} />
         <Route path="/chughtailab" exact component={ChughtaiLab}/>
