@@ -127,7 +127,7 @@ class DoctorHome extends StatelessWidget {
                     const SizedBox(height: 20),
                     ElevatedButton.icon(
                       onPressed: () {
-                        Get.to(() => DoctorVerificationScreen() );
+                        Get.to(() => const DoctorVerificationScreen() );
                       },
                       icon: const Icon(Icons.healing),
                       label: const Text("Manage Appointments"),
