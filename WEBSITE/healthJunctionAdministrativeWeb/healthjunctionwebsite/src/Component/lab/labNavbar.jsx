@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
+// import { FaHome } from "react-icons/fa"; // Importing the Home icon from react-icons
 
 const LabNavbar = () => {
   const [open, setOpen] = useState(false);
@@ -8,7 +8,10 @@ const LabNavbar = () => {
     <div className="relative z-10 w-full text-white bg-gray-700 dark-mode:text-gray-200 dark-mode:bg-gray-800">
       <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div className="flex flex-row items-center justify-between p-4">
+          {/* Logo, Image */}
           <div className="flex items-center">
+           
+            {/* <FaHome className="w-6 h-6 mr-2" /> Home Icon */}
             <img
               src="images/hjlogo.png"
               alt="Logo"
@@ -20,7 +23,9 @@ const LabNavbar = () => {
             >
               Health Junction
             </a>
+            {/* Your logo image */}
           </div>
+          {/* Mobile Menu Button */}
           <button
             className="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
             onClick={() => setOpen(!open)}
@@ -34,6 +39,7 @@ const LabNavbar = () => {
             </svg>
           </button>
         </div>
+        {/* Navigation Links */}
         <nav
           className={`flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row ${
             open ? "flex" : "hidden"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query} from "firebase/firestore";
 import { database } from "../../firebase";
 
 function DonorLists() {
@@ -18,40 +18,28 @@ function DonorLists() {
   }, []);
 
   const getData = async () => {
-    let filteredQuery = collection(database, "Donors");
+    const donorsCollection = collection(database, "Donors");
+    const otherCollection = collection(database, "BDS Donors"); 
+    const donorsQuery = query(donorsCollection);
+    const otherQuery = query(otherCollection);
 
-    if (searchTerm !== "") {
-      filteredQuery = query(filteredQuery, where("FullName", "==", searchTerm));
-    } else {
-      if (filters.age !== "") {
-        filteredQuery = query(
-          filteredQuery,
-          where("Age", "==", parseInt(filters.age))
-        );
-      }
-      if (filters.province !== "") {
-        filteredQuery = query(
-          filteredQuery,
-          where("Province", "==", filters.province)
-        );
-      }
-      if (filters.city !== "") {
-        filteredQuery = query(filteredQuery, where("City", "==", filters.city));
-      }
-      if (filters.bloodGroup !== "") {
-        filteredQuery = query(
-          filteredQuery,
-          where("BloodType", "==", filters.bloodGroup)
-        );
-      }
-    }
+    const [donorsSnapshot, otherSnapshot] = await Promise.all([
+      getDocs(donorsQuery),
+      getDocs(otherQuery),
+    ]);
 
-    const querySnapshot = await getDocs(filteredQuery);
-    const data = querySnapshot.docs.map((doc) => ({
+    const donorsData = donorsSnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
-    setDonorsData(data);
+
+    const otherData = otherSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    const combinedData = [...donorsData, ...otherData];
+    setDonorsData(combinedData);
   };
 
   const handleSearch = () => {
@@ -69,7 +57,6 @@ function DonorLists() {
       [name]: value,
     }));
   };
-
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">

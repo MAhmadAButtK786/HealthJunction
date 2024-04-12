@@ -12,6 +12,7 @@ const UpdateEventPage = () => {
     description: '',
     date: '',
     time: '',
+    location: '',
     imageUrl: ''
   });
   const [imageFile, setImageFile] = useState(null); // State variable for storing image file
@@ -114,6 +115,14 @@ const UpdateEventPage = () => {
           className='w-full px-4 py-1 border-none outline-none' 
           value={eventData.time}
           name="time"
+          onChange={handleChange}
+        />
+        <input 
+          type="text" 
+          placeholder='Enter Location' 
+          className='w-full px-4 py-1 border-none outline-none' 
+          value={eventData.location}
+          name="location"
           onChange={handleChange}
         />
         <input 

@@ -1,70 +1,111 @@
 .fade-enter {
-    opacity: 0;
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.event-page {
+  padding: 20px;
+  background-color: #e8f5e9; /* Light green background */
+  max-width: 1200px;
+  margin: 0 auto; /* Center the page */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.15); /* Shadow effect */
+}
+
+.event-page-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #388e3c; /* Dark green color */
+  font-weight: bold; /* Bold text */
+}
+
+.event-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.event-table th,
+.event-table td {
+  border: 1px solid #c8e6c9; /* Light green border */
+  padding: 8px;
+  text-align: left;
+}
+
+.event-table th {
+  background-color: #a5d6a7; /* Green background */
+  color: #1b5e20; /* Dark green text */
+}
+
+.event-table button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  border-radius: 5px; /* Rounded corners */
+}
+
+.delete-button {
+  background-color: #f44336;
+}
+
+.update-button {
+  background-color: #4caf50;
+}
+
+.event-table button:hover {
+  opacity: 0.8;
+}
+
+.event-image {
+  max-width: 200px;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+  .event-table, .event-table th, .event-table td {
+    display: block;
   }
-  
-  .fade-enter-active {
-    opacity: 1;
-    transition: opacity 300ms ease-in-out;
-  }
-  
-  .fade-exit {
-    opacity: 1;
-  }
-  
-  .fade-exit-active {
-    opacity: 0;
-    transition: opacity 300ms ease-in-out;
-  }
-  
-  .event-page {
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .event-page-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .event-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .event-table th,
-  .event-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
+
   .event-table th {
-    background-color: #f2f2f2;
+    display: none;
   }
-  
-  .event-table button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
+
+  .event-table td {
     border: none;
-    color: #fff;
+    position: relative;
+    padding-left: 50%;
   }
-  
-  .delete-button {
-    background-color: #f44336;
+
+  .event-table td:before {
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    color: #1b5e20; /* Dark green text */
   }
-  
-  .update-button {
-    background-color: #4caf50;
-  }
-  
-  .event-table button:hover {
-    opacity: 0.8;
-  }
-  
-  .event-image {
-    max-width: 200px;
-  }
-  
+
+  .event-table td:nth-of-type(1):before { content: "Event Name"; }
+  .event-table td:nth-of-type(2):before { content: "Description"; }
+  .event-table td:nth-of-type(3):before { content: "Date"; }
+  .event-table td:nth-of-type(4):before { content: "Time"; }
+  .event-table td:nth-of-type(5):before { content: "Image"; }
+  .event-table td:nth-of-type(6):before { content: "Action"; }
+}

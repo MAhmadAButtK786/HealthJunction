@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 import { database } from "../../firebase";
 
 function RecipientList() {
-  const [donorsData, setDonorsData] = useState([]);
+  const [recipientsData, setRecipientsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
     age: "",
@@ -18,40 +18,29 @@ function RecipientList() {
   }, []);
 
   const getData = async () => {
-    let filteredQuery = collection(database, "Recepients");
+    const recipientsCollection = collection(database, "Recepients");
+    const bdsRecipientCollection = collection(database, "BDS Recipient");
 
-    if (searchTerm !== "") {
-      filteredQuery = query(filteredQuery, where("FullName", "==", searchTerm));
-    } else {
-      if (filters.age !== "") {
-        filteredQuery = query(
-          filteredQuery,
-          where("Age", "==", parseInt(filters.age))
-        );
-      }
-      if (filters.province !== "") {
-        filteredQuery = query(
-          filteredQuery,
-          where("Province", "==", filters.province)
-        );
-      }
-      if (filters.city !== "") {
-        filteredQuery = query(filteredQuery, where("City", "==", filters.city));
-      }
-      if (filters.bloodGroup !== "") {
-        filteredQuery = query(
-          filteredQuery,
-          where("BloodType", "==", filters.bloodGroup)
-        );
-      }
-    }
+    const recipientsQuery = query(recipientsCollection);
+    const bdsRecipientQuery = query(bdsRecipientCollection);
 
-    const querySnapshot = await getDocs(filteredQuery);
-    const data = querySnapshot.docs.map((doc) => ({
+    const [recipientsSnapshot, bdsRecipientSnapshot] = await Promise.all([
+      getDocs(recipientsQuery),
+      getDocs(bdsRecipientQuery),
+    ]);
+
+    const recipientsData = recipientsSnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
-    setDonorsData(data);
+
+    const bdsRecipientData = bdsRecipientSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    const combinedData = [...recipientsData, ...bdsRecipientData];
+    setRecipientsData(combinedData);
   };
 
   const handleSearch = () => {
@@ -159,7 +148,7 @@ function RecipientList() {
       </tr>
     </thead>
     <tbody>
-      {donorsData.map(donor => (
+      {recipientsData.map(donor => (
         <tr key={donor.id} className='h-12 bg-white border-b border-gray-400'>
           <td className='px-4 py-2'>{donor.FullName}</td>
           <td className='px-4 py-2'>{donor.Age}</td>

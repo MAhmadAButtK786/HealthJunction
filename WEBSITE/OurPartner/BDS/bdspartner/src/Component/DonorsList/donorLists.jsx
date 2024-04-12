@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, query, where, deleteDoc } from "firebase/firestore";
 import { database } from "../../firebase";
-import { useHistory } from "react-router-dom";import { Link } from "react-router-dom/cjs/react-router-dom.min";
-;
+import { useHistory, Link } from "react-router-dom";
 
 function DonorLists() {
   const [donorsData, setDonorsData] = useState([]);
@@ -14,9 +13,10 @@ function DonorLists() {
     bloodGroup: "",
   });
 
+  const history = useHistory();
+
   useEffect(() => {
     getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getData = async () => {
@@ -89,7 +89,6 @@ function DonorLists() {
         await deleteDoc(doc.ref);
       });
 
-      // Refresh data after deletion
       getData();
     } catch (error) {
       console.error("Error deleting recipient: ", error);
@@ -98,7 +97,7 @@ function DonorLists() {
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
-      <div className="text-center pb-7">
+        <div className="text-center pb-7">
           <h1 className="text-5xl font-bold text-red-600">Registered Donors in our Platform</h1>
         </div>
         <div className="flex flex-col items-center justify-center mb-4 md:flex-row">
@@ -171,39 +170,39 @@ function DonorLists() {
           </select>
         </div>
         <div className='overflow-x-auto'>
-  <table className='w-full mt-5 text-center border border-red-400'>
-    <thead className='h-10 bg-red-700 border border-red-400 '>
-      <tr>
-        <th className='px-4 py-2 text-white'>Full Name</th>
-        <th className='px-4 py-2 text-white'>Age</th>
-        <th className='px-4 py-2 text-white'>Blood Type</th>
-        <th className='px-4 py-2 text-white'>City</th>
-        <th className='px-4 py-2 text-white'>Email</th>
-        <th className='px-4 py-2 text-white'>Phone</th>
-        <th className='px-4 py-2 text-white'>Province</th>
-        <th className='px-4 py-2 text-white'>Action</th>
-        <th className='px-4 py-2 text-white'>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {donorsData.map(donor => (
-        <tr key={donor.id} className='h-12 bg-white border-b border-gray-400'>
-          <td className='px-4 py-2'>{donor.FullName}</td>
-          <td className='px-4 py-2'>{donor.Age}</td>
-          <td className='px-4 py-2'>{donor.BloodType}</td>
-          <td className='px-4 py-2'>{donor.City}</td>
-          <td className='px-4 py-2'>
-            <a href={`mailto:${donor.Email}`} className="text-blue-500 underline">{donor.Email}</a>
-          </td>
-          <td className='px-4 py-2'>{donor.Phone}</td>
-          <td className='px-4 py-2'>{donor.Province}</td>
-          <td className='px-4 py-2'> <button onClick={() => handleDelete(donor)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button></td>
-          <td className='px-4 py-2'> <Link to= {`/updateDonorPage/${donor.id}`}> <button  className="px-3 py-1 text-white bg-green-500 rounded-md">Update</button></Link></td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+          <table className='w-full mt-5 text-center border border-red-400'>
+            <thead className='h-10 bg-red-700 border border-red-400 '>
+              <tr>
+                <th className='px-4 py-2 text-white'>Full Name</th>
+                <th className='px-4 py-2 text-white'>Age</th>
+                <th className='px-4 py-2 text-white'>Blood Type</th>
+                <th className='px-4 py-2 text-white'>City</th>
+                <th className='px-4 py-2 text-white'>Email</th>
+                <th className='px-4 py-2 text-white'>Phone</th>
+                <th className='px-4 py-2 text-white'>Province</th>
+                <th className='px-4 py-2 text-white'>Action</th>
+                <th className='px-4 py-2 text-white'>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {donorsData.map(donor => (
+                <tr key={donor.id} className='h-12 bg-white border-b border-gray-400'>
+                  <td className='px-4 py-2'>{donor.FullName}</td>
+                  <td className='px-4 py-2'>{donor.Age}</td>
+                  <td className='px-4 py-2'>{donor.BloodType}</td>
+                  <td className='px-4 py-2'>{donor.City}</td>
+                  <td className='px-4 py-2'>
+                    <a href={`mailto:${donor.Email}`} className="text-blue-500 underline">{donor.Email}</a>
+                  </td>
+                  <td className='px-4 py-2'>{donor.Phone}</td>
+                  <td className='px-4 py-2'>{donor.Province}</td>
+                  <td className='px-4 py-2'> <button onClick={() => handleDelete(donor)} className="px-3 py-1 text-white bg-red-500 rounded-md">Delete</button></td>
+                  <td className='px-4 py-2'> <Link to= {`/updateDonorPage/${donor.id}`}> <button  className="px-3 py-1 text-white bg-green-500 rounded-md">Update</button></Link></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

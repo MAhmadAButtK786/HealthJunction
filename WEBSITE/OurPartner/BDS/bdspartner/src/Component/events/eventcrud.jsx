@@ -3,6 +3,7 @@ import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { database } from "../../firebase";
 import { Link } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { FaTrashAlt, FaEdit, FaMapMarkerAlt } from "react-icons/fa"; // Import icons
 import "./EventPage.css";
 
 const EventPage = () => {
@@ -24,7 +25,7 @@ const EventPage = () => {
 
   const handleDelete = async (eventId) => {
     try {
-      await deleteDoc(doc(database, "Event", eventId)); // Fixed the deleteDoc invocation
+      await deleteDoc(doc(database, "Event", eventId));
       setEvents((prevEvents) =>
         prevEvents.filter((event) => event.id !== eventId)
       );
@@ -33,6 +34,11 @@ const EventPage = () => {
       console.error("Error deleting event:", error);
       alert("Failed to delete event");
     }
+  };
+
+  const openGoogleMap = (location) => {
+    // Open Google Maps with the specified location
+    window.open(`https://www.google.com/maps/search/?api=1&query=${location}`);
   };
 
   return (
@@ -45,6 +51,7 @@ const EventPage = () => {
             <th>Description</th>
             <th>Date</th>
             <th>Time</th>
+            <th>Location</th>
             <th>Image</th>
             <th>Action</th>
           </tr>
@@ -58,6 +65,15 @@ const EventPage = () => {
                 <td>{event.date}</td>
                 <td>{event.time}</td>
                 <td>
+                  <button
+                    className="location-button"
+                    onClick={() => openGoogleMap(event.location)}
+                  >
+                    
+                    <FaMapMarkerAlt color="blue" size={"45"} />
+                  </button>
+                </td>
+                <td>
                   <img
                     src={event.imageUrl}
                     alt="Event"
@@ -69,10 +85,12 @@ const EventPage = () => {
                     className="delete-button"
                     onClick={() => handleDelete(event.id)}
                   >
-                    Delete
+                    <FaTrashAlt />
                   </button>
                   <Link to={`/updateEventPage/${event.id}`}>
-                    <button   className="update-button">Update</button>
+                    <button className="update-button">
+                      <FaEdit />
+                    </button>
                   </Link>
                 </td>
               </tr>
