@@ -234,13 +234,13 @@ class _EventScreenState extends State<EventScreen> {
                     child: Row(
                       children: [
                         Icon(Icons.alarm,
-                            size: 20.0, color: Colors.brown[500]),
+                            size: 30.0, color: Colors.brown[700]),
                         const SizedBox(width: 5.0),
                         Text(
                           'Set Reminder',
                           style: TextStyle(
                             fontSize: 16.0,
-                            color: Colors.blue[600],
+                            color: Colors.brown[800],
                             decoration: TextDecoration.underline,
                           ),
                         ),
@@ -254,7 +254,7 @@ class _EventScreenState extends State<EventScreen> {
                     child: Row(
                       children: [
                         Icon(Icons.location_on,
-                            size: 24.0, color: Colors.brown[500]),
+                            size: 30.0, color: Colors.brown[800]),
                         const SizedBox(width: 5.0),
                         Flexible(
                           child: Text(

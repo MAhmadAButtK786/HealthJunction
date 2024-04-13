@@ -70,7 +70,7 @@ class _HospitalPage1State extends State<HospitalPage1> {
           ),
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance.collection('HospitalData').snapshots(),
+              stream: FirebaseFirestore.instance.collection('Verified Hospitals').snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());

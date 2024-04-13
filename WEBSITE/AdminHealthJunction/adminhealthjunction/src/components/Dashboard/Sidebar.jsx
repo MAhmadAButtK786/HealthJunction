@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faAppleAlt ,faChevronRight, faFlask, faClinicMedical, faUserInjured, faHandsHelping, faCalendar, faDashboard, faHospital, faUserDoctor, faHandHoldingHeart, faCheck, faCheckDouble } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faAppleAlt ,faChevronRight, faFlask, faClinicMedical, faUserInjured, faHandsHelping, faCalendar, faDashboard, faHospital, faUserDoctor, faHandHoldingHeart, faCheck, faCheckDouble, faHospitalSymbol } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -66,7 +66,15 @@ const Sidebar = () => {
             </Link>
           </li>
            
-         
+          <li>
+            <Link to="/punjabhealthcommissionhospital" className="flex items-center justify-between p-2 hover:bg-gray-700">
+              <div className="flex items-center">
+                <FontAwesomeIcon icon={faHospitalSymbol} className="mr-2" />
+                <span>PHC Hospitals</span>
+              </div>
+            </Link>
+          </li>
+          
           {/* Events without dropdown */}
           <li>
             <Link to="/event" className="flex items-center justify-between p-2 hover:bg-gray-700">

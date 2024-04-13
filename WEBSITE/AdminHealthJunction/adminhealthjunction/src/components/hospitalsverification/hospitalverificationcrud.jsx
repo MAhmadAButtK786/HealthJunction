@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { database } from '../../firebase';
-import { faChevronUp, faChevronDown, faMapMarkerAlt, faPhone, faEnvelope, faUser, faBriefcase, faMoneyBillAlt, faRupeeSign, faClipboardCheck, faHome, faIdBadge, faBalanceScale, faClock, faFileAlt, faUsers, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown, faMapMarkerAlt, faPhone, faEnvelope, faUser, faBriefcase, faMoneyBillAlt, faRupeeSign, faClipboardCheck, faHome, faIdBadge, faBalanceScale, faClock, faFileAlt, faUsers, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useHistory } from 'react-router-dom'; // Import useHistory hook
+
 
 const VerifiedHospitalCRUD = () => {
   const [hospitals, setHospitals] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
-  const history = useHistory(); // Initialize useHistory hook
 
   useEffect(() => {
     const fetchHospitals = async () => {
@@ -43,10 +42,7 @@ const VerifiedHospitalCRUD = () => {
     }
   };
   
-  const handleUpdate = (id) => {
-    // Redirect to the update page with the specific ID
-    history.push(`/verifiedhospitals/${id}`); // Pass ID as a URL parameter
-  };
+
   const sortedHospitals = hospitals.sort((a, b) => {
     const fullNameA = a.fullName || '';
     const fullNameB = b.fullName || '';
@@ -91,13 +87,7 @@ const VerifiedHospitalCRUD = () => {
                 <FontAwesomeIcon icon={faTrashAlt} className="w-3 h-3 mr-1" />
                 Delete
               </button>
-              <button
-                className="flex items-center px-3 py-1 mb-2 mr-2 font-medium text-green-500 bg-transparent border border-green-500 rounded-full sm:mb-0 focus:outline-none hover:text-green-700"
-                onClick={() => handleUpdate(hospital.id)}
-              >
-                <FontAwesomeIcon icon={faEdit} className="w-3 h-3 mr-1" />
-                Update
-              </button>
+             
               
             </div>
           </div>
@@ -118,7 +108,7 @@ const VerifiedHospitalCRUD = () => {
                     ))}
                   </ul>
                 </div>
-                <p><FontAwesomeIcon icon={faBalanceScale} className="inline-block w-3 h-3 mr-2 text-teal-800" /> Number of Wards: {hospital.numberOfWards}</p>
+                <p><FontAwesomeIcon icon={faBalanceScale} className="inline-block w-3 h-3 mr-2 text-teal-800" /> Number of Wards: {hospital.wards}</p>
                 <p>
                   <FontAwesomeIcon icon={faFileAlt} className="inline-block w-3 h-3 mr-2 text-teal-800" />
                   <span className="font-semibold text-teal-800">Additional Information:</span>{' '}

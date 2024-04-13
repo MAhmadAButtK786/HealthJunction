@@ -32,7 +32,7 @@ class _HospitalPage1State extends State<HospitalPage1> {
 
   void _fetchFilterOptions() async {
     final snapshot =
-        await FirebaseFirestore.instance.collection('HospitalData').get();
+        await FirebaseFirestore.instance.collection('Verified Hospitals').get();
     Set<String> facilities = Set();
     Set<String> services = Set();
     Set<String> departments = Set();
@@ -122,7 +122,7 @@ class _HospitalPage1State extends State<HospitalPage1> {
 
   Widget _buildHospitalList() {
     return FutureBuilder<QuerySnapshot>(
-      future: FirebaseFirestore.instance.collection('HospitalData').get(),
+      future: FirebaseFirestore.instance.collection('Verified Hospitals').get(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -254,7 +254,7 @@ class HospitalDetailScreen extends StatelessWidget {
       ),
       body: FutureBuilder<DocumentSnapshot>(
         future: FirebaseFirestore.instance
-            .collection('HospitalData')
+            .collection('Verified Hospitals')
             .doc(docId)
             .get(),
         builder: (context, snapshot) {
