@@ -32,7 +32,7 @@ const VerifiedHospitalUpdateForm = () => {
   useEffect(() => {
     const fetchHospitalData = async () => {
       try {
-        const docRef = doc(database, 'VerificationHospitals', id);
+        const docRef = doc(database, 'Verified Hospitals', id);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {

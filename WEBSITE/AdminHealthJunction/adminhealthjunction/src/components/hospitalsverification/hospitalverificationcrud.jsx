@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { database } from '../../firebase';
-import { faChevronUp,  faChevronDown, faMapMarkerAlt, faPhone, faEnvelope, faUser, faBriefcase, faMoneyBillAlt, faRupeeSign, faClipboardCheck, faHome, faIdBadge, faBalanceScale, faClock, faFileAlt, faUsers, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown, faMapMarkerAlt, faPhone, faEnvelope, faUser, faBriefcase, faMoneyBillAlt, faRupeeSign, faClipboardCheck, faHome, faIdBadge, faBalanceScale, faClock, faFileAlt, faUsers, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useHistory } from 'react-router-dom'; // Import useHistory hook
 
 const VerifiedHospitalCRUD = () => {
   const [hospitals, setHospitals] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
+  const history = useHistory(); // Initialize useHistory hook
 
   useEffect(() => {
     const fetchHospitals = async () => {
       try {
-        const querySnapshot = await getDocs(collection(database, 'VerificationHospitals'));
+        const querySnapshot = await getDocs(collection(database, 'Verified Hospitals'));
         const hospitalData = [];
         querySnapshot.forEach(doc => {
           hospitalData.push({ id: doc.id, ...doc.data() });
@@ -32,7 +34,7 @@ const VerifiedHospitalCRUD = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this hospital?")) {
       try {
-        await deleteDoc(doc(database, 'VerificationHospitals', id));
+        await deleteDoc(doc(database, 'Verified Hospitals', id));
         setHospitals(hospitals.filter(hospital => hospital.id !== id));
         alert('Hospital deleted successfully!');
       } catch (error) {
@@ -43,7 +45,7 @@ const VerifiedHospitalCRUD = () => {
   
   const handleUpdate = (id) => {
     // Redirect to the update page with the specific ID
-    window.location.href = `/verifiedHospitalsupdate/${id}`;
+    history.push(`/verifiedhospitals/${id}`); // Pass ID as a URL parameter
   };
   const sortedHospitals = hospitals.sort((a, b) => {
     const fullNameA = a.fullName || '';

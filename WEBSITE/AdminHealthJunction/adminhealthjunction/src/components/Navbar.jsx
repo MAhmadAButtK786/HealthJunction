@@ -93,7 +93,7 @@ const Navbar = () => {
                   <Link to="/hospitalcrud" className="block py-2 hover:text-blue-300">Hospitals Management</Link>
                   <Link to="/doctorsmanagement" className="block py-2 hover:text-blue-300">Doctors Management</Link>
                   <Link to="/verifieddoctorsmanagement" className="block py-2 hover:text-blue-300">Verified Doctors</Link>
-                  <Link to="/verifiedHospitalsmanagement" className="block py-2 hover:text-blue-300">Verified Hospitals</Link>
+                  <Link to="/verifiedhospitalsmanagement" className="block py-2 hover:text-blue-300">Verified Hospitals</Link>
                   <Link to="/phcmainscreen" className="block py-2 hover:text-blue-300">PHC Registered Hospitals</Link>
                 </div>
               )}
@@ -147,7 +147,7 @@ const Navbar = () => {
                   <Link to="/charityORG" className="block py-2 hover:text-blue-300">NGOs Management</Link>
                   <Link to="/event" className="block py-2 hover:text-blue-300">Events Management</Link>
                   <Link to="/nutrifit" className="block py-2 hover:text-blue-300">NutriFit Management</Link>
-                  <Link to="/medicine" className="block py-2 hover:text-blue-300">Medicine Management</Link>
+                 
                 </div>
               )}
             </div>

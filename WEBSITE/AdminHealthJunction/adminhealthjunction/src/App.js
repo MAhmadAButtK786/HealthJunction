@@ -183,8 +183,8 @@ const App = () => {
         <Route path="/verifieddoctorsmanagement" exact component={Verificationdocmain}/>
         <Route path="/verifiedDoctors/:id" exact component={VerifiedDoctorUpdateForm}/>
         {/* Verified Hospitals */}
-        <Route path="/verifiedHospitalsmanagement" exact component={VerifiedHospitals}/>
-        <Route path="/verifiedHospitalsupdate/:id" exact component={VerifiedHospitalUpdateForm}/>
+        <Route path="/verifiedhospitalsmanagement" exact component={VerifiedHospitals}/>
+        <Route path="/verifiedhospitals/:id" exact component={VerifiedHospitalUpdateForm}/>
         {/* PHC Hospitals */}
      
       </Switch>

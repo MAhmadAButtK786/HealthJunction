@@ -42,7 +42,7 @@ const HospitalCRUD = () => {
   };
   const handlePushToNewCollection = async (hospital) => {
     try {
-      await addDoc(collection(database, 'VerificationHospitals'), hospital);
+      await addDoc(collection(database, 'Verified Hospitals'), hospital);
       alert('Hospital Verified!');
     } catch (error) {
       console.error('Error while Verifying data:', error);
