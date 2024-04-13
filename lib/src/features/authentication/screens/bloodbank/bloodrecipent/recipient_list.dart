@@ -38,25 +38,37 @@ class _RecipientListState extends State<RecipientList> {
   }
 
   Future<List<QueryDocumentSnapshot>> fetchRecipientData(
-      String? selectedProvince,
-      String? selectedBloodType,
-      String? selectedCity) async {
-    Query<Map<String, dynamic>> query =
-        FirebaseFirestore.instance.collection('Recepients');
+    String? selectedProvince,
+    String? selectedBloodType,
+    String? selectedCity) async {
+  Query<Map<String, dynamic>> query1 =
+      FirebaseFirestore.instance.collection('Recepients');
 
-    if (selectedProvince != null && selectedProvince.isNotEmpty) {
-      query = query.where('Province', isEqualTo: selectedProvince);
-    }
-    if (selectedBloodType != null && selectedBloodType.isNotEmpty) {
-      query = query.where('BloodType', isEqualTo: selectedBloodType);
-    }
-    if (selectedCity != null && selectedCity.isNotEmpty) {
-      query = query.where('City', isEqualTo: selectedCity);
-    }
+  Query<Map<String, dynamic>> query2 =
+      FirebaseFirestore.instance.collection('BDS Recipient');
 
-    QuerySnapshot<Map<String, dynamic>> recipientData = await query.get();
-    return recipientData.docs;
+  if (selectedProvince != null && selectedProvince.isNotEmpty) {
+    query1 = query1.where('Province', isEqualTo: selectedProvince);
+    query2 = query2.where('Province', isEqualTo: selectedProvince);
   }
+  if (selectedBloodType != null && selectedBloodType.isNotEmpty) {
+    query1 = query1.where('BloodType', isEqualTo: selectedBloodType);
+    query2 = query2.where('BloodType', isEqualTo: selectedBloodType);
+  }
+  if (selectedCity != null && selectedCity.isNotEmpty) {
+    query1 = query1.where('City', isEqualTo: selectedCity);
+    query2 = query2.where('City', isEqualTo: selectedCity);
+  }
+
+  QuerySnapshot<Map<String, dynamic>> recipientData1 = await query1.get();
+  QuerySnapshot<Map<String, dynamic>> recipientData2 = await query2.get();
+
+  List<QueryDocumentSnapshot> combinedData = [];
+  combinedData.addAll(recipientData1.docs);
+  combinedData.addAll(recipientData2.docs);
+
+  return combinedData;
+}
 
   void _showFilterDialog() {
     showDialog(
