@@ -7,10 +7,10 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { database } from "../../../firebase";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom"; 
 
-function DonorLists() {
-  const [donorsData, setDonorsData] = useState([]);
+function RecipientList() {
+  const [recipientData, setDonorsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
     age: "",
@@ -18,6 +18,8 @@ function DonorLists() {
     city: "",
     bloodGroup: "",
   });
+
+  const history = useHistory(); // Initialize history here
 
   useEffect(() => {
     getData();
@@ -57,9 +59,10 @@ function DonorLists() {
       docId: doc.id, // Add the document id as a new field
       ...doc.data(),
     }));
-
+    
     setDonorsData(data);
   };
+
   const handleSearch = () => {
     getData();
   };
@@ -75,41 +78,49 @@ function DonorLists() {
       [name]: value,
     }));
   };
-
-  const handleDelete = async (donor) => {
-    if (window.confirm(`Are you sure you want to delete ${donor.FullName}?`)) {
-      try {
-        const filteredQuery = query(
-          collection(database, "Donors"),
-          where("FullName", "==", donor.FullName), // Assuming FullName is unique
-          where("Age", "==", donor.Age),
-          where("BloodType", "==", donor.BloodType),
-          where("City", "==", donor.City),
-          where("Email", "==", donor.Email),
-          where("Phone", "==", donor.Phone),
-          where("Province", "==", donor.Province)
-        );
-
-        const querySnapshot = await getDocs(filteredQuery);
-        querySnapshot.forEach(async (doc) => {
-          await deleteDoc(doc.ref);
-        });
-
-        // Refresh data after deletion
-        getData();
-        alert(`${donor.FullName} has been deleted successfully.`);
-      } catch (error) {
-        console.error("Error deleting donor: ", error);
-      }
+  const handleDelete = (recipient) => {
+    if (
+      window.confirm(`Are you sure you want to delete ${recipient.FullName}?`)
+    ) {
+      deleteRecipient(recipient);
     }
   };
 
+  const deleteRecipient = async (recipient) => {
+    try {
+      const filteredQuery = query(
+        collection(database, "Donors"),
+        where("FullName", "==", recipient.FullName), // Assuming FullName is unique
+        where("Age", "==", recipient.Age),
+        where("BloodType", "==", recipient.BloodType),
+        where("City", "==", recipient.City),
+        where("Email", "==", recipient.Email),
+        where("Phone", "==", recipient.Phone),
+        where("Province", "==", recipient.Province)
+      );
+
+      const querySnapshot = await getDocs(filteredQuery);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+
+      // Refresh data after deletion
+      getData();
+      alert(`${recipient.FullName} has been deleted successfully.`);
+    } catch (error) {
+      console.error("Error deleting donor: ", error);
+    }
+  };
+  const handleUpdate = (recipient) => {
+    const recipientData = encodeURIComponent(JSON.stringify(recipient));
+    history.push(`/updateDonorPage?recipient=${recipientData}`);
+  };
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
         <div className="text-center pb-7">
           <h1 className="text-5xl font-bold text-red-600">
-            Registered Donors in our Platform
+            Registered Donors in Our Platform
           </h1>
         </div>
         <Link to="/insertsdonor">
@@ -197,44 +208,46 @@ function DonorLists() {
                 <th className="px-4 py-2 text-white">Email</th>
                 <th className="px-4 py-2 text-white">Phone</th>
                 <th className="px-4 py-2 text-white">Province</th>
-                <th className="px-4 py-2 text-white">Action</th>
-                <th className="px-4 py-2 text-white">Action</th>
+                <th className="px-4 py-2 text-white">Actions</th>
+                <th className="px-4 py-2 text-white">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {donorsData.map((donor) => (
+              {recipientData.map((recipient, index) => (
                 <tr
-                  key={donor.id}
+                  key={index}
                   className="h-12 bg-white border-b border-gray-400"
                 >
-                  <td className="px-4 py-2">{donor.FullName}</td>
-                  <td className="px-4 py-2">{donor.Age}</td>
-                  <td className="px-4 py-2">{donor.BloodType}</td>
-                  <td className="px-4 py-2">{donor.City}</td>
+                  <td className="px-4 py-2">{recipient.FullName}</td>
+                  <td className="px-4 py-2">{recipient.Age}</td>
+                  <td className="px-4 py-2">{recipient.BloodType}</td>
+                  <td className="px-4 py-2">{recipient.City}</td>
                   <td className="px-4 py-2">
                     <a
-                      href={`mailto:${donor.Email}`}
+                      href={`mailto:${recipient.Email}`}
                       className="text-blue-500 underline"
                     >
-                      {donor.Email}
+                      {recipient.Email}
                     </a>
                   </td>
-                  <td className="px-4 py-2">{donor.Phone}</td>
-                  <td className="px-4 py-2">{donor.Province}</td>
+                  <td className="px-4 py-2">{recipient.Phone}</td>
+                  <td className="px-4 py-2">{recipient.Province}</td>
                   <td className="px-4 py-2">
+                    {" "}
                     <button
-                      onClick={() => handleDelete(donor)}
+                      onClick={() => handleDelete(recipient)}
                       className="px-3 py-1 text-white bg-red-500 rounded-md"
                     >
                       Delete
                     </button>
                   </td>
                   <td className="px-4 py-2">
-                    <Link to={`/updateDonorPage/${donor.docId}`}>
-                      <button className="px-3 py-1 text-white bg-green-500 rounded-md">
-                        Update
-                      </button>
-                    </Link>
+                  <Link to={`/updateDonorPage/${recipient.docId}`}>
+  <button className="px-3 py-1 text-white bg-green-500 rounded-md">
+    Update
+  </button>
+</Link>
+                
                   </td>
                 </tr>
               ))}
@@ -246,4 +259,4 @@ function DonorLists() {
   );
 }
 
-export default DonorLists;
+export default RecipientList;

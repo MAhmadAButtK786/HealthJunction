@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where, orderBy, startAt, endAt } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { database } from "../../firebase";
 
 function RecipientList() {
