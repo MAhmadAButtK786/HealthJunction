@@ -1,12 +1,12 @@
 import React from 'react'
-import HPNavbar from '../healthPoints/hpNavbar'
-import PHChospitals from './phcshow'
-import Footer from '../footer'
+import HPNavbar from '../hpNavbar'
+import PHCHospitalsScreen from './phcshow'
+import Footer from '../../footer'
 function PHCMain() {
   return (
     <>
     <HPNavbar/>
-    <PHChospitals/>
+    <PHCHospitalsScreen/>
     <Footer/>
     </>
   )

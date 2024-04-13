@@ -40,9 +40,10 @@ const HospitalList = () => {
           alt="Adorable Hospital Logo"
           className="h-auto mr-2 w-34"
         />
-        <h2 className="text-4xl font-bold text-center text-teal-600">
-          Find Your Perfect Care Haven!
-        </h2>
+      <h2 className="text-2xl font-bold text-center text-teal-600 sm:text-xl md:text-3xl">
+  Find Your Perfect Care Haven!
+</h2>
+
       </div>
 
       {/* Adorable Hospital List with Soft Colors and Rounded Elements */}

@@ -63,7 +63,7 @@ const DoctorCRUD = () => {
 
   const handlePushToNewCollection = async (doctor) => {
     try {
-      await addDoc(collection(database, 'Verified Hospitals'), doctor);
+      await addDoc(collection(database, 'Verified Doctors'), doctor);
       alert('Doctor Varified!');
     } catch (error) {
       console.error('Error pushing doctor to new collection:', error);
