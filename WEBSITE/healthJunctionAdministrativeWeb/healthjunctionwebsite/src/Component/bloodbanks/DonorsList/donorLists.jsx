@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { database } from "../../firebase";
+
 
 function DonorLists() {
   const [donorsData, setDonorsData] = useState([]);
@@ -14,34 +15,60 @@ function DonorLists() {
 
   useEffect(() => {
     getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [searchTerm, filters]);
 
   const getData = async () => {
-    const donorsCollection = collection(database, "Donors");
-    const otherCollection = collection(database, "BDS Donors"); 
-    const donorsQuery = query(donorsCollection);
-    const otherQuery = query(otherCollection);
-
+    let donorsCollection = collection(database, "Donors");
+    let otherCollection = collection(database, "BDS Donors");
+  
+    // Apply filters
+    if (filters.age) {
+      const ageFilter = parseInt(filters.age); // Parse age as integer
+      donorsCollection = query(donorsCollection, where("Age", "==", ageFilter));
+      otherCollection = query(otherCollection, where("Age", "==", ageFilter));
+    }
+    if (filters.province) {
+      const provinceFilter = filters.province.trim(); // Trim whitespace
+      donorsCollection = query(donorsCollection, where("Province", "==", provinceFilter));
+      otherCollection = query(otherCollection, where("Province", "==", provinceFilter));
+    }
+    if (filters.city) {
+      const cityFilter = filters.city.trim().toLowerCase(); // Trim whitespace and convert to lowercase
+      donorsCollection = query(donorsCollection, where("City", "==", cityFilter));
+      otherCollection = query(otherCollection, where("City", "==", cityFilter));
+    }
+    if (filters.bloodGroup) {
+      const bloodGroupFilter = filters.bloodGroup.trim().toUpperCase(); // Trim whitespace and convert to uppercase
+      donorsCollection = query(donorsCollection, where("BloodType", "==", bloodGroupFilter));
+      otherCollection = query(otherCollection, where("BloodType", "==", bloodGroupFilter));
+    }
+  
+    // Apply search term
+    if (searchTerm) {
+      const searchTermFilter = searchTerm.trim(); // Trim whitespace
+      donorsCollection = query(donorsCollection, where("FullName", "==", searchTermFilter));
+      otherCollection = query(otherCollection, where("FullName", "==", searchTermFilter));
+    }
+  
     const [donorsSnapshot, otherSnapshot] = await Promise.all([
-      getDocs(donorsQuery),
-      getDocs(otherQuery),
+      getDocs(donorsCollection),
+      getDocs(otherCollection),
     ]);
-
+  
     const donorsData = donorsSnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
-
+  
     const otherData = otherSnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
-
+  
     const combinedData = [...donorsData, ...otherData];
     setDonorsData(combinedData);
   };
-
+  
   const handleSearch = () => {
     getData();
   };
@@ -57,10 +84,11 @@ function DonorLists() {
       [name]: value,
     }));
   };
+
   return (
     <div className="w-full px-4 pt-10 mx-auto">
       <div className="max-w-6xl mx-auto mb-4">
-      <div className="text-center pb-7">
+        <div className="text-center pb-7">
           <h1 className="text-5xl font-bold text-red-600">Registered Donors in our Platform</h1>
         </div>
         <div className="flex flex-col items-center justify-center mb-4 md:flex-row">
@@ -75,7 +103,7 @@ function DonorLists() {
             onClick={handleSearch}
             className="w-full px-4 py-2 text-white bg-red-500 rounded-md md:w-auto"
           >
-            Search
+            {searchTerm ? "Search Results" : "Search"}
           </button>
         </div>
         <div className="flex flex-col items-center justify-center space-y-2 md:flex-row md:space-y-0 md:space-x-4">
@@ -132,36 +160,44 @@ function DonorLists() {
             <option value="NI">NI</option>
           </select>
         </div>
-        <div className='overflow-x-auto'>
-  <table className='w-full mt-5 text-center border border-red-400'>
-    <thead className='h-10 bg-red-700 border border-red-400 '>
-      <tr>
-        <th className='px-4 py-2 text-white'>Full Name</th>
-        <th className='px-4 py-2 text-white'>Age</th>
-        <th className='px-4 py-2 text-white'>Blood Type</th>
-        <th className='px-4 py-2 text-white'>City</th>
-        <th className='px-4 py-2 text-white'>Email</th>
-        <th className='px-4 py-2 text-white'>Phone</th>
-        <th className='px-4 py-2 text-white'>Province</th>
-      </tr>
-    </thead>
-    <tbody>
-      {donorsData.map(donor => (
-        <tr key={donor.id} className='h-12 bg-white border-b border-gray-400'>
-          <td className='px-4 py-2'>{donor.FullName}</td>
-          <td className='px-4 py-2'>{donor.Age}</td>
-          <td className='px-4 py-2'>{donor.BloodType}</td>
-          <td className='px-4 py-2'>{donor.City}</td>
-          <td className='px-4 py-2'>
-            <a href={`mailto:${donor.Email}`} className="text-blue-500 underline">{donor.Email}</a>
-          </td>
-          <td className='px-4 py-2'>{donor.Phone}</td>
-          <td className='px-4 py-2'>{donor.Province}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+        <div className="overflow-x-auto">
+          {donorsData.length > 0 ? (
+            <table className="w-full mt-5 text-center border border-red-400">
+              <thead className="h-10 bg-red-700 border border-red-400 ">
+                <tr>
+                  <th className="px-4 py-2 text-white">Full Name</th>
+                  <th className="px-4 py-2 text-white">Age</th>
+                  <th className="px-4 py-2 text-white">Blood Type</th>
+                  <th className="px-4 py-2 text-white">City</th>
+                  <th className="px-4 py-2 text-white">Email</th>
+                  <th className="px-4 py-2 text-white">Phone</th>
+                  <th className="px-4 py-2 text-white">Province</th>
+                </tr>
+              </thead>
+              <tbody>
+                {donorsData.map((donor) => (
+                  <tr key={donor.id} className="h-12 bg-white border-b border-gray-400">
+                    <td className="px-4 py-2">{donor.FullName}</td>
+                    <td className="px-4 py-2">{donor.Age}</td>
+                    <td className="px-4 py-2">{donor.BloodType}</td>
+                    <td className="px-4 py-2">{donor.City}</td>
+                    <td className="px-4 py-2">
+                      <a href={`mailto:${donor.Email}`} className="text-blue-500 underline">
+                        {donor.Email}
+                      </a>
+                    </td>
+                    <td className="px-4 py-2">{donor.Phone}</td>
+                    <td className="px-4 py-2">{donor.Province}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p className="font-medium text-center text-gray-500">
+              {searchTerm ? "No Search Results Found" : "Loading Donors..."}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

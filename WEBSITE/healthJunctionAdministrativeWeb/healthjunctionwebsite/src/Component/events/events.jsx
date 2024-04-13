@@ -31,12 +31,12 @@ const EventCard = ({ event }) => {
           />
         </div>
         <div className="p-8">
-          <div className="text-lg font-bold tracking-wide text-indigo-700 uppercase ">{event.eventName}</div>
-          <div className={`mt-2 text-lg text-black-500 ${descriptionExpanded ? "" : "truncate"}`} onClick={toggleDescription}>
-            {event.description}
+          <div className="text-2xl font-bold tracking-wide text-indigo-700 uppercase ">{event.eventName}</div>
+          <div className={`mt-2 text-xl text-black-700 font-bold ${descriptionExpanded ? "" : "truncate"}`} onClick={toggleDescription}>
+            Event Description
           </div>
           {descriptionExpanded && (
-            <div className="mt-2 text-lg text-gray-500">{event.description}</div>
+            <div className="mt-2 text-lg text-green-700">{event.description}</div>
           )}
           <p className="mt-2 text-lg text-gray-500">Date: {event.date}</p>
           <p className="mt-2 text-lg text-gray-500">Time: {event.time}</p>
