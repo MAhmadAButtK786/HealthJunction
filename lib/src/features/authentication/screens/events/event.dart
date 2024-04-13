@@ -3,23 +3,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:healthjunction/src/features/authentication/screens/navbar/navbar.dart';
 import 'package:healthjunction/src/features/authentication/screens/sidebar/sidebar2.dart';
+
 class EventScreen extends StatefulWidget {
   const EventScreen({Key? key}) : super(key: key);
 
   @override
   _EventScreenState createState() => _EventScreenState();
 }
+
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  void _handleMenuPressed() {
-    scaffoldKey.currentState?.openDrawer();
-  }
+void _handleMenuPressed() {
+  scaffoldKey.currentState?.openDrawer();
+}
+
 class _EventScreenState extends State<EventScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-         key: scaffoldKey,
+        key: scaffoldKey,
         drawer: ReusableDrawerSideBar2(
           color: Colors.brown,
           headerText: "Event",
@@ -36,8 +39,7 @@ class _EventScreenState extends State<EventScreen> {
               const SizedBox(height: 20),
               Center(
                 child: Text(
-                  
-"Events Hosted by Us and Our Partners",
+                  "Events Hosted by Us and Our Partners",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25,
@@ -81,7 +83,8 @@ class _EventScreenState extends State<EventScreen> {
           itemCount: snapshot.data!.docs.length,
           itemBuilder: (context, index) {
             DocumentSnapshot document = snapshot.data!.docs[index];
-            Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+            Map<String, dynamic> data =
+                document.data() as Map<String, dynamic>;
             return buildEventCard(data);
           },
         );
@@ -108,7 +111,6 @@ class _EventScreenState extends State<EventScreen> {
                         eventData['imageUrl'],
                         height: 300,
                         width: 500,
-                        
                       ),
                     );
                   },
@@ -130,7 +132,7 @@ class _EventScreenState extends State<EventScreen> {
                 children: [
                   Text(
                     eventData['eventName'],
-                    style:  TextStyle(
+                    style: TextStyle(
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.brown[800], // Darker brown title
@@ -143,7 +145,7 @@ class _EventScreenState extends State<EventScreen> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                                    title: Text(
+                            title: Text(
                               eventData['eventName'],
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -151,20 +153,23 @@ class _EventScreenState extends State<EventScreen> {
                                 color: Colors.brown[800], // Darker brown title
                               ),
                             ),
-                            content: SingleChildScrollView( // Make content scrollable
+                            content: SingleChildScrollView(
+                              // Make content scrollable
                               child: Text(
                                 eventData['description'],
-                                style:  TextStyle(fontSize: 18.0, color: Colors.brown[600]), // Readable description style
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.brown[600]), // Readable description style
                               ),
                             ),
                             actions: <Widget>[
                               TextButton(
                                 onPressed: () => Navigator.of(context).pop(),
-                                child:  const Text(
+                                child: const Text(
                                   'Close',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.red, // Consistent brown for button text
+                                    color: Colors.red,
                                   ),
                                 ),
                               ),
@@ -175,11 +180,12 @@ class _EventScreenState extends State<EventScreen> {
                     },
                     child: Row(
                       children: [
-                         Icon(Icons.description, size: 20.0, color: Colors.brown[500]), // Brown description icon
+                        Icon(Icons.description,
+                            size: 20.0, color: Colors.brown[500]),
                         const SizedBox(width: 5.0),
                         Flexible(
                           child: Text(
-                            'Description:', // Clearer label for description
+                            'Description:',
                             style: TextStyle(
                               fontSize: 16.0,
                               fontWeight: FontWeight.bold,
@@ -193,38 +199,69 @@ class _EventScreenState extends State<EventScreen> {
                   const SizedBox(height: 5.0),
                   Row(
                     children: [
-                      Icon(Icons.calendar_today, size: 20.0, color: Colors.brown[500]), // Brown calendar icon
+                      Icon(Icons.calendar_today,
+                          size: 20.0, color: Colors.brown[500]),
                       const SizedBox(width: 5.0),
                       Text(
                         'Date: ${eventData['date']}',
-                        style:  TextStyle(fontSize: 16.0, color: Colors.brown[600]),
+                        style: TextStyle(
+                            fontSize: 16.0, color: Colors.brown[600]),
                       ),
                     ],
                   ),
                   const SizedBox(height: 5.0),
                   Row(
                     children: [
-                      Icon(Icons.access_time, size: 20.0, color: Colors.brown[500]), // Brown time icon
+                      Icon(Icons.access_time,
+                          size: 20.0, color: Colors.brown[500]),
                       const SizedBox(width: 5.0),
                       Text(
                         'Time: ${eventData['time']}',
-                        style: TextStyle(fontSize: 16.0, color: Colors.brown[600]),
+                        style: TextStyle(
+                            fontSize: 16.0, color: Colors.brown[600]),
                       ),
                     ],
                   ),
                   const SizedBox(height: 5.0),
                   InkWell(
-                    onTap: () => launchMap(eventData['location']),
+                    onTap: () {
+                      setReminder(
+                        eventData['eventName'],
+                        eventData['date'],
+                        eventData['time'],
+                      );
+                    },
                     child: Row(
                       children: [
-                       Icon(Icons.location_on, size: 24.0, color: Colors.brown[500]), // Brown location icon
+                        Icon(Icons.alarm,
+                            size: 20.0, color: Colors.brown[500]),
+                        const SizedBox(width: 5.0),
+                        Text(
+                          'Set Reminder',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.blue[600],
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 5.0),
+                  InkWell(
+                    onTap: () =>
+                        launchMap(eventData['location']),
+                    child: Row(
+                      children: [
+                        Icon(Icons.location_on,
+                            size: 24.0, color: Colors.brown[500]),
                         const SizedBox(width: 5.0),
                         Flexible(
                           child: Text(
                             'Location: ${eventData['location']}',
-                            style:  TextStyle(
+                            style: TextStyle(
                               fontSize: 16.0,
-                              color: Colors.blue[600], // Blue for location (can be customized)
+                              color: Colors.blue[600],
                               decoration: TextDecoration.underline,
                             ),
                           ),
@@ -241,8 +278,35 @@ class _EventScreenState extends State<EventScreen> {
     );
   }
 
+  void setReminder(
+    String eventName,
+    String date,
+    String time,
+  ) async {
+    DateTime eventDateTime = DateTime.parse('$date $time');
+
+    final String title = Uri.encodeComponent(eventName);
+    final String formattedDate =
+        '${eventDateTime.year}${_formatTwoDigits(eventDateTime.month)}${_formatTwoDigits(eventDateTime.day)}';
+    final String formattedTime =
+        'T${_formatTwoDigits(eventDateTime.hour)}${_formatTwoDigits(eventDateTime.minute)}00';
+    final String eventUrl =
+        'https://calendar.google.com/calendar/render?action=TEMPLATE&text=$title&dates=$formattedDate$formattedTime/$formattedDate$formattedTime';
+
+    if (await canLaunch(eventUrl)) {
+      await launch(eventUrl);
+    } else {
+      throw 'Could not launch $eventUrl';
+    }
+  }
+
+  String _formatTwoDigits(int number) {
+    return number.toString().padLeft(2, '0');
+  }
+
   void launchMap(String location) async {
-    String googleMapsUrl = 'https://www.google.com/maps/search/?api=1&query=$location';
+    String googleMapsUrl =
+        'https://www.google.com/maps/search/?api=1&query=$location';
     if (await canLaunch(googleMapsUrl)) {
       await launch(googleMapsUrl);
     } else {
@@ -250,4 +314,3 @@ class _EventScreenState extends State<EventScreen> {
     }
   }
 }
-
