@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"; // Import useHistory
 import { database } from "../../firebase";
+
 function AddDonorPage() {
+  const history = useHistory(); // Initialize useHistory
+
   const [donorData, setRecipientData] = useState({
     FullName: "",
     Age: "",
@@ -80,13 +83,12 @@ function AddDonorPage() {
         Phone: "",
         Province: "",
       });
-  // history.push("/donors"); 
+      history.push("/donorlistORG"); // Navigate to another page after successful addition
     } catch (error) {
       console.error("Error adding donor: ", error);
       alert("Failed to add donor. Please try again.");
     }
   };
- 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-red-600 via-yellow-400 to-orange-500">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">

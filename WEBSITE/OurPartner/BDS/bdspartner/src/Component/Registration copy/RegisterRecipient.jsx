@@ -82,7 +82,7 @@ function AddRecipientPage() {
         Phone: "",
         Province: "",
       });
-      history.push("/recipient"); // Use history to navigate to "/recipient" after adding recipient
+      history.push("/recipientlistORG"); // Use history to navigate to "/recipient" after adding recipient
     } catch (error) {
       console.error("Error adding recipient: ", error);
       alert("Failed to add recipient. Please try again.");

@@ -11,7 +11,7 @@ const HospitalList = () => {
   useEffect(() => {
     const fetchHospitals = async () => {
       try {
-        const querySnapshot = await getDocs(collection(database, 'HospitalData'));
+        const querySnapshot = await getDocs(collection(database, 'Verified Hospitals'));
         const hospitalData = [];
         querySnapshot.forEach(doc => {
           hospitalData.push({ id: doc.id, ...doc.data() });

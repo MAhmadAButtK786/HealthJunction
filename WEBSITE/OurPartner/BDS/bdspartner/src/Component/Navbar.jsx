@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="/" className="text-2xl font-bold text-white">
+            <a href="/home" className="text-2xl font-bold text-white">
               <i className="fa fa-dashboard" aria-hidden="true"></i> Dashboard
             </a>
           </div>
