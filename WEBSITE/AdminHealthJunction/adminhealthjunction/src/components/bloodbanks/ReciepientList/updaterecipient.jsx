@@ -42,7 +42,7 @@ function UpdateRecipientPage() {
     await updateDoc(donorDoc, formData);
     alert("Recipient updated successfully");
     // Redirect to donor list page after update
-    history.push("/donorlistORG");
+    history.push("/recipients");
   };
 
   return (
